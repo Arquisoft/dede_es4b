@@ -44,6 +44,9 @@ npm start
 
 You should be able to access the application in [http://localhost:3000](http://localhost:3000).
 
+## Miembros del equipo
+    Laís García Suárez UO276208
+
 ## More information
 You can get more information about the respository in the other README files:
 - Documentation: https://github.com/arquisoft/dede_0/tree/master/docs
