@@ -49,6 +49,7 @@ You should be able to access the application in [http://localhost:3000](http://l
     Hugo Hevia García UO277553
     Manuel Antón de la Calle UO276213
     Miriam González Alonso UO277878
+    Andrea María Delgado Alonso UO271355
 
 ## More information
 You can get more information about the respository in the other README files:
