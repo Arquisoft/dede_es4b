@@ -47,6 +47,7 @@ You should be able to access the application in [http://localhost:3000](http://l
 ## Miembros del equipo
     Laís García Suárez UO276208
     Hugo Hevia García UO277553
+    Manuel Antón de la Calle UO276213
 
 ## More information
 You can get more information about the respository in the other README files:
