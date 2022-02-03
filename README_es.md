@@ -45,9 +45,6 @@ npm start
 
 Deberias ser capaz de acceder a la aplicación en [http://localhost:3000](http://localhost:3000).
 
-## Miembros del equipo
-    Laís García Suárez UO276208
-
 ## Mas información
 Encontrarás más información sobre el repositorio en los otros archivos README:
 - Documentación: https://github.com/pglez82/asw2122_0/tree/master/docs
