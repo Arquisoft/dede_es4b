@@ -6,12 +6,10 @@
 [options="header"]
 |===
 | Decisión         | Ventajas     | Desventajas
-| MongoDB     | Fácil de trabajar con json, 
-    , formato nativo en javascript y rápida para esquemas sencillos |
+| MongoDB     | Fácil de trabajar con json 
+    , formato nativo en javascript y base de datos rápida para esquemas sencillos |
     Nadie del equipo ha trabajado con ella antes, no soporta transacciones complejas
-| TypeScript    | Código más limpio y entendible, fácil de testear y mejora la escalabilidad del Código
-    | Nadie del equipo ha trabajado con él antes y además tiene un curva de aprendizaje algo compleja debida 
-    su sistema de tipos
-| React | Es una librería de javascript por lo que se adapta bien al proyecto, código abierto,
-    fácil de aprender | Problemas de compatibilidad y depuración, no tenemos conocimientos de esta librería
+| TypeScript    | Código más limpio y entendible, fácil de testear y mejora la escalabilidad del código
+    | Lenguaje desconocido por el equipo
+| React | Es una librería de javascript por lo que se adapta bien al proyecto, código abierto, bien documentada | Problemas a la hora de depurar, no tenemos conocimientos de esta librería
 |===
