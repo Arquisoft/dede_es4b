@@ -1,19 +1,33 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
-
+== Restricciones de la arquitectura
 
 [role="arc42help"]
+=== Restricciones técnicas
 ****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
-
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
+|===
+| **Restricción** | **Descripción**
+| _Solid_ | _Para proteger la privacidad del usuario estamos obligados a usar los pods de SOLID_
+| _React_ | _El front end de la tienda debe estar realizado con la biblioteca React_
+| _Typescript_ | _El único lenguaje de programación usado debe ser Typescript_
+| _GitHub_ | _Para la gestión del código, tareas y seguimiento general del proyecto se debe usar GitHub_
+|===
+****
+=== Restricciones organizativas
+****
+[cols="1,2" options="header"]
+|===
+| **Name** | **Responsibility**
+| _Tiempo_ | _El tiempo del que disponemos es limitado y tiene que ser repartido con más asignaturas, además para la parte de código disponemos de menos de 2 meses_
+| _Equipo de 5 personas_ | _Somos 5 personas con disparidad de horarios y de tiempo disponible lo cual dificulta la organización_
+|===
+****
+=== Restricciones Convenios
+****
+[cols="1,2" options="header"]
+|===
+| **Name** | **Responsibility**
+| _Documentación en arc42_ | _La documentación debe seguir la plantilla de arc42_
+| _Idioma_ | _Tanto el proyecto como la documentación serán realizados en idioma español_
+| _Coste de herramientas_ | _Toda herramienta o servicio que se use en el proyecto debe ser gratuita o disponer de licencia educativa_
+|===
 ****
