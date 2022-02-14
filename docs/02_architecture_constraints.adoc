@@ -4,12 +4,6 @@
 [role="arc42help"]
 === Restricciones técnicas
 ****
-	-solid
-	-React
-	-typescript
-	-sistema de integración continua?
-	-github
-    [cols="1,2" options="header"]
 |===
 | **Restricción** | **Descripción**
 | _Solid_ | _Para proteger la privacidad del usuario estamos obligados a usar los pods de SOLID_
