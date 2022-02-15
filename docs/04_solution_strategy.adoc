@@ -18,7 +18,8 @@ Las tecnologías usadas en nuestra aplicación van a ser las siguientes:
 [role="arc42help"]
 === Objetivos de calidad
 ****
-==== Privacidad
+[role="arc42help"]
+===Privacidad
 ****
 Queremos que nuestra aplicación sea un lugar seguro, así que nos centraremos en la privacidad de los usuarios y de sus datos. Debemos almacenar la menor cantidad de información del usuario, ya que esto aumenta su privacidad y reduce la posibilidad de que el usuario sea atacado.
 ****
@@ -45,6 +46,7 @@ Para cumplir este objetivo, tendremos que crear nuestra aplicación centrandonos
 ****
 * Microsoft Teams: mediante esta plataforma organizaremos reuniones periodicas donde todo el equipo debatira sobre decisiones importantes del desarrollo. En estas reuniones hablaremos del trabajo que llevamos hasta ahora, de problemas que nos hayan surgido o pequeños cambios que se hayan tomado sobre la aplicación. 
 * Whatssap: para cambios mas pequeños, decisiones que se toman de manera mas rapida o problemas que surgen en un momento determinado nos comunicaremos mediante un grupo de Whatssap donde estan todos los miembros del grupo. Esto último es especialmente importante, para que ningun integrante se quede sin saber información importante.
+****
 ==== GitHub
 ****
 * Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.
