@@ -27,8 +27,9 @@ Los requisitos funcionales que ofrecerá nuestra aplicación serán los siguient
 [options="header",cols="1,2,2"]
 |===
 |**Quality Goal**|**Motivación**|**Prioridad**
-| _<Q1>_ | _<M1>_ | _<P1>_
-| _<Q2>_ | _<M2>_ | _<P2>_
+| _Privacidad_ | _La aplicación debería utilizar la información de los usuarios	estrictamente necesaria._ | _Alta_
+| _Seguridad_ | _La aplicación debe estar protegida ante cualquier ataque de terceros._ | _Alta_
+| _Usabilidad_ | _La aplicación debe ser fácilmente usable por cualquier usuario, con mucha o poca experiencia._ | _Alta-Media_
 |===
 ****
 
@@ -36,9 +37,11 @@ Los requisitos funcionales que ofrecerá nuestra aplicación serán los siguient
 
 [role="arc42help"]
 
-[options="header",cols="1,2,2"]
+[cols="1,2" options="header"]
 |===
-|**Rol/NOMBRE**|**Expectaciones**
-| _<Rol-1>_ | _<Expectación-1>_
-| _<Rol-2>_ | _<Expectación-2>_
+|**Rol/Nombre**|**Expectaciones**
+| _Profesores_ | _Esperan una aplicación que sea completamente funcional y que cumpla con los requisitos de la asignatura._
+| _Equipo de desarrollo_ | _Esperan aprender las tecnologías necesarias para desarrollar un proyecto._
+| _Clientes_ | _Se encargarán de probar que la aplicación realmente le ofrece los servicios que se expongan._
+| _Administrador_ | _Se encargará de supervisar el correcto funcionamiento de la web, así como de los pedidos y el stock de los productos._
 |===
