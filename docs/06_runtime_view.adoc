@@ -4,6 +4,7 @@
 
 [role="arc42help"]
 ****
+
 === 6.1 Registro de nuevo usuario
 
 [role="arc42help"]
@@ -15,6 +16,7 @@ se envian a la base de datos para almacenarse.
 (INSERTAR DIAGRAMA DE REGISTRO)
 
 ****
+
 === 6.2 Añadir producto al carrito
 
 [role="arc42help"]
