@@ -484,6 +484,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#section-deployment-view">7. Deployment View</a></li>
+<li><a href="#section-concepts">8. Cross-cutting Concepts</a>
+<ul class="sectlevel2">
+<li><a href="#_domain_model">8.1. Domain model</a></li>
+<li><a href="#_user_experience_concepts_ux">8.2. User Experience concepts (UX)</a></li>
+<li><a href="#_safety_and_security_concepts">8.3. Safety and security concepts</a></li>
+</ul>
+</li>
+<li><a href="#section-design-decisions">9. Decisiones de diseño</a></li>
+<li><a href="#section-quality-scenarios">10. Quality Requirements</a>
+<ul class="sectlevel2">
+<li><a href="#_quality_tree">10.1. Quality Tree</a></li>
+<li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
+</ul>
+</li>
+<li><a href="#section-technical-risks">11. Risks and Technical Debts</a></li>
+<li><a href="#section-glossary">12. Glosario</a></li>
 </ul>
 </div>
 </div>
@@ -1311,34 +1327,36 @@ building block instances depicted in this diagram.&gt;</em></p>
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
 <div style="page-break-after: always;"></div>
-<div id="section-concepts" class="paragraph">
-<p>== Cross-cutting Concepts</p>
 </div>
-<div class="paragraph">
-<p>=== Domain model</p>
 </div>
+<div class="sect1">
+<h2 id="section-concepts">8. Cross-cutting Concepts</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_domain_model">8.1. Domain model</h3>
 <div class="paragraph">
 <p><span class="image"><img src="./images/DomainModelV1.png" alt="Modelo de dominio"></span></p>
 </div>
-<div class="paragraph">
-<p>=== User Experience concepts (UX)</p>
 </div>
+<div class="sect2">
+<h3 id="_user_experience_concepts_ux">8.2. User Experience concepts (UX)</h3>
 <div class="paragraph">
 <p>DeDe presenta una interfaz que comunique de forma concisa y clara, sin abrumar al cliente, los productos que nuestra web ofrezca. Para ello, nuestro equipo se ha enfocado en crear unas pantallas simples y modernas siguiendo la filosofía de &lt;UI FRAMEWORK&gt;.</p>
 </div>
-<div class="paragraph">
-<p>=== Safety and security concepts</p>
 </div>
+<div class="sect2">
+<h3 id="_safety_and_security_concepts">8.3. Safety and security concepts</h3>
 <div class="paragraph">
 <p>La prioridad de DeDe es la privacidad de nuestros clientes. Con el objetivo de lograr una mayor seguridad, hacemos uso de las especificaciones Solid con lo que nuestros clientes han de tener un Solid Pod para poder realizar sus compras. El equipo de DeDe se compromete a no guardar datos sensibles de sus consumidores.</p>
 </div>
 <div style="page-break-after: always;"></div>
-<div id="section-design-decisions" class="paragraph">
-<p>== Decisiones de diseño</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-design-decisions">9. Decisiones de diseño</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch arc42help">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1372,11 +1390,13 @@ building block instances depicted in this diagram.&gt;</em></p>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-<div id="section-quality-scenarios" class="paragraph">
-<p>== Quality Requirements</p>
 </div>
 </div>
-</div>
+<div class="sect1">
+<h2 id="section-quality-scenarios">10. Quality Requirements</h2>
+<div class="sectionbody">
+<div class="sidebarblock arc42help">
+<div class="content">
 <div class="paragraph">
 <div class="title">Content</div>
 <p>This section contains all quality requirements as quality tree with scenarios. The most important ones have already been described in section 1.2. (quality goals)</p>
@@ -1391,13 +1411,12 @@ which will not create high risks when they are not fully achieved.</p>
 decisions you should know for every stakeholder what is really important to them,
 concrete and measurable.</p>
 </div>
-<div class="sidebarblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quality_tree">10.1. Quality Tree</h3>
+<div class="sidebarblock arc42help">
 <div class="content">
-<div class="paragraph">
-<p>=== Quality Tree</p>
-</div>
-</div>
-</div>
 <div class="paragraph">
 <div class="title">Content</div>
 <p>The quality tree (as defined in ATAM – Architecture Tradeoff Analysis Method) with quality/evaluation scenarios as leafs.</p>
@@ -1423,13 +1442,13 @@ concrete and measurable.</p>
 <div class="paragraph">
 <p>In any case the tree should include links to the scenarios of the following section.</p>
 </div>
-<div class="sidebarblock">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
+<div class="sidebarblock arc42help">
 <div class="content">
-<div class="paragraph">
-<p>=== Quality Scenarios</p>
-</div>
-</div>
-</div>
 <div class="paragraph">
 <div class="title">Contents</div>
 <p>Concretization of (sometimes vague or implicit) quality requirements using (quality) scenarios.</p>
@@ -1464,14 +1483,17 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 <div class="title">Form</div>
 <p>Tabular or free form text.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+</div>
+</div>
 <div style="page-break-after: always;"></div>
-<div id="section-technical-risks" class="paragraph">
-<p>== Risks and Technical Debts</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="section-technical-risks">11. Risks and Technical Debts</h2>
+<div class="sectionbody">
+<div class="sidebarblock arc42help">
+<div class="content">
 <div class="paragraph">
 <div class="title">Contents</div>
 <p>A list of identified technical risks or technical debts, ordered by priority</p>
@@ -1487,12 +1509,14 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 <div class="title">Form</div>
 <p>List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div style="page-break-after: always;"></div>
-<div id="section-glossary" class="paragraph">
-<p>== Glosario</p>
 </div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-glossary">12. Glosario</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch arc42help">
 <colgroup>
 <col style="width: 50%;">
@@ -1549,8 +1573,6 @@ software and system architecture.</p>
 We acknowledge that this document uses material from the
 arc 42 architecture template, <a href="http://www.arc42.de" class="bare">http://www.arc42.de</a>.
 Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
-</div>
-</div>
 </div>
 </div>
 </div>
