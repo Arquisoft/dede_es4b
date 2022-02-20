@@ -1,8 +1,6 @@
 [[section-design-decisions]]
 == Decisiones de diseño
 
-
-[role="arc42help"]
 [options="header"]
 |===
 | Decisión         | Ventajas     | Desventajas

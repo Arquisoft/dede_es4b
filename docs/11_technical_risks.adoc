@@ -2,7 +2,6 @@
 == Riesgos y Deuda Técnica
 
 
-[role="arc42help"]
 [options="header"]
 |===
 | Riesgos         | Solución    

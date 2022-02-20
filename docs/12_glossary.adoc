@@ -2,8 +2,6 @@
 == Glosario
 
 
-
-[role="arc42help"]
 [options="header"]
 |===
 | Término       | Definición
