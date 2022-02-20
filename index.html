@@ -1317,122 +1317,23 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div id="section-concepts" class="paragraph">
 <p>== Cross-cutting Concepts</p>
 </div>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">Content</div>
-<p>This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>domain models</p>
-</li>
-<li>
-<p>architecture patterns or design patterns</p>
-</li>
-<li>
-<p>rules for using specific technology</p>
-</li>
-<li>
-<p>principal, often technical decisions of overall decisions</p>
-</li>
-<li>
-<p>implementation rules</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Concepts form the basis for <em>conceptual integrity</em> (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.</p>
-</div>
-<div class="paragraph">
-<p>Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>The form can be varied:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>concept papers with any kind of structure</p>
-</li>
-<li>
-<p>cross-cutting model excerpts or scenarios using notations of the architecture views</p>
-</li>
-<li>
-<p>sample implementations, especially for technical concepts</p>
-</li>
-<li>
-<p>reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Structure</div>
-<p>A potential (but not mandatory) structure for this section could be:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Domain concepts</p>
-</li>
-<li>
-<p>User Experience concepts (UX)</p>
-</li>
-<li>
-<p>Safety and security concepts</p>
-</li>
-<li>
-<p>Architecture and design patterns</p>
-</li>
-<li>
-<p>"Under-the-hood"</p>
-</li>
-<li>
-<p>development concepts</p>
-</li>
-<li>
-<p>operational concepts</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Note: it might be difficult to assign individual concepts to one specific topic
-on this list.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./images/08-Crosscutting-Concepts-Structure-EN.png" alt="Possible topics for crosscutting concepts"></span></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
 <div class="paragraph">
 <p>=== Domain model</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/UmlDiagram.png" alt="Example UML Diagram"></span></p>
+<p><span class="image"><img src="./images/DomainModelV1.png" alt="Modelo de dominio"></span></p>
 </div>
 <div class="paragraph">
-<p>=== <em>&lt;Concept 2&gt;</em></p>
+<p>=== User Experience concepts (UX)</p>
 </div>
 <div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<p>DeDe presenta una interfaz que comunique de forma concisa y clara, sin abrumar al cliente, los productos que nuestra web ofrezca. Para ello, nuestro equipo se ha enfocado en crear unas pantallas simples y modernas siguiendo la filosofía de &lt;UI FRAMEWORK&gt;.</p>
 </div>
 <div class="paragraph">
-<p>&#8230;&#8203;</p>
+<p>=== Safety and security concepts</p>
 </div>
 <div class="paragraph">
-<p>=== <em>&lt;Concept n&gt;</em></p>
-</div>
-<div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<p>La prioridad de DeDe es la privacidad de nuestros clientes. Con el objetivo de lograr una mayor seguridad, hacemos uso de las especificaciones Solid con lo que nuestros clientes han de tener un Solid Pod para poder realizar sus compras. El equipo de DeDe se compromete a no guardar datos sensibles de sus consumidores.</p>
 </div>
 <div style="page-break-after: always;"></div>
 <div id="section-design-decisions" class="paragraph">
