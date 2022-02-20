@@ -1,8 +1,6 @@
 [[section-design-decisions]]
 == Decisiones de diseño
 
-
-[role="arc42help"]
 [options="header"]
 |===
 | Decisión         | Ventajas     | Desventajas
@@ -12,4 +10,6 @@
 | TypeScript    | Código más limpio y entendible, fácil de testear y mejora la escalabilidad del código
     | Lenguaje desconocido por el equipo
 | React | Es una librería de javascript por lo que se adapta bien al proyecto, código abierto, bien documentada | Problemas a la hora de depurar, no tenemos conocimientos de esta librería
+| SOLID | Nos permite descentralizar los datos de los usuarios de la aplicación | No hemos utilizado nunca solid o trabajado con Pods
+| Node  | Nos permite constuir una aplicación escalabale | Poco conocimiento de la aplicación, poca compatibilidad entre versiones
 |===
