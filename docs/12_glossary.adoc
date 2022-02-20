@@ -15,4 +15,6 @@ tablas lo hace en estructuras de datos similares a JSON con un esquema dinámico
 a las páginas webs y crear aplicaciones web.
 | TypeScript | Es un superconjunto de JavaScript, que añade tipos estáticos y objetos basados en clases
 | React | React es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario 
+| SOLID | Tecnologia para organizar apps, información e identidades de forma descentralizada
+| Node  | Es un entorno de ejecución para programas escritos en JavaScript
 |===
