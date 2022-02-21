@@ -23,7 +23,7 @@ image::Anadir-a-carrito.png[]
 
 === Logeo de usuario
 
-El usuario pulsa en el botón de logearse, ahí introduce su nombre de ususario y contraseña, si existe
+El usuario pulsa en el botón de logearse, ahí introduce su nombre de usuario y contraseña, si existe
 el usuario en la base de datos y la contraseña es correcta, le devolverá a la página de inicio. Si no mostrará un error
 
 [caption="Login"]
@@ -31,8 +31,8 @@ image::Login.png[]
 
 === Ver carrito
 
-Una vez un ususario esté logeado y quiera ver su carrito tendrá que darle al botón del carrito, al pusarlo
-se buscarán todos los productos que tenga ese usario y se le mostrarán por pantalla.
+Una vez un usuario esté logeado y quiera ver su carrito tendrá que darle al botón del carrito, al pusarlo
+se buscarán todos los productos que tenga ese usuario y se le mostrarán por pantalla.
 
 [caption="Ver carrito"]
 image::VerCarrito.png[]
