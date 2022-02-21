@@ -45,3 +45,10 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 
 [caption="Buscar productos"]
 image::Buscar.png[]
+
+=== Ver pedidos
+
+El cliente tiene que estar logueado para acceder a sus pedidos. El usuario selecciona "Ver pedido" y se le mostrará una página con todos los pedidos asociados a él.
+
+[alt="Diagrama secuencia de la acción: Ver pedido"]
+image::DiagramaSecuencia-VerPedidoV1.png[]
