@@ -2,15 +2,19 @@
 == Quality Requirements
 
 === Quality Tree
+****
 
 image::Quality_tree.png[]
+****
 
 === Quality Scenarios
+****
 
 * Ref: orden en el que hemos decidido mostrar nuestros atributos de calidad.
 * Quality atribute: el propio atributo de calidad que queremos conseguir.
 * Quality scenario: por qué creemos que debemos conseguir ese atributo o bien cómo debe comportarse la aplicación.
 * Priority: prioridad asociada al atributo. Esta prioridad está formada por dos palabras, siendo la primera la importancia que tiene el atributo de calidad para el cliente y la segunda la dificultad de conseguir dicho atributo.
+****
 
 [options="header", cols="1,2,2,2"]
 |===

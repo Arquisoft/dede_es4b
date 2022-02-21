@@ -20,7 +20,6 @@ Los requisitos funcionales que ofrecerá nuestra aplicación serán los siguient
 
 === Quality Goals
 
-****
 [options="header",cols="1,2,2"]
 |===
 |**Quality Goal**|**Motivación**|**Prioridad**
@@ -28,7 +27,6 @@ Los requisitos funcionales que ofrecerá nuestra aplicación serán los siguient
 | _Seguridad_ | _La aplicación debe estar protegida ante cualquier ataque de terceros._ | _Alta_
 | _Usabilidad_ | _La aplicación debe ser fácilmente usable por cualquier usuario, con mucha o poca experiencia._ | _Alta-Media_
 |===
-****
 
 === Stakeholders
 

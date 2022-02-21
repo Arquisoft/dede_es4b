@@ -2,7 +2,7 @@
 == System Scope and Context
 
 === Business Context
-
+****
 [plantuml,"Business Context",png]
 ----
 
@@ -28,8 +28,10 @@ Representa nuestro producto, la página web, donde se alojan los productos y don
 
 .User Pod
 Consiste en un almacén de datos descentralizado bajo la especificación Solid y cuyo propietario (el cliente) puede permitir el acceso a parte de la información para el correcto funcionamiento de nuestra página web.
+****
 
 === Technical Context
+****
 
 El producto consiste en una página web comercial alojada en un servidor/nodo y que se comunica con el backend (DeDe-RestApi), que encuentra en otro nodo, mediante protocolo HTTPS.
 Además, para respetar la privacidad de nuestros consumidores, hacemos uso de las especificaciones Solid. Para obtener esta característica, nuestro backend se comunica con el proveedor del Pod del usuario.
@@ -49,3 +51,4 @@ api -up- pod : internet/https
 api -down- db: internet/https
 
 ----
+****
