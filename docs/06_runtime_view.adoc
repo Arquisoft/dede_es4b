@@ -36,3 +36,12 @@ se buscarán todos los productos que tenga ese usario y se le mostrarán por pan
 
 [caption="Ver carrito"]
 image::VerCarrito.png[]
+
+=== Buscar productos
+
+Cuando el cliente quiera buscar un tipo determinado de producto, simplemente introducirá lo que crea necesario en la barra de búsqueda. 
+Si existe en la base de datos algún producto acorde a dicha petición, se devolverán esos produtos encontrados.
+Si, por el contrario, no existe ningún producto, se mostrará al cliente un mensaje de que no se han encontrado los productos buscados.
+
+[caption="Buscar productos"]
+image::Buscar.png[]
