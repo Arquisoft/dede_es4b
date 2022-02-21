@@ -2,52 +2,43 @@
 == Solution Strategy
 
 
-
-[role="arc42help"]
 === Decisiones tecnológicas
 ****
 Las tecnologías usadas en nuestra aplicación van a ser las siguientes:
 
-* React: es una biblioteca de código abierto de JavaScript diseñada para crear interfaces de usuario y tambien simplifica la portabilidad de la aplicación entre plataformas. Con esta herramienta vamos a crear la interfaz de usuario de nuestra aplicación. 
+* React: es una biblioteca de código abierto de JavaScript diseñada para crear interfaces de usuario y también simplifica la portabilidad de la aplicación entre plataformas. Con esta herramienta vamos a crear la interfaz de usuario de nuestra aplicación.
 * GitHub: herramienta donde guardaremos el código de nuestra aplicación. 
 * Solid: nuestra aplicación tiene que seguir estos principios de descentralización de la información del usuario. 
-* MongoDB: es una base de datos orientada a documentos. Esto quiere decir que en lugar de guardar los datos en registros, guarda los datos en documentos. Una de las diferencias con las bases de datos relacionales, es que no necesita seguir ningun esquema. Esta clasificado como una base de datos NoSql.
-* MVC: es un patrón que seguiremos en nuestra aplicación. Es un patrón arquitectonico usado para aplicaciones que necesitan una interfaz de usuario. 
+* MongoDB: es una base de datos orientada a documentos. Esto quiere decir que en lugar de guardar los datos en registros, guarda los datos en documentos. Una de las diferencias con las bases de datos relacionales, es que no necesita seguir ningún esquema. Esta clasificado como una base de datos NoSql.
+* MVC: es un patrón que seguiremos en nuestra aplicación. Es un patrón arquitectónico usado para aplicaciones que necesitan una interfaz de usuario.
 ****
-
-[role="arc42help"]
 === Objetivos de calidad
 ****
-* Privacidad
+.Privacidad
 
 Queremos que nuestra aplicación sea un lugar seguro, así que nos centraremos en la privacidad de los usuarios y de sus datos. Debemos almacenar la menor cantidad de información del usuario, ya que esto aumenta su privacidad y reduce la posibilidad de que el usuario sea atacado.
 
-* Usabilidad
+.Usabilidad
 
 Un objetivo de nuestra aplicación es que sea usable, es decir, que sea facil de entender y usar. La usabilidad es la disciplina que estudia la forma de diseñar aplicaciones para que los usuarios puedan interactuar con ellos de la forma más fácil, cómoda e intuitiva posible
 
 Para conseguir este objetivo tenemos que crear nuestra aplicación realizando un diseño centrado en el usuario, es decir, nuestra aplicación esta diseñada por y para el usuario.
 
-* Eficiencia
+.Eficiencia
 
 Necesitamos que nuestra aplicación sea eficiente, es decir, que haga lo que nosotros queremos que haga y no otra cosa. Desde el punto de vista del usuario, esto significa que cuando entre en la aplicación, se encuentre lo que el queria y no le sea dificil encontrar lo que necesitaba, ya que si no el usuario optara por abandonar la aplicación.
 
-* Robustez del sistema
+.Robustez del sistema
 
 Un sistema robusto es un sistema fuerte, sin debilidades ni vacíos de seguridad. La robustez en un programa informático hace referencia a su capacidad para hacer frente a errores mientras se está ejecutando. 
 
-Para cumplir este objetivo, tendremos que crear nuestra aplicación centrandonos en que cuando el usuario la utilice no encuentre errores, o en caso de encontrarlos, que no afecten al correcto funcionamiento de la aplicación.
+Para cumplir este objetivo, tendremos que crear nuestra aplicación centrándonos en que cuando el usuario la utilice no encuentre errores, o en caso de encontrarlos, que no afecten al correcto funcionamiento de la aplicación.
 
-****
-
-[role="arc42help"]
-Decisiones organizativas
-****
-* Microsoft Teams: mediante esta plataforma organizaremos reuniones periodicas donde todo el equipo debatira sobre decisiones importantes del desarrollo. En estas reuniones hablaremos del trabajo que llevamos hasta ahora, de problemas que nos hayan surgido o pequeños cambios que se hayan tomado sobre la aplicación. 
-* Whatssap: para cambios mas pequeños, decisiones que se toman de manera mas rapida o problemas que surgen en un momento determinado nos comunicaremos mediante un grupo de Whatssap donde estan todos los miembros del grupo. Esto último es especialmente importante, para que ningun integrante se quede sin saber información importante.
+.Decisiones organizativas
+* Microsoft Teams: mediante esta plataforma organizaremos reuniones periódicas donde todo el equipo debatirá sobre decisiones importantes del desarrollo. En estas reuniones hablaremos del trabajo que llevamos hasta ahora, de problemas que nos hayan surgido o pequeños cambios que se hayan tomado sobre la aplicación.
+* Whatsapp: para cambios más pequeños, decisiones que se toman de manera más rápida o problemas que surgen en un momento determinado nos comunicaremos mediante un grupo de Whatsapp donde están todos los miembros del grupo. Esto último es especialmente importante, para que ningún integrante se quede sin saber información importante.
 
 * GitHub
 ** Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.
-** Tablero del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aun no se han empezado, cuales estan en proceso y cuales ya se han finalizado.
+** Tablero del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado.
 ****
-
