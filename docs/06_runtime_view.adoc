@@ -36,7 +36,7 @@ image::Login.png[]
 === Ver carrito
 ****
 
-Una vez un usuario esté logueado y quiera ver su carrito tendrá que darle al botón del carrito, al pulsarlo-
+Una vez un usuario esté logueado y quiera ver su carrito tendrá que darle al botón del carrito, al pulsarlo
 se buscarán todos los productos que tenga ese usuario y se le mostrarán por pantalla.
 
 [caption="Ver carrito"]
