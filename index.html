@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>DeDe_0</title>
+<title>DeDe_es4b</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1><span class="image"><img src="./images/LogoASW.png" alt="arc42"></span> DeDe_0</h1>
+<h1><span class="image"><img src="./images/LogoASW.png" alt="arc42"></span> DeDe_es4b</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -471,16 +471,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-building-block-view">5. Building Block View</a>
 <ul class="sectlevel2">
 <li><a href="#_whitebox_overall_system">5.1. Whitebox Overall System</a></li>
-<li><a href="#_level_2">5.2. Level 2</a></li>
-<li><a href="#_level_3">5.3. Level 3</a></li>
+<li><a href="#_level_1">5.2. Level 1</a></li>
+<li><a href="#_level_2">5.3. Level 2</a></li>
+<li><a href="#_level_3">5.4. Level 3</a></li>
 </ul>
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
 <ul class="sectlevel2">
-<li><a href="#_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</a></li>
-<li><a href="#_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</a></li>
-<li><a href="#">6.3. &#8230;&#8203;</a></li>
-<li><a href="#_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</a></li>
+<li><a href="#_registro_de_nuevo_usuario">6.1. Registro de nuevo usuario</a></li>
+<li><a href="#_añadir_producto_al_carrito">6.2. Añadir producto al carrito</a></li>
+<li><a href="#_logeo_de_usuario">6.3. Logeo de usuario</a></li>
+<li><a href="#_ver_carrito">6.4. Ver carrito</a></li>
+<li><a href="#_buscar_productos">6.5. Buscar productos</a></li>
+<li><a href="#_ver_pedidos">6.6. Ver pedidos</a></li>
 </ul>
 </li>
 <li><a href="#section-deployment-view">7. Deployment View</a></li>
@@ -498,7 +501,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
 </ul>
 </li>
-<li><a href="#section-technical-risks">11. Risks and Technical Debts</a></li>
+<li><a href="#section-technical-risks">11. Riesgos y Deuda Técnica</a></li>
 <li><a href="#section-glossary">12. Glosario</a></li>
 </ul>
 </div>
@@ -516,33 +519,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 }
 </style>
 <hr>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This version of the template contains some help and explanations.
-It is used for familiarization with arc42 and the understanding of the concepts.
-For documentation of your own system you use better the <em>plain</em> version.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="section-introduction-and-goals">1. Introduction and Goals</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
 <p>DeDe es un sistema de venta online creado para una empresa de venta de productos relacionados con el deporte. La aplicación respeta la privacidad de los clientes siguiendo los principios SOLID.</p>
@@ -554,7 +537,7 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </div>
 <div class="sect2">
 <h3 id="_requirements_overview">1.1. Requirements Overview</h3>
-<div class="sidebarblock arc42help">
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
 <p>Los requisitos funcionales que ofrecerá nuestra aplicación serán los siguientes:</p>
@@ -580,8 +563,6 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </div>
 <div class="sect2">
 <h3 id="_quality_goals">1.2. Quality Goals</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -614,11 +595,9 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="_stakeholders">1.3. Stakeholders</h3>
-<table class="tableblock frame-all grid-all stretch arc42help">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 66.6667%;">
@@ -760,6 +739,8 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_business_context">3.1. Business Context</h3>
+<div class="sidebarblock">
+<div class="content">
 <div class="imageblock">
 <div class="content">
 <img src="./images/Business%20Context.png" alt="Business Context" width="417" height="257">
@@ -778,8 +759,12 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <p>Consiste en un almacén de datos descentralizado bajo la especificación Solid y cuyo propietario (el cliente) puede permitir el acceso a parte de la información para el correcto funcionamiento de nuestra página web.</p>
 </div>
 </div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_technical_context">3.2. Technical Context</h3>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
 <p>El producto consiste en una página web comercial alojada en un servidor/nodo y que se comunica con el backend (DeDe-RestApi), que encuentra en otro nodo, mediante protocolo HTTPS.
 Además, para respetar la privacidad de nuestros consumidores, hacemos uso de las especificaciones Solid. Para obtener esta característica, nuestro backend se comunica con el proveedor del Pod del usuario.</p>
@@ -792,6 +777,8 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 <img src="./images/Technical%20Context.png" alt="Technical Context" width="414" height="317">
 </div>
 </div>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -799,7 +786,7 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 <div class="sect1">
 <h2 id="section-solution-strategy">4. Solution Strategy</h2>
 <div class="sectionbody">
-<div class="sect2 arc42help">
+<div class="sect2">
 <h3 id="_decisiones_tecnológicas">4.1. Decisiones tecnológicas</h3>
 <div class="sidebarblock">
 <div class="content">
@@ -809,7 +796,7 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 <div class="ulist">
 <ul>
 <li>
-<p>React: es una biblioteca de código abierto de JavaScript diseñada para crear interfaces de usuario y tambien simplifica la portabilidad de la aplicación entre plataformas. Con esta herramienta vamos a crear la interfaz de usuario de nuestra aplicación.</p>
+<p>React: es una biblioteca de código abierto de JavaScript diseñada para crear interfaces de usuario y también simplifica la portabilidad de la aplicación entre plataformas. Con esta herramienta vamos a crear la interfaz de usuario de nuestra aplicación.</p>
 </li>
 <li>
 <p>GitHub: herramienta donde guardaremos el código de nuestra aplicación.</p>
@@ -818,80 +805,50 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 <p>Solid: nuestra aplicación tiene que seguir estos principios de descentralización de la información del usuario.</p>
 </li>
 <li>
-<p>MongoDB: es una base de datos orientada a documentos. Esto quiere decir que en lugar de guardar los datos en registros, guarda los datos en documentos. Una de las diferencias con las bases de datos relacionales, es que no necesita seguir ningun esquema. Esta clasificado como una base de datos NoSql.</p>
+<p>MongoDB: es una base de datos orientada a documentos. Esto quiere decir que en lugar de guardar los datos en registros, guarda los datos en documentos. Una de las diferencias con las bases de datos relacionales, es que no necesita seguir ningún esquema. Esta clasificado como una base de datos NoSql.</p>
 </li>
 <li>
-<p>MVC: es un patrón que seguiremos en nuestra aplicación. Es un patrón arquitectonico usado para aplicaciones que necesitan una interfaz de usuario.</p>
+<p>MVC: es un patrón que seguiremos en nuestra aplicación. Es un patrón arquitectónico usado para aplicaciones que necesitan una interfaz de usuario.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="sect2 arc42help">
+<div class="sect2">
 <h3 id="_objetivos_de_calidad">4.2. Objetivos de calidad</h3>
 <div class="sidebarblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Privacidad</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
+<div class="title">Privacidad</div>
 <p>Queremos que nuestra aplicación sea un lugar seguro, así que nos centraremos en la privacidad de los usuarios y de sus datos. Debemos almacenar la menor cantidad de información del usuario, ya que esto aumenta su privacidad y reduce la posibilidad de que el usuario sea atacado.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Usabilidad</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
+<div class="title">Usabilidad</div>
 <p>Un objetivo de nuestra aplicación es que sea usable, es decir, que sea facil de entender y usar. La usabilidad es la disciplina que estudia la forma de diseñar aplicaciones para que los usuarios puedan interactuar con ellos de la forma más fácil, cómoda e intuitiva posible</p>
 </div>
 <div class="paragraph">
 <p>Para conseguir este objetivo tenemos que crear nuestra aplicación realizando un diseño centrado en el usuario, es decir, nuestra aplicación esta diseñada por y para el usuario.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Eficiencia</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
+<div class="title">Eficiencia</div>
 <p>Necesitamos que nuestra aplicación sea eficiente, es decir, que haga lo que nosotros queremos que haga y no otra cosa. Desde el punto de vista del usuario, esto significa que cuando entre en la aplicación, se encuentre lo que el queria y no le sea dificil encontrar lo que necesitaba, ya que si no el usuario optara por abandonar la aplicación.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Robustez del sistema</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
+<div class="title">Robustez del sistema</div>
 <p>Un sistema robusto es un sistema fuerte, sin debilidades ni vacíos de seguridad. La robustez en un programa informático hace referencia a su capacidad para hacer frente a errores mientras se está ejecutando.</p>
 </div>
 <div class="paragraph">
-<p>Para cumplir este objetivo, tendremos que crear nuestra aplicación centrandonos en que cuando el usuario la utilice no encuentre errores, o en caso de encontrarlos, que no afecten al correcto funcionamiento de la aplicación.</p>
+<p>Para cumplir este objetivo, tendremos que crear nuestra aplicación centrándonos en que cuando el usuario la utilice no encuentre errores, o en caso de encontrarlos, que no afecten al correcto funcionamiento de la aplicación.</p>
 </div>
-</div>
-</div>
-<div class="paragraph arc42help">
-<p>Decisiones organizativas</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
+<div class="title">Decisiones organizativas</div>
 <ul>
 <li>
-<p>Microsoft Teams: mediante esta plataforma organizaremos reuniones periodicas donde todo el equipo debatira sobre decisiones importantes del desarrollo. En estas reuniones hablaremos del trabajo que llevamos hasta ahora, de problemas que nos hayan surgido o pequeños cambios que se hayan tomado sobre la aplicación.</p>
+<p>Microsoft Teams: mediante esta plataforma organizaremos reuniones periódicas donde todo el equipo debatirá sobre decisiones importantes del desarrollo. En estas reuniones hablaremos del trabajo que llevamos hasta ahora, de problemas que nos hayan surgido o pequeños cambios que se hayan tomado sobre la aplicación.</p>
 </li>
 <li>
-<p>Whatssap: para cambios mas pequeños, decisiones que se toman de manera mas rapida o problemas que surgen en un momento determinado nos comunicaremos mediante un grupo de Whatssap donde estan todos los miembros del grupo. Esto último es especialmente importante, para que ningun integrante se quede sin saber información importante.</p>
+<p>Whatsapp: para cambios más pequeños, decisiones que se toman de manera más rápida o problemas que surgen en un momento determinado nos comunicaremos mediante un grupo de Whatsapp donde están todos los miembros del grupo. Esto último es especialmente importante, para que ningún integrante se quede sin saber información importante.</p>
 </li>
 <li>
 <p>GitHub</p>
@@ -901,7 +858,7 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 <p>Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.</p>
 </li>
 <li>
-<p>Tablero del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aun no se han empezado, cuales estan en proceso y cuales ya se han finalizado.</p>
+<p>Tablero del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado.</p>
 </li>
 </ul>
 </div>
@@ -917,395 +874,213 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 <div class="sect1">
 <h2 id="section-building-block-view">5. Building Block View</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="sect2">
+<h3 id="_whitebox_overall_system">5.1. Whitebox Overall System</h3>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<div class="title">Content</div>
-<p>The building block view shows the static decomposition of the system into building blocks (modules, components, subsystems, classes,
-interfaces, packages, libraries, frameworks, layers, partitions, tiers, functions, macros, operations,
-datas structures, &#8230;&#8203;) as well as their dependencies (relationships, associations, &#8230;&#8203;)</p>
+<p>El diagrama que esta a continuacion muestra una descripcion general de los componentes básicos de la aplicación, y muestra la descomposición estática de cada nivel del sistema, y la dependencia entre ellos.</p>
 </div>
 <div class="paragraph">
-<p>This view is mandatory for every architecture documentation.
-In analogy to a house this is the <em>floor plan</em>.</p>
+<p><span class="image"><img src="./images/05_WhiteboxSystem.png" alt="Diseño general del sistema"></span></p>
 </div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Maintain an overview of your source code by making its structure understandable through
-abstraction.</p>
-</div>
-<div class="paragraph">
-<p>This allows you to communicate with your stakeholder on an abstract level without disclosing implementation details.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>The building block view is a hierarchical collection of black boxes and white boxes
-(see figure below) and their descriptions.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./images/05_building_blocks-EN.png" alt="Hierarchy of building blocks"></span></p>
-</div>
-<div class="paragraph">
-<p><strong>Level 1</strong> is the white box description of the overall system together with black
-box descriptions of all contained building blocks.</p>
-</div>
-<div class="paragraph">
-<p><strong>Level 2</strong> zooms into some building blocks of level 1.
-Thus it contains the white box description of selected building blocks of level 1, together with black box descriptions of their internal building blocks.</p>
-</div>
-<div class="paragraph">
-<p><strong>Level 3</strong> zooms into selected building blocks of level 2, and so on.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_whitebox_overall_system">5.1. Whitebox Overall System</h3>
-<div class="sidebarblock arc42help">
+<h3 id="_level_1">5.2. Level 1</h3>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Here you describe the decomposition of the overall system using the following white box template. It contains</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>an overview diagram</p>
-</li>
-<li>
-<p>a motivation for the decomposition</p>
-</li>
-<li>
-<p>black box descriptions of the contained building blocks. For these we offer you alternatives:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>use <em>one</em> table for a short and pragmatic overview of all contained building blocks and their interfaces</p>
-</li>
-<li>
-<p>use a list of black box descriptions of the building blocks according to the black box template (see below).
-Depending on your choice of tool this list could be sub-chapters (in text files), sub-pages (in a Wiki) or nested elements (in a modeling tool).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>(optional:) important interfaces, that are not explained in the black box templates of a building block, but are very important for understanding the white box.
-Since there are so many ways to specify interfaces why do not provide a specific template for them.
- In the worst case you have to specify and describe syntax, semantics, protocols, error handling,
- restrictions, versions, qualities, necessary compatibilities and many things more.
-In the best case you will get away with examples or simple signatures.</p>
-</li>
-</ul>
-</div>
-</div>
+<p>El sistema general se representa en una caja blanca y se compone de diferentes elementos como la caja negra y los bloques de construcción.
+El usuario interactúa con su propio Pod sobre el cual tiene control y en el que estan sus datos. El usuario realiza operaciones como crear o modificar los permisos sobre sus datos. También interactúa con la aplicación , que se representa como un cuadro negro en este diagrama. Por otro lado, la aplicación interactúa con el Pod para poder acceder a los archivos que se encuentran en él, pudiendo guardar y cargar datos.</p>
 </div>
 <div class="paragraph">
-<p><em><strong>&lt;Overview Diagram&gt;</strong></em></p>
+<p><span class="image"><img src="./images/05_Level1.png" alt="Level 1"></span></p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Motivation</dt>
-<dd>
-<p><em>&lt;text explanation&gt;</em></p>
-</dd>
-<dt class="hdlist1">Contained Building Blocks</dt>
-<dd>
-<p><em>&lt;Description of contained building block (black boxes)&gt;</em></p>
-</dd>
-<dt class="hdlist1">Important Interfaces</dt>
-<dd>
-<p><em>&lt;Description of important interfaces&gt;</em></p>
-</dd>
-</dl>
 </div>
-<div class="sidebarblock arc42help">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_level_2">5.3. Level 2</h3>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Insert your explanations of black boxes from level 1:</p>
+<p>Busca intercomunicar la interfaz de usuario (Front End), la lógica de negocio (Back End) y el sistema de autenticación. El Front End necesita los servicios de la capa Back End para que le envíe datos y resultados de acciones para que pueda mostrárselos al usuario.
+Por otro lado, el Front End interactúa con el sistema de autenticación para que el usuario pueda iniciar sesión con su WebID o a través de un proveedor. Y el Back End también está relacionado con el sistema de autenticación, para poder acceder a los datos del POD del usuario que se encuentra actualmente en sesión.</p>
 </div>
 <div class="paragraph">
-<p>If you use tabular form you will only describe your black boxes with name and
-responsibility according to the following schema:</p>
+<p><span class="image"><img src="./images/05_Level2.png" alt="Level 2"></span></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Descripción del nivel 2</caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Responsibility</strong></th>
+<th class="tableblock halign-left valign-top">Nombre</th>
+<th class="tableblock halign-left valign-top">Responsabilidad</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"> <em>&lt;Text&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Autenticación del sistema</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se encarga del inicio de sesión mediante la verificación de la cuenta del usuario.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"> <em>&lt;Text&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Front End</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interactúa con el usuario final, recopila los datos de entrada proporcionados por	él y muestra toda la información relacionada con las acciones realizadas por él dentro de la aplicación</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Back End</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recibe los datos proporcionados por el usuario a través del módulo Front End, los procesa y realiza las operaciones necesarias obteniendo resultados que son enviados, nuevamente, al módulo mencionado anteriormente.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>If you use a list of black box descriptions then you fill in a separate black box template for every important building block .
-Its headline is the name of the black box.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_name_black_box_1">5.1.1. &lt;Name black box 1&gt;</h4>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<p>Here you describe &lt;black box 1&gt;
-according the the following black box template:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Purpose/Responsibility</p>
-</li>
-<li>
-<p>Interface(s), when they are not extracted as separate paragraphs. This interfaces may include qualities and performance characteristics.</p>
-</li>
-<li>
-<p>(Optional) Quality-/Performance characteristics of the black box, e.g.availability, run time behavior, &#8230;&#8203;.</p>
-</li>
-<li>
-<p>(Optional) directory/file location</p>
-</li>
-<li>
-<p>(Optional) Fulfilled requirements (if you need traceability to requirements).</p>
-</li>
-<li>
-<p>(Optional) Open issues/problems/risks</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><em>&lt;Purpose/Responsibility&gt;</em></p>
-</div>
-<div class="paragraph">
-<p><em>&lt;Interface(s)&gt;</em></p>
-</div>
-<div class="paragraph">
-<p><em>&lt;(Optional) Quality/Performance Characteristics&gt;</em></p>
-</div>
-<div class="paragraph">
-<p><em>&lt;(Optional) Directory/File Location&gt;</em></p>
-</div>
-<div class="paragraph">
-<p><em>&lt;(Optional) Fulfilled Requirements&gt;</em></p>
-</div>
-<div class="paragraph">
-<p><em>&lt;(optional) Open Issues/Problems/Risks&gt;</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_name_black_box_2">5.1.2. &lt;Name black box 2&gt;</h4>
-<div class="paragraph">
-<p><em>&lt;black box template&gt;</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_name_black_box_n">5.1.3. &lt;Name black box n&gt;</h4>
-<div class="paragraph">
-<p><em>&lt;black box template&gt;</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_name_interface_1">5.1.4. &lt;Name interface 1&gt;</h4>
-<div class="paragraph">
-<p>&#8230;&#8203;</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_name_interface_m">5.1.5. &lt;Name interface m&gt;</h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="_level_2">5.2. Level 2</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<p>Here you can specify the inner structure of (some) building blocks from level 1 as white boxes.</p>
-</div>
-<div class="paragraph">
-<p>You have to decide which building blocks of your system are important enough to justify such a detailed description.
-Please prefer relevance over completeness. Specify important, surprising, risky, complex or volatile building blocks.
-Leave out normal, simple, boring or standardized parts of your system</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_1">5.2.1. White Box <em>&lt;building block 1&gt;</em></h4>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<p>&#8230;&#8203;describes the internal structure of <em>building block 1</em>.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_2">5.2.2. White Box <em>&lt;building block 2&gt;</em></h4>
-<div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
-</div>
-<div class="paragraph">
-<p>&#8230;&#8203;</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_m">5.2.3. White Box <em>&lt;building block m&gt;</em></h4>
-<div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_level_3">5.3. Level 3</h3>
-<div class="sidebarblock arc42help">
+<h3 id="_level_3">5.4. Level 3</h3>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Here you can specify the inner structure of (some) building blocks from level 2 as white boxes.</p>
+<p>El tercer nivel se divide en el Front End en las vistas principales de inicio de sesión y las que añadiremos más adelante. Las credenciales ingresadas en LoginView serán verificadas por el LoginManager que es responsable de acceder al pod del usuario y permitir el acceso a la aplicación.</p>
 </div>
 <div class="paragraph">
-<p>When you need more detailed levels of your architecture please copy this
-part of arc42 for additional levels.</p>
+<p><span class="image"><img src="./images/05_Level3.png" alt="Level 3"></span></p>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Descripción del nivel 3</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Nombre</th>
+<th class="tableblock halign-left valign-top">Responsabilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Login manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Administra las credenciales de inicio de sesión del usuario conectándose a su pod.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Administrador de solicitudes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manejar la lógica para obtener los solid que tiene el usuario.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_x_1">5.3.1. White Box &lt;_building block x.1_&gt;</h4>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<p>Specifies the internal structure of <em>building block x.1</em>.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_x_2">5.3.2. White Box &lt;_building block x.2_&gt;</h4>
-<div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_y_1">5.3.3. White Box &lt;_building block y.1_&gt;</h4>
-<div class="paragraph">
-<p><em>&lt;white box template&gt;</em></p>
 </div>
 <div style="page-break-after: always;"></div>
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="section-runtime-view">6. Runtime View</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="sect2">
+<h3 id="_registro_de_nuevo_usuario">6.1. Registro de nuevo usuario</h3>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<div class="title">Contents</div>
-<p>The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>important use cases or features: how do building blocks execute them?</p>
-</li>
-<li>
-<p>interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?</p>
-</li>
-<li>
-<p>operation and administration: launch, start-up, stop</p>
-</li>
-<li>
-<p>error and exception scenarios</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their <strong>architectural relevance</strong>. It is <strong>not</strong> important to describe a large number of scenarios. You should rather document a representative selection.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>There are many notations for describing scenarios, e.g.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>numbered list of steps (in natural language)</p>
-</li>
-<li>
-<p>activity diagrams or flow charts</p>
-</li>
-<li>
-<p>sequence diagrams</p>
-</li>
-<li>
-<p>BPMN or EPCs (event process chains)</p>
-</li>
-<li>
-<p>state machines</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><em>&lt;insert runtime diagram or textual description of the scenario&gt;</em></p>
-</li>
-<li>
-<p><em>&lt;insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.&gt;</em></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>It is possible to use a sequence diagram:</p>
+<p>Para comprar se requiere estar registrado, un nuevo usuario elegirá la opción de registrarse,
+la vista le mostrará un formulario de registro que al rellenarse se manda al servidor donde
+se envían a la base de datos para almacenarse.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="332" height="343">
+<img src="./images/register.png" alt="register">
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</h3>
-
+<h3 id="_añadir_producto_al_carrito">6.2. Añadir producto al carrito</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>El usuario elige un producto a añadir, la vista envía al servidor el código del producto;
+este lo busca en la base de datos para comprobar que existe y si lo devuelve lo añade al carrito,
+luego envía confirmación que se completó la tarea a la vista y esta se lo muestra al cliente.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Anadir-a-carrito.png" alt="Anadir a carrito">
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="">6.3. &#8230;&#8203;</h3>
-
+<h3 id="_logeo_de_usuario">6.3. Logeo de usuario</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>El usuario pulsa en el botón de loguearse, ahí introduce su nombre de usuario y contraseña, si existe
+el usuario en la base de datos y la contraseña es correcta, le devolverá a la página de inicio. Si no mostrará un error</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Login.png" alt="Login">
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</h3>
+<h3 id="_ver_carrito">6.4. Ver carrito</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Una vez un usuario esté logueado y quiera ver su carrito tendrá que darle al botón del carrito, al pulsarlo-
+se buscarán todos los productos que tenga ese usuario y se le mostrarán por pantalla.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/VerCarrito.png" alt="VerCarrito">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_buscar_productos">6.5. Buscar productos</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Cuando el cliente quiera buscar un tipo determinado de producto, simplemente introducirá lo que crea necesario en la barra de búsqueda.
+Si existe en la base de datos algún producto acorde a dicha petición, se devolverán esos productos encontrados.
+Si, por el contrario, no existe ningún producto, se mostrará al cliente un mensaje de que no se han encontrado los productos buscados.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Buscar.png" alt="Buscar">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ver_pedidos">6.6. Ver pedidos</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>El cliente tiene que estar logueado para acceder a sus pedidos. El usuario selecciona "Ver pedido" y se le mostrará una página con todos los pedidos asociados a él.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/DiagramaSecuencia-VerPedidoV1.png" alt="Diagrama secuencia de la acción: Ver pedido">
+</div>
+</div>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1313,19 +1088,23 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div class="sect1">
 <h2 id="section-deployment-view">7. Deployment View</h2>
 <div class="sectionbody">
-<div class="ulist arc42help">
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
 <div class="title">Componentes</div>
 <ul>
 <li>
 <p>Personal computer: dispositivo mediante el cual el cliente usa un navegador web y accede a la página de la aplicación.</p>
 </li>
 <li>
-<p>Web Server: servidor en el cual se ejecuta la aplicación. Está dividido en las capatas tipicas de un arquitectura MVC.</p>
+<p>Web Server: servidor en el cual se ejecuta la aplicación. Está dividido en las capas típicas de una arquitectura MVC.</p>
 </li>
 <li>
 <p>Solid Server: servidor donde está almacenado el pod del cliente con los contenedores sobre los que tenemos permisos.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1335,20 +1114,32 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_domain_model">8.1. Domain model</h3>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
 <p><span class="image"><img src="./images/DomainModelV1.png" alt="Modelo de dominio"></span></p>
 </div>
 </div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_user_experience_concepts_ux">8.2. User Experience concepts (UX)</h3>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
 <p>DeDe presenta una interfaz que comunique de forma concisa y clara, sin abrumar al cliente, los productos que nuestra web ofrezca. Para ello, nuestro equipo se ha enfocado en crear unas pantallas simples y modernas siguiendo la filosofía de &lt;UI FRAMEWORK&gt;.</p>
 </div>
 </div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_safety_and_security_concepts">8.3. Safety and security concepts</h3>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
 <p>La prioridad de DeDe es la privacidad de nuestros clientes. Con el objetivo de lograr una mayor seguridad, hacemos uso de las especificaciones Solid con lo que nuestros clientes han de tener un Solid Pod para poder realizar sus compras. El equipo de DeDe se compromete a no guardar datos sensibles de sus consumidores.</p>
+</div>
+</div>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1357,7 +1148,7 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div class="sect1">
 <h2 id="section-design-decisions">9. Decisiones de diseño</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch arc42help">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1387,6 +1178,16 @@ building block instances depicted in this diagram.&gt;</em></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Es una librería de javascript por lo que se adapta bien al proyecto, código abierto, bien documentada</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Problemas a la hora de depurar, no tenemos conocimientos de esta librería</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nos permite descentralizar los datos de los usuarios de la aplicación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No hemos utilizado nunca solid o trabajado con Pods</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nos permite constuir una aplicación escalabale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Poco conocimiento de la aplicación, poca compatibilidad entre versiones</p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -1395,129 +1196,152 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div class="sect1">
 <h2 id="section-quality-scenarios">10. Quality Requirements</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Content</div>
-<p>This section contains all quality requirements as quality tree with scenarios. The most important ones have already been described in section 1.2. (quality goals)</p>
-</div>
-<div class="paragraph">
-<p>Here you can also capture quality requirements with lesser priority,
-which will not create high risks when they are not fully achieved.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Since quality requirements will have a lot of influence on architectural
-decisions you should know for every stakeholder what is really important to them,
-concrete and measurable.</p>
-</div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="_quality_tree">10.1. Quality Tree</h3>
-<div class="sidebarblock arc42help">
+<div class="sidebarblock">
 <div class="content">
-<div class="paragraph">
-<div class="title">Content</div>
-<p>The quality tree (as defined in ATAM – Architecture Tradeoff Analysis Method) with quality/evaluation scenarios as leafs.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Quality_tree.png" alt="Quality tree">
 </div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>The tree structure with priorities provides an overview for a sometimes large number of quality requirements.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>The quality tree is a high-level overview of the quality goals and requirements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>tree-like refinement of the term "quality". Use "quality" or "usefulness" as a root</p>
-</li>
-<li>
-<p>a mind map with quality categories as main branches</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In any case the tree should include links to the scenarios of the following section.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
-<div class="sidebarblock arc42help">
+<div class="sidebarblock">
 <div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>Concretization of (sometimes vague or implicit) quality requirements using (quality) scenarios.</p>
-</div>
-<div class="paragraph">
-<p>These scenarios describe what should happen when a stimulus arrives at the system.</p>
-</div>
-<div class="paragraph">
-<p>For architects, two kinds of scenarios are important:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Usage scenarios (also called application scenarios or use case scenarios) describe the system’s runtime reaction to a certain stimulus. This also includes scenarios that describe the system’s efficiency or performance. Example: The system reacts to a user’s request within one second.</p>
+<p>Ref: orden en el que hemos decidido mostrar nuestros atributos de calidad.</p>
 </li>
 <li>
-<p>Change scenarios describe a modification of the system or of its immediate environment. Example: Additional functionality is implemented or requirements for a quality attribute change.</p>
+<p>Quality atribute: el propio atributo de calidad que queremos conseguir.</p>
+</li>
+<li>
+<p>Quality scenario: por qué creemos que debemos conseguir ese atributo o bien cómo debe comportarse la aplicación.</p>
+</li>
+<li>
+<p>Priority: prioridad asociada al atributo. Esta prioridad está formada por dos palabras, siendo la primera la importancia que tiene el atributo de calidad para el cliente y la segunda la dificultad de conseguir dicho atributo.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Scenarios make quality requirements concrete and allow to
-more easily measure or decide whether they are fulfilled.</p>
-</div>
-<div class="paragraph">
-<p>Especially when you want to assess your architecture using methods like
-ATAM you need to describe your quality goals (from section 1.2)
-more precisely down to a level of scenarios that can be discussed and evaluated.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>Tabular or free form text.</p>
 </div>
 </div>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Ref</th>
+<th class="tableblock halign-left valign-top">Quality atribute</th>
+<th class="tableblock halign-left valign-top">Quality scenario</th>
+<th class="tableblock halign-left valign-top">Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seguridad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es importante que la información proporcionada por los usuarios no pueda ser vista/extraída por terceras personas.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privacidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación tendrá solamente la información del usuario que este quiera proporcionarle.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe ser intuitiva, de tal manera que independientemente de la habilidad del usuario, este pueda utilizarla fácilmente.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accesibilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe poder ser usada por personas con dificultades o discapacidades.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eficiencia</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se debe dar una respuesta a lo que pide el usuario sin problemas y con una cierta velocidad.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El código debe estar hecho de manera que, si surge algún problema o queremos cambiar algo, sea fácil modificarlo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Low, Medium</p></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-technical-risks">11. Risks and Technical Debts</h2>
+<h2 id="section-technical-risks">11. Riesgos y Deuda Técnica</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>A list of identified technical risks or technical debts, ordered by priority</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.)</p>
-</div>
-<div class="paragraph">
-<p>This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.</p>
-</div>
-</div>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Riesgos</th>
+<th class="tableblock halign-left valign-top">Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Poco tiempo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aprovechar el tiempo e intentar llevar las cosas al día</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Poco conocimiento de las tecnologías que vamos a usar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Buscar información de las diferentes tecnologías y aprender a usarlas</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trabajar en equipo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hacer reuniones habitualmente, mantener una buena comunicación y dejar el código entendible</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Deuda Técnica</th>
+<th class="tableblock halign-left valign-top">Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="section-glossary">12. Glosario</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch arc42help">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1552,12 +1376,26 @@ a las páginas webs y crear aplicaciones web.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">React es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tecnología para organizar apps, información e identidades de forma descentralizada</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es un entorno de ejecución para programas escritos en JavaScript</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contenedor de datos de un usuario el cual tiene que dar permiso para que las aplicaciones accedan a él</p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p><strong>About arc42</strong></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph lead">
 <p>arc42, the Template for documentation of
 software and system architecture.</p>
@@ -1577,9 +1415,11 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-19 19:53:00 +0100
+Last updated 2022-02-21 23:39:09 +0100
 </div>
 </div>
 </body>
