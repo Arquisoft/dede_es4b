@@ -2,11 +2,8 @@
 == Runtime View
 
 
-****
+=== Registro de nuevo usuario
 
-=== 6.1 Registro de nuevo usuario
-
-****
 Para comprar se requiere estar registrado, un nuevo usuario elegirá la opción de registrarse,
 la vista le mostrará un formulario de registro que al rellenarse se manda al servidor donde
 se envian a la base de datos para almacenarse.
@@ -14,14 +11,28 @@ se envian a la base de datos para almacenarse.
 [caption="Registro usuario"]
 image::register.png[]
 
-****
 
-=== 6.2 Añadir producto al carrito
+=== Añadir producto al carrito
 
-****
 El usuario elije un producto a añadir, la vista envia al servidor el codigo del producto;
 este lo busca en la base de datos para comprobar que existe y si lo devuelve lo añade al carrito,
 luego envía confirmación que se completó la tarea a la vista y esta se lo muestra al cliente.
 
 [caption="Añadir a carrito"]
 image::Anadir-a-carrito.png[]
+
+=== Logeo de usuario
+
+El usuario pulsa en el botón de logearse, ahí introduce su nombre de ususario y contraseña, si existe
+el usuario en la base de datos y la contraseña es correcta, le devolverá a la página de inicio. Si no mostrará un error
+
+[caption="Login"]
+image::Login.png[]
+
+=== Ver carrito
+
+Una vez un ususario esté logeado y quiera ver su carrito tendrá que darle al botón del carrito, al pusarlo
+se buscarán todos los productos que tenga ese usario y se le mostrarán por pantalla.
+
+[caption="Ver carrito"]
+image::VerCarrito.png[]
