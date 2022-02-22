@@ -1,66 +1,54 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
-
-[role="arc42help"]
-****
-.Contents
-System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners
-(neighboring systems and users, i.e. the context of your system). It thereby specifies the external interfaces.
-
-If necessary, differentiate the business context (domain specific inputs and outputs) from the technical context (channels, protocols, hardware).
-
-.Motivation
-The domain interfaces and technical interfaces to communication partners are among your system's most critical aspects. Make sure that you completely understand them.
-
-.Form
-Various options:
-
-* Context diagrams
-* Lists of communication partners and their interfaces.
-****
-
-
 === Business Context
-
-[role="arc42help"]
 ****
-.Contents
-Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces.
-Optionally you can add domain specific formats or communication protocols.
+[plantuml,"Business Context",png]
+----
 
-.Motivation
-All stakeholders should understand which data are exchanged with the environment of the system.
+:Client: as client
 
-.Form
-All kinds of diagrams that show the system as a black box and specify the domain interfaces to communication partners.
+package "Web Browser" {
+[DeDe-WebSite] as web
+[User Pod] as pod
+}
 
-Alternatively (or additionally) you can use a table.
-The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
+
+client .down.> web : accede
+client -down-> pod : tiene
+web .right.> pod : obtine datos
+web <.left.pod : devuelve datos
+----
+
+.User
+El usuario o cliente es una persona interesada en acceder a nuestra página para ver y potencialmente comprar alguno de nuestros productos.
+
+.DeDe-Website
+Representa nuestro producto, la página web, donde se alojan los productos y donde los clientes pueden hacer sus pedidos.
+
+.User Pod
+Consiste en un almacén de datos descentralizado bajo la especificación Solid y cuyo propietario (el cliente) puede permitir el acceso a parte de la información para el correcto funcionamiento de nuestra página web.
 ****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of external domain interfaces>**
 
 === Technical Context
-
-[role="arc42help"]
-****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
-
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
-
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
-
 ****
 
-**<Diagram or Table>**
+El producto consiste en una página web comercial alojada en un servidor/nodo y que se comunica con el backend (DeDe-RestApi), que encuentra en otro nodo, mediante protocolo HTTPS.
+Además, para respetar la privacidad de nuestros consumidores, hacemos uso de las especificaciones Solid. Para obtener esta característica, nuestro backend se comunica con el proveedor del Pod del usuario.
 
-**<optionally: Explanation of technical interfaces>**
+Finalmente, existe una base de datos MongoDB para el almacenamiento de datos.
 
-**<Mapping Input/Output to Channels>**
+[plantuml,"Technical Context",png]
+----
+
+[DeDe-WebApp] as app
+[SOLID Pod Provider] as pod
+[DeDe-RestApi] as api
+[DeDe-MongoDB] as db
+
+app -right- api : internet/https
+api -up- pod : internet/https
+api -down- db: internet/https
+
+----
+****
