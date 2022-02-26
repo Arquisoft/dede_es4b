@@ -1,7 +1,7 @@
 [[section-technical-risks]]
 == Riesgos y Deuda Técnica
 
-
+=== Riesgos
 [options="header"]
 |===
 | Riesgos         | Solución    
@@ -10,6 +10,7 @@
 | Trabajar en equipo | Hacer reuniones habitualmente, mantener una buena comunicación y dejar el código entendible
 |===
 
+=== Deuda Técnica
 [options="header"]
 |===
 | Deuda Técnica         | Solución     
