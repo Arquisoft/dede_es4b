@@ -1,11 +1,10 @@
 [[section-deployment-view]]
 
-
 == Deployment View
-
-[role="arc42help"]
+****
 .Componentes
 
 * Personal computer: dispositivo mediante el cual el cliente usa un navegador web y accede a la página de la aplicación.
-* Web Server: servidor en el cual se ejecuta la aplicación. Está dividido en las capatas tipicas de un arquitectura MVC.
+* Web Server: servidor en el cual se ejecuta la aplicación. Está dividido en las capas típicas de una arquitectura MVC.
 * Solid Server: servidor donde está almacenado el pod del cliente con los contenedores sobre los que tenemos permisos.
+****
