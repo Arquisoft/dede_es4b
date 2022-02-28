@@ -1,7 +1,6 @@
 [[section-architecture-constraints]]
 == Restricciones de la arquitectura
 
-[role="arc42help"]
 === Restricciones técnicas
 ****
 |===
