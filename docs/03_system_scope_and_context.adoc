@@ -1,26 +1,26 @@
 [[section-system-scope-and-context]]
-== System Scope and Context
+== Contexto y Alcance del Sistema
 
-=== Business Context
+=== Contexto de negocio
 ****
 [plantuml,"Business Context",png]
 ----
 
-:Client: as client
+:Cliente: as cliente
 
-package "Web Browser" {
+package "Navegador web" {
 [DeDe-WebSite] as web
 [User Pod] as pod
 }
 
 
-client .down.> web : accede
-client -down-> pod : tiene
+cliente .down.> web : accede
+cliente -down-> pod : tiene
 web .right.> pod : obtine datos
 web <.left.pod : devuelve datos
 ----
 
-.User
+.Cliente
 El usuario o cliente es una persona interesada en acceder a nuestra página para ver y potencialmente comprar alguno de nuestros productos.
 
 .DeDe-Website
@@ -30,7 +30,7 @@ Representa nuestro producto, la página web, donde se alojan los productos y don
 Consiste en un almacén de datos descentralizado bajo la especificación Solid y cuyo propietario (el cliente) puede permitir el acceso a parte de la información para el correcto funcionamiento de nuestra página web.
 ****
 
-=== Technical Context
+=== Contexto técnico
 ****
 
 El producto consiste en una página web comercial alojada en un servidor/nodo y que se comunica con el backend (DeDe-RestApi), que encuentra en otro nodo, mediante protocolo HTTPS.
