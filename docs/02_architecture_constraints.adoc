@@ -3,6 +3,7 @@
 
 === Restricciones técnicas
 ****
+[cols="1,2" options="header"]
 |===
 | **Restricción** | **Descripción**
 | _Solid_ | _Para proteger la privacidad del usuario estamos obligados a usar los pods de SOLID_
