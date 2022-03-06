@@ -442,11 +442,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#section-introduction-and-goals">1. Introduction and Goals</a>
+<li><a href="#section-introduction-and-goals">1. Introducción y objetivos</a>
 <ul class="sectlevel2">
-<li><a href="#_requirements_overview">1.1. Requirements Overview</a></li>
-<li><a href="#_quality_goals">1.2. Quality Goals</a></li>
-<li><a href="#_stakeholders">1.3. Stakeholders</a></li>
+<li><a href="#_descripción_de_los_requisitos">1.1. Descripción de los requisitos</a></li>
+<li><a href="#_objetivos_de_calidad">1.2. Objetivos de calidad</a></li>
+<li><a href="#_partes_interesadas">1.3. Partes interesadas</a></li>
 </ul>
 </li>
 <li><a href="#section-architecture-constraints">2. Restricciones de la arquitectura</a>
@@ -456,24 +456,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_restricciones_convenios">2.3. Restricciones Convenios</a></li>
 </ul>
 </li>
-<li><a href="#section-system-scope-and-context">3. System Scope and Context</a>
+<li><a href="#section-system-scope-and-context">3. Contexto y Alcance del Sistema</a>
 <ul class="sectlevel2">
-<li><a href="#_business_context">3.1. Business Context</a></li>
-<li><a href="#_technical_context">3.2. Technical Context</a></li>
+<li><a href="#_contexto_de_negocio">3.1. Contexto de negocio</a></li>
+<li><a href="#_contexto_técnico">3.2. Contexto técnico</a></li>
 </ul>
 </li>
-<li><a href="#section-solution-strategy">4. Solution Strategy</a>
+<li><a href="#section-solution-strategy">4. Estrategia de solución</a>
 <ul class="sectlevel2">
 <li><a href="#_decisiones_tecnológicas">4.1. Decisiones tecnológicas</a></li>
-<li><a href="#_objetivos_de_calidad">4.2. Objetivos de calidad</a></li>
+<li><a href="#_objetivos_de_calidad_2">4.2. Objetivos de calidad</a></li>
+<li><a href="#_decisiones_organizativas">4.3. Decisiones organizativas</a></li>
 </ul>
 </li>
-<li><a href="#section-building-block-view">5. Building Block View</a>
+<li><a href="#section-building-block-view">5. Vista de bloque de creación</a>
 <ul class="sectlevel2">
-<li><a href="#_whitebox_overall_system">5.1. Whitebox Overall System</a></li>
-<li><a href="#_level_1">5.2. Level 1</a></li>
-<li><a href="#_level_2">5.3. Level 2</a></li>
-<li><a href="#_level_3">5.4. Level 3</a></li>
+<li><a href="#_sistema_general_de_caja_blanca">5.1. Sistema general de caja blanca</a></li>
+<li><a href="#_nivel_1">5.2. Nivel 1</a></li>
+<li><a href="#_nivel_2">5.3. Nivel 2</a></li>
+<li><a href="#_nivel_3">5.4. Nivel 3</a></li>
 </ul>
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
@@ -484,24 +485,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_ver_carrito">6.4. Ver carrito</a></li>
 <li><a href="#_buscar_productos">6.5. Buscar productos</a></li>
 <li><a href="#_ver_pedidos">6.6. Ver pedidos</a></li>
+<li><a href="#_leyenda">6.7. Leyenda</a></li>
 </ul>
 </li>
 <li><a href="#section-deployment-view">7. Deployment View</a></li>
-<li><a href="#section-concepts">8. Cross-cutting Concepts</a>
+<li><a href="#section-concepts">8. Conceptos transversales</a>
 <ul class="sectlevel2">
-<li><a href="#_domain_model">8.1. Domain model</a></li>
-<li><a href="#_user_experience_concepts_ux">8.2. User Experience concepts (UX)</a></li>
-<li><a href="#_safety_and_security_concepts">8.3. Safety and security concepts</a></li>
+<li><a href="#_modelo_de_dominio">8.1. Modelo de dominio</a></li>
+<li><a href="#_conceptos_sobre_la_experiencia_de_usuario">8.2. Conceptos sobre la experiencia de usuario</a></li>
+<li><a href="#_conceptos_de_protección_y_seguridad">8.3. Conceptos de protección y seguridad</a></li>
 </ul>
 </li>
 <li><a href="#section-design-decisions">9. Decisiones de diseño</a></li>
-<li><a href="#section-quality-scenarios">10. Quality Requirements</a>
+<li><a href="#section-quality-scenarios">10. Requisitos de calidad</a>
 <ul class="sectlevel2">
-<li><a href="#_quality_tree">10.1. Quality Tree</a></li>
-<li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
+<li><a href="#_árbol_de_calidad">10.1. Árbol de calidad</a></li>
+<li><a href="#_escenarios_de_calidad">10.2. Escenarios de calidad</a></li>
 </ul>
 </li>
-<li><a href="#section-technical-risks">11. Riesgos y Deuda Técnica</a></li>
+<li><a href="#section-technical-risks">11. Riesgos y Deuda Técnica</a>
+<ul class="sectlevel2">
+<li><a href="#_riesgos">11.1. Riesgos</a></li>
+<li><a href="#_deuda_técnica">11.2. Deuda Técnica</a></li>
+</ul>
+</li>
 <li><a href="#section-glossary">12. Glosario</a></li>
 </ul>
 </div>
@@ -523,7 +530,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-introduction-and-goals">1. Introduction and Goals</h2>
+<h2 id="section-introduction-and-goals">1. Introducción y objetivos</h2>
 <div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
@@ -536,7 +543,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_requirements_overview">1.1. Requirements Overview</h3>
+<h3 id="_descripción_de_los_requisitos">1.1. Descripción de los requisitos</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -562,7 +569,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_quality_goals">1.2. Quality Goals</h3>
+<h3 id="_objetivos_de_calidad">1.2. Objetivos de calidad</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -571,32 +578,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top"><strong>Quality Goal</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Motivación</strong></th>
 <th class="tableblock halign-left valign-top"><strong>Prioridad</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Meta</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Motivación</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Privacidad</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>La aplicación debería utilizar la información de los usuarios	estrictamente necesaria.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Alta</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Calidad</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>La aplicación debe satisfacer las necesidades del usuario, con un correcto funcionamiento.</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Seguridad</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>La aplicación debe estar protegida ante cualquier ataque de terceros.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Alta</em></p></td>
-</tr>
-<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Usabilidad</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>La aplicación debe ser fácilmente usable por cualquier usuario, con mucha o poca experiencia.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Alta-Media</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Privacidad</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>La aplicación debería utilizar la información de los usuarios estrictamente necesaria.</em></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_stakeholders">1.3. Stakeholders</h3>
+<h3 id="_partes_interesadas">1.3. Partes interesadas</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -634,20 +641,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="section-architecture-constraints">2. Restricciones de la arquitectura</h2>
 <div class="sectionbody">
-<div class="sect2 arc42help">
+<div class="sect2">
 <h3 id="_restricciones_técnicas">2.1. Restricciones técnicas</h3>
 <div class="sidebarblock">
 <div class="content">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Restricción</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Descripción</strong></p></td>
+<th class="tableblock halign-left valign-top"><strong>Restricción</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Descripción</strong></th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Solid</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"> <em>Para proteger la privacidad del usuario estamos obligados a usar los pods de SOLID</em></p></td>
@@ -735,10 +744,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-system-scope-and-context">3. System Scope and Context</h2>
+<h2 id="section-system-scope-and-context">3. Contexto y Alcance del Sistema</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_business_context">3.1. Business Context</h3>
+<h3 id="_contexto_de_negocio">3.1. Contexto de negocio</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="imageblock">
@@ -747,7 +756,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<div class="title">User</div>
+<div class="title">Cliente</div>
 <p>El usuario o cliente es una persona interesada en acceder a nuestra página para ver y potencialmente comprar alguno de nuestros productos.</p>
 </div>
 <div class="paragraph">
@@ -762,7 +771,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_technical_context">3.2. Technical Context</h3>
+<h3 id="_contexto_técnico">3.2. Contexto técnico</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -784,7 +793,7 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-solution-strategy">4. Solution Strategy</h2>
+<h2 id="section-solution-strategy">4. Estrategia de solución</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_decisiones_tecnológicas">4.1. Decisiones tecnológicas</h3>
@@ -816,7 +825,7 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 </div>
 </div>
 <div class="sect2">
-<h3 id="_objetivos_de_calidad">4.2. Objetivos de calidad</h3>
+<h3 id="_objetivos_de_calidad_2">4.2. Objetivos de calidad</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -841,24 +850,36 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 <div class="paragraph">
 <p>Para cumplir este objetivo, tendremos que crear nuestra aplicación centrándonos en que cuando el usuario la utilice no encuentre errores, o en caso de encontrarlos, que no afecten al correcto funcionamiento de la aplicación.</p>
 </div>
-<div class="ulist">
-<div class="title">Decisiones organizativas</div>
-<ul>
-<li>
-<p>Microsoft Teams: mediante esta plataforma organizaremos reuniones periódicas donde todo el equipo debatirá sobre decisiones importantes del desarrollo. En estas reuniones hablaremos del trabajo que llevamos hasta ahora, de problemas que nos hayan surgido o pequeños cambios que se hayan tomado sobre la aplicación.</p>
-</li>
-<li>
-<p>Whatsapp: para cambios más pequeños, decisiones que se toman de manera más rápida o problemas que surgen en un momento determinado nos comunicaremos mediante un grupo de Whatsapp donde están todos los miembros del grupo. Esto último es especialmente importante, para que ningún integrante se quede sin saber información importante.</p>
-</li>
-<li>
-<p>GitHub</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_decisiones_organizativas">4.3. Decisiones organizativas</h3>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>Uso de ramas: para desarrollar la documentación hemos creado un rama doc, sobre la que realizaremos los cambios individualmente y haremos un pullRequest sobre la rama dev. Finalmente, cuando la documentación este completa la pasaremos a la rama Master, que es la rama principal del proyecto.</p>
+</li>
 <li>
 <p>Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.</p>
 </li>
 <li>
-<p>Tablero del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado.</p>
+<p>Tableros del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado. Hemos decidido tener varios tableros para el desarrollo del proyecto.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tablero general: que es donde hemos colocado los issues de la documentación, y donde colocaremos los issues que correspondan con tareas generales del proyecto.</p>
+</li>
+<li>
+<p>Tablero frontEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del frontEnd.</p>
+</li>
+<li>
+<p>Tablero backEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del backEnd</p>
+</li>
+<li>
+<p>Tablero base de datos: donde colocaremos todos los issues relacionados con la creación y gestión de la base de datos.</p>
 </li>
 </ul>
 </div>
@@ -872,10 +893,10 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-building-block-view">5. Building Block View</h2>
+<h2 id="section-building-block-view">5. Vista de bloque de creación</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_whitebox_overall_system">5.1. Whitebox Overall System</h3>
+<h3 id="_sistema_general_de_caja_blanca">5.1. Sistema general de caja blanca</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -888,7 +909,7 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 </div>
 </div>
 <div class="sect2">
-<h3 id="_level_1">5.2. Level 1</h3>
+<h3 id="_nivel_1">5.2. Nivel 1</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -896,21 +917,21 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 El usuario interactúa con su propio Pod sobre el cual tiene control y en el que estan sus datos. El usuario realiza operaciones como crear o modificar los permisos sobre sus datos. También interactúa con la aplicación , que se representa como un cuadro negro en este diagrama. Por otro lado, la aplicación interactúa con el Pod para poder acceder a los archivos que se encuentran en él, pudiendo guardar y cargar datos.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/05_Level1.png" alt="Level 1"></span></p>
+<p><span class="image"><img src="./images/05_Level1.png" alt="Nivel 1"></span></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_level_2">5.3. Level 2</h3>
+<h3 id="_nivel_2">5.3. Nivel 2</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Busca intercomunicar la interfaz de usuario (Front End), la lógica de negocio (Back End) y el sistema de autenticación. El Front End necesita los servicios de la capa Back End para que le envíe datos y resultados de acciones para que pueda mostrárselos al usuario.
-Por otro lado, el Front End interactúa con el sistema de autenticación para que el usuario pueda iniciar sesión con su WebID o a través de un proveedor. Y el Back End también está relacionado con el sistema de autenticación, para poder acceder a los datos del POD del usuario que se encuentra actualmente en sesión.</p>
+<p>Busca intercomunicar la interfaz de usuario ("Front End"), la lógica de negocio ("Back End") y el sistema de autenticación. El Front End necesita los servicios de la capa "Back End" para que le envíe datos y resultados de acciones para que pueda mostrárselos al usuario.
+Por otro lado, el "Front End" interactúa con el sistema de autenticación para que el usuario pueda iniciar sesión con su WebID o a través de un proveedor. Y el "Back End" también está relacionado con el sistema de autenticación, para poder acceder a los datos del POD del usuario que se encuentra actualmente en sesión.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/05_Level2.png" alt="Level 2"></span></p>
+<p><span class="image"><img src="./images/05_Level2.png" alt="Nivel 2"></span></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Descripción del nivel 2</caption>
@@ -935,7 +956,7 @@ Por otro lado, el Front End interactúa con el sistema de autenticación para qu
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Back End</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Recibe los datos proporcionados por el usuario a través del módulo Front End, los procesa y realiza las operaciones necesarias obteniendo resultados que son enviados, nuevamente, al módulo mencionado anteriormente.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recibe los datos proporcionados por el usuario a través del módulo "Front End", los procesa y realiza las operaciones necesarias obteniendo resultados que son enviados, nuevamente, al módulo mencionado anteriormente.</p></td>
 </tr>
 </tbody>
 </table>
@@ -943,14 +964,14 @@ Por otro lado, el Front End interactúa con el sistema de autenticación para qu
 </div>
 </div>
 <div class="sect2">
-<h3 id="_level_3">5.4. Level 3</h3>
+<h3 id="_nivel_3">5.4. Nivel 3</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>El tercer nivel se divide en el Front End en las vistas principales de inicio de sesión y las que añadiremos más adelante. Las credenciales ingresadas en LoginView serán verificadas por el LoginManager que es responsable de acceder al pod del usuario y permitir el acceso a la aplicación.</p>
+<p>El tercer nivel se divide en el "Front End" en las vistas principales de inicio de sesión y las que añadiremos más adelante. Las credenciales ingresadas en "LoginView" serán verificadas por el LoginManager que es responsable de acceder al pod del usuario y permitir el acceso a la aplicación.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/05_Level3.png" alt="Level 3"></span></p>
+<p><span class="image"><img src="./images/05_Level3.png" alt="Nivel 3"></span></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Descripción del nivel 3</caption>
@@ -966,7 +987,7 @@ Por otro lado, el Front End interactúa con el sistema de autenticación para qu
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Login manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Administrador de inicio de sesión</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Administra las credenciales de inicio de sesión del usuario conectándose a su pod.</p></td>
 </tr>
 <tr>
@@ -1081,6 +1102,41 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_leyenda">6.7. Leyenda</h3>
+<div class="sidebarblock">
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Componente</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Descripción</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Usuario</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> <em>Usuario de la aplicación</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>WebApp</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> <em>Parte de aplicación que se ejecuta en el navegador del cliente</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Server</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> <em>Servidor remoto de la aplicación</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>MongoDb</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> <em>Base de datos de la aplicación</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1100,7 +1156,8 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <p>Web Server: servidor en el cual se ejecuta la aplicación. Está dividido en las capas típicas de una arquitectura MVC.</p>
 </li>
 <li>
-<p>Solid Server: servidor donde está almacenado el pod del cliente con los contenedores sobre los que tenemos permisos.</p>
+<p>Solid Server: servidor donde está almacenado el pod del cliente con los contenedores sobre los que tenemos permisos.
+image::diagrama_despliegue.png.png[]</p>
 </li>
 </ul>
 </div>
@@ -1110,10 +1167,10 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-concepts">8. Cross-cutting Concepts</h2>
+<h2 id="section-concepts">8. Conceptos transversales</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_domain_model">8.1. Domain model</h3>
+<h3 id="_modelo_de_dominio">8.1. Modelo de dominio</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1123,7 +1180,7 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 </div>
 </div>
 <div class="sect2">
-<h3 id="_user_experience_concepts_ux">8.2. User Experience concepts (UX)</h3>
+<h3 id="_conceptos_sobre_la_experiencia_de_usuario">8.2. Conceptos sobre la experiencia de usuario</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1133,7 +1190,7 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 </div>
 </div>
 <div class="sect2">
-<h3 id="_safety_and_security_concepts">8.3. Safety and security concepts</h3>
+<h3 id="_conceptos_de_protección_y_seguridad">8.3. Conceptos de protección y seguridad</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1169,21 +1226,6 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <td class="tableblock halign-left valign-top"><p class="tableblock">Nadie del equipo ha trabajado con ella antes, no soporta transacciones complejas</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TypeScript</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Código más limpio y entendible, fácil de testear y mejora la escalabilidad del código</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lenguaje desconocido por el equipo</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Es una librería de javascript por lo que se adapta bien al proyecto, código abierto, bien documentada</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Problemas a la hora de depurar, no tenemos conocimientos de esta librería</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nos permite descentralizar los datos de los usuarios de la aplicación</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No hemos utilizado nunca solid o trabajado con Pods</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Node</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Nos permite constuir una aplicación escalabale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Poco conocimiento de la aplicación, poca compatibilidad entre versiones</p></td>
@@ -1194,10 +1236,10 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-quality-scenarios">10. Quality Requirements</h2>
+<h2 id="section-quality-scenarios">10. Requisitos de calidad</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_quality_tree">10.1. Quality Tree</h3>
+<h3 id="_árbol_de_calidad">10.1. Árbol de calidad</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="imageblock">
@@ -1209,22 +1251,22 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 </div>
 </div>
 <div class="sect2">
-<h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
+<h3 id="_escenarios_de_calidad">10.2. Escenarios de calidad</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Ref: orden en el que hemos decidido mostrar nuestros atributos de calidad.</p>
+<p>Ref: ID para identificar cada atributo de calidad.</p>
 </li>
 <li>
-<p>Quality atribute: el propio atributo de calidad que queremos conseguir.</p>
+<p>Atributo de calidad: el propio atributo de calidad que queremos conseguir.</p>
 </li>
 <li>
-<p>Quality scenario: por qué creemos que debemos conseguir ese atributo o bien cómo debe comportarse la aplicación.</p>
+<p>Escenario de calidad: por qué creemos que nuestra aplicación cumple ese atributo o bien se comporta como esperamos.</p>
 </li>
 <li>
-<p>Priority: prioridad asociada al atributo. Esta prioridad está formada por dos palabras, siendo la primera la importancia que tiene el atributo de calidad para el cliente y la segunda la dificultad de conseguir dicho atributo.</p>
+<p>Prioridad: prioridad asociada al atributo. Esta prioridad está formada por dos palabras, siendo la primera la importancia que tiene el atributo de calidad para el cliente y la segunda la dificultad de conseguir dicho atributo.</p>
 </li>
 </ul>
 </div>
@@ -1240,44 +1282,44 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Ref</th>
-<th class="tableblock halign-left valign-top">Quality atribute</th>
-<th class="tableblock halign-left valign-top">Quality scenario</th>
-<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">Atributo de calidad</th>
+<th class="tableblock halign-left valign-top">Escenario de calidad</th>
+<th class="tableblock halign-left valign-top">Prioridad</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Seguridad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Es importante que la información proporcionada por los usuarios no pueda ser vista/extraída por terceras personas.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Privacidad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación tendrá solamente la información del usuario que este quiera proporcionarle.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">U</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe ser intuitiva, de tal manera que independientemente de la habilidad del usuario, este pueda utilizarla fácilmente.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">High, Medium</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Accesibilidad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe poder ser usada por personas con dificultades o discapacidades.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">E</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Eficiencia</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Se debe dar una respuesta a lo que pide el usuario sin problemas y con una cierta velocidad.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">El código debe estar hecho de manera que, si surge algún problema o queremos cambiar algo, sea fácil modificarlo.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Low, Medium</p></td>
@@ -1291,6 +1333,8 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <div class="sect1">
 <h2 id="section-technical-risks">11. Riesgos y Deuda Técnica</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_riesgos">11.1. Riesgos</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1317,6 +1361,9 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_deuda_técnica">11.2. Deuda Técnica</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1336,6 +1383,7 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1419,7 +1467,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-22 13:19:09 +0100
+Last updated 2022-02-28 19:37:46 +0100
 </div>
 </div>
 </body>
