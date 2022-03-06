@@ -1,5 +1,5 @@
 [[section-solution-strategy]]
-== Solution Strategy
+== Estrategia de solución
 
 
 === Decisiones tecnológicas
@@ -33,12 +33,14 @@ Necesitamos que nuestra aplicación sea eficiente, es decir, que haga lo que nos
 Un sistema robusto es un sistema fuerte, sin debilidades ni vacíos de seguridad. La robustez en un programa informático hace referencia a su capacidad para hacer frente a errores mientras se está ejecutando. 
 
 Para cumplir este objetivo, tendremos que crear nuestra aplicación centrándonos en que cuando el usuario la utilice no encuentre errores, o en caso de encontrarlos, que no afecten al correcto funcionamiento de la aplicación.
-
-.Decisiones organizativas
-* Microsoft Teams: mediante esta plataforma organizaremos reuniones periódicas donde todo el equipo debatirá sobre decisiones importantes del desarrollo. En estas reuniones hablaremos del trabajo que llevamos hasta ahora, de problemas que nos hayan surgido o pequeños cambios que se hayan tomado sobre la aplicación.
-* Whatsapp: para cambios más pequeños, decisiones que se toman de manera más rápida o problemas que surgen en un momento determinado nos comunicaremos mediante un grupo de Whatsapp donde están todos los miembros del grupo. Esto último es especialmente importante, para que ningún integrante se quede sin saber información importante.
-
-* GitHub
-** Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.
-** Tablero del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado.
+****
+=== Decisiones organizativas
+****
+* Uso de ramas: para desarrollar la documentación hemos creado un rama doc, sobre la que realizaremos los cambios individualmente y haremos un pullRequest sobre la rama dev. Finalmente, cuando la documentación este completa la pasaremos a la rama Master, que es la rama principal del proyecto.
+* Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.
+* Tableros del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado. Hemos decidido tener varios tableros para el desarrollo del proyecto.
+** Tablero general: que es donde hemos colocado los issues de la documentación, y donde colocaremos los issues que correspondan con tareas generales del proyecto.
+** Tablero frontEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del frontEnd.
+** Tablero backEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del backEnd
+** Tablero base de datos: donde colocaremos todos los issues relacionados con la creación y gestión de la base de datos.
 ****

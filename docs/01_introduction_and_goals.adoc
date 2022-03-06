@@ -1,5 +1,5 @@
 [[section-introduction-and-goals]]
-== Introduction and Goals
+== Introducción y objetivos
 
 ****
 DeDe es un sistema de venta online creado para una empresa de venta de productos relacionados con el deporte. La aplicación respeta la privacidad de los clientes siguiendo los principios SOLID.
@@ -7,7 +7,7 @@ DeDe es un sistema de venta online creado para una empresa de venta de productos
 Por tanto, el sistema no almacenará información de los clientes, obtendrá aquella para la que los usuarios den permiso.
 ****
 
-=== Requirements Overview
+=== Descripción de los requisitos
 
 ****
 Los requisitos funcionales que ofrecerá nuestra aplicación serán los siguientes:
@@ -18,17 +18,17 @@ Los requisitos funcionales que ofrecerá nuestra aplicación serán los siguient
 * Los usuarios podrán visualizar los pedidos realizados.
 ****
 
-=== Quality Goals
+=== Objetivos de calidad
 
 [options="header",cols="1,2,2"]
 |===
-|**Quality Goal**|**Motivación**|**Prioridad**
-| _Privacidad_ | _La aplicación debería utilizar la información de los usuarios	estrictamente necesaria._ | _Alta_
-| _Seguridad_ | _La aplicación debe estar protegida ante cualquier ataque de terceros._ | _Alta_
-| _Usabilidad_ | _La aplicación debe ser fácilmente usable por cualquier usuario, con mucha o poca experiencia._ | _Alta-Media_
+|**Prioridad**|**Meta**|**Motivación**
+| 1 | _Calidad_ | _La aplicación debe satisfacer las necesidades del usuario, con un correcto funcionamiento._
+| 2 | _Usabilidad_ | _La aplicación debe ser fácilmente usable por cualquier usuario, con mucha o poca experiencia._
+| 3 | _Privacidad_ | _La aplicación debería utilizar la información de los usuarios estrictamente necesaria._
 |===
 
-=== Stakeholders
+=== Partes interesadas
 
 [cols="1,2" options="header"]
 |===

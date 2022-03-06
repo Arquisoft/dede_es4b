@@ -1,29 +1,29 @@
 [[section-building-block-view]]
 
 
-== Building Block View
+== Vista de bloque de creación
 
-=== Whitebox Overall System
+=== Sistema general de caja blanca
 ****
 El diagrama que esta a continuacion muestra una descripcion general de los componentes básicos de la aplicación, y muestra la descomposición estática de cada nivel del sistema, y la dependencia entre ellos.
 
 image:05_WhiteboxSystem.png["Diseño general del sistema"]
 ****
 
-=== Level 1
+=== Nivel 1
 ****
 El sistema general se representa en una caja blanca y se compone de diferentes elementos como la caja negra y los bloques de construcción.
 El usuario interactúa con su propio Pod sobre el cual tiene control y en el que estan sus datos. El usuario realiza operaciones como crear o modificar los permisos sobre sus datos. También interactúa con la aplicación , que se representa como un cuadro negro en este diagrama. Por otro lado, la aplicación interactúa con el Pod para poder acceder a los archivos que se encuentran en él, pudiendo guardar y cargar datos.
 
-image:05_Level1.png["Level 1"]
+image:05_Level1.png["Nivel 1"]
 ****
 
-=== Level 2
+=== Nivel 2
 ****
-Busca intercomunicar la interfaz de usuario (Front End), la lógica de negocio (Back End) y el sistema de autenticación. El Front End necesita los servicios de la capa Back End para que le envíe datos y resultados de acciones para que pueda mostrárselos al usuario. 
-Por otro lado, el Front End interactúa con el sistema de autenticación para que el usuario pueda iniciar sesión con su WebID o a través de un proveedor. Y el Back End también está relacionado con el sistema de autenticación, para poder acceder a los datos del POD del usuario que se encuentra actualmente en sesión.
+Busca intercomunicar la interfaz de usuario ("Front End"), la lógica de negocio ("Back End") y el sistema de autenticación. El Front End necesita los servicios de la capa "Back End" para que le envíe datos y resultados de acciones para que pueda mostrárselos al usuario. 
+Por otro lado, el "Front End" interactúa con el sistema de autenticación para que el usuario pueda iniciar sesión con su WebID o a través de un proveedor. Y el "Back End" también está relacionado con el sistema de autenticación, para poder acceder a los datos del POD del usuario que se encuentra actualmente en sesión.
 
-image:05_Level2.png["Level 2"]
+image:05_Level2.png["Nivel 2"]
 
 [options="header"]
 .Descripción del nivel 2
@@ -31,21 +31,21 @@ image:05_Level2.png["Level 2"]
 |Nombre|Responsabilidad
 |Autenticación del sistema | Se encarga del inicio de sesión mediante la verificación de la cuenta del usuario.
 |Front End | Interactúa con el usuario final, recopila los datos de entrada proporcionados por	él y muestra toda la información relacionada con las acciones realizadas por él dentro de la aplicación
-|Back End | Recibe los datos proporcionados por el usuario a través del módulo Front End, los procesa y realiza las operaciones necesarias obteniendo resultados que son enviados, nuevamente, al módulo mencionado anteriormente.
+|Back End | Recibe los datos proporcionados por el usuario a través del módulo "Front End", los procesa y realiza las operaciones necesarias obteniendo resultados que son enviados, nuevamente, al módulo mencionado anteriormente.
 |===
 ****
 
-=== Level 3
+=== Nivel 3
 ****
-El tercer nivel se divide en el Front End en las vistas principales de inicio de sesión y las que añadiremos más adelante. Las credenciales ingresadas en LoginView serán verificadas por el LoginManager que es responsable de acceder al pod del usuario y permitir el acceso a la aplicación.
+El tercer nivel se divide en el "Front End" en las vistas principales de inicio de sesión y las que añadiremos más adelante. Las credenciales ingresadas en "LoginView" serán verificadas por el LoginManager que es responsable de acceder al pod del usuario y permitir el acceso a la aplicación.
 
-image:05_Level3.png["Level 3"]
+image:05_Level3.png["Nivel 3"]
 
 [options="header"]
 .Descripción del nivel 3
 |===
 |Nombre|Responsabilidad
-|Login manager | Administra las credenciales de inicio de sesión del usuario conectándose a su pod.
+|Administrador de inicio de sesión | Administra las credenciales de inicio de sesión del usuario conectándose a su pod.
 |Administrador de solicitudes| Manejar la lógica para obtener los solid que tiene el usuario.
 |===
 
