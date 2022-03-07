@@ -1,7 +1,4 @@
-import express, { Request, Response, Router } from 'express';
-import {check} from 'express-validator';
-
-const routerProduct:Router = express.Router()
+import { Request, Response } from 'express';
 
 //funciones
 export let findAllProducts = async (req: Request, res: Response) => {
@@ -13,7 +10,7 @@ export let findAllProducts = async (req: Request, res: Response) => {
             });
   } catch (e){
     console.log(e);
-    res.send({"error": "error en tu petición"});
+    res.status(500).send({"error": "error en tu petición"});
   }
   
 }
@@ -27,7 +24,7 @@ export let findProduct = async (req: Request, res: Response) => {
             });
   } catch (e){
     console.log(e);
-    res.send({"error": "error en tu petición"});
+    res.status(500).send({"error": "error en tu petición"});
   }
   
 }
@@ -41,7 +38,7 @@ export let deleteProduct = async (req: Request, res: Response) => {
             });
   } catch (e){
     console.log(e);
-    res.send({"error": "error en tu petición"});
+    res.status(500).send({"error": "error en tu petición"});
   }
   
 }
@@ -62,7 +59,7 @@ export let updateProduct = async (req: Request, res: Response) => {
             });
   } catch (e){
     console.log(e);
-    res.send({"error": "error en tu petición"});
+    res.status(500).send({"error": "error en tu petición"});
   }
 }
 
@@ -82,6 +79,6 @@ export let addProduct = async (req: Request, res: Response) => {
             });
   } catch (e){
     console.log(e);
-    res.send({"error": "error en tu petición"});
+    res.status(500).send({"error": "error en tu petición"});
   }
 }
