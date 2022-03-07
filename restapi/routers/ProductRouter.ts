@@ -1,4 +1,4 @@
-import express, { Request, Response, Router } from 'express';
+import express, { Router } from 'express';
 import {check} from 'express-validator';
 import * as productController from "./../controladores/ProductController";
 
