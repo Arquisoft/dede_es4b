@@ -1,49 +1,32 @@
 import { Request, Response } from 'express';
 
 //funciones
-export let findAllProducts = async (req: Request, res: Response) => {
-  //llamada al respositorio
-  try{
-    await ProductRepository.findAllProducts()
-            .then(products => {
-              return res.status(200).send(products);
-            });
-  } catch (e){
-    console.log(e);
-    res.status(500).send({"error": "error en tu petición"});
-  }
+const findAllProducts = async (req: Request, res: Response) => {
+
+  //llamada al repositorio
+  await ProductRepository.findAllProducts().then(
+          products => {
+            return res.status(200).send(products);
+          });
   
 }
 
-export let findProduct = async (req: Request, res: Response) => {
+const findProduct = async (req: Request, res: Response) => {
   //llamada al respositorio
-  try{
-    await ProductRepository.findProduct(req.params.id)
-            .then(product => {
-              return res.status(200).send(product);
-            });
-  } catch (e){
-    console.log(e);
-    res.status(500).send({"error": "error en tu petición"});
-  }
+  await ProductRepository.findProduct(req.params.id).then(
+          product => {
+            return res.status(200).send(product);
+          });
+}
+
+const deleteProduct = async (req: Request, res: Response) => {
+  //llamada al respositorio
+  await ProductRepository.deleteProduct(req.params.id)
+  return res.status(200).send({msg:"Producto eliminado"});
   
 }
 
-export let deleteProduct = async (req: Request, res: Response) => {
-  //llamada al respositorio
-  try{
-    await ProductRepository.deleteProduct(req.params.id)
-            .then(result => {
-              return res.status(200).send(result);
-            });
-  } catch (e){
-    console.log(e);
-    res.status(500).send({"error": "error en tu petición"});
-  }
-  
-}
-
-export let updateProduct = async (req: Request, res: Response) => {
+const updateProduct = async (req: Request, res: Response) => {
   const productData = req.body;
 
   //creamos nuevo producto
@@ -54,16 +37,14 @@ export let updateProduct = async (req: Request, res: Response) => {
   //lo actualizamos
   try{
     await ProductRepository.addProduct(req.params.id, product)
-            .then( result => {
-              return res.status(200).send(result);
-            });
+    return res.status(200).send({msg:"Producto actualizado"});
   } catch (e){
     console.log(e);
-    res.status(500).send({"error": "error en tu petición"});
+    res.status(400).send({msg: e});
   }
 }
 
-export let addProduct = async (req: Request, res: Response) => {
+const addProduct = async (req: Request, res: Response) => {
   const productData = req.body;
 
   //creamos nuevo producto
@@ -73,12 +54,20 @@ export let addProduct = async (req: Request, res: Response) => {
 
   //lo guardamos
   try{
-    await ProductRepository.addProduct(product)
-            .then( result => {
+    await ProductRepository.addProduct(product).then( 
+            result => {
               return res.status(200).send(result);
             });
   } catch (e){
     console.log(e);
-    res.status(500).send({"error": "error en tu petición"});
+    res.status(400).send({msg:"Producto añadido"});
   }
+}
+
+module.exports = {
+  addProduct,
+  findAllProducts,
+  findProduct,
+  updateProduct,
+  deleteProduct
 }
