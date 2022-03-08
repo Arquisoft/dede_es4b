@@ -1,33 +1,42 @@
 import express, { Router } from 'express';
 import {check} from 'express-validator';
-import * as productController from "./../controladores/ProductController";
+
+const {
+  addProduct,
+  findAllProducts,
+  findProduct,
+  updateProduct,
+  deleteProduct
+} = require("./../controladores/ProductController")
 
 const routerProduct:Router = express.Router();
+const {validador} = require("./../validadores/validador.js");
 
 //routers
 routerProduct.get(
-    "/list",
-    productController.findAllProducts
+  "/list",
+  findAllProducts
 );
 
 routerProduct.get(
   "/find/:id",
-  productController.findAllProducts
+  findProduct
 );
 
 routerProduct.delete(
   "/delete/:id",
-  productController.findAllProducts
+  deleteProduct
 );
 
-routerProduct.post(
+routerProduct.put(
   "/update/:id",[
     //validaciones controlador
     TODO
     check('name').isLength({ min: 1 }).trim().escape(),
     check('email').isEmail().normalizeEmail(),
+    validador
   ],
-  productController.findAllProducts
+  updateProduct
 );
 
 routerProduct.post(
@@ -36,8 +45,9 @@ routerProduct.post(
     TODO
     check('name').isLength({ min: 1 }).trim().escape(),
     check('email').isEmail().normalizeEmail(),
+    validador
   ],
-  productController.addProduct
+  addProduct
 );
 
 export default routerProduct;
