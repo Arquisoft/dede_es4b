@@ -1,15 +1,17 @@
+require('dotenv').config()
+
 const mongoose = require('mongoose')
 
-const connectionString = 'mongodb+srv://dede_es4b:dede_es4b_pass.DFSS@cluster0.v4ply.mongodb.net/shop?retryWrites=true&w=majority'
+const connectionString = process.env.MONGO_DB_URI 
 
-mongoose.connect(connectionString,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-})
+const dbConnection = () => {
+    mongoose.connect(connectionString)
     .then(() => {
-        
-}).catch((error: any) =>{
+        console.log('DB Connected')
+}).catch((error : any) =>{
         console.error(error)
     })
+}
+
+
+module.exports = {dbConnection}
