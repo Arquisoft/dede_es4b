@@ -5,7 +5,7 @@ interface Order {
 }
 
 const orderSchema = new Schema({
-    user: {type:String, required: true},
+    user: {type:String, required: [true, 'User is mandatoy']},
     products: {type:Array, required: true},
     order_date:{type:Date, required:true}
 });

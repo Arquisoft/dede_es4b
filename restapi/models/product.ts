@@ -9,8 +9,8 @@ interface Product {
 }
 
 const productSchema = new Schema({
-    name: {type:String, required: true},
-    section: {type:String, required: true},
+    name: {type:String, required: [true, 'Name is mandatoy']},
+    section: {type:String, required: [true, 'Section is mandatoy']},
     description: {type:String, required: true},
     price: {type:Number, required: true},
     image: {type:String, required: true}
