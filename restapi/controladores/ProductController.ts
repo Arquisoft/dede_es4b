@@ -4,26 +4,29 @@ const Product = require('../models/product')
 //funciones
 const findAllProducts = async (req: Request, res: Response) => {
 
-
   //llamada al repositorio
-  await Product.findAllProducts().then(
-          products => {
-            return res.status(200).send(products);
-          });
+  const products = await Product.find()
+  
+  return res.status(200).send(products);
   
 }
 
 const findProduct = async (req: Request, res: Response) => {
-  //llamada al respositorio
-  await Product.findProduct(req.params.id).then(
-          product => {
-            return res.status(200).send(product);
-          });
+
+  const product = await Product.find(req.params.id)
+  
+  return res.status(200).send(product);
+
 }
 
 const deleteProduct = async (req: Request, res: Response) => {
+
+  const updatedFields = {
+    status: false
+  }
   //llamada al respositorio
-  await Product.deleteProduct(req.params.id)
+  await Product.findByIdAndUpdate(req.params.id,updatedFields)
+
   return res.status(200).send({msg:"Producto eliminado"});
   
 }
@@ -33,12 +36,16 @@ const updateProduct = async (req: Request, res: Response) => {
 
   //creamos nuevo producto
   const product = new Product({
-    
+    name:req.params.name,
+    section:req.params.section,
+    description:req.params.description,
+    price:req.params.price,
+    image:req.params.image 
   });
 
   //lo actualizamos
   try{
-    await Product.addProduct(req.params.id, product)
+    await Product.findByIdAndUpdate(req.params.id, product)
     return res.status(200).send({msg:"Producto actualizado"});
   } catch (e){
     console.log(e);
@@ -51,15 +58,17 @@ const addProduct = async (req: Request, res: Response) => {
 
   //creamos nuevo producto
   const product = new Product({
-    
+    name:req.params.name,
+    section:req.params.section,
+    description:req.params.description,
+    price:req.params.price,
+    image:req.params.image 
   });
 
   //lo guardamos
   try{
-    await Product.addProduct(product).then( 
-            result => {
-              return res.status(200).send(result);
-            });
+    await product.save
+    return res.status(200).send(product);
   } catch (e){
     console.log(e);
     res.status(400).send({msg:"Producto añadido"});
