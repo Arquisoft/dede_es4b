@@ -27,7 +27,7 @@ routerProduct.delete(
   "/delete/:id",
   deleteProduct
 );
-
+/*
 routerProduct.put(
   "/update/:id",[
     check('name').isLength({ min: 1 }).trim().escape(),
@@ -53,5 +53,6 @@ routerProduct.post(
   ],
   addProduct
 );
+*/
 
 export default routerProduct;
