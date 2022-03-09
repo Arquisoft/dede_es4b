@@ -5,9 +5,11 @@ import Container from '@mui/material/Container';
 import EmailForm from './components/EmailForm';
 import Welcome from './components/Welcome';
 import UserList from './components/UserList';
+
 import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductosCatalogo from "./components/ProductosCatalogo/ProductosCatalogo";
 
 function App(): JSX.Element {
@@ -32,7 +34,13 @@ function App(): JSX.Element {
     //     <Link href="https://github.com/pglez82/asw2122_0">Source code</Link>
     //   </Container>
     // </>
-      <ProductosCatalogo/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/productos" element={<ProductosCatalogo/>} />
+        </Routes>
+
+      </BrowserRouter>
+
   );
 }
 
