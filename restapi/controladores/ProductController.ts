@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
+const Product = require('../models/product')
 
 //funciones
 const findAllProducts = async (req: Request, res: Response) => {
 
+
   //llamada al repositorio
-  await ProductRepository.findAllProducts().then(
+  await Product.findAllProducts().then(
           products => {
             return res.status(200).send(products);
           });
@@ -13,7 +15,7 @@ const findAllProducts = async (req: Request, res: Response) => {
 
 const findProduct = async (req: Request, res: Response) => {
   //llamada al respositorio
-  await ProductRepository.findProduct(req.params.id).then(
+  await Product.findProduct(req.params.id).then(
           product => {
             return res.status(200).send(product);
           });
@@ -21,7 +23,7 @@ const findProduct = async (req: Request, res: Response) => {
 
 const deleteProduct = async (req: Request, res: Response) => {
   //llamada al respositorio
-  await ProductRepository.deleteProduct(req.params.id)
+  await Product.deleteProduct(req.params.id)
   return res.status(200).send({msg:"Producto eliminado"});
   
 }
@@ -36,7 +38,7 @@ const updateProduct = async (req: Request, res: Response) => {
 
   //lo actualizamos
   try{
-    await ProductRepository.addProduct(req.params.id, product)
+    await Product.addProduct(req.params.id, product)
     return res.status(200).send({msg:"Producto actualizado"});
   } catch (e){
     console.log(e);
@@ -54,7 +56,7 @@ const addProduct = async (req: Request, res: Response) => {
 
   //lo guardamos
   try{
-    await ProductRepository.addProduct(product).then( 
+    await Product.addProduct(product).then( 
             result => {
               return res.status(200).send(result);
             });
