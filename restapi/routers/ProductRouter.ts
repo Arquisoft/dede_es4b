@@ -30,10 +30,12 @@ routerProduct.delete(
 
 routerProduct.put(
   "/update/:id",[
-    //validaciones controlador
-    TODO
     check('name').isLength({ min: 1 }).trim().escape(),
-    check('email').isEmail().normalizeEmail(),
+    check('section').isLength({ min: 1 }).trim().escape(),
+    check('description').isLength({ min: 1 }).trim().escape(),
+    check('price').isLength({ min: 1 }).trim().escape(),
+    check('price').isFloat(),
+    check('image').isLength({ min: 1 }).trim().escape(),
     validador
   ],
   updateProduct
@@ -41,10 +43,12 @@ routerProduct.put(
 
 routerProduct.post(
   "/add",[
-    //validaciones controlador
-    TODO
     check('name').isLength({ min: 1 }).trim().escape(),
-    check('email').isEmail().normalizeEmail(),
+    check('section').isLength({ min: 1 }).trim().escape(),
+    check('description').isLength({ min: 1 }).trim().escape(),
+    check('price').isLength({ min: 1 }).trim().escape(),
+    check('price').isFloat(),
+    check('image').isLength({ min: 1 }).trim().escape(),
     validador
   ],
   addProduct
