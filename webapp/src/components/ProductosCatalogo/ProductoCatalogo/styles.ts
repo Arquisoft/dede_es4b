@@ -9,15 +9,17 @@ export default makeStyles(() => ({
         paddingTop: '56.25%' // 16:9
     },
     cardActions: {
+        height: '10px',
         display: 'flex',
         justifyContent: 'flex-end'
     },
     cardContent: {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'space-between'
     },
     description: {
-        maxHeight: '1.5em',
+        height: '2.5em',
         overflow: 'hidden'
     }
 }));
