@@ -30,7 +30,8 @@ routerProduct.delete(
 );
 
 routerProduct.post(
-  "/add",[
+  "/add"
+    ,[
     check('name').isLength({ min: 1 }).trim().escape(),
     check('section').isLength({ min: 1 }).trim().escape(),
     check('description').isLength({ min: 1 }).trim().escape(),
@@ -39,6 +40,7 @@ routerProduct.post(
     check('image').isLength({ min: 1 }).trim().escape(),
     validateFields
   ],
+  
   addProduct
 );
 
