@@ -35,10 +35,10 @@ const ProductosCatalogo = () => {
     const classes = useStyles();
     return (
         <main className={classes.main}>
-            <Grid container justifyContent="center" spacing={4}>
+            <Grid container justifyContent="center" spacing={1}>
                 {productos.map(product => (
-                    <Grid item key={product.ids} lg={3}>
-                        <ProductoCatalogo product={product}/>
+                    <Grid item key={product.ids} xs={12} sm={6} md={4} lg={3}>
+                        <ProductoCatalogo product={product} />
                     </Grid>
                 ))}
             </Grid>
