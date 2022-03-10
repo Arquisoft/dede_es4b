@@ -13,7 +13,7 @@ const findAllProducts = async (req: Request, res: Response) => {
 
 const findProduct = async (req: Request, res: Response) => {
 
-  const product = await Product.find(req.params.id)
+  const product = await Product.findById(req.params.id)
   
   return res.status(200).send(product);
 
@@ -21,31 +21,22 @@ const findProduct = async (req: Request, res: Response) => {
 
 const deleteProduct = async (req: Request, res: Response) => {
 
-  const updatedFields = {
-    status: false
-  }
   //llamada al respositorio
-  await Product.findByIdAndUpdate(req.params.id,updatedFields)
+  await Product.findByIdAndDelete(req.params.id)
 
   return res.status(200).send({msg:"Producto eliminado"});
   
 }
 
 const updateProduct = async (req: Request, res: Response) => {
-  const productData = req.body;
 
-  //creamos nuevo producto
-  const product = new Product({
-    name:req.params.name,
-    section:req.params.section,
-    description:req.params.description,
-    price:req.params.price,
-    image:req.params.image 
-  });
+  const { id } = req.params
+
+  const {_id, ...other} = req.body
 
   //lo actualizamos
   try{
-    await Product.findByIdAndUpdate(req.params.id, product)
+    await Product.findByIdAndUpdate(id, other)
     return res.status(200).send({msg:"Producto actualizado"});
   } catch (e){
     console.log(e);
@@ -58,20 +49,20 @@ const addProduct = async (req: Request, res: Response) => {
 
   //creamos nuevo producto
   const product = new Product({
-    name:req.params.name,
-    section:req.params.section,
-    description:req.params.description,
-    price:req.params.price,
-    image:req.params.image 
+    name:productData.name,
+    section:productData.section,
+    description:productData.description,
+    price:productData.price,
+    image:productData.image 
   });
 
   //lo guardamos
   try{
-    await product.save
+    await product.save()
     return res.status(200).send(product);
   } catch (e){
     console.log(e);
-    res.status(400).send({msg:"Producto añadido"});
+    res.status(400).send({msg:"Producto no añadido"});
   }
 }
 
