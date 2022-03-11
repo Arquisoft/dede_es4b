@@ -16,7 +16,7 @@ const ProductosCatalogo = () => {
     const [productos, setProductos] = useState<producto[]>([]);
 
     const getProductos = async (): Promise<producto[]> => {
-        let respuesta = await fetch('http://localhost:3030/productos')
+        let respuesta = await fetch('http://localhost:5000/product/list')
 
         return respuesta.json();
     }
