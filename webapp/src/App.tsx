@@ -26,7 +26,7 @@ function App(): JSX.Element {
     <BrowserRouter>
     
       <Routes>
-        <Route path="/cart" element={<Carrito carrito={carrito}/>}/>  
+        <Route path="/carrito" element={<Carrito carrito={carrito}/>}/>  
         
       </Routes>
     
