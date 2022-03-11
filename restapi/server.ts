@@ -7,7 +7,7 @@ import productRouter from "./routers/ProductRouter";
 const { dbConnection } = require('./mongo')
 
 const app: Application = express();
-const port = 3000;
+const port = 5000;
 
 app.use(cors());
 app.use(bp.json());
