@@ -1,6 +1,7 @@
 import React from 'react'
 import {Container, Typography, Button, Grid} from '@material-ui/core';
 import useStyles from './styles';
+import CarritoItem from './CarritoItem/CarritoItem'
 
 const Carrito = ({ carrito }) => {
   console.log(carrito.line_items);
@@ -16,7 +17,7 @@ const Carrito = ({ carrito }) => {
         <Grid container spacing={3}>
             {carrito.line_items.map((item) => (
                 <Grid item xs={12} sm={4} key={item.id}>
-                    <div>{item.name}</div>
+                    <CarritoItem item={item}/>
                 </Grid>
             ))}
         </Grid>
@@ -36,13 +37,17 @@ const Carrito = ({ carrito }) => {
       </>
   );
 
-  if(!carrito.line_items) return "Loading...";
+    if(!carrito.line_items){
+        return(
+            <div>No hay productos</div>
+        )
+    }
 
   return (
     <div>
       <Container>
             <div className={classes.toolbar}/>
-            <Typography className={classes.title}>Tu carrito de la compra</Typography>
+            <Typography className={classes.title} variant="h3" gutterBottom>Tu carrito de la compra</Typography>
             {!carrito.line_items.length ? <CarritoVacio/> : <CarritoLleno/>}
       </Container>
     </div>
