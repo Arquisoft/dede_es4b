@@ -12,19 +12,25 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ShoppingCart } from '@mui/icons-material';
 
 const pages = ['Deportes', 'Hombre', 'Mujer', 'Niños'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Perfil', 'Cerrar sesión'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [anchorElCart, setAnchorElCart] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleOpenCart = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElCart(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -35,26 +41,25 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
-  const redTheme = createTheme({
+  const handleCloseCart = () => {
+    setAnchorElCart(null);
+  };
+
+  const purpleTheme = createTheme({
     palette: {
       primary: {
-        main: '#FF0000',
+        main: '#2F0147',
       },
     },
   });
 
   return (
-    <ThemeProvider theme={redTheme}>
+    <ThemeProvider theme={purpleTheme}>
       <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+            <IconButton onClick={handleOpenNavMenu}
               color="inherit"
             >
               <MenuIcon />
@@ -95,10 +100,9 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar/>
             </IconButton>
             <Menu
               sx={{ mt: '45px' }}
@@ -122,6 +126,11 @@ const ResponsiveAppBar = () => {
                 </MenuItem>
               ))}
             </Menu>
+          </Box>
+          <Box>
+            <IconButton onClick={handleOpenCart} sx={{ p: 0 }}>
+              <ShoppingCart />
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>
