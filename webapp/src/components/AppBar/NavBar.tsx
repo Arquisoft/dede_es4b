@@ -5,14 +5,13 @@ import AppBar from '@mui/material/AppBar';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+import { Tooltip } from '@mui/material';
 import makeStyles from '@mui/material/styles/makeStyles';
 import { ShoppingCart } from '@mui/icons-material';
 import useStyles from './styles';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import { Route } from '@mui/icons-material';
-import { Link } from '@mui/material';
 
 const NavBar = () => {
     const classes = useStyles();
@@ -45,9 +44,11 @@ const NavBar = () => {
                         <IconButton className={classes.user}>
                             <Avatar/>
                         </IconButton>
-                        <IconButton className={classes.cart}>
-                            <ShoppingCart />
-                        </IconButton>
+                        <Tooltip title="Ver carrito">
+                            <IconButton href={"/carrito"} className={classes.cart}>
+                                <ShoppingCart />
+                            </IconButton>
+                        </Tooltip>
                     </Box>
                 </Toolbar>
             </AppBar>
