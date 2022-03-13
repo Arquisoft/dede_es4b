@@ -9,7 +9,16 @@ import './App.css';
 function App(): JSX.Element {
 
   const [users,setUsers] = useState<User[]>([]);
-  const [carrito, setCarrito] = useState([]);
+  const [productos, setProductos] = useState<Producto[]>([]);
+
+  interface Producto {
+
+    id: string;
+    name: string;
+    price: string;
+    image: string;
+
+  }
   
   const refreshUserList = async () => {
     setUsers(await getUsers());
@@ -20,13 +29,29 @@ function App(): JSX.Element {
     refreshUserList();
   },[]);
 
+  const getProductos = async () => {
+    let respuesta = await fetch('http://localhost:5000/product/list')
+
+    return respuesta.json();
+  }
+
+  const refrescarProductos = async () => {
+    let respuesta = await getProductos();
+
+    setProductos(respuesta);
+  }
+
+  useEffect(() => {
+    refrescarProductos();
+  }, [])
+
 
 
   return (
     <BrowserRouter>
     
       <Routes>
-        <Route path="/carrito" element={<Carrito carrito={carrito}/>}/>  
+        <Route path="/carrito" element={<Carrito productos={productos}/>}/>
         
       </Routes>
     
