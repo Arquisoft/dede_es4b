@@ -3,19 +3,34 @@ import {Container, Typography, Button, Grid} from '@material-ui/core';
 import useStyles from './styles';
 import CarritoItem from './CarritoItem/CarritoItem'
 
-const Carrito = ({ carrito }) => {
-  console.log(carrito.line_items);
-  
+interface Producto {
+
+    id: string;
+    name: string;
+    price: string;
+    image: string;
+
+}
+
+// function Carrito(productos : Producto[] ) {
+//     this.prdocutos = productos
+// }
+
+
+// @ts-ignore
+const Carrito = ({productos}) => {
+
   const classes = useStyles();
    
   const CarritoVacio = () => (
       <Typography variant="subtitle1">No tienes productos en tu carrito de la compra</Typography>
   );
 
-  const CarritoLleno = () => (
+  // @ts-ignore
+    const CarritoLleno = () => (
       <>
         <Grid container spacing={3}>
-            {carrito.line_items.map((item) => (
+            {productos.map((item : Producto) => (
                 <Grid item xs={12} sm={4} key={item.id}>
                     <CarritoItem item={item}/>
                 </Grid>
@@ -23,32 +38,33 @@ const Carrito = ({ carrito }) => {
         </Grid>
         <div className={classes.carritoDetails}>
             <Typography variant="h4">
-                Subtotal: {carrito.subtotal.formatted_with_symbol}
+                Subtotal: {2}
             </Typography>
             <div>
-                <button className={classes.emptyButton} size="large" type="button" variant="contained" color="secundary">
+                <Button className={classes.emptyButton} size="large" type="button" variant="contained">
                     Empty Carrito
-                </button>
-                <button className={classes.checkoutButton} size="large" type="button" variant="contained" color="secundary">
+                </Button>
+                <Button className={classes.checkoutButton} size="large" type="button" variant="contained">
                     CheckOut
-                </button>
+                </Button>
             </div>
         </div>
       </>
   );
 
-    if(!carrito.line_items){
-        return(
-            <CarritoVacio/>
-        )
-    }
+    // if(!carrito.line_items){
+    //     return(
+    //         <CarritoVacio/>
+    //     )
+    // }
 
   return (
     <div>
       <Container>
             <div className={classes.toolbar}/>
             <Typography className={classes.title} variant="h3" gutterBottom>Tu carrito de la compra</Typography>
-            {!carrito.line_items.length ? <CarritoVacio/> : <CarritoLleno/>}
+          <CarritoLleno/>
+            {/*{!carrito.line_items.length ? <CarritoVacio/> : <CarritoLleno/>}*/}
       </Container>
     </div>
   )
