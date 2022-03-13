@@ -19,7 +19,7 @@ const Carrito = ({ carrito }) => {
                 <Grid item xs={12} sm={4} key={item.id}>
                     <CarritoItem item={item}/>
                 </Grid>
-            ))}
+            ))};
         </Grid>
         <div className={classes.carritoDetails}>
             <Typography variant="h4">
@@ -39,7 +39,7 @@ const Carrito = ({ carrito }) => {
 
     if(!carrito.line_items){
         return(
-            <div>No hay productos</div>
+            <CarritoVacio/>
         )
     }
 
