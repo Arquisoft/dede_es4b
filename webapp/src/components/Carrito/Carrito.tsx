@@ -22,9 +22,7 @@ const Carrito = ({productos}) => {
 
   const classes = useStyles();
    
-  const CarritoVacio = () => (
-      <Typography variant="subtitle1">No tienes productos en tu carrito de la compra</Typography>
-  );
+  
 
   // @ts-ignore
     const CarritoLleno = () => (
@@ -34,18 +32,18 @@ const Carrito = ({productos}) => {
                 <Grid item xs={12} sm={4} key={item.id}>
                     <CarritoItem item={item}/>
                 </Grid>
-            ))};
+            ))}
         </Grid>
         <div className={classes.carritoDetails}>
             <Typography variant="h4">
-                Subtotal: {2}
+                Subtotal: {productos.length}
             </Typography>
             <div>
                 <Button className={classes.emptyButton} size="large" type="button" variant="contained">
-                    Empty Carrito
+                    Vaciar carrito
                 </Button>
-                <Button className={classes.checkoutButton} size="large" type="button" variant="contained">
-                    CheckOut
+                <Button className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">
+                    Comprar
                 </Button>
             </div>
         </div>
@@ -62,9 +60,9 @@ const Carrito = ({productos}) => {
     <div>
       <Container>
             <div className={classes.toolbar}/>
-            <Typography className={classes.title} variant="h3" gutterBottom>Tu carrito de la compra</Typography>
+            <Typography className={classes.title} variant="h2" gutterBottom>Tu carrito de la compra</Typography>
           <CarritoLleno/>
-            {/*{!carrito.line_items.length ? <CarritoVacio/> : <CarritoLleno/>}*/}
+            
       </Container>
     </div>
   )

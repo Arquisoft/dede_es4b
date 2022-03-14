@@ -5,7 +5,7 @@ import useStyles from './styles';
 // @ts-ignore
 const CarritoItem = ( {item} ) => {
   const classes = useStyles();
-    console.log("hola");
+    
 
 
     return (
@@ -13,15 +13,16 @@ const CarritoItem = ( {item} ) => {
       <CardMedia image={item.image} />
       <CardContent className={classes.cardContent}>
         <Typography variant="h4">{item.name}</Typography>
-        {/*<Typography variant="h5">{item.line_total.formatted_with_symbol}</Typography>*/}
+        <Typography variant="h5">{item.price} €</Typography>
+        {}
       </CardContent>
       <CardActions className={classes.cartActions}>
         <div className={classes.buttons}>
           <Button type="button" size="small">-</Button>
-          {/*<Typography>{item.quantity}</Typography>*/}
+          <Typography>1</Typography>
           <Button type="button" size="small">+</Button>
         </div>
-        <Button variant="contained" type="button" color="secondary">Remove</Button>
+        <Button variant="outlined" size="small" type="button" color="secondary">Remove</Button>
       </CardActions>
     </Card>
   )
