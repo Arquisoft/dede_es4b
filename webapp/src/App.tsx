@@ -10,8 +10,6 @@ import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import Carrito from './components/Carrito/Carrito';
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-//import ResponsiveAppBar from './components/AppBar/ResponsiveAppBar';
 import NavBar from './components/AppBar/NavBar';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -76,7 +74,6 @@ function App(): JSX.Element {
     // </>
       <BrowserRouter>
         <Routes>
-          <NavBar/>
           <Route path="/carrito" element={<Carrito productos={productos}/>}/>
           <Route path="/productos" element={<ProductosCatalogo/>} />
         </Routes>

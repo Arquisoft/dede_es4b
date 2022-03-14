@@ -2,6 +2,7 @@ import React from 'react'
 import {Container, Typography, Button, Grid} from '@material-ui/core';
 import useStyles from './styles';
 import CarritoItem from './CarritoItem/CarritoItem'
+import NavBar from "../AppBar/NavBar";
 
 interface Producto {
 
@@ -58,7 +59,8 @@ const Carrito = ({productos}) => {
 
   return (
     <div>
-      <Container>
+        <NavBar/>
+        <Container>
             <div className={classes.toolbar}/>
             <Typography className={classes.title} variant="h2" gutterBottom>Tu carrito de la compra</Typography>
           <CarritoLleno/>
