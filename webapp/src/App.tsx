@@ -13,7 +13,7 @@ import Carrito from './components/Carrito/Carrito';
 import NavBar from './components/AppBar/NavBar';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProductosCatalogo from "./components/ProductosCatalogo/ProductosCatalogo";
+import Catalogo from "./pages/Catalogo";
 
 function App(): JSX.Element {
 
@@ -75,7 +75,7 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path="/carrito" element={<Carrito productos={productos}/>}/>
-          <Route path="/productos" element={<ProductosCatalogo/>} />
+          <Route path="/productos" element={<Catalogo/>} />
         </Routes>
       </BrowserRouter>
   );
