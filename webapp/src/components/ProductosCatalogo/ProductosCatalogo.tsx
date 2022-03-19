@@ -5,35 +5,8 @@ import useStyles from './styles';
 import {Button, Divider, Menu, MenuItem, Pagination} from "@mui/material";
 import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
-import NavBar from "../AppBar/NavBar";
 
-interface producto {
-    ids: number;
-    name: string;
-    description: string;
-    price: string;
-    image: string;
-}
-
-const ProductosCatalogo = () => {
-
-    const [productos, setProductos] = useState<producto[]>([]);
-
-    const getProductos = async (): Promise<producto[]> => {
-        let respuesta = await fetch('http://localhost:5000/product/list')
-
-        return respuesta.json();
-    }
-
-    const refrescarProductos = async () => {
-        let respuesta = await getProductos();
-
-        setProductos(respuesta);
-    }
-
-    useEffect(() => {
-        refrescarProductos();
-    }, [])
+const ProductosCatalogo = ({productos} : any) => {
 
 
     // Ordenar
@@ -51,7 +24,6 @@ const ProductosCatalogo = () => {
     const classes = useStyles();
     return (
         <>
-            <NavBar/>
             <main className={classes.main}>
                 <div className={classes.titulo}>
                     <Box component="h1" color="indigo" >Catálogo de productos</Box>
@@ -77,9 +49,9 @@ const ProductosCatalogo = () => {
                     <MenuItem onClick={handleClose}>Precio descendente</MenuItem>
                 </Menu>
                 <Grid container justifyContent="center" spacing={1}>
-                    {productos.map(product => (
-                        <Grid item key={product.ids} xs={12} sm={6} md={4} lg={3}>
-                            <ProductoCatalogo product={product} />
+                    {productos.map((producto : any) => (
+                        <Grid item key={producto.ids} xs={12} sm={6} md={4} lg={3}>
+                            <ProductoCatalogo producto={producto} />
                         </Grid>
                     ))}
                 </Grid>
