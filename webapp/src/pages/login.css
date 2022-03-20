@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+/* signup {
+    display: flex;
+    justify-content: 'end'
+} */
