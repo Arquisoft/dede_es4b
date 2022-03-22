@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
 
-interface producto {
+export interface producto {
     ids: number;
     name: string;
     description: string;
@@ -26,7 +26,7 @@ const Catalogo = () => {
     return (
         <>
             <NavBar/>
-            <ProductosCatalogo productos={productos}/>
+            <ProductosCatalogo productos={productos} setProductos={setProductos}/>
         </>
     );
 }

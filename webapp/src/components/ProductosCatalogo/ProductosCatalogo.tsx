@@ -5,8 +5,19 @@ import useStyles from './styles';
 import {Button, Divider, Menu, MenuItem, Pagination} from "@mui/material";
 import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
+import { producto } from '../../pages/Catalogo';
 
-const ProductosCatalogo = ({productos} : any) => {
+const ordenarAsc = (lista : producto[]) : producto[] => {
+    const products = lista.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    return products;
+}
+
+const ordenarDesc = (lista : producto[]) : producto[] => {
+    const products = lista.sort((a, b) => - parseFloat(a.price) + parseFloat(b.price));
+    return products;
+}
+
+const ProductosCatalogo = ({productos} : any, setProductos :any) => {
 
 
     // Ordenar
@@ -45,8 +56,8 @@ const ProductosCatalogo = ({productos} : any) => {
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                 >
-                    <MenuItem onClick={handleClose}>Precio ascendente</MenuItem>
-                    <MenuItem onClick={handleClose}>Precio descendente</MenuItem>
+                    <MenuItem onClick={() => setProductos(ordenarAsc(productos))}>Precio ascendente</MenuItem>
+                    <MenuItem onClick={() => setProductos(ordenarDesc(productos))}>Precio descendente</MenuItem>
                 </Menu>
                 <Grid container justifyContent="center" spacing={1}>
                     {productos.map((producto : any) => (
