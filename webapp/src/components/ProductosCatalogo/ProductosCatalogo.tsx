@@ -9,6 +9,13 @@ import { producto } from '../../pages/Catalogo';
 
 const ProductosCatalogo = ({productos}: any) => {
 
+const ordenarDesc = (lista : producto[]) : producto[] => {
+    const products = lista.sort((a, b) => - parseFloat(a.price) + parseFloat(b.price));
+    return products;
+}
+
+const ProductosCatalogo = ({productos} : any, setProductos :any) => {
+
 
     // Ordenar
     const [open, setOpen] = useState(null);
