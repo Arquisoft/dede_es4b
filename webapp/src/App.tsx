@@ -14,7 +14,7 @@ import NavBar from './components/AppBar/NavBar';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Catalogo from "./pages/Catalogo";
-import Login from './pages/Login';
+import Login from './pages/login';
 
 function App(): JSX.Element {
 
