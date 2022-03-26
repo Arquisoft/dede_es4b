@@ -16,6 +16,16 @@ import Avatar from '@mui/material/Avatar';
 const NavBar = () => {
     const classes = useStyles();
 
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+    const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return(
         <>
             <AppBar position="static" className={classes.appBar} color="inherit">
@@ -41,9 +51,32 @@ const NavBar = () => {
                         </Button>
                     </Box>
                     <Box>
-                        <IconButton className={classes.user}>
-                            <Avatar/>
-                        </IconButton>
+                        <div>
+                            <IconButton
+                                onClick={handleMenu}
+                                color="inherit"
+                            >
+                                <Avatar />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorEl}
+                                anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                                }}
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                            </Menu>
+                        </div>
                         <Tooltip title="Ver carrito">
                             <IconButton href={"/carrito"} className={classes.cart}>
                                 <ShoppingCart />
