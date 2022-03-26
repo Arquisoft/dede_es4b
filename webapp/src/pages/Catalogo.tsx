@@ -14,13 +14,13 @@ const Catalogo = () => {
     const [productos, setProductos] = useState<producto[]>([]);
 
     const getProductos = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list')
+        const respuesta = await fetch('http://localhost:5000/product/list');
 
         setProductos(await respuesta.json());
     }
 
     useEffect(() => {
-        getProductos()
+        getProductos();
     }, [])
 
     return (

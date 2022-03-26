@@ -7,7 +7,7 @@ import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
 import { producto } from '../../pages/Catalogo';
 
-const ProductosCatalogo = ({productos} : any) => {
+const ProductosCatalogo = ({productos} : {productos : producto[]}) => {
 
 
     // Ordenar
