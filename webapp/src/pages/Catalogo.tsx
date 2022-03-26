@@ -26,7 +26,7 @@ const Catalogo = () => {
     return (
         <>
             <NavBar/>
-            <ProductosCatalogo productos={productos} setProductos={setProductos}/>
+            <ProductosCatalogo productos={productos}/>
         </>
     );
 }
