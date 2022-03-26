@@ -7,12 +7,7 @@ import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
 import { producto } from '../../pages/Catalogo';
 
-const ordenarDesc = (lista : producto[]) : producto[] => {
-    const products = lista.sort((a, b) => - parseFloat(a.price) + parseFloat(b.price));
-    return products;
-}
-
-const ProductosCatalogo = ({productos} : any, setProductos :any) => {
+const ProductosCatalogo = ({productos} : any) => {
 
 
     // Ordenar
