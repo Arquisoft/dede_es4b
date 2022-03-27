@@ -6,9 +6,9 @@ interface User {
 }
 
 const userSchema = new Schema({
-    name: {type:String, required: true},
-    surname: {type:String, required: true},
-    password: {type:String, required: true},
+    name: {type:String, required: [true, 'Name is mandatoy']},
+    surname: {type:String, required: [true, 'Surname is mandatoy']},
+    password: {type:String, required: [true, 'Password is mandatoy']},
 });
 
 const UserModel = model('User', userSchema);
