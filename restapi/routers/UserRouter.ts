@@ -33,7 +33,7 @@ routerUser.post(
   "/add"
     ,[
     check('name').isLength({ min: 1 }).trim().escape(),
-    check('section').isLength({ min: 1 }).trim().escape(),
+    check('surname').isLength({ min: 1 }).trim().escape(),
     check('description').isLength({ min: 1 }).trim().escape(),
     check('price').isLength({ min: 1 }).trim().escape(),
     check('price').isFloat(),

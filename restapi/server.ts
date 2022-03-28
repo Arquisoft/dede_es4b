@@ -19,7 +19,7 @@ dbConnection();
 
 //use (añadir las nuevas url)
 app.use("/product", productRouter)
-app.use("/user", userRouter)
+//app.use("/user", userRouter)
 app.use("/login", loginRouter)
 
 app.listen(port, ():void => {
