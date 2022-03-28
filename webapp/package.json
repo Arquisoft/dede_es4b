@@ -20,6 +20,8 @@
     "@types/react-dom": "^17.0.11",
     "express": "^4.17.2",
     "mongoose": "^6.2.6",
+    "postcss": "^8.4.12",
+    "postcss-cli": "^9.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.27.1",
@@ -29,7 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "postcss src/css/styles.css --output src/components/dist/css/styles.css && react-scripts build",
     "test": "react-scripts test --coverage",
     "test:e2e": "start-server-and-test 'npm --prefix ../restapi start' http://localhost:5000/api/users/list prod 3000 'cd e2e && jest'",
     "eject": "react-scripts eject",
@@ -65,6 +67,7 @@
     "puppeteer": "^13.0.1",
     "react-scripts": "^5.0.0",
     "start-server-and-test": "^1.14.0",
+    "tailwindcss": "^3.0.23",
     "ts-jest": "^27.1.2",
     "ts-node-dev": "^1.1.8"
   }

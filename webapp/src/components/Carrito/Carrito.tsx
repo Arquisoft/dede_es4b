@@ -4,6 +4,7 @@ import NavBar from "../AppBar/NavBar";
 import { Fragment, useState } from 'react'
 import { Disclosure, Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
+import '../dist/css/styles.css';
 
 interface Producto {
 
@@ -20,21 +21,23 @@ interface Producto {
 // @ts-ignore
 const Carrito = ({productos}) => {
 
-  console.log(productos);
   const [open, setOpen] = useState(true);                
-
+  var precio=0;
   
   
   return (
     <>
-      <div className="min-h-full">
-        <header className="bg-white shadow">
+      <NavBar/>
+      <div>
+        <header>
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-gray-900">Carrito de la compra</h1>
+            <h1>Carrito de la compra</h1>
           </div>
         </header>
         <main>
-        <table className="table-auto">
+       
+        <table>
+          <caption>Tu pedido</caption>
           <thead>
             <tr>
               <th>Producto</th>
@@ -44,46 +47,45 @@ const Carrito = ({productos}) => {
           </thead>
           <tbody>
             {productos.map((producto: Producto) => (
+             
               <tr>
                 <td>{producto.name}</td>
                 <td>{producto.price}</td>
-                <td><button>-</button>
+                <td><button type="button" className='unidades'>-</button>
                       1
-                    <button>+</button>
+                    <button type="button" className='unidades'>+</button>
+                </td>
+                <td><button type="button" className='botonEliminar'> 
+                Remove 
+                </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-          <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
-            <div className="flex justify-between text-base font-medium text-gray-900">
-              <p>Subtotal</p>
-              <p>$262.00</p>
+        
+          <div>
+            <div className="subtotal">
+              <p>Subtotal: XXX €</p>
+              
             </div>
-            <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
             <div>
-              <button className="comprar" >
+              <button type="button" className="botonComprar" >
                 Comprar
               </button>
             </div>
-            <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+            <div>
               <p>
-                or{' '}
-                <button
-                  type="button"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                  onClick={() => setOpen(false)}
-                >
-                  Continue Shopping<span aria-hidden="true"> &rarr;</span>
+                o 
+                <button type="button" className="botonSeguirComprando"
+                  onClick={() => setOpen(false)}> continua comprando
                 </button>
               </p>
             </div>
           </div>
           
 
-          <div className="px-4 py-6 sm:px-0">
-            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
-          </div>
+         
           
           </main>
         
