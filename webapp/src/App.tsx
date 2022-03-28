@@ -15,6 +15,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Catalogo from "./pages/Catalogo";
 import Login from './pages/login';
+import Home from './pages/Home';
 
 function App(): JSX.Element {
 
@@ -75,6 +76,7 @@ function App(): JSX.Element {
     // </>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home/>} />
           <Route path="/carrito" element={<Carrito productos={productos}/>}/>
           <Route path="/productos" element={<Catalogo/>} />
           <Route path="/login" element={<Login/>} />
