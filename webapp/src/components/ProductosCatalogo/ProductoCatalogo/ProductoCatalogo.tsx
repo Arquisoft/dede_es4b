@@ -4,25 +4,22 @@ import useStyles from './styles'
 import { AddShoppingCart } from "@mui/icons-material";
 import { CardActionArea } from '@mui/material';
 import { producto } from '../../../pages/Catalogo';
+import { ProductoCarrito } from '../../../components/Carrito/Carrito';
 
-interface ProductoCarrito{
-    producto : producto;
-    cantidad : number;
-    precioTotal : number;
+// Guarda el producto en la sesión.
+const añadirAlCarrito = (producto: any) => {
+    const carritoString = sessionStorage.getItem('carrito');
+    let carrito = [];
+    if (carritoString != null)
+        carrito = JSON.parse(carritoString!);
+
+    let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };
+    carrito.push(productoCarrito);
+    sessionStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
-const carrito : ProductoCarrito[] = [];
-
-
-const ProductoCatalogo = ( {producto}: {producto: producto} ) => {
+const ProductoCatalogo = ({ producto }: { producto: producto }) => {
     const classes = useStyles();
-
-
-    const añadirAlCarrito = (producto : producto) => {
-        let productoCarrito : ProductoCarrito = {producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price)};
-        carrito.push(productoCarrito);
-        console.log(carrito);
-    }
 
     return (
         <Card className={classes.root}>
@@ -48,6 +45,6 @@ const ProductoCatalogo = ( {producto}: {producto: producto} ) => {
             </CardActions>
         </Card>
     )
-}
+};
 
-export default ProductoCatalogo
+export default ProductoCatalogo;
