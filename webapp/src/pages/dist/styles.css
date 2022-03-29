@@ -467,6 +467,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-.botones{
-  align-items: center;  
+.botonLogin{
+  align-items: block;  
+}
+
+.botonCatalogo{
+  align-items: block;  
 }

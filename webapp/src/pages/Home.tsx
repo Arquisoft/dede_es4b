@@ -7,16 +7,21 @@ const Home = () => {
 
     return(
         <>
-            <div className="bienvenida">
-                <Box component="h1" color="black" >¡Bienvenido/a!</Box>
-            </div>
+            <header>
+                <div className="mt-6">
+                    <h1>¡Bienvenido/a!</h1>
+                </div>
+            </header>
+            
             <div className="empezar">
                 <Box component="h2" color="black" >¿Por dónde quieres empezar?</Box>
             </div>
-            <div className="botones">
+            <div className="botonLogin">
                 <Button href="/login">
                     Iniciar sesión
                 </Button>
+            </div>
+            <div className="botonCatalogo">
                 <Button href="/productos">
                     Ver catálogo de productos
                 </Button>
