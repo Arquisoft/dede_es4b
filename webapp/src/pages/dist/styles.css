@@ -467,26 +467,41 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-.empezar{
-  margin-top:1rem;
-  text-align: center;
-  font-weight: bold;
-  color: #000;
-}
-
-.botonLogin{
-  align-items: block;  
-}
-
-.botonCatalogo{
-  align-items: block;  
-}
-
 .bienvenida{
-  margin-top: 4rem;
+  margin-top: 6rem;
   font-size: 2.5rem;
   line-height: 3rem;
   font-weight: 700;
   text-align: center;
   color: #0891b2;
+}
+
+.empezar{
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+}
+
+.botones{
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.botonLogin{
+  align-items: block;  
+  color:#000;
+  border: 1px solid black;
+  text-align: center;
+  background-color: rgb(191, 216, 228);
+  border-radius: 15px;
+}
+
+.botonCatalogo{
+  margin-top: 2rem;
+  color:#000;
+  border: 1px solid;
+  text-align: center;
+  background-color: rgb(191, 216, 228);
+  border-radius: 15px;
 }
