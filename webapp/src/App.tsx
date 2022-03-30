@@ -75,7 +75,7 @@ function App(): JSX.Element {
     // </>
       <BrowserRouter>
         <Routes>
-          <Route path="/carrito" element={<Carrito productos={productos}/>}/>
+          <Route path="/carrito" element={<Carrito/>}/>
           <Route path="/productos" element={<Catalogo/>} />
           <Route path="/login" element={<Login/>} />
         </Routes>

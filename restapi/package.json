@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/react": "^17.0.43",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -16,7 +17,9 @@
     "express-prom-bundle": "^6.4.1",
     "express-validator": "^6.14.0",
     "mongoose": "^6.2.4",
-    "prom-client": "^14.0.1"
+    "prom-client": "^14.0.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
