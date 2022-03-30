@@ -1,10 +1,10 @@
 import express, { Router } from 'express';
 import {check} from 'express-validator';
 
-const {validateFields} = require("./../validadores/validador");
+const {validateFields} = require("../validadores/validador");
 
 const {
-  addUser,
+  register,
   findAllUser,
   findUser,
   updateUser,
@@ -30,28 +30,17 @@ routerUser.delete(
 );
 
 routerUser.post(
-  "/add"
+  "/register"
     ,[
-    check('name').isLength({ min: 1 }).trim().escape(),
-    check('surname').isLength({ min: 1 }).trim().escape(),
-    check('description').isLength({ min: 1 }).trim().escape(),
-    check('price').isLength({ min: 1 }).trim().escape(),
-    check('price').isFloat(),
-    check('image').isLength({ min: 1 }).trim().escape(),
+        //Todo
     validateFields
   ],
-  
-  addUser
+  register
 );
 
 routerUser.put(
   "/update/:id",[
-    check('name').isLength({ min: 1 }).trim().escape(),
-    check('section').isLength({ min: 1 }).trim().escape(),
-    check('description').isLength({ min: 1 }).trim().escape(),
-    check('price').isLength({ min: 1 }).trim().escape(),
-    check('price').isFloat(),
-    check('image').isLength({ min: 1 }).trim().escape(),
+        //Todo
     validateFields
   ],
   updateUser

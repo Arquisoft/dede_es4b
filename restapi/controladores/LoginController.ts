@@ -26,7 +26,7 @@ const login = async (req: Request, res: Response) => {
         userName: req.body.userName,
       }
     
-      const tokenSecret = process.env.SECRET || 'unsafe_jwt_secret'
+      const tokenSecret = process.env.SECRET
     
       const token = jwt.sign(userToken, tokenSecret)
     
