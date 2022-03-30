@@ -467,10 +467,26 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.empezar{
+  margin-top:1rem;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+}
+
 .botonLogin{
   align-items: block;  
 }
 
 .botonCatalogo{
   align-items: block;  
+}
+
+.bienvenida{
+  margin-top: 4rem;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: 700;
+  text-align: center;
+  color: #0891b2;
 }

@@ -8,23 +8,24 @@ const Home = () => {
     return(
         <>
             <header>
-                <div className="mt-6">
+                <div className="bienvenida">
                     <h1>¡Bienvenido/a!</h1>
                 </div>
             </header>
-            
             <div className="empezar">
-                <Box component="h2" color="black" >¿Por dónde quieres empezar?</Box>
+                <h2>¿Por dónde quieres empezar?</h2>
             </div>
-            <div className="botonLogin">
-                <Button href="/login">
-                    Iniciar sesión
-                </Button>
-            </div>
-            <div className="botonCatalogo">
-                <Button href="/productos">
-                    Ver catálogo de productos
-                </Button>
+            <div className="botones">
+                <div className="botonLogin">
+                    <Button href="/login">
+                        Iniciar sesión
+                    </Button>
+                </div>
+                <div className="botonCatalogo">
+                    <Button href="/productos">
+                        Ver catálogo de productos
+                    </Button>
+                </div>
             </div>
         </>
     );
