@@ -5,35 +5,19 @@ import useStyles from './styles';
 import {Button, Divider, Menu, MenuItem, Pagination} from "@mui/material";
 import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
-import NavBar from "../AppBar/NavBar";
+import { producto } from '../../pages/Catalogo';
 
-interface producto {
-    ids: number;
-    name: string;
-    description: string;
-    price: string;
-    image: string;
+const ordenarAsc = (lista : producto[]) : producto[] => {
+    const products = lista.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    return products;
 }
 
-const ProductosCatalogo = () => {
+const ordenarDesc = (lista : producto[]) : producto[] => {
+    const products = lista.sort((a, b) => - parseFloat(a.price) + parseFloat(b.price));
+    return products;
+}
 
-    const [productos, setProductos] = useState<producto[]>([]);
-
-    const getProductos = async (): Promise<producto[]> => {
-        let respuesta = await fetch('http://localhost:5000/product/list')
-
-        return respuesta.json();
-    }
-
-    const refrescarProductos = async () => {
-        let respuesta = await getProductos();
-
-        setProductos(respuesta);
-    }
-
-    useEffect(() => {
-        refrescarProductos();
-    }, [])
+const ProductosCatalogo = ({productos} : any, setProductos :any) => {
 
 
     // Ordenar
@@ -51,7 +35,6 @@ const ProductosCatalogo = () => {
     const classes = useStyles();
     return (
         <>
-            <NavBar/>
             <main className={classes.main}>
                 <div className={classes.titulo}>
                     <Box component="h1" color="indigo" >Catálogo de productos</Box>
@@ -73,13 +56,13 @@ const ProductosCatalogo = () => {
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                 >
-                    <MenuItem onClick={handleClose}>Precio ascendente</MenuItem>
-                    <MenuItem onClick={handleClose}>Precio descendente</MenuItem>
+                    <MenuItem onClick={() => setProductos(ordenarAsc(productos))}>Precio ascendente</MenuItem>
+                    <MenuItem onClick={() => setProductos(ordenarDesc(productos))}>Precio descendente</MenuItem>
                 </Menu>
                 <Grid container justifyContent="center" spacing={1}>
-                    {productos.map(product => (
-                        <Grid item key={product.ids} xs={12} sm={6} md={4} lg={3}>
-                            <ProductoCatalogo product={product} />
+                    {productos.map((producto : any) => (
+                        <Grid item key={producto.ids} xs={12} sm={6} md={4} lg={3}>
+                            <ProductoCatalogo producto={producto} />
                         </Grid>
                     ))}
                 </Grid>
