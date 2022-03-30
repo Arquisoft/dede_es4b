@@ -17,7 +17,6 @@ interface Producto {
 
 
 
-
 // @ts-ignore
 const Carrito = ({productos}) => {
 
