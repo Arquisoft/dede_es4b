@@ -1,14 +1,15 @@
 import express, { Router } from 'express';
 import {check} from 'express-validator';
 
-const {validateFields} = require("./../validadores/validador");
+const {validateFields} = require("../validadores/validador");
 
 const {
   addProduct,
   findAllProducts,
   findProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  findByPage
 } = require("./../controladores/ProductController")
 
 const routerProduct:Router = express.Router();
@@ -17,6 +18,11 @@ const routerProduct:Router = express.Router();
 routerProduct.get(
   "/list",
   findAllProducts
+);
+
+routerProduct.get(
+    "/list/:page",
+    findByPage
 );
 
 routerProduct.get(
