@@ -14,7 +14,7 @@ interface ProductoCarrito{
 const carrito : ProductoCarrito[] = [];
 
 
-const ProductoCatalogo = ( {producto}: {producto: producto} ) => {
+const ProductoCatalogo = ({productos} : any) => {
     const classes = useStyles();
 
 
