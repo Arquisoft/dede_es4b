@@ -8,12 +8,13 @@ export const isLogeado = (): boolean => {
   return getToken() != null;
 }
 
-//TODO
 function getToken(): string | null {
-  const tokenString = sessionStorage.getItem('token');
-  // const userToken = JSON.parse(tokenString!);
-  // return userToken?.token;
-  return tokenString;
+  const userSessionStr = sessionStorage.getItem('userSession');
+  if (userSessionStr != null){
+    const userSession = JSON.parse(userSessionStr!);
+    return userSession.token;
+  }
+  return null;
 }
 
 function App(): JSX.Element {

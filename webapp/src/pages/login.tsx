@@ -4,8 +4,8 @@ import './login.css'
 import { useNavigate } from 'react-router-dom'
 import { isLogeado } from '../App'
 
-function setToken(userToken: any) {
-    sessionStorage.setItem('token', JSON.stringify(userToken));
+function setUserSession(userSession: any) {
+    sessionStorage.setItem('user', JSON.stringify(userSession));
 }
 
 const Login = () => {
@@ -36,7 +36,7 @@ const Login = () => {
 
     const handleInput = (e: BaseSyntheticEvent) => {
         switch (e.target.name) {
-            case "username":
+            case "userName":
                 setUsername(e.target.value);
                 break;
             case "password":
@@ -46,17 +46,31 @@ const Login = () => {
     }
 
     const handleSumbit = async (e: BaseSyntheticEvent) => {
+        e.preventDefault();
         comprobarDatos(e);
 
-        // TODO
         // llamada al backend
-        if (password === '12345') {
-            const token = "token123"
-            if (token != null) {
-                setToken(token);
-                navigate("/productos");
+        await fetch('http://localhost:5000/login', {
+            method: 'POST',
+            body: JSON.stringify({userName: username, password: password}),
+            headers:{
+                'Content-Type': 'application/json'
             }
-        }
+        })
+        .catch(error => console.error('Error:', error))
+        .then(response => {
+            if (response?.ok){
+                response.json().then(
+                    data  => {
+                        setUserSession({userName: data.userName, token: data.token})
+                        navigate("/productos");
+                    }
+                ); 
+            }
+            else {
+                console.log("No existe tal usuario")
+            }
+        });
     };
 
     const comprobarDatos = (e: BaseSyntheticEvent): void => {
@@ -69,8 +83,8 @@ const Login = () => {
     return (
         <div>
             <Typography variant='h2' gutterBottom>Inicie sesión</Typography>
-            <form onSubmit={handleSumbit} style={{ display: 'flex', flexDirection: 'column' }}>
-                <TextField label="Usuario" name='username' onChange={handleInput} helperText={validationUsername} variant="outlined" margin="dense" autoComplete="true"></TextField>
+            <form onSubmit={handleSumbit} style={{ display: 'flex', flexDirection: 'column' }} method="POST" >
+                <TextField label="Usuario" name='userName' onChange={handleInput} helperText={validationUsername} variant="outlined" margin="dense" autoComplete="true"></TextField>
                 <TextField type={tipo} name="password" onChange={handleInput} helperText={validationPassword} label="Contraseña" variant="outlined" margin="dense" autoComplete="true"></TextField>
                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0.5em' }}>
                     <FormControlLabel control={<Checkbox onChange={() => cambiarVisibilidad()} />} label="Mostrar" />
