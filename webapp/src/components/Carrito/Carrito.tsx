@@ -18,29 +18,33 @@ interface Producto {
 
 
 export interface ProductoCarrito {
-  producto: producto;
+  producto: Producto;
   cantidad: number;
   precioTotal: number;
 }
 
-const carrito : ProductoCarrito[] = [];
-
-// function Carrito(productos : Producto[] ) {
-//     this.prdocutos = productos
-// }
-
+// Guarda el producto en la sesión.
+const añadirAlCarrito = (producto: any, carrito: any) => {
+  //const carritoString = sessionStorage.getItem('carrito');
+  carrito.pull(producto);
+  let productoCarrito: ProductoCarrito = { producto: producto, cantidad: producto.cantidad+1, precioTotal: parseFloat(producto.price) };
+  carrito.push(productoCarrito);
+  sessionStorage.setItem('carrito', JSON.stringify(carrito))
+}
 
 // @ts-ignore
 const Carrito = ({productos}) => {
 
   const [open, setOpen] = useState(true);
-  var precio=0;
+  //var precio=0;
 
-    const classes = useStyles();
+   //const classes = useStyles();
     let carrito :any= [];
     let carritoString = sessionStorage.getItem('carrito');
     if (carritoString != null)
         carrito = JSON.parse(carritoString!);
+    
+   
 
     return (
     <>
@@ -63,28 +67,32 @@ const Carrito = ({productos}) => {
             </tr>
           </thead>
           <tbody>
-            {productos.map((producto: Producto) => (
-
+            
+            {carrito.map((producto: ProductoCarrito) => (
+              
               <tr>
-                <td>{producto.name}</td>
-                <td>{producto.price}</td>
-                <td><button type="button" className='unidades'>-</button>
-                      1
-                    <button type="button" className='unidades'>+</button>
+                <td>{producto.producto.name}</td>
+                <td>{producto.precioTotal} €</td>
+                <td><button type="button" className='unidades' >-</button>
+                      {producto.cantidad} 
+                    <button type="button" className='unidades' onClick={() => añadirAlCarrito(producto, carrito)}>+</button>
                 </td>
                 <td><button type="button" className='botonEliminar'>
                 Remove
                 </button>
                 </td>
               </tr>
+              
+              
             ))}
           </tbody>
         </table>
 
           <div>
+            
             <div className="subtotal">
               <p>Subtotal: XXX €</p>
-
+              
             </div>
             <div>
               <button type="button" className="botonComprar" >

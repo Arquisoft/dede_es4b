@@ -6,13 +6,13 @@ import { CardActionArea } from '@mui/material';
 import { producto } from '../../../pages/Catalogo';
 import { ProductoCarrito } from '../../../components/Carrito/Carrito';
 
+
 // Guarda el producto en la sesión.
 const añadirAlCarrito = (producto: any) => {
     const carritoString = sessionStorage.getItem('carrito');
     let carrito = [];
     if (carritoString != null)
         carrito = JSON.parse(carritoString!);
-
     let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };
     carrito.push(productoCarrito);
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
