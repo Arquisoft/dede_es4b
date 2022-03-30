@@ -15,6 +15,10 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Catalogo from "./pages/Catalogo";
 import Login from './pages/login';
+import { SessionProvider} from '@inrupt/solid-ui-react';
+import ButtonPod from './components/pod/ButtonPod'
+
+export const webUrl = "https://localhost:3000";
 
 function App(): JSX.Element {
 
@@ -73,6 +77,7 @@ function App(): JSX.Element {
     //     <Link href="https://github.com/pglez82/asw2122_0">Source code</Link>
     //   </Container>
     // </>
+    <SessionProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/carrito" element={<Carrito productos={productos}/>}/>
@@ -80,6 +85,7 @@ function App(): JSX.Element {
           <Route path="/login" element={<Login/>} />
         </Routes>
       </BrowserRouter>
+    </SessionProvider>
   );
 }
 
