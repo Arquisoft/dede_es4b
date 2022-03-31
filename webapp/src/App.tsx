@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/login';
+import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
 
 export const isLogeado = (): boolean => {
@@ -21,11 +22,12 @@ function App(): JSX.Element {
   const token = getToken();
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='login' element={<Login />} />
-        {/* <Route path="/carrito" element={<Carrito productos={productos} />} /> */}
-        <Route path="productos" element={<Catalogo />} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/carrito" element={<Carrito productos={null}/>}/>
+          <Route path="/productos" element={<Catalogo/>} />
+          <Route path="/login" element={<Login/>} />
       </Routes>
     </BrowserRouter>
   );
