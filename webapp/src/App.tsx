@@ -16,6 +16,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Catalogo from "./pages/Catalogo";
 import Login from './pages/login';
 import CheckOut from './pages/CheckOut';
+import { SessionProvider} from '@inrupt/solid-ui-react';
+import ButtonPod from './components/pod/ButtonPod'
+
+export const webUrl = "https://localhost:3000";
 
 function App(): JSX.Element {
 
