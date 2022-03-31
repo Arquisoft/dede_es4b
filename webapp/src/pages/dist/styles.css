@@ -505,3 +505,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(191, 216, 228);
   border-radius: 15px;
 }
+
+.navBar{
+  background-color: #0891b2;
+}
+
+.botonesBar{
+  margin-left: 2rem;
+}
+
+.userMenu{
+  margin-left: 2rem;
+}
+
+
+.carrito{
+  position: absolute;
+  right: 0;
+}

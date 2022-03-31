@@ -12,6 +12,8 @@ import useStyles from './styles';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
+import '../../pages/dist/styles.css'
+import { createTheme } from '@mui/material';
 
 const NavBar = () => {
     const classes = useStyles();
@@ -26,37 +28,56 @@ const NavBar = () => {
         setAnchorEl(null);
     };
 
+    const theme = createTheme({
+        spacing: 2,
+    });
+
     return(
         <>
-            <AppBar position="static" className={classes.appBar} color="inherit">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title} color="inherit">
-                        DeDethlon
-                    </Typography>
-                    <Box>
-                        <Button className={classes.buttonHome}>
-                            Home
-                        </Button>
-                        <Button className={classes.buttonDeportes}>
-                            Deportes
-                        </Button>
-                        <Button className={classes.buttonHombre}>
-                            Hombre
-                        </Button>
-                        <Button className={classes.buttonMujer}>
-                            Mujer
-                        </Button>
-                        <Button className={classes.buttonNinos}>
-                            Niños
-                        </Button>
-                    </Box>
-                    <Box>
-                        <div>
+            <AppBar position="static" color="inherit">
+                <div className="navBar">
+                    <Toolbar>
+                        <Typography variant="h6" color="inherit">
+                            DeDethlon
+                        </Typography>
+                        <div className="botonesBar">
+                            <Button style={{
+                                backgroundColor: "#FFF",
+                                marginRight: "8px",
+                            }}>
+                                Home
+                            </Button>
+                            <Button style={{
+                                backgroundColor: "#FFF",
+                                marginRight: "8px",
+                            }}>
+                                Deportes
+                            </Button>
+                            <Button style={{
+                                backgroundColor: "#FFF",
+                                marginRight: "8px",
+                            }}>
+                                Hombre
+                            </Button>
+                            <Button style={{
+                                backgroundColor: "#FFF",
+                                marginRight: "8px",
+                            }}>
+                                Mujer
+                            </Button>
+                            <Button  style={{
+                                backgroundColor: "#FFF",
+                                marginRight: "8px",
+                            }}>
+                                Niños
+                            </Button>
+                        </div>
                             <IconButton
                                 onClick={handleMenu}
                                 color="inherit"
+                                
                             >
-                                <Avatar />
+                                <Avatar/>
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -76,14 +97,15 @@ const NavBar = () => {
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                                 <MenuItem onClick={handleClose}>My account</MenuItem>
                             </Menu>
+                        <div className="carrito">
+                            <Tooltip title="Ver carrito">
+                                <IconButton href={"/carrito"} color="inherit">
+                                    <ShoppingCart />
+                                </IconButton>
+                            </Tooltip>
                         </div>
-                        <Tooltip title="Ver carrito">
-                            <IconButton href={"/carrito"} className={classes.cart}>
-                                <ShoppingCart />
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
-                </Toolbar>
+                    </Toolbar>
+                </div>
             </AppBar>
         </>
         

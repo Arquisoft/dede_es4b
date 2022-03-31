@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/login';
 import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
+import Carrito from './components/Carrito/Carrito';
 
 export const isLogeado = (): boolean => {
   return getToken() != null;
