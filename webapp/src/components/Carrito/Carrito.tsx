@@ -30,14 +30,17 @@ const Carrito = ({productos}) => {
 
   
   const [open, setOpen] = useState(true);
-  //var precio=0;
-
-   //const classes = useStyles();
-    let carrito :any= [];
-    let carritoString = sessionStorage.getItem('carrito');
-    if (carritoString != null)
-        carrito = JSON.parse(carritoString!);
-    
+  var precio=0;
+  
+  //const classes = useStyles();
+  let carrito :any= [];
+  let carritoString = sessionStorage.getItem('carrito');
+  if (carritoString != null)
+    carrito = JSON.parse(carritoString!);
+  
+  for (let i = 0; i < carrito.length; i++) {
+    precio += carrito[i].precioTotal;
+  }
   // Guarda el producto en la sesión.
   const añadirAlCarrito = (producto: any, carrito: any) => {
     let borrar=carrito.indexOf(producto);
@@ -72,7 +75,9 @@ const Carrito = ({productos}) => {
       window.location.reload();
     }
   
-
+  const volverCatalogo=()=>{
+    window.location.href="\\productos";
+  }
   console.log(carrito);
     return (
     <>
@@ -119,7 +124,7 @@ const Carrito = ({productos}) => {
           <div>
             
             <div className="subtotal">
-              <p>Subtotal: XXX €</p>
+              <p>Subtotal: {precio} €</p>
               
             </div>
             <div>
@@ -131,7 +136,7 @@ const Carrito = ({productos}) => {
               <p>
                 o
                 <button type="button" className="botonSeguirComprando"
-                  onClick={() => setOpen(false)}> continua comprando
+                  onClick={()=>volverCatalogo()}> continua comprando
                 </button>
               </p>
             </div>
