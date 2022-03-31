@@ -23,18 +23,12 @@ export interface ProductoCarrito {
   precioTotal: number;
 }
 
-// Guarda el producto en la sesión.
-const añadirAlCarrito = (producto: any, carrito: any) => {
-  //const carritoString = sessionStorage.getItem('carrito');
-  carrito.pull(producto);
-  let productoCarrito: ProductoCarrito = { producto: producto, cantidad: producto.cantidad+1, precioTotal: parseFloat(producto.price) };
-  carrito.push(productoCarrito);
-  sessionStorage.setItem('carrito', JSON.stringify(carrito))
-}
+
 
 // @ts-ignore
 const Carrito = ({productos}) => {
 
+  
   const [open, setOpen] = useState(true);
   //var precio=0;
 
@@ -44,8 +38,42 @@ const Carrito = ({productos}) => {
     if (carritoString != null)
         carrito = JSON.parse(carritoString!);
     
-   
+  // Guarda el producto en la sesión.
+  const añadirAlCarrito = (producto: any, carrito: any) => {
+    let borrar=carrito.indexOf(producto);
+    
+    let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad+1, precioTotal: parseFloat(producto.producto.price) };
+    carrito.splice(borrar,1,productoCarrito);
+    //carrito.push(productoCarrito);
+    sessionStorage.setItem('carrito', JSON.stringify(carrito))
+    window.location.reload();
+  }
 
+   // Guarda el producto en la sesión.
+  const eliminarAlCarrito = (producto: any, carrito: any) => {
+    let borrar=carrito.indexOf(producto);
+    if(producto.cantidad===1){
+      carrito.splice(borrar,1);
+    }else{
+      let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad-1, precioTotal: parseFloat(producto.producto.price) };
+      carrito.splice(borrar,1,productoCarrito);
+      //carrito.push(productoCarrito);
+      
+    }
+    sessionStorage.setItem('carrito', JSON.stringify(carrito))
+    window.location.reload();
+  }
+
+    // Guarda el producto en la sesión.
+    const eliminar = (producto: any, carrito: any) => {
+      let borrar=carrito.indexOf(producto);
+      carrito.splice(borrar,1);
+      sessionStorage.setItem('carrito', JSON.stringify(carrito))
+      window.location.reload();
+    }
+  
+
+  console.log(carrito);
     return (
     <>
       <NavBar/>
@@ -73,11 +101,11 @@ const Carrito = ({productos}) => {
               <tr>
                 <td>{producto.producto.name}</td>
                 <td>{producto.precioTotal} €</td>
-                <td><button type="button" className='unidades' >-</button>
+                <td><button type="button" className='unidades' onClick={() => eliminarAlCarrito(producto, carrito)}>-</button>
                       {producto.cantidad} 
                     <button type="button" className='unidades' onClick={() => añadirAlCarrito(producto, carrito)}>+</button>
                 </td>
-                <td><button type="button" className='botonEliminar'>
+                <td><button type="button" className='botonEliminar' onClick={() => eliminar(producto, carrito)}>
                 Remove
                 </button>
                 </td>
