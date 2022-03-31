@@ -11,6 +11,24 @@ const findAllProducts = async (req: Request, res: Response) => {
   
 }
 
+const findByPage = async (req: Request, res: Response) => {
+
+  let limite = 3;
+
+  let desde = Number(req.params.page) * 3;
+
+  const products = await Product.find(req.params.id)
+      .limit(Number(limite))
+      .skip(Number(desde))
+      .catch((error: Error) => {
+        console.log(error);
+        res.status(400).send({msg: "Error al paginar los productos"});
+      });
+
+  return res.status(200).send(products);
+
+}
+
 const findProduct = async (req: Request, res: Response) => {
 
   const product = await Product.findById(req.params.id)
@@ -71,5 +89,6 @@ module.exports = {
   findAllProducts,
   findProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  findByPage
 }
