@@ -14,9 +14,12 @@ import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import '../../pages/dist/styles.css'
 import { createTheme } from '@mui/material';
+import { useNavigate } from 'react-router-dom'
+import { isLogeado } from '../../App';
 
 const NavBar = () => {
     const classes = useStyles();
+    const navigate = useNavigate();
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -25,7 +28,11 @@ const NavBar = () => {
     };
 
     const handleClose = () => {
-        setAnchorEl(null);
+        if(!isLogeado){
+            navigate("/login");
+        } else{
+            setAnchorEl(null);
+        }
     };
 
     const theme = createTheme({
@@ -72,33 +79,33 @@ const NavBar = () => {
                                 Niños
                             </Button>
                         </div>
+                        <div className="parteDerecha">
                             <IconButton
-                                onClick={handleMenu}
-                                color="inherit"
-                                
-                            >
-                                <Avatar/>
-                            </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                                }}
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                            >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>My account</MenuItem>
-                            </Menu>
-                        <div className="carrito">
-                            <Tooltip title="Ver carrito">
+                                    onClick={handleMenu}
+                                    color="inherit"
+                                >
+                                    <Avatar/>
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleClose}
+                                >
+                                    <MenuItem onClick={handleClose}>Mi cuenta</MenuItem>
+                                    <MenuItem onClick={handleClose}>Mis pedidos</MenuItem>
+                                    <MenuItem onClick={handleClose}>Favoritos</MenuItem>
+                                </Menu>
+                                <Tooltip title="Ver carrito">
                                 <IconButton href={"/carrito"} color="inherit">
                                     <ShoppingCart />
                                 </IconButton>
