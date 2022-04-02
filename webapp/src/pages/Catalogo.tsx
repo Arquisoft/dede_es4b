@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
+import { isLogeado } from '../App';
 
 export interface producto {
     ids: number;
@@ -22,6 +23,10 @@ const Catalogo = () => {
     useEffect(() => {
         getProductos()
     }, [])
+
+    if (isLogeado())
+        console.log("conectado");
+    
 
     return (
         <>
