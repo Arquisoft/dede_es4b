@@ -21,6 +21,13 @@ import ButtonPod from './components/pod/ButtonPod'
 
 export const webUrl = "https://localhost:3000";
 
+export const getPodSession = () => {
+  const item = sessionStorage.getItem("podSession");
+  if (item != null)
+    return JSON.parse(item);
+  return null;
+}
+
 function App(): JSX.Element {
 
   const [users, setUsers] = useState<User[]>([]);
@@ -78,7 +85,8 @@ function App(): JSX.Element {
     //     <Link href="https://github.com/pglez82/asw2122_0">Source code</Link>
     //   </Container>
     // </>
-    <BrowserRouter>
+    <SessionProvider>
+      <BrowserRouter>
       <Routes>
         <Route path="/carrito" element={<Carrito productos={productos} />} />
         <Route path="/productos" element={<Catalogo />} />
@@ -86,6 +94,7 @@ function App(): JSX.Element {
         <Route path="/checkout" element={<CheckOut />} />
       </Routes>
     </BrowserRouter>
+    </SessionProvider>
   );
 }
 
