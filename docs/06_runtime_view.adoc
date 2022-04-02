@@ -15,12 +15,10 @@ image::register.png[]
 === Añadir producto al carrito
 ****
 
-El usuario elige un producto a añadir, la vista envía al servidor el código del producto;
-este lo busca en la base de datos para comprobar que existe y si lo devuelve lo añade al carrito,
-luego envía confirmación que se completó la tarea a la vista y esta se lo muestra al cliente.
+El carrito se mantiene en el frontend. El usuario elige un producto a añadir, la aplicación guarda en la sesión el producto y entonces, se realiza un acción de feedback.
 
 [caption="Añadir a carrito"]
-image::Anadir-a-carrito.png[]
+image::Añadir-a-carrito.png[]
 ****
 
 === Logeo de usuario
