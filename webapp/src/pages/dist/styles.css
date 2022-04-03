@@ -505,3 +505,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(191, 216, 228);
   border-radius: 15px;
 }
+
+.contenidoDetalles{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.tituloProducto{
+  margin-left: 2rem
+}

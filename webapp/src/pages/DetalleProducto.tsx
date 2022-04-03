@@ -1,30 +1,63 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { producto } from './Catalogo';
+import { useParams } from 'react-router-dom';
+import './dist/styles.css';
+import { Grid } from '@mui/material';
+import NavBar from '../components/AppBar/NavBar';
 
-const DetalleProducto = (props : any) => {
+const DetalleProducto = () => {
+    const params = useParams();
+    const [product, setProduct] = useState('');
+    const [nombre, setNombre] = useState('');
+    const [short, setShort] = useState('');
+    const [long, setLong] = useState('');
+    const [size, setSize] = useState('');
+    const [price, setPrice] = useState('');
+    const [image, setImage] = useState('');
 
-    const [product, setProduct] = useState<producto[]>([]);
-
-    const productId = props.match.params.productId;
-
-    const getProduct = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list/' + productId)
-
-        setProduct(await respuesta.json());
+    const getProduct = async (params : any) => {
+        let id = params.id;
+        console.log(id);
+        const respuesta = await fetch('http://localhost:5000/product/find/' + id)
+        .then(response =>{
+            if (response?.ok){
+                response.json().then(
+                    data  => {
+                        setProduct(data)
+                        setNombre(data.name);
+                        setImage(data.image)
+                        console.log(data)
+                    }
+                );
+            }
+        })
+        
     }
 
     
 
     useEffect(() => {
-        getProduct();
+        getProduct(params);
     }, [])
 
     return (
-        <div>
-            Detalle
+        <div className="detalles">
+            <header>
+                <NavBar/>
+            </header>
+            <div className="contenidoDetalles">
+                <Grid container>
+                    <Grid item xs={12} sm={6} md={4} lg={3}> 
+                        <img src={image} />
+                    </Grid>
+                    <Grid item>
+                        <h1 className="tituloProducto">{nombre}</h1>
+                    </Grid>
+                </Grid>
+            </div>
         </div>
     )
 }
 
-export default DetalleProducto
+export default DetalleProducto;
