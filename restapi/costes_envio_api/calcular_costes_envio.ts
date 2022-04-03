@@ -89,7 +89,7 @@ module.exports = function (addressTo:object) {
     };
 
 
-    shippo.shipment.create({
+    return shippo.shipment.create({
 
         "address_from": addressFrom,
 
@@ -97,12 +97,12 @@ module.exports = function (addressTo:object) {
 
         "parcels": [parcel],
 
-        "async": false
+        "async": true
 
-    }, function (err: any, shipment: { rates: { amount: Object; }[]; }) {
-        if(err != null)
-            console.log("Ha ocurrido un error al calcular los gastos de envio");
+    }).then ((shipment: any, err : any) => {
+        if (err != null)
+            console.log("Ha ocurrido un error al calcular los gastos de envio: " + err);
 
-        return shipment.rates[0].amount;
+        return shipment?.rates[0].amount;
     });
 }
