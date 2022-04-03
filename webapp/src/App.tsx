@@ -5,6 +5,7 @@ import Login from './pages/login';
 import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
 import Carrito from './components/Carrito/Carrito';
+import DetalleProducto from './pages/DetalleProducto';
 
 export const isLogeado = (): boolean => {
   return getToken() != null;
@@ -29,6 +30,7 @@ function App(): JSX.Element {
           <Route path="/carrito" element={<Carrito productos={null}/>}/>
           <Route path="/productos" element={<Catalogo/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/productos/:id" element={<DetalleProducto/>} />
       </Routes>
     </BrowserRouter>
   );
