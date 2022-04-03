@@ -8,7 +8,8 @@ const {
   findAllProducts,
   findProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+    calculateShippementCost
 } = require("./../controladores/ProductController")
 
 const routerProduct:Router = express.Router();
@@ -55,6 +56,13 @@ routerProduct.put(
     validateFields
   ],
   updateProduct
+);
+
+routerProduct.post(
+    "/shippementCost"
+    ,
+
+    calculateShippementCost
 );
 
 export default routerProduct;

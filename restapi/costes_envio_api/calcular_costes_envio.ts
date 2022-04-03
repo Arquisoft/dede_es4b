@@ -100,8 +100,9 @@ module.exports = function (addressTo:object) {
         "async": false
 
     }, function (err: any, shipment: { rates: { amount: Object; }[]; }) {
+        if(err != null)
+            console.log("Ha ocurrido un error al calcular los gastos de envio");
 
-        console.log(shipment.rates[0].amount);
-
+        return shipment.rates[0].amount;
     });
 }
