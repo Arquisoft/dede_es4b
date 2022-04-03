@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Grid} from '@material-ui/core';
 import ProductoCatalogo from './ProductoCatalogo/ProductoCatalogo';
 import useStyles from './styles';
@@ -6,13 +6,32 @@ import {Button, Divider, Menu, MenuItem, Pagination} from "@mui/material";
 import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
 import { producto } from '../../pages/Catalogo';
+import NavBar from "../AppBar/NavBar";
 
 const ordenarDesc = (lista : producto[]) : producto[] => {
     const products = lista.sort((a, b) => - parseFloat(a.price) + parseFloat(b.price));
     return products;
 }
 
-const ProductosCatalogo = ({productos} : any, setProductos :any) => {
+const ProductosCatalogo = () => {
+
+    const [productos, setProductos] = useState<producto[]>([]);
+
+    const getProductos = async (): Promise<producto[]> => {
+        let respuesta = await fetch('http://localhost:5000/product/list')
+
+        return respuesta.json();
+    }
+
+    const refrescarProductos = async () => {
+        let respuesta = await getProductos();
+
+        setProductos(respuesta);
+    }
+
+    useEffect(() => {
+        refrescarProductos();
+    }, [])
 
 
     // Ordenar
