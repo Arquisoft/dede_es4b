@@ -45,7 +45,7 @@ const Carrito = ({productos}) => {
   const añadirAlCarrito = (producto: any, carrito: any) => {
     let borrar=carrito.indexOf(producto);
     
-    let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad+1, precioTotal: parseFloat(producto.producto.price) };
+    let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad+1, precioTotal: parseFloat(producto.producto.price)*(producto.cantidad+1)};
     carrito.splice(borrar,1,productoCarrito);
     //carrito.push(productoCarrito);
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
@@ -58,7 +58,7 @@ const Carrito = ({productos}) => {
     if(producto.cantidad===1){
       carrito.splice(borrar,1);
     }else{
-      let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad-1, precioTotal: parseFloat(producto.producto.price) };
+      let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad-1, precioTotal: parseFloat(producto.producto.price)*(producto.cantidad-1) };
       carrito.splice(borrar,1,productoCarrito);
       //carrito.push(productoCarrito);
       
@@ -81,10 +81,11 @@ const Carrito = ({productos}) => {
   console.log(carrito);
     return (
     <>
-      <NavBar/>
+
       <div>
         <header>
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <NavBar/>
+          <div>
             <h1>Carrito de la compra</h1>
           </div>
         </header>

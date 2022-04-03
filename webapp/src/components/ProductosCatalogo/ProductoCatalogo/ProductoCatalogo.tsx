@@ -17,17 +17,19 @@ const añadirAlCarrito = (producto: any) => {
    
     let borrar=-1;
     let c=0;
+    let p=0;
     carrito.forEach(function(value:any,index:any){
         
         if(value.producto._id===producto._id){
             borrar=index;
             c=value.cantidad;
+
         }
     });
     
     
     if(borrar>=0){
-        let productoCarrito: ProductoCarrito = { producto: producto, cantidad: c+1, precioTotal: parseFloat(producto.price) };
+        let productoCarrito: ProductoCarrito = { producto: producto, cantidad: c+1, precioTotal: parseFloat(producto.price)*c };
          
         carrito.splice(borrar,1,productoCarrito);
     }else{
