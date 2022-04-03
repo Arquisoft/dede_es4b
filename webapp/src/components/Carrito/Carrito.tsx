@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import NavBar from "../AppBar/NavBar";
 import '../dist/css/styles.css';
 
@@ -20,7 +21,7 @@ export interface ProductoCarrito {
 
 // @ts-ignore
 const Carrito = () => {
-
+  const navigate = useNavigate();
   var precio=0;
   
   //const classes = useStyles();
@@ -120,7 +121,7 @@ const Carrito = () => {
               
             </div>
             <div>
-              <button type="button" className="botonComprar" >
+              <button type="button" className="botonComprar" onClick={()=>navigate("/checkout")} >
                 Comprar
               </button>
             </div>
