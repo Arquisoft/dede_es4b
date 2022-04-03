@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 const Product = require('../models/product')
+const CalculateShippingCost = require('../costes_envio_api/calcular_costes_envio')
 
 //funciones
 const findAllProducts = async (req: Request, res: Response) => {
@@ -84,11 +85,24 @@ const addProduct = async (req: Request, res: Response) => {
   }
 }
 
+const calculateShippementCost = async (req: Request, res: Response) => {
+  const addressTo = req.body;
+  let shippementCost = -1;
+
+  try{
+    shippementCost = CalculateShippingCost(addressTo)
+    return res.status(200).send(shippementCost);
+  } catch (e){
+    console.log(e);
+    res.status(400).send({msg:"Fallo al calcular costes de envio"});
+  }
+}
+
 module.exports = {
   addProduct,
   findAllProducts,
   findProduct,
   updateProduct,
   deleteProduct,
-  findByPage
+  calculateShippementCost
 }

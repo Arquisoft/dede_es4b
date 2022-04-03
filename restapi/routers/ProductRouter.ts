@@ -9,7 +9,7 @@ const {
   findProduct,
   updateProduct,
   deleteProduct,
-  findByPage
+    calculateShippementCost
 } = require("./../controladores/ProductController")
 
 const routerProduct:Router = express.Router();
@@ -18,11 +18,6 @@ const routerProduct:Router = express.Router();
 routerProduct.get(
   "/list",
   findAllProducts
-);
-
-routerProduct.get(
-    "/list/:page",
-    findByPage
 );
 
 routerProduct.get(
@@ -61,6 +56,13 @@ routerProduct.put(
     validateFields
   ],
   updateProduct
+);
+
+routerProduct.post(
+    "/shippementCost"
+    ,
+
+    calculateShippementCost
 );
 
 export default routerProduct;
