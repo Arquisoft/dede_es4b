@@ -2,12 +2,11 @@ import React from 'react';
 import ButtonPod from '../pod/ButtonPod';
 import { useSession } from '@inrupt/solid-ui-react';
 
-const ConectarPod = ({setLogeado} : any) => {
+const ConectarPod = () => {
     const { session } = useSession();
 
     session.onLogin(()=>{
         sessionStorage.setItem("podSession", JSON.stringify(session));
-        setLogeado(true);
     })
 
     return (

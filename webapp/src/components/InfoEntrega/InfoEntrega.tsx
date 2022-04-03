@@ -1,18 +1,7 @@
-import React from 'react';
-import { CombinedDataProvider, Text, useThing } from '@inrupt/solid-ui-react';
-import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
-import { getPodSession } from '../../App';
+import { CombinedDataProvider, Text } from '@inrupt/solid-ui-react';
+import { VCARD } from "@inrupt/lit-generated-vocab-common";
 
-
-const DeliveryInfo = ({ coste }: { coste: number }) => {
-
-    const session = getPodSession();
-    const { webId } = session.info;
-
-    const addressPredicate = "http://www.w3.org/2006/vcard/ns#hasAddress";
-
-    const { thing, error } = useThing(webId, webId);
-    let urlAddress = thing?.predicates[addressPredicate].namedNodes![0];
+const DeliveryInfo = ({ direccion, webId, costePedido }: any) => {
 
     return (
         <span className="sm:ml-3">
@@ -30,36 +19,32 @@ const DeliveryInfo = ({ coste }: { coste: number }) => {
                             </div>
                         </CombinedDataProvider>
 
-                        <CombinedDataProvider datasetUrl={webId!} thingUrl={urlAddress!}>
-                            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt className="text-sm font-medium text-gray-500">Dirección de envío</dt>
-                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{<Text property={VCARD.street_address.iri.value} />}</dd>
+                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium text-gray-500">Dirección de envío</dt>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{direccion?.street1}</dd>
+                        </div>
+                        <div className='flex' >
+                            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt className="text-sm font-medium text-gray-500">Ciudad</dt>
+                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    {direccion?.city + " "}
+                                </dd>
                             </div>
-                            <div className='flex' >
-                                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Ciudad</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <Text property={VCARD.locality.iri.value} />
-                                        <Text property={VCARD.region.iri.value} />
-                                    </dd>
-                                </div>
-                                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Código postal</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><Text property={VCARD.postal_code.iri.value} /></dd>
-                                </div>
+                            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt className="text-sm font-medium text-gray-500">Código postal</dt>
+                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{direccion?.zip}</dd>
                             </div>
-                        </CombinedDataProvider>
+                        </div>
 
                         <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Coste total</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{coste} €</dd>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{costePedido} €</dd>
                         </div>
                     </dl>
                 </div>
             </div>
-
         </span>
     );
-}
+};
 
-export default DeliveryInfo
+export default DeliveryInfo;
