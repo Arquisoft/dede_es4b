@@ -24,6 +24,7 @@ const login = async (req: Request, res: Response) => {
       const userToken = {
         id: user._id,
         userName: req.body.userName,
+        role: user.role
       }
     
       const tokenSecret = process.env.SECRET

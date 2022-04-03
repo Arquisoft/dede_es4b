@@ -4,6 +4,11 @@ import {check} from 'express-validator';
 const {validateFields} = require("../validadores/validador");
 
 const {
+    exitsUser,
+    hasAutorization
+} = require("../validadores/UserValidator");
+
+const {
   register,
   findAllUser,
   findUser,
@@ -25,14 +30,19 @@ routerUser.get(
 );
 
 routerUser.delete(
-  "/delete/:id",
+  "/delete/:id",[
+      exitsUser,
+      hasAutorization
+  ],
   deleteUser
 );
 
 routerUser.post(
   "/register"
     ,[
-        //Todo
+    check('name').isLength({ min: 1 }).trim().escape(),
+    check('surname').isLength({ min: 1 }).trim().escape(),
+    check('userName').isLength({ min: 1 }).trim().escape(),
     validateFields
   ],
   register
@@ -40,7 +50,9 @@ routerUser.post(
 
 routerUser.put(
   "/update/:id",[
-        //Todo
+    check('name').isLength({ min: 1 }).trim().escape(),
+    check('surname').isLength({ min: 1 }).trim().escape(),
+    exitsUser,
     validateFields
   ],
   updateUser
