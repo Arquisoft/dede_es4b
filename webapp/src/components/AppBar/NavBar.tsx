@@ -1,121 +1,160 @@
-import * as React from 'react';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import AppBar from '@mui/material/AppBar';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import { Tooltip } from '@mui/material';
-import makeStyles from '@mui/material/styles/makeStyles';
-import { ShoppingCart } from '@mui/icons-material';
-import useStyles from './styles';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
-import '../../pages/dist/styles.css'
-import { createTheme } from '@mui/material';
-import { useNavigate } from 'react-router-dom'
-import { isLogeado } from '../../App';
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { ShoppingCartIcon } from '@heroicons/react/outline'
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
-    const classes = useStyles();
-    const navigate = useNavigate();
 
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const navigate = useNavigate()
 
-    const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
+    const navigation = [
+        { name: 'Home', href: '/', current: true },
+        { name: 'Catalogo', href: '/productos', current: false },
+        { name: 'Hombre', href: '#', current: false },
+        { name: 'Mujer', href: '#', current: false },
+        { name: 'Niños', href: '#', current: false },
+    ]
 
-    const handleClose = () => {
-        if(!isLogeado){
-            navigate("/login");
-        } else{
-            setAnchorEl(null);
-        }
-    };
+    function classNames(...classes: string[]) {
+        return classes.filter(Boolean).join(' ')
+    }
 
-    const theme = createTheme({
-        spacing: 2,
-    });
-
-    return(
-        <>
-            <AppBar position="static" color="inherit">
-                <div className="navBar">
-                    <Toolbar>
-                        <Typography variant="h6" color="inherit">
-                            DeDethlon
-                        </Typography>
-                        <div className="botonesBar">
-                            <Button style={{
-                                backgroundColor: "#FFF",
-                                marginRight: "8px",
-                            }}>
-                                Home
-                            </Button>
-                            <Button style={{
-                                backgroundColor: "#FFF",
-                                marginRight: "8px",
-                            }}>
-                                Deportes
-                            </Button>
-                            <Button style={{
-                                backgroundColor: "#FFF",
-                                marginRight: "8px",
-                            }}>
-                                Hombre
-                            </Button>
-                            <Button style={{
-                                backgroundColor: "#FFF",
-                                marginRight: "8px",
-                            }}>
-                                Mujer
-                            </Button>
-                            <Button  style={{
-                                backgroundColor: "#FFF",
-                                marginRight: "8px",
-                            }}>
-                                Niños
-                            </Button>
-                        </div>
-                        <div className="parteDerecha">
-                            <IconButton
-                                    onClick={handleMenu}
-                                    color="inherit"
+// Cortesía de tailwindui.com
+    return (
+        <Disclosure as="nav" className="bg-gray-800">
+            {({ open }) => (
+                <>
+                    <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+                        <div className="relative flex items-center justify-between h-16">
+                            <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                                <div className="flex-shrink-0 flex items-center">
+                                    <img
+                                        className="block h-10 w-auto mr-2 "
+                                        src="http://localhost:3000/images/logo.png"
+                                        alt="Workflow"
+                                    />
+                                    <h3 className="text-2xl tracking-tight font-extrabold text-purple-700">
+                                        DEDETHLON
+                                    </h3>
+                                </div>
+                                <div className="hidden sm:block sm:ml-6">
+                                    <div className="flex space-x-4">
+                                        {navigation.map((item) => (
+                                            <a
+                                                key={item.name}
+                                                href={item.href}
+                                                className={classNames(
+                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                    'px-3 py-2 rounded-md text-sm font-medium'
+                                                )}
+                                                aria-current={item.current ? 'page' : undefined}
+                                            >
+                                                {item.name}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                                <button
+                                    onClick={() => navigate("/carrito")}
+                                    type="button"
+                                    className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                                 >
-                                    <Avatar/>
-                                </IconButton>
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorEl}
-                                    anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                    }}
-                                    keepMounted
-                                    transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                    }}
-                                    open={Boolean(anchorEl)}
-                                    onClose={handleClose}
-                                >
-                                    <MenuItem onClick={handleClose}>Mi cuenta</MenuItem>
-                                    <MenuItem onClick={handleClose}>Mis pedidos</MenuItem>
-                                    <MenuItem onClick={handleClose}>Favoritos</MenuItem>
+                                    <span className="sr-only">View notifications</span>
+                                    <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                                </button>
+
+                                {/* Profile dropdown */}
+                                <Menu as="div" className="ml-3 relative">
+                                    <div>
+                                        <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                                            <span className="sr-only">Open user menu</span>
+                                            <img
+                                                className="h-8 w-8 rounded-full"
+                                                src="http://localhost:3000/images/user_icon.png"
+                                                alt="user_icon"
+                                            />
+                                        </Menu.Button>
+                                    </div>
+                                    <Transition
+                                        as={Fragment}
+                                        enter="transition ease-out duration-100"
+                                        enterFrom="transform opacity-0 scale-95"
+                                        enterTo="transform opacity-100 scale-100"
+                                        leave="transition ease-in duration-75"
+                                        leaveFrom="transform opacity-100 scale-100"
+                                        leaveTo="transform opacity-0 scale-95"
+                                    >
+                                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <a
+                                                        href="#"
+                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    >
+                                                        Mi cuenta
+                                                    </a>
+                                                )}
+                                            </Menu.Item>
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <a
+                                                        href="#"
+                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    >
+                                                        Mis pedidos
+                                                    </a>
+                                                )}
+                                            </Menu.Item>
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <a
+                                                        href="#"
+                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    >
+                                                        Favoritos
+                                                    </a>
+                                                )}
+                                            </Menu.Item>
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <a
+                                                        href="#"
+                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    >
+                                                        Cerrar sesión
+                                                    </a>
+                                                )}
+                                            </Menu.Item>
+                                        </Menu.Items>
+                                    </Transition>
                                 </Menu>
-                                <Tooltip title="Ver carrito">
-                                <IconButton href={"/carrito"} color="inherit">
-                                    <ShoppingCart />
-                                </IconButton>
-                            </Tooltip>
+                            </div>
                         </div>
-                    </Toolbar>
-                </div>
-            </AppBar>
-        </>
-        
-    );
+                    </div>
+
+                    <Disclosure.Panel className="sm:hidden">
+                        <div className="px-2 pt-2 pb-3 space-y-1">
+                            {navigation.map((item) => (
+                                <Disclosure.Button
+                                    key={item.name}
+                                    as="a"
+                                    href={item.href}
+                                    className={classNames(
+                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        'block px-3 py-2 rounded-md text-base font-medium'
+                                    )}
+                                    aria-current={item.current ? 'page' : undefined}
+                                >
+                                    {item.name}
+                                </Disclosure.Button>
+                            ))}
+                        </div>
+                    </Disclosure.Panel>
+                </>
+            )}
+        </Disclosure>
+    )
 };
 export default NavBar;
