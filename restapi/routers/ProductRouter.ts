@@ -34,14 +34,19 @@ routerProduct.get(
 
 routerProduct.get(
   "/find/:id",
+  [
+    exitsProduct
+  ],
   findProduct,
-  exitsProduct
+
 );
 
 routerProduct.delete(
   "/delete/:id",
-  validPrice,
-  exitsProduct,
+  [
+    validPrice,
+    exitsProduct
+  ],
   deleteProduct
 );
 
@@ -81,9 +86,7 @@ routerProduct.put(
 );
 
 routerProduct.post(
-    "/shippementCost"
-    ,
-
+    "/shippementCost",
     calculateShippementCost
 );
 

@@ -11,14 +11,14 @@ const login = async (req: Request, res: Response) => {
   
   if(!user){
 
-    res.status(401).json({ error: "invalid user " })
+    res.status(401).json({ error: "invalid user or password" })
     
   } else {
 
     const samePassword = await bcrypt.compare(req.body.password, user.password)
     
     if(!samePassword){
-      res.status(401).json({ error: "invalid password" })
+      res.status(401).json({ error: "invalid user or password" })
     } else {
 
       const userToken = {
