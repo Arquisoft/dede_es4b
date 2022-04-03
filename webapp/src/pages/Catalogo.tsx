@@ -15,13 +15,13 @@ const Catalogo = () => {
     const [productos, setProductos] = useState<producto[]>([]);
 
     const getProductos = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list')
+        const respuesta = await fetch('http://localhost:5000/product/list');
 
         setProductos(await respuesta.json());
     }
 
     useEffect(() => {
-        getProductos()
+        getProductos();
     }, [])
 
     if (isLogeado())
@@ -31,7 +31,7 @@ const Catalogo = () => {
     return (
         <>
             <NavBar/>
-            <ProductosCatalogo productos={productos} setProductos={setProductos}/>
+            <ProductosCatalogo productos={productos}/>
         </>
     );
 }
