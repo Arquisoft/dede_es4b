@@ -1,11 +1,4 @@
-import React, { useEffect } from 'react'
-import {Container, Typography, Button, Grid} from '@material-ui/core';
-import useStyles from './styles';
-import CarritoItem from './CarritoItem/CarritoItem'
 import NavBar from "../AppBar/NavBar";
-import { Fragment, useState } from 'react'
-import { Disclosure, Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
 import '../dist/css/styles.css';
 
 interface Producto {
@@ -26,10 +19,8 @@ export interface ProductoCarrito {
 
 
 // @ts-ignore
-const Carrito = ({productos}) => {
+const Carrito = () => {
 
-  
-  const [open, setOpen] = useState(true);
   var precio=0;
   
   //const classes = useStyles();
@@ -125,7 +116,7 @@ const Carrito = ({productos}) => {
           <div>
             
             <div className="subtotal">
-              <p>Subtotal: {precio} €</p>
+              <p>Subtotal: {precio.toFixed(2)} €</p>
               
             </div>
             <div>
