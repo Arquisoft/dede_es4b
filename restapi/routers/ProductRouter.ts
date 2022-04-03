@@ -9,6 +9,7 @@ const {
   findProduct,
   updateProduct,
   deleteProduct,
+    calculateShippementCost,
   findByPage
 } = require("./../controladores/ProductController")
 
@@ -61,6 +62,13 @@ routerProduct.put(
     validateFields
   ],
   updateProduct
+);
+
+routerProduct.post(
+    "/shippementCost"
+    ,
+
+    calculateShippementCost
 );
 
 export default routerProduct;
