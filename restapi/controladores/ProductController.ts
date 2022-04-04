@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 const Product = require('../models/product')
+const CalculateShippingCost = require('../costes_envio_api/calcular_costes_envio')
 
 //funciones
 const findAllProducts = async (req: Request, res: Response) => {
@@ -9,6 +10,24 @@ const findAllProducts = async (req: Request, res: Response) => {
   
   return res.status(200).send(products);
   
+}
+
+const findByPage = async (req: Request, res: Response) => {
+
+  let limite = 5;
+
+  let desde = Number(req.params.page) * 5;
+
+  const products = await Product.find(req.params.id)
+      .limit(Number(limite))
+      .skip(Number(desde))
+      .catch((error: Error) => {
+        console.log(error);
+        res.status(400).send({msg: "Error al paginar los productos"});
+      });
+
+  return res.status(200).send(products);
+
 }
 
 const findProduct = async (req: Request, res: Response) => {
@@ -50,10 +69,17 @@ const addProduct = async (req: Request, res: Response) => {
   //creamos nuevo producto
   const product = new Product({
     name:productData.name,
-    section:productData.section,
-    description:productData.description,
     price:productData.price,
-    image:productData.image 
+    short_description:productData.short_description,
+    long_description:productData.long_description,
+    brand:productData.brand,
+    category:productData.category,
+    sub_category:productData.sub_category,
+    image:productData.image,
+
+    type:productData.type,
+    color:productData.color,
+    size:productData.size
   });
 
   //lo guardamos
@@ -66,10 +92,27 @@ const addProduct = async (req: Request, res: Response) => {
   }
 }
 
+const calculateShippementCost = async (req: Request, res: Response) => {
+  const addressTo = req.body;
+  let shippementCost = -1;
+
+  try{
+    console.log(shippementCost)
+    shippementCost = CalculateShippingCost.calculate(addressTo);
+    console.log(shippementCost)
+    return res.status(200).send(shippementCost);
+  } catch (e){
+    console.log(e);
+    res.status(400).send({msg:"Fallo al calcular costes de envio"});
+  }
+}
+
 module.exports = {
   addProduct,
   findAllProducts,
   findProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  findByPage,
+  calculateShippementCost
 }

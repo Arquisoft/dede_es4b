@@ -14,5 +14,5 @@
 [options="header"]
 |===
 | Deuda Técnica         | Solución     
-|                       |
+| Token de API hardcodeado | Moverlo a el .env
 |===
