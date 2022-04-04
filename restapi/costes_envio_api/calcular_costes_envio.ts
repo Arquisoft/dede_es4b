@@ -89,6 +89,7 @@ module.exports = {
 
     amount:0,
 
+    return shippo.shipment.create({
 
     calculate: function (addressTo: Object) {
         shippo.shipment.create({
@@ -97,19 +98,12 @@ module.exports = {
 
             "address_to": addressTo,
 
-            "parcels": [this.parcel],
+        "async": true
 
-            "async": false
+    }).then ((shipment: any, err : any) => {
+        if (err != null)
+            console.log("Ha ocurrido un error al calcular los gastos de envio: " + err);
 
-        }, (err: any, shipment: any) => {
-            if (err != null)
-                console.log("Ha ocurrido un error al calcular los gastos de envio");
-
-            console.log('Rate original = ' + shipment.rates[0].amount)
-
-            this.amount = shipment.rates[0].amount;
-        })
-
-        return this.amount
-    }
+        return shipment?.rates[0].amount;
+    });
 }

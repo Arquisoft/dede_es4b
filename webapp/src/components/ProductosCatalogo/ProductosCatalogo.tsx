@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Grid} from '@material-ui/core';
 import ProductoCatalogo from './ProductoCatalogo/ProductoCatalogo';
 import useStyles from './styles';
@@ -7,17 +7,7 @@ import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
 import { producto } from '../../pages/Catalogo';
 
-const ordenarAsc = (lista : producto[]) : producto[] => {
-    const products = lista.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-    return products;
-}
-
-const ordenarDesc = (lista : producto[]) : producto[] => {
-    const products = lista.sort((a, b) => - parseFloat(a.price) + parseFloat(b.price));
-    return products;
-}
-
-const ProductosCatalogo = ({productos} : any, setProductos :any) => {
+const ProductosCatalogo = ({productos} : {productos : producto[]}) => {
 
 
     // Ordenar
@@ -31,6 +21,16 @@ const ProductosCatalogo = ({productos} : any, setProductos :any) => {
        // TODO
         setOpen(null)
     };
+
+    const ordenarAsc = (lista : producto[]) => {
+        lista.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        handleClose();
+    }
+    
+    const ordenarDesc = (lista : producto[])  => {
+        lista.sort((a, b) => - parseFloat(a.price) + parseFloat(b.price));
+        handleClose();
+    }
 
     const classes = useStyles();
     return (
@@ -56,8 +56,8 @@ const ProductosCatalogo = ({productos} : any, setProductos :any) => {
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                 >
-                    <MenuItem onClick={() => setProductos(ordenarAsc(productos))}>Precio ascendente</MenuItem>
-                    <MenuItem onClick={() => setProductos(ordenarDesc(productos))}>Precio descendente</MenuItem>
+                    <MenuItem onClick={() => ordenarAsc(productos)}>Precio ascendente</MenuItem>
+                    <MenuItem onClick={() => ordenarDesc(productos)}>Precio descendente</MenuItem>
                 </Menu>
                 <Grid container justifyContent="center" spacing={1}>
                     {productos.map((producto : any) => (
