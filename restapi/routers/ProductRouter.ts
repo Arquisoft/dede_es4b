@@ -15,8 +15,8 @@ const {
   findProduct,
   updateProduct,
   deleteProduct,
-  calculateShippementCost,
-  findByPage
+  findByPage,
+  calculateShippementCost
 } = require("./../controladores/ProductController")
 
 const routerProduct:Router = express.Router();
@@ -25,11 +25,6 @@ const routerProduct:Router = express.Router();
 routerProduct.get(
   "/list",
   findAllProducts
-);
-
-routerProduct.get(
-    "/list/:page",
-    findByPage
 );
 
 routerProduct.get(
