@@ -3,8 +3,10 @@ import express, { Application } from 'express';
 import * as http from 'http';
 import bp from 'body-parser';
 import cors from 'cors';
-import api from '../api';
 import productRouter from "../routers/ProductRouter";
+import loginRouter from "../routers/LoginRouter";
+import userRouter from "../routers/UserRouter";
+
 
 let app:Application;
 let server:http.Server;
@@ -29,6 +31,8 @@ beforeAll(async () => {
     })
 
     app.use("/product", productRouter)
+    app.use("/login", loginRouter)
+    app.use("/user", userRouter)
 
     server = app.listen(port, ():void => {
         console.log('Restapi server for testing listening on '+ port);
@@ -59,7 +63,7 @@ describe('products', () => {
         expect(response.statusCode).toBe(200);
     });
 
-
+    /*
     it('Can get shipping cost given a correct direcction', async () => {
         let addressTo:Object = {
             "street1": "Gonzalez besada, 4, 3A",
@@ -75,6 +79,67 @@ describe('products', () => {
         expect(response.statusCode).toBe(200);
         expect(response.body).toEqual(56.53);
     })
+
+     */
+
+
+});
+
+describe('login', () => {
+
+    it('An existent user login', async () => {
+
+        let loginData:Object = {
+            userName : "ana@email.com",
+            password : "123456"
+        };
+
+        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+        expect(response.body.userName).toEqual("ana@email.com");
+        expect(response.body.token).toBeDefined();
+
+
+    });
+
+    it('An inexistent user login', async () => {
+
+        let loginData:Object = {
+            userName : "a",
+            password : "123456"
+        };
+
+        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(401);
+    });
+
+    it('An existent user login with an incorrect password', async () => {
+
+        let loginData:Object = {
+            userName : "ana@email.com",
+            password : "1"
+        };
+
+        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(401);
+    });
+
+});
+
+describe('user', () => {
+
+    it('Get all user list', async () => {
+
+        const response:Response = await request(app).get('/user/list');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
 
 
 });
