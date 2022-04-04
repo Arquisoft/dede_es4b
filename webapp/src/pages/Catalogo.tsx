@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
+import { isLogeado } from '../App';
 
 export interface producto {
     ids: number;
@@ -14,19 +15,23 @@ const Catalogo = () => {
     const [productos, setProductos] = useState<producto[]>([]);
 
     const getProductos = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list')
+        const respuesta = await fetch('http://localhost:5000/product/list');
 
         setProductos(await respuesta.json());
     }
 
     useEffect(() => {
-        getProductos()
+        getProductos();
     }, [])
+
+    if (isLogeado())
+        console.log("conectado");
+    
 
     return (
         <>
             <NavBar/>
-            <ProductosCatalogo productos={productos} setProductos={setProductos}/>
+            <ProductosCatalogo productos={productos}/>
         </>
     );
 }

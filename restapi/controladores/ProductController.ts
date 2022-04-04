@@ -14,9 +14,9 @@ const findAllProducts = async (req: Request, res: Response) => {
 
 const findByPage = async (req: Request, res: Response) => {
 
-  let limite = 5;
+  let limite = 3;
 
-  let desde = Number(req.params.page) * 5;
+  let desde = Number(req.params.page) * 3;
 
   const products = await Product.find(req.params.id)
       .limit(Number(limite))
@@ -97,10 +97,9 @@ const calculateShippementCost = async (req: Request, res: Response) => {
   let shippementCost = -1;
 
   try{
-    console.log(shippementCost)
-    shippementCost = CalculateShippingCost.calculate(addressTo);
-    console.log(shippementCost)
-    return res.status(200).send(shippementCost);
+    shippementCost = await CalculateShippingCost(addressTo)
+
+    return res.status(200).send({coste: shippementCost});
   } catch (e){
     console.log(e);
     res.status(400).send({msg:"Fallo al calcular costes de envio"});

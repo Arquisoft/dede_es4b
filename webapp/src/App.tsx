@@ -2,7 +2,14 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/login';
+import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
+import Carrito from './components/Carrito/Carrito';
+import CheckOut from './pages/CheckOut';
+import { SessionProvider} from '@inrupt/solid-ui-react';
+
+export const webUrl = "https://localhost:3000";
+
 
 export const isLogeado = (): boolean => {
   return getToken() != null;
@@ -17,17 +24,27 @@ function getToken(): string | null {
   return null;
 }
 
+export const getPodSession = () => {
+  const item = sessionStorage.getItem("podSession");
+  if (item != null)
+    return JSON.parse(item);
+  return null;
+}
+
 function App(): JSX.Element {
-  const token = getToken();
 
   return (
-    <BrowserRouter>
+    <SessionProvider>
+      <BrowserRouter>
       <Routes>
-        <Route path='login' element={<Login />} />
-        {/* <Route path="/carrito" element={<Carrito productos={productos} />} /> */}
-        <Route path="productos" element={<Catalogo />} />
+      <Route path="/" element={<Home />} />
+        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/productos" element={<Catalogo />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/checkout" element={<CheckOut />} />
       </Routes>
     </BrowserRouter>
+    </SessionProvider>
   );
 }
 
