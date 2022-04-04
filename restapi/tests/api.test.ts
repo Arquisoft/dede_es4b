@@ -42,9 +42,11 @@ afterAll(async () => {
 })
 
 describe('products', () => {
+    let idAddedProduct:any;
 
     it('Can add a new product', async () => {
         let productData:Object = {
+            _id:idAddedProduct,
             name:'test1',
             price: 1.0,
             short_description: 'Test short_description',
@@ -56,9 +58,30 @@ describe('products', () => {
         };
 
         const response:Response = await request(app).post('/product/add').send(productData).set('Accept', 'application/json');
+        idAddedProduct = response.body._id;
         expect(response.statusCode).toBe(200);
     });
 
+    it('Can update an existing  product', async ()=>{
+        let productData:Object = {
+            name:'test2UPDATE',
+            price: 1.0,
+            short_description: 'Test short_descriptionUPDATE',
+            long_description:'Test long_descriptionUPDATE',
+            brand:'Test brandUPDATE',
+            category:'Ténis',
+            sub_category:'Ropa'
+        };
+
+        const response:Response = await request(app).put('/product/update/' + idAddedProduct).send(productData).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Producto actualizado");
+    })
+
+    it('Can delete an existing  product', async ()=>{
+        const response:Response = await request(app).delete('/product/delete/' + idAddedProduct).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+    })
 
     it('Can get shipping cost given a correct direcction', async () => {
         let addressTo:Object = {
