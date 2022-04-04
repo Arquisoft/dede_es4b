@@ -1,7 +1,7 @@
 var shippo = require('shippo')('shippo_test_5df10c0c144011a7d039c65239a0c93830d99a28');
 
-module.exports = function (addressTo:object) {
-    var addressFrom = {
+module.exports = {
+    addressFrom: {
 
         "name": "Shawn Ippotle",
 
@@ -15,7 +15,7 @@ module.exports = function (addressTo:object) {
 
         "country": "US"
 
-    };
+    },
 
 
     /*
@@ -71,8 +71,7 @@ module.exports = function (addressTo:object) {
 
      */
 
-
-    var parcel = {
+    parcel: {
 
         "length": "5",
 
@@ -86,23 +85,31 @@ module.exports = function (addressTo:object) {
 
         "mass_unit": "lb"
 
-    };
+    },
+
+    amount:0,
 
 
-    shippo.shipment.create({
+    calculate: function (addressTo: Object) {
+        shippo.shipment.create({
 
-        "address_from": addressFrom,
+            "address_from": this.addressFrom,
 
-        "address_to": addressTo,
+            "address_to": addressTo,
 
-        "parcels": [parcel],
+            "parcels": [this.parcel],
 
-        "async": false
+            "async": false
 
-    }, function (err: any, shipment: { rates: { amount: Object; }[]; }) {
-        if(err != null)
-            console.log("Ha ocurrido un error al calcular los gastos de envio");
+        }, (err: any, shipment: any) => {
+            if (err != null)
+                console.log("Ha ocurrido un error al calcular los gastos de envio");
 
-        return shipment.rates[0].amount;
-    });
+            console.log('Rate original = ' + shipment.rates[0].amount)
+
+            this.amount = shipment.rates[0].amount;
+        })
+
+        return this.amount
+    }
 }

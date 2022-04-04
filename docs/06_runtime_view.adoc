@@ -15,19 +15,18 @@ image::register.png[]
 === Añadir producto al carrito
 ****
 
-El usuario elige un producto a añadir, la vista envía al servidor el código del producto;
-este lo busca en la base de datos para comprobar que existe y si lo devuelve lo añade al carrito,
-luego envía confirmación que se completó la tarea a la vista y esta se lo muestra al cliente.
+El usuario elige un producto a añadir, se añade en el carrito
 
 [caption="Añadir a carrito"]
-image::Anadir-a-carrito.png[]
+image::Añadir-a-carrito.png[]
 ****
 
 === Logeo de usuario
 ****
 
 El usuario pulsa en el botón de loguearse, ahí introduce su nombre de usuario y contraseña, si existe
-el usuario en la base de datos y la contraseña es correcta, le devolverá a la página de inicio. Si no mostrará un error
+el usuario en la base de datos y la contraseña es correcta, le devolverá a la página de inicio.
+Si no se mantendrá en la vista de login
 
 [caption="Login"]
 image::Login.png[]
@@ -66,9 +65,9 @@ image::DiagramaSecuencia-VerPedidoV1.png[]
 ****
 |===
 | **Componente** | **Descripción**
-| _Usuario_ | _Usuario de la aplicación_
-| _WebApp_ | _Parte de aplicación que se ejecuta en el navegador del cliente_
-| _Server_ | _Servidor remoto de la aplicación_
-| _MongoDb_ | _Base de datos de la aplicación_
+| _Usuario_ |_Usuario de la aplicación_
+| _WebApp_ |_Parte de aplicación que se ejecuta en el navegador del cliente_
+| _Server_ |_Servidor remoto de la aplicación_
+| _MongoDb_ |_Base de datos de la aplicación_
 |===
 ****

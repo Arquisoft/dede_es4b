@@ -16,4 +16,6 @@ a las páginas webs y crear aplicaciones web.
 | SOLID | Tecnología para organizar apps, información e identidades de forma descentralizada
 | Node  | Es un entorno de ejecución para programas escritos en JavaScript
 | Pod | Contenedor de datos de un usuario el cual tiene que dar permiso para que las aplicaciones accedan a él
+|Shippo API| API para la consulta de gastos de envio
+|MongoDB Atlas| Nube de MongoDB donde está hosteada la base de datos
 |===

@@ -11,6 +11,8 @@ Las tecnologías usadas en nuestra aplicación van a ser las siguientes:
 * Solid: nuestra aplicación tiene que seguir estos principios de descentralización de la información del usuario. 
 * MongoDB: es una base de datos orientada a documentos. Esto quiere decir que en lugar de guardar los datos en registros, guarda los datos en documentos. Una de las diferencias con las bases de datos relacionales, es que no necesita seguir ningún esquema. Esta clasificado como una base de datos NoSql.
 * MVC: es un patrón que seguiremos en nuestra aplicación. Es un patrón arquitectónico usado para aplicaciones que necesitan una interfaz de usuario.
+* API Shippo: es una api que se usa para calcular los costes de envio. Se elije porque tiene su propia blioteca para node y permite consultar los costes de envio
+    sin necesidad de validar direcciones o preocuparse de impuestos y tasas de aduanas. También dispone de un entorno de pruebas gratuito.
 ****
 === Objetivos de calidad
 ****
@@ -38,6 +40,7 @@ Para cumplir este objetivo, tendremos que crear nuestra aplicación centrándono
 ****
 * Uso de ramas: para desarrollar la documentación hemos creado un rama doc, sobre la que realizaremos los cambios individualmente y haremos un pullRequest sobre la rama dev. Finalmente, cuando la documentación este completa la pasaremos a la rama Master, que es la rama principal del proyecto.
 * Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.
+* Dicussion: uso de esta funcionalidad de gitHub para dejar constancia de deciones importantes (modelo de datos por ejemplo) y para realizar votaciones.
 * Tableros del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado. Hemos decidido tener varios tableros para el desarrollo del proyecto.
 ** Tablero general: que es donde hemos colocado los issues de la documentación, y donde colocaremos los issues que correspondan con tareas generales del proyecto.
 ** Tablero frontEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del frontEnd.
