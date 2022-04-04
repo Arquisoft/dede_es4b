@@ -33,7 +33,7 @@ const updateUser = async (req: Request, res: Response) => {
 
   const { id } = req.params
 
-  const {_id,userName,password, ...other} = req.body
+  const {_id,userName,password,role, ...other} = req.body
 
   //lo actualizamos
   try{
@@ -49,11 +49,12 @@ const register = async (req: Request, res: Response) => {
 
   const userData = req.body;
 
-  //creamos nuevo producto
+  //creamos nuevo usuario
   const user = new User({
     name:userData.name,
     surname:userData.surname,
     userName:userData.userName,
+    role:"user"
   });
 
   //Hash password

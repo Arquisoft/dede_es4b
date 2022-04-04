@@ -14,9 +14,9 @@ const findAllProducts = async (req: Request, res: Response) => {
 
 const findByPage = async (req: Request, res: Response) => {
 
-  let limite = 3;
+  let limite = 5;
 
-  let desde = Number(req.params.page) * 3;
+  let desde = Number(req.params.page) * 5;
 
   const products = await Product.find(req.params.id)
       .limit(Number(limite))
@@ -69,10 +69,17 @@ const addProduct = async (req: Request, res: Response) => {
   //creamos nuevo producto
   const product = new Product({
     name:productData.name,
-    section:productData.section,
-    description:productData.description,
     price:productData.price,
-    image:productData.image 
+    short_description:productData.short_description,
+    long_description:productData.long_description,
+    brand:productData.brand,
+    category:productData.category,
+    sub_category:productData.sub_category,
+    image:productData.image,
+
+    type:productData.type,
+    color:productData.color,
+    size:productData.size
   });
 
   //lo guardamos
