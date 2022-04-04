@@ -31,8 +31,7 @@ routerUser.get(
 
 routerUser.delete(
   "/delete/:id",[
-      exitsUser,
-      hasAutorization
+      exitsUser
   ],
   deleteUser
 );
