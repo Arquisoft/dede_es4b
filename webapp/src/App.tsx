@@ -37,15 +37,15 @@ function App(): JSX.Element {
   return (
     <SessionProvider>
       <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<Home />} />
-        <Route path="/carrito" element={<Carrito />} />
-        <Route path="/productos/:id" element={<DetalleProducto/>} />
-        <Route path="/productos" element={<Catalogo />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/checkout" element={<CheckOut />} />
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="/productos/:id" element={<DetalleProducto/>} />
+          <Route path="/productos" element={<Catalogo />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/checkout" element={<CheckOut />} />
+        </Routes>
+      </BrowserRouter>
     </SessionProvider>
   );
 }
