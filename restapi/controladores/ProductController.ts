@@ -97,10 +97,9 @@ const calculateShippementCost = async (req: Request, res: Response) => {
   let shippementCost = -1;
 
   try{
-    console.log(shippementCost)
-    shippementCost = CalculateShippingCost.calculate(addressTo);
-    console.log(shippementCost)
-    return res.status(200).send(shippementCost);
+    shippementCost = await CalculateShippingCost(addressTo)
+
+    return res.status(200).send({coste: shippementCost});
   } catch (e){
     console.log(e);
     res.status(400).send({msg:"Fallo al calcular costes de envio"});

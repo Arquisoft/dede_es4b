@@ -1,8 +1,6 @@
-import React from 'react'
-import {Container, Typography, Button, Grid} from '@material-ui/core';
-import useStyles from './styles';
-import CarritoItem from './CarritoItem/CarritoItem'
+import { useNavigate } from "react-router-dom";
 import NavBar from "../AppBar/NavBar";
+import '../dist/css/styles.css';
 
 interface Producto {
 
@@ -10,64 +8,143 @@ interface Producto {
     name: string;
     price: string;
     image: string;
-
 }
 
-// function Carrito(productos : Producto[] ) {
-//     this.prdocutos = productos
-// }
+
+export interface ProductoCarrito {
+  producto: Producto;
+  cantidad: number;
+  precioTotal: number;
+}
+
 
 
 // @ts-ignore
-const Carrito = ({productos}) => {
-
-  const classes = useStyles();
-   
+const Carrito = () => {
+  const navigate = useNavigate();
+  var precio=0;
   
 
-  // @ts-ignore
-    const CarritoLleno = () => (
-      <>
-        <Grid container spacing={3}>
-            {productos.map((item : Producto) => (
-                <Grid item xs={12} sm={4} key={item.id}>
-                    <CarritoItem item={item}/>
-                </Grid>
-            ))}
-        </Grid>
-        <div className={classes.carritoDetails}>
-            <Typography variant="h4">
-                Subtotal: {productos.length}
-            </Typography>
-            <div>
-                <Button className={classes.emptyButton} size="large" type="button" variant="contained">
-                    Vaciar carrito
-                </Button>
-                <Button className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">
-                    Comprar
-                </Button>
-            </div>
-        </div>
-      </>
-  );
+  let carrito :any= [];
+  let carritoString = sessionStorage.getItem('carrito');
+  if (carritoString != null)
+    carrito = JSON.parse(carritoString!);
+  
+  for (let i = 0; i < carrito.length; i++) {
+    precio += carrito[i].precioTotal;
+  }
+  // Guarda el producto en la sesión.
+  const añadirAlCarrito = (producto: any, carrito: any) => {
+    let borrar=carrito.indexOf(producto);
+    
+    let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad+1, precioTotal: parseFloat(producto.producto.price)*(producto.cantidad+1)};
+    carrito.splice(borrar,1,productoCarrito);
+    //carrito.push(productoCarrito);
+    sessionStorage.setItem('carrito', JSON.stringify(carrito))
+    window.location.reload();
+  }
 
-    // if(!carrito.line_items){
-    //     return(
-    //         <CarritoVacio/>
-    //     )
-    // }
+   // Guarda el producto en la sesión.
+  const eliminarAlCarrito = (producto: any, carrito: any) => {
+    let borrar=carrito.indexOf(producto);
+    if(producto.cantidad===1){
+      carrito.splice(borrar,1);
+    }else{
+      let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad-1, precioTotal: parseFloat(producto.producto.price)*(producto.cantidad-1) };
+      carrito.splice(borrar,1,productoCarrito);
+      //carrito.push(productoCarrito);
+      
+    }
+    sessionStorage.setItem('carrito', JSON.stringify(carrito))
+    window.location.reload();
+  }
 
-  return (
-    <div>
-        <NavBar/>
-        <Container>
-            <div className={classes.toolbar}/>
-            <Typography className={classes.title} variant="h2" gutterBottom>Tu carrito de la compra</Typography>
-          <CarritoLleno/>
+    // Guarda el producto en la sesión.
+    const eliminar = (producto: any, carrito: any) => {
+      let borrar=carrito.indexOf(producto);
+      carrito.splice(borrar,1);
+      sessionStorage.setItem('carrito', JSON.stringify(carrito))
+      window.location.reload();
+    }
+  
+  const volverCatalogo=()=>{
+    window.location.href="\\productos";
+  }
+  console.log(carrito);
+    return (
+    <>
+
+      <div>
+        <header>
+          <NavBar/>
+          <div>
+            <h1>Carrito de la compra</h1>
+          </div>
+        </header>
+        <main>
+
+        <table>
+          <caption>Tu pedido</caption>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Unidades</th>
+            </tr>
+          </thead>
+          <tbody>
             
-      </Container>
-    </div>
-  )
+            {carrito.map((producto: ProductoCarrito) => (
+              
+              <tr>
+                <td>{producto.producto.name}</td>
+                <td>{producto.precioTotal} €</td>
+                <td><button type="button" className='unidades' onClick={() => eliminarAlCarrito(producto, carrito)}>-</button>
+                      {producto.cantidad} 
+                    <button type="button" className='unidades' onClick={() => añadirAlCarrito(producto, carrito)}>+</button>
+                </td>
+                <td><button type="button" className='botonEliminar' onClick={() => eliminar(producto, carrito)}>
+                Remove
+                </button>
+                </td>
+              </tr>
+              
+              
+            ))}
+          </tbody>
+        </table>
+
+          <div>
+            <br/>
+            <div className="subtotal">
+              <p>Subtotal: {precio.toFixed(2)} €</p>
+              
+            </div>
+            <div>
+              <button type="button" className="botonComprar" onClick={()=>navigate("/checkout")} >
+                Comprar
+              </button>
+            </div>
+            <div>
+              <p>
+                o
+                <button type="button" className="botonSeguirComprando"
+                  onClick={()=>volverCatalogo()}> continua comprando
+                </button>
+              </p>
+            </div>
+          </div>
+
+
+
+
+          </main>
+
+      </div>
+    </>
+
+
+    )
 }
 
 export default Carrito

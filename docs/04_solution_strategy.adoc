@@ -11,6 +11,8 @@ Las tecnologías usadas en nuestra aplicación van a ser las siguientes:
 * Solid: nuestra aplicación tiene que seguir estos principios de descentralización de la información del usuario. 
 * MongoDB: es una base de datos orientada a documentos. Esto quiere decir que en lugar de guardar los datos en registros, guarda los datos en documentos. Una de las diferencias con las bases de datos relacionales, es que no necesita seguir ningún esquema. Esta clasificado como una base de datos NoSql.
 * MVC: es un patrón que seguiremos en nuestra aplicación. Es un patrón arquitectónico usado para aplicaciones que necesitan una interfaz de usuario.
+* Typescript: es el lenguaje que usamos en nuestra aplicación. 
+* Tailwind UI: es el frameworks de CSS que vamos a utilizar en la aplicación.
 * API Shippo: es una api que se usa para calcular los costes de envio. Se elije porque tiene su propia blioteca para node y permite consultar los costes de envio
     sin necesidad de validar direcciones o preocuparse de impuestos y tasas de aduanas. También dispone de un entorno de pruebas gratuito.
 ****
@@ -46,4 +48,5 @@ Para cumplir este objetivo, tendremos que crear nuestra aplicación centrándono
 ** Tablero frontEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del frontEnd.
 ** Tablero backEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del backEnd
 ** Tablero base de datos: donde colocaremos todos los issues relacionados con la creación y gestión de la base de datos.
+** Discussions: apartado que usamos para debatir sobre decisiones de nuestro proyecto, donde cada participante puede aportar opiniones. 
 ****
