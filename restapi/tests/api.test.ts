@@ -88,9 +88,9 @@ describe('products', () => {
             "country": "ESP"
         };
 
-        const response:Response = await request(app).post('/api/product/shippementCost').send(addressTo).set('Accept', 'application/json');
+        const response:Response = await request(app).post('/product/shippementCost').send(addressTo).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(56.53);
+        expect(response.body.coste).toEqual("56.53");
     })
 
 
