@@ -115,7 +115,7 @@ const Carrito = () => {
         </table>
 
           <div>
-            
+            <br/>
             <div className="subtotal">
               <p>Subtotal: {precio.toFixed(2)} €</p>
               
