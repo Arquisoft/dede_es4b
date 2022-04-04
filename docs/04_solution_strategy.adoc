@@ -13,7 +13,7 @@ Las tecnologías usadas en nuestra aplicación van a ser las siguientes:
 * MVC: es un patrón que seguiremos en nuestra aplicación. Es un patrón arquitectónico usado para aplicaciones que necesitan una interfaz de usuario.
 * Typescript: es el lenguaje que usamos en nuestra aplicación. 
 * Tailwind UI: es el frameworks de CSS que vamos a utilizar en la aplicación. 
-* 
+* Shippo API Documentation: usada para calcular los costes de enviar algo de una dirección a otra.
 ****
 === Objetivos de calidad
 ****
