@@ -15,8 +15,8 @@ const {
   findProduct,
   updateProduct,
   deleteProduct,
-  findByPage,
-  calculateShippementCost
+  calculateShippementCost,
+  findByPage
 } = require("./../controladores/ProductController")
 
 const routerProduct:Router = express.Router();

@@ -4,12 +4,12 @@ import * as http from 'http';
 import bp from 'body-parser';
 import cors from 'cors';
 import api from '../api';
+import productRouter from "../routers/ProductRouter";
 
 let app:Application;
 let server:http.Server;
 
 require('dotenv').config();
-
 const mongo = require("mongoose");
 
 beforeAll(async () => {
@@ -20,7 +20,16 @@ beforeAll(async () => {
     };
     app.use(cors(options));
     app.use(bp.json());
-    app.use("/api", api)
+    //app.use("/api", api)
+
+    mongo.connect('mongodb+srv://dede_es4b:dede_es4b_pass.DFSS@cluster0.v4ply.mongodb.net/shop?retryWrites=true&w=majority')
+        .then(() => {
+            console.log('DB Connected')
+        }).catch((err:any) => {
+        console.log('DB conecction error: ' + err)
+    })
+
+    app.use("/product", productRouter)
 
     server = app.listen(port, ():void => {
         console.log('Restapi server for testing listening on '+ port);
@@ -40,23 +49,41 @@ afterAll(async () => {
     server.close() //close the server
 })
 
-describe('user ', () => {
-    /**
-     * Test that we can list users without any error.
-     */
-    it('can be listed',async () => {
-        const response:Response = await request(app).get("/api/users/list");
+describe('products', () => {
+    let idAddedProduct:any;
+
+    it('Can add a new product', async () => {
+        let productData:Object = {
+            name:'test1',
+            price: 1.0,
+            short_description: 'Test short_description',
+            long_description:'Test long_description',
+            brand:'Test brand',
+            category:'Ténis',
+            sub_category:'Ropa',
+            image:'test.png'
+        };
+
+        const response:Response = await request(app).post('/product/add').send(productData).set('Accept', 'application/json');
+        idAddedProduct = response.body._id;
         expect(response.statusCode).toBe(200);
     });
 
-    /**
-     * Tests that a user can be created through the productService without throwing any errors.
-     */
-    it('can be created correctly', async () => {
-        let username:string = 'Pablo'
-        let email:string = 'gonzalezgpablo@uniovi.es'
-        const response:Response = await request(app).post('/api/users/add').send({name: username,email: email}).set('Accept', 'application/json')
+    it('Can update an existing  product', async ()=>{
+        let productData:Object = {
+            "name":'test2UPDATE',
+            "sub_category":'Ropa'
+        };
+
+        const response:Response = await request(app).put('/product/update/' + idAddedProduct).send(productData).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Producto actualizado");
+    })
+
+    it('Can delete an existing  product', async ()=>{
+        const response:Response = await request(app).delete('/product/delete/' + idAddedProduct).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+    })
     });
 });
 
@@ -88,10 +115,9 @@ describe('products', () => {
 
             "country": "ESP"
         };
-
-        const response:Response = await request(app).post('/api/product/shippementCost').send(addressTo).set('Accept', 'application/json');
+        const response:Response = await request(app).post('/product/shippementCost').send(addressTo).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(56.53);
+        expect(response.body.coste).toEqual("56.53");
     })
 
 
