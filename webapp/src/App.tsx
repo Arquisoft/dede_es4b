@@ -5,8 +5,10 @@ import Login from './pages/login';
 import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
 import Carrito from './components/Carrito/Carrito';
+import DetalleProducto from './pages/DetalleProducto';
 import CheckOut from './pages/CheckOut';
 import { SessionProvider} from '@inrupt/solid-ui-react';
+import LogOut from './components/LogOut/LogOut';
 
 export const webUrl = "https://localhost:3000";
 
@@ -36,14 +38,16 @@ function App(): JSX.Element {
   return (
     <SessionProvider>
       <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<Home />} />
-        <Route path="/carrito" element={<Carrito />} />
-        <Route path="/productos" element={<Catalogo />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/checkout" element={<CheckOut />} />
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="/productos/:id" element={<DetalleProducto/>} />
+          <Route path="/productos" element={<Catalogo />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/logout" element={<LogOut/>} />
+        </Routes>
+      </BrowserRouter>
     </SessionProvider>
   );
 }
