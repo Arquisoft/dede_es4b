@@ -89,26 +89,6 @@ describe('products', () => {
         expect(response.statusCode).toBe(200);
     })
 
-});
-
-describe('products', () => {
-
-    it('Can add a new product', async () => {
-        let productData:Object = {
-            name:'test1',
-            price: 1.0,
-            short_description: 'Test short_description',
-            long_description:'Test long_description',
-            brand:'Test brand',
-            category:'Ténis',
-            sub_category:'Ropa',
-            image:'test.png'
-        };
-
-        const response:Response = await request(app).post('/api/product/add').send(productData).set('Accept', 'application/json');
-        expect(response.statusCode).toBe(200);
-    });
-
     it('Can get shipping cost given a correct direcction', async () => {
         let addressTo:Object = {
             "street1": "Gonzalez besada, 4, 3A",
