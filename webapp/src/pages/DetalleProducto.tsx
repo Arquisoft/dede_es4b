@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { producto } from './Catalogo';
 import { useParams } from 'react-router-dom';
 import './dist/styles.css';
-import { Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import NavBar from '../components/AppBar/NavBar';
 
 const DetalleProducto = () => {
@@ -25,7 +25,11 @@ const DetalleProducto = () => {
                 response.json().then(
                     data  => {
                         setProduct(data)
-                        setNombre(data.name);
+                        setNombre(data.name)
+                        setShort(data.short_description)
+                        setLong(data.long_description)
+                        setSize(data.size)
+                        setPrice(data.price)
                         setImage(data.image)
                         console.log(data)
                     }
@@ -48,11 +52,28 @@ const DetalleProducto = () => {
             </header>
             <div className="contenidoDetalles">
                 <Grid container>
-                    <Grid item xs={12} sm={6} md={4} lg={3}> 
+                    <Grid className="columnaIzquierda" item xs={12} sm={6} md={4} lg={3}> 
                         <img src={image} />
                     </Grid>
-                    <Grid item>
+                    <Grid className="columnaDerecha" item xs={12} sm={6} md={4} lg={3}>
                         <h1 className="tituloProducto">{nombre}</h1>
+                        <p className="descripcionCorta">
+                            {short}
+                        </p>
+                        <p className="precio">
+                            Precio: {price} €
+                        </p>
+                        <p className="talla">
+                            Talla: {size}
+                        </p>
+                        <Box style={{justifyContent: 'center'}} className="botonAñadir">
+                            <Button color="inherit" sx={{border: 1}}>
+                                Añadir a carrito
+                            </Button>
+                        </Box>
+                        <p className="descripcionLarga">
+                            {long}
+                        </p>
                     </Grid>
                 </Grid>
             </div>
