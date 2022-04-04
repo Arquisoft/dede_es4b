@@ -45,7 +45,7 @@ const ProductoCatalogo = ({ producto }: { producto: producto }) => {
 
     return (
         <Card className={classes.root}>
-            <CardActionArea href={'/' + producto.ids}>
+            <CardActionArea href={"/productos/" + producto._id} >
                 <CardMedia className={classes.media} image={producto.image} title={producto.name} />
                 <CardContent>
                     <div className={classes.cardContent}>

@@ -4,7 +4,7 @@ import NavBar from "../components/AppBar/NavBar";
 import { isLogeado } from '../App';
 
 export interface producto {
-    ids: number;
+    _id: number;
     name: string;
     description: string;
     price: string;
