@@ -32,7 +32,7 @@ const Carrito = ({productos}) => {
   const [open, setOpen] = useState(true);
   var precio=0;
   
-  //const classes = useStyles();
+
   let carrito :any= [];
   let carritoString = sessionStorage.getItem('carrito');
   if (carritoString != null)
