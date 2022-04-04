@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { isLogeado } from '../App'
 
 function setUserSession(userSession: any) {
-    sessionStorage.setItem('user', JSON.stringify(userSession));
+    sessionStorage.setItem('userSession', JSON.stringify(userSession));
 }
 
 const Login = () => {

@@ -28,11 +28,6 @@ routerProduct.get(
 );
 
 routerProduct.get(
-    "/list/:page",
-    findByPage
-);
-
-routerProduct.get(
   "/find/:id",
   [
     exitsProduct
@@ -72,12 +67,6 @@ routerProduct.post(
 
 routerProduct.put(
   "/update/:id",[
-    check('name').isLength({ min: 1 }).trim().escape(),
-    check('section').isLength({ min: 1 }).trim().escape(),
-    check('description').isLength({ min: 1 }).trim().escape(),
-    check('price').isLength({ min: 1 }).trim().escape(),
-    check('price').isFloat(),
-    check('image').isLength({ min: 1 }).trim().escape(),
     validPrice,
     exitsProduct,
     validateFields
