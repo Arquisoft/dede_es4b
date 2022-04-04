@@ -467,102 +467,114 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-.bienvenida{
-  margin-top: 6rem;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  font-weight: 700;
-  text-align: center;
-  color: #0891b2;
+.container {
+  width: 100%;
 }
 
-.empezar{
-  margin-top: 2rem;
-  text-align: center;
-  font-weight: bold;
-  color: #000;
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
 }
 
-.botones{
-  margin-top: 2rem;
-  text-align: center;
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
 }
 
-.botonLogin{
-  align-items: block;  
-  color:#000;
-  border: 1px solid black;
-  text-align: center;
-  background-color: rgb(191, 216, 228);
-  border-radius: 15px;
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
 }
 
-.botonCatalogo{
-  margin-top: 2rem;
-  color:#000;
-  border: 1px solid;
-  text-align: center;
-  background-color: rgb(191, 216, 228);
-  border-radius: 15px;
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
 }
 
-.contenidoDetalles{
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  justify-content: center;
-  font-size: 2rem;
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
 }
 
-.columnaIzquierda{
-  margin-left: 2rem;
+.static {
+  position: static;
 }
 
-.columnaDerecha{
-  margin-left: 1rem;
-}
-
-.tituloProducto{
-  margin-left: 2rem
-}
-
-.descripcionCorta{
-  margin-left: 2rem;
-  font-size: 1rem;
-}
-
-.descripcionLarga{
-  margin-left: 2rem;
-  font-size: 1rem;
-}
-
-.talla{
-  margin-left: 2rem;
-  font-size: 1rem;
-}
-
-.precio{
-  margin-left: 2rem;
-  font-size: 1.2rem;
-}
-
-.botonAñadir{
-  margin-left:4rem;
-}
-
-.navBar{
-  background-color: #0891b2;
-}
-
-.botonesBar{
-  margin-left: 2rem;
-}
-
-.userMenu{
-  margin-left: 2rem;
-}
-
-
-.parteDerecha{
+.absolute {
   position: absolute;
-  right: 0;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.App {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    -webkit-animation: App-logo-spin infinite 20s linear;
+            animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
