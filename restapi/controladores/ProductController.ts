@@ -98,7 +98,7 @@ const calculateShippementCost = async (req: Request, res: Response) => {
 
   try{
     shippementCost = await CalculateShippingCost(addressTo)
-    
+
     return res.status(200).send({coste: shippementCost});
   } catch (e){
     console.log(e);

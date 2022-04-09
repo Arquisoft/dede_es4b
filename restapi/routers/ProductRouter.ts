@@ -15,8 +15,8 @@ const {
   findProduct,
   updateProduct,
   deleteProduct,
-  findByPage,
-  calculateShippementCost
+  calculateShippementCost,
+  findByPage
 } = require("./../controladores/ProductController")
 
 const routerProduct:Router = express.Router();
@@ -67,12 +67,6 @@ routerProduct.post(
 
 routerProduct.put(
   "/update/:id",[
-    check('name').isLength({ min: 1 }).trim().escape(),
-    check('section').isLength({ min: 1 }).trim().escape(),
-    check('description').isLength({ min: 1 }).trim().escape(),
-    check('price').isLength({ min: 1 }).trim().escape(),
-    check('price').isFloat(),
-    check('image').isLength({ min: 1 }).trim().escape(),
     validPrice,
     exitsProduct,
     validateFields
