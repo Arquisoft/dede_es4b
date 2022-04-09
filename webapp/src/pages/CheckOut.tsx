@@ -9,6 +9,7 @@ import {
     getThing
 } from "@inrupt/solid-client";
 import { useThing } from '@inrupt/solid-ui-react';
+import { calcularCostes } from '../api/api';
 
 const CheckOut = () => {
     const session = getPodSession();
@@ -32,29 +33,30 @@ const CheckOut = () => {
         })
     };
 
-    const calcularCostes = async () => {
-        let response = await fetch("http://localhost:5000/product/shippementCost", {
-            method: 'POST',
-            body: JSON.stringify(direccion),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+    // const calcularCostes = async () => {
+    //     let response = await fetch("http://localhost:5000/product/shippementCost", {
+    //         method: 'POST',
+    //         body: JSON.stringify(direccion),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     });
 
-        if (response.ok) {
-            let responseJSON = await response.json();
-            setCostePedido(responseJSON.coste);
-        } else{
-            console.log(response);
-            setCostePedido(-10);
-        }
-    };
+    //     if (response.ok) {
+    //         let responseJSON = await response.json();
+    //         setCostePedido(responseJSON.coste);
+    //     } else{
+    //         console.log(response);
+    //         setCostePedido(-10);
+    //     }
+    // };
 
     useLayoutEffect(() => {
         if (thing != null) {
             if (direccion == null)
                 getAddress();
-            calcularCostes();
+            calcularCostes(direccion).then(coste => {console.log(coste); setCostePedido(coste)}).catch(e => console.log("errror")
+            );
         }
 
     }, [thing])

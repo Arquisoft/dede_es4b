@@ -3,8 +3,8 @@ import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } fro
 import useStyles from './styles'
 import { AddShoppingCart } from "@mui/icons-material";
 import { CardActionArea } from '@mui/material';
-import { producto } from '../../../pages/Catalogo';
 import { ProductoCarrito } from '../../../components/Carrito/Carrito';
+import { Producto } from '../../../shared/shareddtypes';
 
 
 // Guarda el producto en la sesión.
@@ -40,7 +40,7 @@ const añadirAlCarrito = (producto: any) => {
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
-const ProductoCatalogo = ({ producto }: { producto: producto }) => {
+const ProductoCatalogo = ({ producto }: { producto: Producto }) => {
     const classes = useStyles();
 
     return (
@@ -54,7 +54,7 @@ const ProductoCatalogo = ({ producto }: { producto: producto }) => {
                         </Typography>
 
                         <div className={classes.description}>
-                            <Typography variant="subtitle1" color="textSecondary">{producto.description}</Typography>
+                            <Typography variant="subtitle1" color="textSecondary">{producto.short_description}</Typography>
                         </div>
                     </div>
                 </CardContent>

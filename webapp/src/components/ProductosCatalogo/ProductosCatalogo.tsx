@@ -5,9 +5,9 @@ import useStyles from './styles';
 import {Button, Divider, Menu, MenuItem, Pagination} from "@mui/material";
 import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
-import { producto } from '../../pages/Catalogo';
+import { Producto } from '../../shared/shareddtypes';
 
-const ProductosCatalogo = ({productos} : {productos : producto[]}) => {
+const ProductosCatalogo = ({productos} : {productos : Producto[]}) => {
 
 
     // Ordenar
@@ -22,13 +22,13 @@ const ProductosCatalogo = ({productos} : {productos : producto[]}) => {
         setOpen(null)
     };
 
-    const ordenarAsc = (lista : producto[]) => {
-        lista.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    const ordenarAsc = (lista : Producto[]) => {
+        lista.sort((a, b) => a.price - b.price);
         handleClose();
     }
     
-    const ordenarDesc = (lista : producto[])  => {
-        lista.sort((a, b) => - parseFloat(a.price) + parseFloat(b.price));
+    const ordenarDesc = (lista : Producto[])  => {
+        lista.sort((a, b) => - a.price + b.price);
         handleClose();
     }
 
