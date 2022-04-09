@@ -14,5 +14,6 @@
 [options="header"]
 |===
 | Deuda Técnica         | Solución     
-|                       |
+| Token de API hardcodeado | Moverlo a el .env
+| CRUD de pedidos y pedidos no implementados por lo que no se guardan en la BD | Implementarla para la siguiente versión
 |===

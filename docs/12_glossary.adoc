@@ -16,4 +16,10 @@ a las páginas webs y crear aplicaciones web.
 | SOLID | Tecnología para organizar apps, información e identidades de forma descentralizada
 | Node  | Es un entorno de ejecución para programas escritos en JavaScript
 | Pod | Contenedor de datos de un usuario el cual tiene que dar permiso para que las aplicaciones accedan a él
+|Shippo API| API para la consulta de gastos de envio
+|MongoDB Atlas| Nube de MongoDB donde está hosteada la base de datos
+| Tailwind CSS | Framework para la creación de interfaces de usuario
+| BCrypt | Librería que encripta contraseñas mediante una función hash
+| Jsonwebtoken | Estándar abierto  basado en JSON para crear un token que sirva para enviar datos entre aplicaciones o
+  servicios y garantizar que sean válidos y seguros, además para menaejar la autenticación
 |===
