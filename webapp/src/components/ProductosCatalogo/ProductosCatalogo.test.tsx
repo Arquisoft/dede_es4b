@@ -1,5 +1,5 @@
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import ProductosCatalogo from '../ProductosCatalogo';
+import { render, fireEvent } from '@testing-library/react';
+import ProductosCatalogo from './ProductosCatalogo';
 import { MemoryRouter } from 'react-router-dom';
 
 
@@ -43,7 +43,7 @@ test("when 'ordenar por precio ascendente' is clicked, products are sorted by as
     fireEvent.click(sortAscBtn);
 
     // Comprobamos que el catálogo tiene el orden adecuado
-    const grid = container.childNodes[0].childNodes[1].childNodes;
+    const grid = container.childNodes[0].childNodes[2].childNodes;
     grid.forEach((p, i) => expect(p).toHaveTextContent(pricesSorted[i]));
 });
 
@@ -70,6 +70,6 @@ test("when 'ordenar por precio descendente' is clicked, products are sorted by d
     fireEvent.click(sortDescBtn);
 
     // Comprobamos que el catálogo tiene el orden adecuado
-    const grid = container.childNodes[0].childNodes[1].childNodes;
+    const grid = container.childNodes[0].childNodes[2].childNodes;
     grid.forEach((p, i) => expect(p).toHaveTextContent(pricesSorted[i]));
 });
