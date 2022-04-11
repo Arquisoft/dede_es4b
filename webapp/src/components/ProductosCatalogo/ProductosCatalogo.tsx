@@ -16,7 +16,7 @@ const ProductosCatalogo = ({ productos }: { productos: Producto[] }) => {
 
 
     return (
-        <div id="Catalogo" className='grid'>
+        <div id="Catalogo" className='grid my-24 xl:mx-64'>
 
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Catálogo de productos</h2>
 

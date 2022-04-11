@@ -10,6 +10,7 @@ import {
 } from "@inrupt/solid-client";
 import { useThing } from '@inrupt/solid-ui-react';
 import { calcularCostes } from '../api/api';
+import NavBar from '../components/AppBar/NavBar';
 
 const CheckOut = () => {
     const session = getPodSession();
@@ -63,8 +64,9 @@ const CheckOut = () => {
 
     return (
         <>
+            <NavBar/>
             {session != null ? (
-                <>
+                <div className="m-auto w-fit">
                     <DeliveryInfo direccion={direccion} webId={webId} costePedido={costePedido} />
                     <button onClick={() => alert("TEMPORAL: Pedido creado")}
                         type="button"
@@ -72,7 +74,7 @@ const CheckOut = () => {
                     >
                         Confirmar
                     </button>
-                </>
+                </div>
 
             ) :
                 <ConectarPod />

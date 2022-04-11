@@ -81,7 +81,7 @@ const Carrito = () => {
             <h1>Carrito de la compra</h1>
           </div>
         </header>
-        <main>
+        <main className="xl:mx-64">
 
         <table>
           <caption>Tu pedido</caption>
