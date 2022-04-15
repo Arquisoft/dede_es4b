@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DeliveryInfo from '../components/InfoEntrega/InfoEntrega';
 import { getPodSession } from '../App';
 import ConectarPod from '../components/ConectarPod/ConectarPod';
@@ -11,60 +11,64 @@ import {
 import { useThing } from '@inrupt/solid-ui-react';
 import { calcularCostes } from '../api/api';
 import NavBar from '../components/AppBar/NavBar';
+import Modal from '../components/Modal/Modal';
+import ModalError from '../components/Modal/ModalError';
 
 const CheckOut = () => {
     const session = getPodSession();
 
+    const [error, setError] = useState<any>();
+
     const webId = session?.info.webId;
     const addressPredicate = "http://www.w3.org/2006/vcard/ns#hasAddress";
     const [direccion, setDireccion] = useState<any>(null);
-    const { thing, error } = useThing(webId, webId);
-    var urlAddress = thing?.predicates[addressPredicate].namedNodes![0];
+    const { thing } = useThing(webId, webId);
+    var urlAddress = thing?.predicates[addressPredicate]?.namedNodes![0];
     const [costePedido, setCostePedido] = useState(0);
 
 
     const getAddress = async () => {
-        const dataset = await getSolidDataset(urlAddress!);
-        const thing = getThing(dataset, urlAddress!)!;
-        setDireccion({
-            street1: getStringNoLocale(thing!, VCARD.street_address.iri),
-            city: getStringNoLocale(thing!, VCARD.locality.iri),
-            zip: getStringNoLocale(thing!, VCARD.postal_code),
-            country: "ESP",
-        })
+        try {
+            const dataset = await getSolidDataset(urlAddress!);
+        
+            const thing = getThing(dataset, urlAddress!)!;
+            setDireccion({
+                street1: getStringNoLocale(thing!, VCARD.street_address.iri),
+                city: getStringNoLocale(thing!, VCARD.locality.iri),
+                zip: getStringNoLocale(thing!, VCARD.postal_code),
+                country: "ESP",
+            })
+        } catch(e){
+            console.log("Se ha producido un error al obtener la dirección de Solid: " + e);
+            setError({titulo: "Error cálculo de costes", desc: "Se ha producido un error al obtener la dirección de Solid"})
+        }
     };
 
-    // const calcularCostes = async () => {
-    //     let response = await fetch("http://localhost:5000/product/shippementCost", {
-    //         method: 'POST',
-    //         body: JSON.stringify(direccion),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     });
+    let [isOpen, setIsOpen] = useState(true)
+    function closeModal() {
+        if (session != null)
+            setIsOpen(false)
+    }
 
-    //     if (response.ok) {
-    //         let responseJSON = await response.json();
-    //         setCostePedido(responseJSON.coste);
-    //     } else{
-    //         console.log(response);
-    //         setCostePedido(-10);
-    //     }
-    // };
+    function openModal() {
+        setIsOpen(true)
+    }
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (thing != null) {
             if (direccion == null)
                 getAddress();
-            calcularCostes(direccion).then(coste => {console.log(coste); setCostePedido(coste)}).catch(e => console.log("errror")
-            );
+            else
+            calcularCostes(direccion)
+                .then(coste => setCostePedido(coste))
+                .catch((e) => {console.log(e); setError({titulo: "Error cálculo de costes", desc: "Se ha producido un error en el cáclulo de costes"})});
         }
 
-    }, [thing])
+    }, [thing, direccion])
 
     return (
         <>
-            <NavBar/>
+            <NavBar />
             {session != null ? (
                 <div className="m-auto w-fit">
                     <DeliveryInfo direccion={direccion} webId={webId} costePedido={costePedido} />
@@ -77,7 +81,12 @@ const CheckOut = () => {
                 </div>
 
             ) :
-                <ConectarPod />
+                <Modal openModal={openModal} closeModal={closeModal} isOpen={isOpen}>
+                    <ConectarPod />
+                </Modal>
+            }
+            {
+                error != null && <ModalError titulo={error.titulo} desc={error.desc}/>
             }
         </>
     );
