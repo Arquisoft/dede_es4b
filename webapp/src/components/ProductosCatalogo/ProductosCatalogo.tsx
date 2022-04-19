@@ -32,6 +32,8 @@ const ProductosCatalogo = ({productos} : {productos : producto[]}) => {
         handleClose();
     }
 
+
+
     const classes = useStyles();
     return (
         <>
@@ -66,7 +68,9 @@ const ProductosCatalogo = ({productos} : {productos : producto[]}) => {
                         </Grid>
                     ))}
                 </Grid>
-                <Pagination className={classes.paginacion} count={10} shape="rounded" />
+
+
+
             </main>
         </>
     );

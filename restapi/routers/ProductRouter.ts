@@ -28,6 +28,11 @@ routerProduct.get(
 );
 
 routerProduct.get(
+  "/list/:page",
+  findByPage
+);
+
+routerProduct.get(
   "/find/:id",
   [
     exitsProduct

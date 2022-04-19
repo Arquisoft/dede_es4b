@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../AppBar/NavBar";
 import '../dist/css/styles.css';
 
+
 interface Producto {
 
     id: string;
