@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
 import { isLogeado } from '../App';
-import {Pagination} from "@mui/material";
+import {Pagination,Typography} from "@mui/material";
 import useStyles from '../components/ProductosCatalogo/styles';
 
 export interface producto {
@@ -15,33 +15,42 @@ export interface producto {
 
 const Catalogo = () => {
     const [productos, setProductos] = useState<producto[]>([]);
+    const [productosPagina, setProductosPagina] = useState<producto[]>([]);
+    
 
+    const handleChange = async (event:any, value:any) => {
+        const respuesta = await fetch('http://localhost:5000/product/list/'+(value-1));
+        setProductosPagina(await respuesta.json());
+    };
+
+    const getProductosPagina = async () => {
+        const respuesta = await fetch('http://localhost:5000/product/list/0');
+        setProductosPagina(await respuesta.json());
+    }
 
     const getProductos = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list/0');
+        const respuesta = await fetch('http://localhost:5000/product/list');
 
         setProductos(await respuesta.json());
     }
 
     useEffect(() => {
+        getProductosPagina();
         getProductos();
     }, [])
 
     if (isLogeado())
         console.log("conectado");
     
-   const p = async () => {
-
-        const respuesta = await fetch('http://localhost:5000/product/list/1');
-        setProductos(await respuesta.json());
-    }
+   
     const classes = useStyles();
 
     return (
         <>
             <NavBar/>
-            <ProductosCatalogo productos={productos}/>
-            <Pagination className={classes.paginacion} onClick={() => p()} count={10} shape="rounded" />
+            <ProductosCatalogo productos={productosPagina}/>
+            
+            <Pagination className={classes.paginacion} onChange={handleChange} color="secondary"  count={productos.length/3} shape="rounded" />
 
         </>
     );
