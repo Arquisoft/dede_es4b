@@ -506,6 +506,49 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 15px;
 }
 
+.contenidoDetalles{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.columnaIzquierda{
+  margin-left: 2rem;
+}
+
+.columnaDerecha{
+  margin-left: 1rem;
+}
+
+.tituloProducto{
+  margin-left: 2rem
+}
+
+.descripcionCorta{
+  margin-left: 2rem;
+  font-size: 1rem;
+}
+
+.descripcionLarga{
+  margin-left: 2rem;
+  font-size: 1rem;
+}
+
+.talla{
+  margin-left: 2rem;
+  font-size: 1rem;
+}
+
+.precio{
+  margin-left: 2rem;
+  font-size: 1.2rem;
+}
+
+.botonAñadir{
+  margin-left:4rem;
+}
+
 .navBar{
   background-color: #0891b2;
 }

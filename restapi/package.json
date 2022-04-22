@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
     "@inrupt/solid-client-authn-node": "1.11.7",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -18,6 +18,10 @@
     "express-prom-bundle": "^6.4.1",
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash.includes": "^4.3.0",
+    "lodash.isboolean": "^3.0.3",
+    "lodash.isinteger": "^4.0.4",
+    "lodash.isnumber": "^3.0.3",
     "mongoose": "^6.2.4",
     "prom-client": "^14.0.1",
     "shippo": "^1.7.1"
