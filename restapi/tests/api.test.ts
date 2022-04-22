@@ -11,6 +11,7 @@ let server:http.Server;
 
 const mongo = require("mongoose");
 
+
 beforeAll(async () => {
     app = express();
     const port: number = 5000;
@@ -39,6 +40,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
     server.close() //close the server
+    mongo.connection.close();
 })
 
 describe('products', () => {
@@ -75,6 +77,16 @@ describe('products', () => {
     it('Can delete an existing  product', async ()=>{
         const response:Response = await request(app).delete('/product/delete/' + idAddedProduct).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
+    })
+
+    it('Can recived a existing page by number', async ()=>{
+        const response:Response = await request(app).get('/product/list/' + 1).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+    })
+
+    it('Can not recived a not existing page by number', async ()=>{
+        const response:Response = await request(app).get('/product/list/' + (-1)).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(400);
     })
 
     it('Can get shipping cost given a correct direcction', async () => {
