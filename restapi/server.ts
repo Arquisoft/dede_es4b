@@ -1,10 +1,11 @@
 import express, { Application, RequestHandler } from "express";
 import cors from 'cors';
 import bp from 'body-parser';
-import promBundle from 'express-prom-bundle';
+
 import productRouter from "./routers/ProductRouter";
 import userRouter from "./routers/UserRouter";
 import loginRouter from "./routers/LoginRouter";
+import orderRouter from "./routers/OrderRouter";
 
 const { dbConnection } = require('./mongo')
 
@@ -21,6 +22,7 @@ dbConnection();
 app.use("/product", productRouter)
 app.use("/user", userRouter)
 app.use("/login", loginRouter)
+app.use("/order", orderRouter)
 
 app.listen(port, ():void => {
     console.log('Restapi listening on '+ port);
