@@ -9,27 +9,27 @@ const existsProducts = async (req: Request, res: Response, next: NextFunction) =
 
     let products = req.body.products
 
-    await products.forEach(function (item: any){
+    if(products){
+        await products.forEach(function (item: any){
 
-        try {
+            try {
 
-            const product = Product.findById(item.id)
+                const product = Product.findById(item.id)
 
-            if(!product){
+                if(!product){
+                    return res.status(401).json({
+                        msg: 'El producto no existe'
+                    })
+                }
+
+            } catch (error) {
                 return res.status(401).json({
-                    msg: 'El producto no existe'
+                    msg: 'Id no válida'
                 })
             }
 
-        } catch (error) {
-            return res.status(401).json({
-                msg: 'Id no válida'
-            })
-        }
-
-    })
-
-
+        })
+    }
 
     next()
 
@@ -62,7 +62,7 @@ const existsClient = async (req: Request, res: Response, next: NextFunction) => 
 
     try {
 
-        const client = await User.findById(req.body.client)
+        const client = await User.find({userName: req.body.client})
 
         if(!client){
             return res.status(401).json({
@@ -72,7 +72,7 @@ const existsClient = async (req: Request, res: Response, next: NextFunction) => 
 
     } catch (error) {
         return res.status(401).json({
-            msg: 'Id no válida'
+            msg: 'Cliente no válido'
         })
     }
 
@@ -85,7 +85,7 @@ const existsClientParam = async (req: Request, res: Response, next: NextFunction
 
     try {
 
-        const client = await User.findById(req.params.clientId)
+        const client = await User.find({userName: req.params.userName})
 
         if(!client){
             return res.status(401).json({
@@ -95,7 +95,7 @@ const existsClientParam = async (req: Request, res: Response, next: NextFunction
 
     } catch (error) {
         return res.status(401).json({
-            msg: 'Id no válida'
+            msg: 'Cliente no válido'
         })
     }
 

@@ -37,7 +37,7 @@ routerOrder.get(
 );
 
 routerOrder.get(
-    "/findByClient/:clientId",
+    "/findByClient/:userName",
     [
         existsClientParam
     ],

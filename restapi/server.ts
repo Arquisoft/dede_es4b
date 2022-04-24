@@ -22,7 +22,7 @@ dbConnection();
 app.use("/product", productRouter)
 app.use("/user", userRouter)
 app.use("/login", loginRouter)
-//app.use("/order", orderRouter)
+app.use("/order", orderRouter)
 
 app.listen(port, ():void => {
     console.log('Restapi listening on '+ port);

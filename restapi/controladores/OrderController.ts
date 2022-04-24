@@ -21,7 +21,7 @@ const findOrder = async (req: Request, res: Response) => {
 
 const findOrderByClient = async (req: Request, res: Response) => {
 
-  const order = await Order.findByClient(req.params.clientId)
+  const order = await Order.find({user: req.params.userName})
 
   return res.status(200).send(order);
 
@@ -40,7 +40,7 @@ const updateOrder = async (req: Request, res: Response) => {
 
   const { id } = req.params
 
-  const {_id, ...other} = req.body
+  const {_id,user, ...other} = req.body
 
   //lo actualizamos
   try{
@@ -59,7 +59,8 @@ const addOrder = async (req: Request, res: Response) => {
   const order = new Order({
     user:orderData.user,
     products: orderData.products,
-    order_date: orderData.order_date
+    order_date: orderData.order_date,
+    status: orderData.status
   });
 
   //lo guardamos
