@@ -1,21 +1,23 @@
-import {User} from '../shared/shareddtypes';
+import {Producto} from '../shared/shareddtypes';
 
-export async function addUser(user:User):Promise<boolean>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/users/add', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({'name':user.name, 'email':user.email})
-      });
-    if (response.status===200)
-      return true;
-    else
-      return false;
+export const getProductos = async () : Promise<Producto[]> =>  {
+  const respuesta = await fetch('http://localhost:5000/product/list');
+  return respuesta.json();
 }
 
-export async function getUsers():Promise<User[]>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/users/list');
-    //The objects returned by the api are directly convertible to User objects
-    return response.json()
-}
+export const calcularCostes = async (direccion : JSON) : Promise<number> => {
+  
+  let response = await fetch("http://localhost:5000/product/shippementCost", {
+      method: 'POST',
+      body: JSON.stringify(direccion),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  });
+
+  if (response.ok) {
+      let responseJSON = await response.json();
+      return responseJSON.coste;
+  }
+  throw new Error("Error al calular los costes");
+};
