@@ -75,6 +75,22 @@ describe('products', () => {
         expect(response.statusCode).toBe(200);
     });
 
+    it('Can find a product by its id', async () => {
+
+        const response:Response = await request(app).get('/product/find/' + idAddedProduct).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    it('Can find a all products', async () => {
+
+        const response:Response = await request(app).get('/product/list').set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
     it('Can update an existing  product', async ()=>{
         let productData:Object = {
             "name":'test2UPDATE',
@@ -165,6 +181,28 @@ describe('login', () => {
 });
 
 describe('user', () => {
+    let idAddedUser:any;
+
+    it('Register a new user', async () => {
+        let userData:Object = {
+            name:"prueba",
+            surname:"prueba",
+            userName:"prueba",
+            password: "prueba"
+        };
+
+        const response:Response = await request(app).post('/user/register').send(userData).set('Accept', 'application/json');
+        idAddedUser = response.body._id;
+        expect(response.statusCode).toBe(200);
+    });
+
+    it('Can find a user by its id', async () => {
+
+        const response:Response = await request(app).get('/user/find/' + idAddedUser).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
 
     it('Get all user list', async () => {
 
@@ -174,6 +212,20 @@ describe('user', () => {
 
     });
 
+    it('Can update an existing user', async ()=>{
+        let userData:Object = {
+            name:'pruebaUpdate',
+            surname:"pruebaUpdate"
+        };
 
+        const response:Response = await request(app).put('/user/update/' + idAddedUser).send(userData).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Usuario actualizado");
+    })
+
+    it('Can delete an existing user', async ()=>{
+        const response:Response = await request(app).delete('/user/delete/' + idAddedUser).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+    })
 
 });

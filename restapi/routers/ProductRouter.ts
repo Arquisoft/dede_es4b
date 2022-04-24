@@ -42,7 +42,7 @@ routerProduct.get(
     [
         validPage
     ],
-    findProduct,
+    findByPage,
 
 );
 

@@ -7,8 +7,8 @@ const findAllProducts = async (req: Request, res: Response) => {
 
   //llamada al repositorio
   const products = await Product.find()
-  
-  return res.status(200).send(products);
+
+  return res.status(200).json(products);
   
 }
 
