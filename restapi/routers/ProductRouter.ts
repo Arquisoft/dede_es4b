@@ -17,6 +17,7 @@ const {
   updateProduct,
   deleteProduct,
   calculateShippementCost,
+  filterProductsBySubCategory,
   findByPage
 } = require("./../controladores/ProductController")
 
@@ -43,7 +44,11 @@ routerProduct.get(
         validPage
     ],
     findByPage,
+);
 
+routerProduct.get(
+    "/list/filterSubCategory/:sub_category",
+    filterProductsBySubCategory,
 );
 
 routerProduct.delete(
