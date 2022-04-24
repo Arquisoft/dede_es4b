@@ -53,8 +53,23 @@ const validSize = (req: Request, res: Response, next: NextFunction) => {
 
 }
 
+const validPage = (req: Request, res: Response, next: NextFunction) => {
+
+    let page = parseInt(req.params.page)
+
+    if( page <= 0 ){
+        return res.status(401).json({
+            msg: 'Página no válida'
+        })
+    }
+
+    next()
+
+}
+
 module.exports = {
     exitsProduct,
     validPrice,
-    validSize
+    validSize,
+    validPage
 }

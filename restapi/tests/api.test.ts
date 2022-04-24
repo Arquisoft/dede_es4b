@@ -92,13 +92,13 @@ describe('products', () => {
     })
 
     it('Can recived a existing page by number', async ()=>{
-        const response:Response = await request(app).get('/product/list/' + 1).set('Accept', 'application/json');
+        const response:Response = await request(app).get('/product/list/1').set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
     })
 
     it('Can not recived a not existing page by number', async ()=>{
-        const response:Response = await request(app).get('/product/list/' + (-1)).set('Accept', 'application/json');
-        expect(response.statusCode).toBe(400);
+        const response:Response = await request(app).get('/product/list/-1').set('Accept', 'application/json');
+        expect(response.statusCode).toBe(401);
     })
 
     it('Can get shipping cost given a correct direcction', async () => {

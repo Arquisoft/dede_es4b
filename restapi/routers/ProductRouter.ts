@@ -6,7 +6,8 @@ const {validateFields} = require("../validadores/validador");
 const {
     exitsProduct,
     validPrice,
-    validSize
+    validSize,
+    validPage
 } = require("../validadores/ProductValidator");
 
 const {
@@ -33,6 +34,15 @@ routerProduct.get(
     exitsProduct
   ],
   findProduct,
+
+);
+
+routerProduct.get(
+    "/list/:page",
+    [
+        validPage
+    ],
+    findProduct,
 
 );
 
