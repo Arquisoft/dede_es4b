@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../AppBar/NavBar";
 import '../dist/css/styles.css';
 
+
 interface Producto {
 
     id: string;
@@ -81,7 +82,7 @@ const Carrito = () => {
             <h1>Carrito de la compra</h1>
           </div>
         </header>
-        <main className="xl:mx-64">
+        <main>
 
         <table>
           <caption>Tu pedido</caption>

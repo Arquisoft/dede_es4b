@@ -36,6 +36,7 @@ export const getPodSession = () => {
 
 function App(): JSX.Element {
 
+
   return (
     <SessionProvider>
       <BrowserRouter>
@@ -51,6 +52,7 @@ function App(): JSX.Element {
         </Routes>
       </BrowserRouter>
     </SessionProvider>
+
   );
 }
 

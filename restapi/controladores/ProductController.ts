@@ -14,9 +14,9 @@ const findAllProducts = async (req: Request, res: Response) => {
 
 const findByPage = async (req: Request, res: Response) => {
 
-  let limite = 5;
+  let limite = 6;
 
-  let desde = Number(req.params.page) * 5;
+  let desde = Number(req.params.page) * 6;
 
   const products = await Product.find(req.params.id)
       .limit(Number(limite))
