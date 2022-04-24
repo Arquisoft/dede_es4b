@@ -30,8 +30,8 @@ const login = async (req: Request, res: Response) => {
       const tokenSecret = process.env.SECRET
     
       const token = jwt.sign(userToken, tokenSecret)
-    
-      res.send({
+
+      res.status(200).send({
         userName: user.userName,
         name: user.Name,
         token
