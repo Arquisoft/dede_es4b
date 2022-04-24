@@ -42,15 +42,15 @@ const Catalogo = () => {
     if (isLogeado())
         console.log("conectado");
     
-   
+    console.log(productos);
     const classes = useStyles();
-
+    let longitud=productos.length/6;
     return (
         <>
             <NavBar/>
             <ProductosCatalogo productos={productosPagina}/>
             
-            <Pagination className={classes.paginacion} onChange={handleChange} color="secondary"  count={productos.length/3} shape="rounded" />
+            <Pagination className={classes.paginacion} onChange={handleChange} color="secondary"  count={Math.round(longitud)} shape="rounded" />
 
         </>
     );
