@@ -12,7 +12,7 @@ interface Product {
 
     type:string;
     color:string;
-    size:number;   
+    size:string;
 }
 
 const productSchema = new Schema({
@@ -26,7 +26,7 @@ const productSchema = new Schema({
     image: {type:String, required: true},
     type: {type:String, required: false},
     color: {type:String, required: false},
-    size: {type:Number, required: false},
+    size: {type:String, required: false},
 });
 
 const ProductModel = model('Product', productSchema);

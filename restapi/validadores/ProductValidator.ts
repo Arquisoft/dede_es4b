@@ -29,7 +29,7 @@ const validPrice = (req: Request, res: Response, next: NextFunction) => {
 
     let value = parseFloat(req.body.price)
 
-    if( value <= 0 ){
+    if(value && value <= 0){
         return res.status(401).json({
             msg: 'El precio no puede ser negativo'
         })
