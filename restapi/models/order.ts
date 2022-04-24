@@ -10,6 +10,6 @@ const orderSchema = new Schema({
     order_date:{type:Date, required:true}
 });
 
-const OrderModel = model('Order', userSchema);
+const OrderModel = model('Order', orderSchema);
 
 module.exports = OrderModel;
