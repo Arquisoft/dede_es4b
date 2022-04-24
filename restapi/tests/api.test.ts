@@ -7,11 +7,9 @@ import productRouter from "../routers/ProductRouter";
 import loginRouter from "../routers/LoginRouter";
 import userRouter from "../routers/UserRouter";
 
-
 let app:Application;
 let server:http.Server;
 
-require('dotenv').config();
 const mongo = require("mongoose");
 
 
@@ -41,13 +39,6 @@ beforeAll(async () => {
     }).on("error",(error:Error)=>{
         console.error('Error occured: ' + error.message);
     });
-
-    mongo.connect(process.env.MONGO_DB_URI)
-        .then(() => {
-            console.log('DB Connected')
-        }).catch((err:any) => {
-        console.log('DB conecction error: ' + err)
-    })
 });
 
 afterAll(async () => {
@@ -127,11 +118,11 @@ describe('products', () => {
 
             "country": "ESP"
         };
+
         const response:Response = await request(app).post('/product/shippementCost').send(addressTo).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
         expect(response.body.coste).toEqual("56.53");
     })
-
 
 });
 
