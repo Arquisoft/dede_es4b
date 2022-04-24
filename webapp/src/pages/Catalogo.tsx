@@ -3,9 +3,9 @@ import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo
 import NavBar from "../components/AppBar/NavBar";
 import { isLogeado } from '../App';
 import {Pagination,Typography} from "@mui/material";
-import useStyles from '../components/ProductosCatalogo/styles';
+//import useStyles from '../components/ProductosCatalogo/styles';
 
-export interface producto {
+export interface Producto {
     _id: number;
     name: string;
     description: string;
@@ -14,8 +14,8 @@ export interface producto {
 }
 
 const Catalogo = () => {
-    const [productos, setProductos] = useState<producto[]>([]);
-    const [productosPagina, setProductosPagina] = useState<producto[]>([]);
+    const [productos, setProductos] = useState<Producto[]>([]);
+    const [productosPagina, setProductosPagina] = useState<Producto[]>([]);
     
 
     const handleChange = async (event:any, value:any) => {
@@ -43,14 +43,14 @@ const Catalogo = () => {
         console.log("conectado");
     
     console.log(productos);
-    const classes = useStyles();
+    //const classes = useStyles();
     let longitud=productos.length/6;
     return (
         <>
             <NavBar/>
             <ProductosCatalogo productos={productosPagina}/>
             
-            <Pagination className={classes.paginacion} onChange={handleChange} color="secondary"  count={Math.round(longitud)} shape="rounded" />
+            <Pagination onChange={handleChange} color="secondary"  count={Math.round(longitud)} shape="rounded" />
 
         </>
     );
