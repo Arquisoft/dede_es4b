@@ -10,6 +10,7 @@ import CheckOut from './pages/CheckOut';
 import { SessionProvider} from '@inrupt/solid-ui-react';
 import LogOut from './components/LogOut/LogOut';
 import Pedidos from './pages/Pedidos';
+import SignUp from './pages/SignUp';
 
 export const webUrl = "https://localhost:3000";
 
@@ -46,6 +47,7 @@ function App(): JSX.Element {
           <Route path="/productos/:id" element={<DetalleProducto/>} />
           <Route path="/productos" element={<Catalogo />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/logout" element={<LogOut/>} />
           <Route path="/pedidos" element={<Pedidos/>} />
