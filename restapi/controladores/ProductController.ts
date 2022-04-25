@@ -57,7 +57,7 @@ const filterProductsByString = async (req: Request, res: Response) => {
 
 const findByPage = async (req: Request, res: Response) => {
 
-  let limite = 5;
+  let limite = 7;
 
   let desde = Number(req.params.page) * 5;
 
