@@ -37,6 +37,24 @@ const filterProductsBySubCategory = async (req: Request, res: Response) => {
 
 }
 
+const filterProductsByString = async (req: Request, res: Response) => {
+
+  //llamada al repositorio
+  const products = await Product.find()
+
+  const filteredProducts = filterProductsByName(products)
+
+  let resultProducts: Array<any> = [];
+  filteredProducts.forEach(function (item: any){
+    if(item.name.toLowerCase().startsWith(req.params.search.toLowerCase())){
+      resultProducts.push(item);
+    }
+  })
+
+  return res.status(200).json(resultProducts);
+
+}
+
 const findByPage = async (req: Request, res: Response) => {
 
   let limite = 5;
@@ -56,6 +74,15 @@ const findProduct = async (req: Request, res: Response) => {
   const product = await Product.findById(req.params.id)
   
   return res.status(200).send(product);
+
+}
+
+const findProductSize = async (req: Request, res: Response) => {
+
+  //llamada al repositorio
+  const product = await Product.find({name: req.params.name, size: req.params.size})
+
+  return res.status(200).json(product);
 
 }
 
@@ -138,4 +165,6 @@ module.exports = {
   findByPage,
   calculateShippementCost,
   filterProductsBySubCategory,
+  filterProductsByString,
+  findProductSize,
 }

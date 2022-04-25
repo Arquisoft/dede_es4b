@@ -30,7 +30,8 @@ routerOrder.get(
 routerOrder.get(
   "/find/:id",
   [
-    existsOrder
+      existsOrder,
+      validateFields
   ],
   findOrder,
 
@@ -39,7 +40,8 @@ routerOrder.get(
 routerOrder.get(
     "/findByClient/:userName",
     [
-        existsClientParam
+        existsClientParam,
+        validateFields
     ],
     findOrderByClient,
 
@@ -48,7 +50,8 @@ routerOrder.get(
 routerOrder.delete(
   "/delete/:id",
   [
-      existsOrder
+      existsOrder,
+      validateFields
   ],
   deleteOrder
 );
