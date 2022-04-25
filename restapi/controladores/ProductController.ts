@@ -2,14 +2,57 @@ import { Request, Response } from 'express';
 const Product = require('../models/product')
 const CalculateShippingCost = require('../costes_envio_api/calcular_costes_envio')
 
+//axuiliar functions
+//filtra los productos de un array para que no se repitan varios con un mismo nombre
+const filterProductsByName = (products: any): any => {
+  const seen = new Set();
+  const result = products.filter((p: any) => {
+    const duplicate = seen.has(p.name);
+    seen.add(p.name);
+    return !duplicate;
+  });
+  return result
+}
+
 //funciones
 const findAllProducts = async (req: Request, res: Response) => {
 
   //llamada al repositorio
   const products = await Product.find()
+
+  const filteredProducts = filterProductsByName(products)
+
+  return res.status(200).json(filteredProducts);
   
-  return res.status(200).send(products);
-  
+}
+
+const filterProductsBySubCategory = async (req: Request, res: Response) => {
+
+  //llamada al repositorio
+  const products = await Product.find({sub_category: req.params.sub_category})
+
+  const filteredProducts = filterProductsByName(products)
+
+  return res.status(200).json(filteredProducts);
+
+}
+
+const filterProductsByString = async (req: Request, res: Response) => {
+
+  //llamada al repositorio
+  const products = await Product.find()
+
+  const filteredProducts = filterProductsByName(products)
+
+  let resultProducts: Array<any> = [];
+  filteredProducts.forEach(function (item: any){
+    if(item.name.toLowerCase().startsWith(req.params.search.toLowerCase())){
+      resultProducts.push(item);
+    }
+  })
+
+  return res.status(200).json(resultProducts);
+
 }
 
 const findByPage = async (req: Request, res: Response) => {
@@ -18,15 +61,11 @@ const findByPage = async (req: Request, res: Response) => {
 
   let desde = Number(req.params.page) * 5;
 
-  const products = await Product.find(req.params.id)
-      .limit(Number(limite))
-      .skip(Number(desde))
-      .catch((error: Error) => {
-        console.log(error);
-        res.status(400).send({msg: "Error al paginar los productos"});
-      });
+  const products = await Product.find()
 
-  return res.status(200).send(products);
+  const filteredProducts = filterProductsByName(products)
+
+  return res.status(200).send(filteredProducts.slice(desde, desde + limite));
 
 }
 
@@ -35,6 +74,15 @@ const findProduct = async (req: Request, res: Response) => {
   const product = await Product.findById(req.params.id)
   
   return res.status(200).send(product);
+
+}
+
+const findProductSize = async (req: Request, res: Response) => {
+
+  //llamada al repositorio
+  const product = await Product.find({name: req.params.name, size: req.params.size})
+
+  return res.status(200).json(product);
 
 }
 
@@ -106,6 +154,8 @@ const calculateShippementCost = async (req: Request, res: Response) => {
   }
 }
 
+
+
 module.exports = {
   addProduct,
   findAllProducts,
@@ -113,5 +163,8 @@ module.exports = {
   updateProduct,
   deleteProduct,
   findByPage,
-  calculateShippementCost
+  calculateShippementCost,
+  filterProductsBySubCategory,
+  filterProductsByString,
+  findProductSize,
 }

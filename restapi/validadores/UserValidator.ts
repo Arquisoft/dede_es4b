@@ -33,7 +33,7 @@ const hasAutorization = async (req: Request, res: Response, next: NextFunction) 
         return res.status(401).send({message: 'The request dont have an authorization header.'});
     }
 
-    const token = authori.split('/')[1]
+    const token = authori.split('-')[1]
 
     if( !token ) {
         return res.status(401).json({
@@ -43,7 +43,7 @@ const hasAutorization = async (req: Request, res: Response, next: NextFunction) 
 
     try {
 
-        const { id, role } = jwt.verify(token, process.env.SECRET)
+        const { id } = jwt.verify(token, process.env.SECRET)
 
         const user = await User.findById( id )
 

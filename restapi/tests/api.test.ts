@@ -6,10 +6,13 @@ import cors from 'cors';
 import productRouter from "../routers/ProductRouter";
 import loginRouter from "../routers/LoginRouter";
 import userRouter from "../routers/UserRouter";
+import orderRouter from "../routers/OrderRouter";
+
 
 let app:Application;
 let server:http.Server;
 
+require('dotenv').config();
 const mongo = require("mongoose");
 
 
@@ -33,12 +36,20 @@ beforeAll(async () => {
     app.use("/product", productRouter)
     app.use("/login", loginRouter)
     app.use("/user", userRouter)
+    app.use("/order", orderRouter)
 
     server = app.listen(port, ():void => {
         console.log('Restapi server for testing listening on '+ port);
     }).on("error",(error:Error)=>{
         console.error('Error occured: ' + error.message);
     });
+
+    mongo.connect(process.env.MONGO_DB_URI)
+        .then(() => {
+            console.log('DB Connected')
+        }).catch((err:any) => {
+        console.log('DB conecction error: ' + err)
+    })
 });
 
 afterAll(async () => {
@@ -66,6 +77,22 @@ describe('products', () => {
         expect(response.statusCode).toBe(200);
     });
 
+    it('Can find a product by its id', async () => {
+
+        const response:Response = await request(app).get('/product/find/' + idAddedProduct).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    it('Can find a all products', async () => {
+
+        const response:Response = await request(app).get('/product/list').set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
     it('Can update an existing  product', async ()=>{
         let productData:Object = {
             "name":'test2UPDATE',
@@ -83,13 +110,13 @@ describe('products', () => {
     })
 
     it('Can recived a existing page by number', async ()=>{
-        const response:Response = await request(app).get('/product/list/' + 1).set('Accept', 'application/json');
+        const response:Response = await request(app).get('/product/list/1').set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
     })
 
     it('Can not recived a not existing page by number', async ()=>{
-        const response:Response = await request(app).get('/product/list/' + (-1)).set('Accept', 'application/json');
-        expect(response.statusCode).toBe(400);
+        const response:Response = await request(app).get('/product/list/-1').set('Accept', 'application/json');
+        expect(response.statusCode).toBe(401);
     })
 
     it('Can get shipping cost given a correct direcction', async () => {
@@ -102,11 +129,11 @@ describe('products', () => {
 
             "country": "ESP"
         };
-
         const response:Response = await request(app).post('/product/shippementCost').send(addressTo).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
         expect(response.body.coste).toEqual("56.53");
     })
+
 
 });
 
@@ -156,6 +183,28 @@ describe('login', () => {
 });
 
 describe('user', () => {
+    let idAddedUser:any;
+
+    it('Register a new user', async () => {
+        let userData:Object = {
+            name:"prueba",
+            surname:"prueba",
+            userName:"prueba",
+            password: "prueba"
+        };
+
+        const response:Response = await request(app).post('/user/register').send(userData).set('Accept', 'application/json');
+        idAddedUser = response.body._id;
+        expect(response.statusCode).toBe(200);
+    });
+
+    it('Can find a user by its id', async () => {
+
+        const response:Response = await request(app).get('/user/find/' + idAddedUser).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
 
     it('Get all user list', async () => {
 
@@ -165,6 +214,92 @@ describe('user', () => {
 
     });
 
+    it('Can update an existing user', async ()=>{
+        let userData:Object = {
+            name:'pruebaUpdate',
+            surname:"pruebaUpdate"
+        };
 
+        const response:Response = await request(app).put('/user/update/' + idAddedUser).send(userData).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Usuario actualizado");
+    })
+
+    it('Can delete an existing user', async ()=>{
+        const response:Response = await request(app).delete('/user/delete/' + idAddedUser).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Usuario eliminado");
+    })
+
+});
+
+describe('order', () => {
+    let idAddedOrder:any;
+
+    it('Register a new order', async () => {
+        let orderData:Object = {
+            user: "ana@email.com",
+            products: [
+                {
+                    product: "6249caf72ed5f77ca3d601c0",
+                    cantidad: 2
+                },
+                {
+                    product: "6249caf72ed5f77ca3d601c4",
+                    cantidad: 1
+                },
+                {
+                    product: "62650ffa22989cae41254c3c",
+                    cantidad: 3
+                }
+            ],
+            order_date: "2022-04-24T16:12:16.495Z",
+            status: "ENTREGADO"
+        }
+
+        const response:Response = await request(app).post('/order/add').send(orderData).set('Accept', 'application/json');
+        idAddedOrder = response.body._id;
+        expect(response.statusCode).toBe(200);
+    });
+
+    it('Can find a order by its id', async () => {
+
+        const response:Response = await request(app).get('/order/find/' + idAddedOrder).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    it('Can find a client orders', async () => {
+
+        const response:Response = await request(app).get('/order/findByClient/ana@email.com').set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    it('Get all order list', async () => {
+
+        const response:Response = await request(app).get('/order/list');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    it('Can update an existing order', async ()=>{
+        let userData:Object = {
+            status: "EN RUTA"
+        };
+
+        const response:Response = await request(app).put('/order/update/' + idAddedOrder).send(userData).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Pedido actualizado");
+    })
+
+    it('Can delete an existing order', async ()=>{
+        const response:Response = await request(app).delete('/order/delete/' + idAddedOrder).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Pedido eliminado");
+    })
 
 });
