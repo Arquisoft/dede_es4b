@@ -6,6 +6,7 @@ import cors from 'cors';
 import productRouter from "../routers/ProductRouter";
 import loginRouter from "../routers/LoginRouter";
 import userRouter from "../routers/UserRouter";
+import orderRouter from "../routers/OrderRouter";
 
 
 let app:Application;
@@ -35,6 +36,7 @@ beforeAll(async () => {
     app.use("/product", productRouter)
     app.use("/login", loginRouter)
     app.use("/user", userRouter)
+    app.use("/order", orderRouter)
 
     server = app.listen(port, ():void => {
         console.log('Restapi server for testing listening on '+ port);
@@ -226,6 +228,78 @@ describe('user', () => {
     it('Can delete an existing user', async ()=>{
         const response:Response = await request(app).delete('/user/delete/' + idAddedUser).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Usuario eliminado");
+    })
+
+});
+
+describe('order', () => {
+    let idAddedOrder:any;
+
+    it('Register a new order', async () => {
+        let orderData:Object = {
+            user: "ana@email.com",
+            products: [
+                {
+                    product: "6249caf72ed5f77ca3d601c0",
+                    cantidad: 2
+                },
+                {
+                    product: "6249caf72ed5f77ca3d601c4",
+                    cantidad: 1
+                },
+                {
+                    product: "62650ffa22989cae41254c3c",
+                    cantidad: 3
+                }
+            ],
+            order_date: "2022-04-24T16:12:16.495Z",
+            status: "ENTREGADO"
+        }
+
+        const response:Response = await request(app).post('/order/add').send(orderData).set('Accept', 'application/json');
+        idAddedOrder = response.body._id;
+        expect(response.statusCode).toBe(200);
+    });
+
+    it('Can find a order by its id', async () => {
+
+        const response:Response = await request(app).get('/order/find/' + idAddedOrder).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    it('Can find a client orders', async () => {
+
+        const response:Response = await request(app).get('/order/findByClient/ana@email.com').set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    it('Get all order list', async () => {
+
+        const response:Response = await request(app).get('/order/list');
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    it('Can update an existing order', async ()=>{
+        let userData:Object = {
+            status: "EN RUTA"
+        };
+
+        const response:Response = await request(app).put('/order/update/' + idAddedOrder).send(userData).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Pedido actualizado");
+    })
+
+    it('Can delete an existing order', async ()=>{
+        const response:Response = await request(app).delete('/order/delete/' + idAddedOrder).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.msg).toEqual("Pedido eliminado");
     })
 
 });
