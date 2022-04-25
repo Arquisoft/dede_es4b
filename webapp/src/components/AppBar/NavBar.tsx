@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { Link, useNavigate } from 'react-router-dom';
+import { isLogeado } from '../../App';
 
 const NavBar = () => {
 
@@ -19,7 +20,7 @@ const NavBar = () => {
         return classes.filter(Boolean).join(' ')
     }
 
-// Cortesía de tailwindui.com
+    // Cortesía de tailwindui.com
     return (
         <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (
@@ -65,71 +66,84 @@ const NavBar = () => {
                                     <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                                 </button>
 
-                                {/* Profile dropdown */}
-                                <Menu as="div" className="ml-3 relative">
-                                    <div>
-                                        <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                                            <span className="sr-only">Open user menu</span>
-                                            <img
-                                                className="h-8 w-8 rounded-full"
-                                                src="http://localhost:3000/images/user_icon.png"
-                                                alt="user_icon"
-                                            />
-                                        </Menu.Button>
-                                    </div>
-                                    <Transition
-                                        as={Fragment}
-                                        enter="transition ease-out duration-100"
-                                        enterFrom="transform opacity-0 scale-95"
-                                        enterTo="transform opacity-100 scale-100"
-                                        leave="transition ease-in duration-75"
-                                        leaveFrom="transform opacity-100 scale-100"
-                                        leaveTo="transform opacity-0 scale-95"
-                                    >
-                                        <Menu.Items className="origin-top-right z-10  absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Mi cuenta
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <Link
-                                                        to="/pedidos"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Mis pedidos
-                                                    </Link>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Favoritos
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="/logout"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Cerrar sesión
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                        </Menu.Items>
-                                    </Transition>
-                                </Menu>
+                                {isLogeado() ?
+                                    (
+                                        <Menu as="div" className="ml-3 relative">
+                                            <div>
+                                                <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                                                    <span className="sr-only">Opciones de usuario</span>
+                                                    <img
+                                                        className="h-8 w-8 rounded-full"
+                                                        src="http://localhost:3000/images/user_icon.png"
+                                                        alt="user_icon"
+                                                    />
+                                                </Menu.Button>
+                                            </div>
+                                            <Transition
+                                                as={Fragment}
+                                                enter="transition ease-out duration-100"
+                                                enterFrom="transform opacity-0 scale-95"
+                                                enterTo="transform opacity-100 scale-100"
+                                                leave="transition ease-in duration-75"
+                                                leaveFrom="transform opacity-100 scale-100"
+                                                leaveTo="transform opacity-0 scale-95"
+                                            >
+                                                <Menu.Items className="origin-top-right z-10  absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                    <Menu.Item>
+                                                        {({ active }) => (
+                                                            <a
+                                                                href="#"
+                                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                            >
+                                                                Mi cuenta
+                                                            </a>
+                                                        )}
+                                                    </Menu.Item>
+                                                    <Menu.Item>
+                                                        {({ active }) => (
+                                                            <Link
+                                                                to="/pedidos"
+                                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                            >
+                                                                Mis pedidos
+                                                            </Link>
+                                                        )}
+                                                    </Menu.Item>
+                                                    <Menu.Item>
+                                                        {({ active }) => (
+                                                            <a
+                                                                href="#"
+                                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                            >
+                                                                Favoritos
+                                                            </a>
+                                                        )}
+                                                    </Menu.Item>
+                                                    <Menu.Item>
+                                                        {({ active }) => (
+                                                            <a
+                                                                href="/logout"
+                                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                            >
+                                                                Cerrar sesión
+                                                            </a>
+                                                        )}
+                                                    </Menu.Item>
+                                                </Menu.Items>
+                                            </Transition>
+                                        </Menu>
+                                    ) : (<div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                                        <Link to="/login" className="whitespace-nowrap text-base font-medium text-white hover:text-purple-500">
+                                            Iniciar sesión
+                                        </Link>
+                                        <Link
+                                            to="/signup"
+                                            className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                                        >
+                                            Registrarme
+                                        </Link>
+                                    </div>)
+                                }
                             </div>
                         </div>
                     </div>
