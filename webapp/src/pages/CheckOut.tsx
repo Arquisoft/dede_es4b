@@ -14,6 +14,7 @@ import NavBar from '../components/AppBar/NavBar';
 import Modal from '../components/Modal/Modal';
 import ModalError from '../components/Modal/ModalError';
 import { Link } from 'react-router-dom';
+import { getProductosIndividualesCarrito } from '../util/carrito';
 
 const getCosteProductos = () => {
     let carritoStr = sessionStorage.getItem("carrito");
@@ -40,6 +41,23 @@ const CheckOut = () => {
     var urlAddress = thing?.predicates[addressPredicate]?.namedNodes![0];
 
     const [costePedido, setCostePedido] = useState(getCosteProductos());
+
+    const realizarPedido = () => {
+
+        const products = getProductosIndividualesCarrito();
+
+        const userSessionStr = sessionStorage.getItem('userSession');
+            const userSession = JSON.parse(userSessionStr!);
+        fetch('http://localhost:5000/order/add',
+            {
+                method: 'POST',
+                body: JSON.stringify({ products, user: userSession.userName, order_date: Date.now(), status: "En ruta"}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => setShowConfirmar(true))
+            .catch(e => console.log(e))
+    }
 
 
     const getAddress = async () => {
@@ -98,7 +116,7 @@ const CheckOut = () => {
                 <div className="m-auto w-fit">
                     <DeliveryInfo direccion={direccion} webId={webId} costePedido={costePedido} />
                     <div className="relative my-4">
-                        <button onClick={() => setShowConfirmar(true)}
+                        <button onClick={realizarPedido}
                             type="button"
                             className="absolute right-2 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
