@@ -19,3 +19,11 @@ export type ProductoCarrito = {
   cantidad: number;
   precioTotal: number;
 }
+
+export type Pedido = {
+  _id: string,
+  user: string,
+  products: Producto[],
+  order_date: Date,
+  status: string, 
+}
