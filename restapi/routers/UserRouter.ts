@@ -26,12 +26,17 @@ routerUser.get(
 
 routerUser.get(
   "/find/:id",
+    [
+        exitsUser,
+        validateFields
+    ],
   findUser
 );
 
 routerUser.delete(
   "/delete/:id",[
-      exitsUser
+      exitsUser,
+      validateFields
   ],
   deleteUser
 );
