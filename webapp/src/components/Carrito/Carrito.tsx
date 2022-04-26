@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ProductoCarrito } from "../../shared/shareddtypes";
 import { añadirAlCarrito, eliminarAlCarrito, getCarrito } from "../../util/carrito";
 import NavBar from "../AppBar/NavBar";
-import '../dist/css/styles.css';
+import '../../css/styles.css';
 
 // @ts-ignore
 const Carrito = () => {
