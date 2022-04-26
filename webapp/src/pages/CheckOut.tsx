@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DeliveryInfo from '../components/InfoEntrega/InfoEntrega';
-import { getPodSession } from '../App';
+import { getPodSession, isLogeado } from '../App';
 import ConectarPod from '../components/ConectarPod/ConectarPod';
 import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import {
@@ -21,7 +21,7 @@ const getCosteProductos = () => {
         const carrito: any[] = JSON.parse(carritoStr);
 
         let precio = 0;
-        carrito.map(producto => precio += producto.precioTotal);
+        carrito.forEach(producto => precio += producto.precioTotal);
         return precio;
     }
     return 0;
@@ -94,7 +94,7 @@ const CheckOut = () => {
     return (
         <>
             <NavBar />
-            {session != null ? (
+            {session != null && isLogeado() ? (
                 <div className="m-auto w-fit">
                     <DeliveryInfo direccion={direccion} webId={webId} costePedido={costePedido} />
                     <div className="relative my-4">
@@ -109,7 +109,25 @@ const CheckOut = () => {
 
             ) :
                 <Modal openModal={openModal} closeModal={closeModal} isOpen={isOpen}>
-                    <ConectarPod />
+                    {/* <div className='flex justify-between'> */}
+                    <div className='flex justify-between content-center'>
+
+                    <div>
+
+                    {
+                        !session && <ConectarPod />
+                    }
+                    </div>
+                    <div>
+
+                    {
+                        !isLogeado() && (
+                            <Link to='/login' className="content-center text-base font-medium bg-gray-700 text-white hover:text-purple-500"><p>Inicia sesión</p></Link>
+                        )
+                    }
+                    </div>
+                    </div>
+
                 </Modal>
             }
             {
