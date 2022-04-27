@@ -29,33 +29,42 @@ const Carrito = () => {
       <div>
         <header>
           <NavBar />
-          <div>
-            <h1>Carrito de la compra</h1>
-          </div>
+          <br/>
         </header>
-        <main>
-
-          <table>
-            <caption>Tu pedido</caption>
+        <main className="container mx-auto">
+          <div>
+            <h1 className="text-cyan-700 font-mono text-3xl text-center tracking-tight">Carrito de la compra</h1>
+            <br></br>          
+          </div>
+          <table className="border-collapse">
+            <caption className="text-cyan-600 font-mono text-lg">Tu pedido</caption>
             <thead>
               <tr>
-                <th>Producto</th>
-                <th>Precio</th>
-                <th>Unidades</th>
+                <th className="text-left p-2 border-solid border-blue-100 border-b-4">Producto</th>
+                <br/>
+                <th className="text-left p-2 border-solid border-blue-100 border-b-4">Precio</th>
+                <br/>
+                <th className="text-left p-2 border-solid border-blue-100 border-b-4">Unidades</th>
+                <br/>
+                <th className="text-left p-2 border-solid border-blue-100 border-b-4"></th>
               </tr>
             </thead>
             <tbody>
 
               {carrito.map((producto: ProductoCarrito) => (
 
-                <tr key={producto.producto._id}>
-                  <td>{producto.producto.name}</td>
-                  <td>{producto.precioTotal} €</td>
-                  <td><button type="button" className='unidades' onClick={() => eliminarAlCarrito(producto)}>-</button>
+                <tr key={producto.producto._id} className="hover:bg-blue-100">
+                  <td className="text-left p-2 border-solid border-blue-100 border-b-4">{producto.producto.name}</td>
+                  <br/>
+                  <td className="text-left p-2 border-solid border-blue-100 border-b-4">{producto.precioTotal.toFixed(2)} €</td>
+                  <br/>
+                  <td className="text-left p-2 border-solid border-blue-100 border-b-4">
+                    <button type="button" className='bg-blue-200 rounded-full opacity-60' onClick={() => eliminarAlCarrito(producto)}>-</button>
                     {producto.cantidad}
-                    <button type="button" className='unidades' onClick={() => añadirAlCarrito(producto)}>+</button>
+                    <button type="button" className='bg-blue-200 rounded-full opacity-60' onClick={() => añadirAlCarrito(producto)}>+</button>
                   </td>
-                  <td><button type="button" className='botonEliminar' onClick={() => eliminar(producto, carrito)}>
+                  <br/>
+                  <td className="text-left p-2 border-solid border-blue-100 border-b-4"><button type="button" className='text-red-800' onClick={() => eliminar(producto, carrito)}>
                     Remove
                   </button>
                   </td>
@@ -68,20 +77,19 @@ const Carrito = () => {
 
           <div>
             <br />
-            <div className="subtotal">
+            <div className="flex justify-between text-base text-gray-900">
               <p>Subtotal: {precio.toFixed(2)} €</p>
-
             </div>
+            <br/>
             <div>
-              <button type="button" className="botonComprar" onClick={() => navigate("/checkout")} >
+              <button type="button" className="bg-cyan-400 text-white w-48 rounded-lg h-6" onClick={() => navigate("/checkout")} >
                 Comprar
               </button>
             </div>
             <div>
               <p>
-                o
-                <Link to="/productos" className="botonSeguirComprando">
-                  continua comprando
+                <Link to="/productos" className="bg-white text-cyan-600 font-medium">
+                    o continua comprando
                 </Link>
               </p>
             </div>
