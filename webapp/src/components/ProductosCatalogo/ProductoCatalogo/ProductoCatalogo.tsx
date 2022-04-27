@@ -1,8 +1,7 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, CardActionArea } from '@mui/material';
 import useStyles from './styles'
 import { AddShoppingCart } from "@mui/icons-material";
-import { CardActionArea } from '@mui/material';
 import { producto } from '../../../pages/Catalogo';
 import { ProductoCarrito } from '../../../components/Carrito/Carrito';
 

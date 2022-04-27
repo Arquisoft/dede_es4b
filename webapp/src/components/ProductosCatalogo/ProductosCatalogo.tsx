@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import {Grid} from '@material-ui/core';
 import ProductoCatalogo from './ProductoCatalogo/ProductoCatalogo';
 import useStyles from './styles';
-import {Button, Divider, Menu, MenuItem, Pagination} from "@mui/material";
+import {Button, Divider, Grid, Menu, MenuItem, Pagination} from "@mui/material";
 import { Icon } from '@iconify/react';
 import Box from "@mui/material/Box";
 import { producto } from '../../pages/Catalogo';
