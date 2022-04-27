@@ -14,6 +14,30 @@ const filterProductsByName = (products: any): any => {
   return result
 }
 
+const nElementos = 8;
+
+//da la paginación de un array dado
+const filterProductsByPage = (products: any, page:any): any => {
+  let limite = nElementos;
+
+  let desde = Number(page) * nElementos;
+
+  const filteredProducts = filterProductsByName(products)
+
+  let pages = filteredProducts.length / limite
+
+  if(pages > ~~(filteredProducts.length / limite)){
+    pages = ~~(filteredProducts.length / limite) + 1;
+  }
+
+  const result = {
+    products: filteredProducts.slice(desde, desde + limite),
+    maxPages: pages
+  }
+
+  return result;
+}
+
 //funciones
 const findAllProducts = async (req: Request, res: Response) => {
 
@@ -26,6 +50,44 @@ const findAllProducts = async (req: Request, res: Response) => {
   
 }
 
+const filterProducts = async (req: Request, res: Response) => {
+
+  if (req.params.filter === "sub_category"){
+    //llamada al repositorio
+    const products = await Product.find({sub_category: req.params.search})
+
+    const filteredProducts = filterProductsByName(products)
+
+    return res.status(200).send(filterProductsByPage(filteredProducts,req.params.page));
+
+  } else if (req.params.filter === "search"){
+
+    const products = await Product.find()
+
+    const filteredProducts = filterProductsByName(products)
+    let resultProducts: Array<any> = [];
+    if(req.params.search.trim() === ""){
+      resultProducts = filteredProducts;
+    } else {
+      filteredProducts.forEach(function (item: any){
+        if(item.name.toLowerCase().trim().startsWith(req.params.search.toLowerCase().trim())){
+          resultProducts.push(item);
+        }
+      })
+    }
+
+    return res.status(200).send(filterProductsByPage(resultProducts,req.params.page));
+
+  } else {
+    return res.status(401).json({
+      msg: 'Filtro no existente'
+    })
+  }
+
+
+}
+
+/*
 const filterProductsBySubCategory = async (req: Request, res: Response) => {
 
   //llamada al repositorio
@@ -55,25 +117,29 @@ const filterProductsByString = async (req: Request, res: Response) => {
 
 }
 
+ */
+
 const findByPage = async (req: Request, res: Response) => {
-
-  let limite = 7;
-
-  let desde = Number(req.params.page) * 5;
 
   const products = await Product.find()
 
   const filteredProducts = filterProductsByName(products)
 
-  return res.status(200).send(filteredProducts.slice(desde, desde + limite));
+  return res.status(200).send(filterProductsByPage(filteredProducts,req.params.page));
 
 }
 
 const findProduct = async (req: Request, res: Response) => {
 
   const product = await Product.findById(req.params.id)
-  
-  return res.status(200).send(product);
+
+  const sizes = await Product.find({name: product.name}).distinct("size")
+
+  const result = {
+    product: product,
+    sizes: sizes,
+  }
+  return res.status(200).send(result);
 
 }
 
@@ -82,7 +148,14 @@ const findProductSize = async (req: Request, res: Response) => {
   //llamada al repositorio
   const product = await Product.find({name: req.params.name, size: req.params.size})
 
-  return res.status(200).json(product);
+  const sizes = await Product.find({name: req.params.name}).distinct("size")
+
+  const result = {
+    product: product,
+    sizes: sizes,
+  }
+
+  return res.status(200).send(result);
 
 }
 
@@ -164,7 +237,8 @@ module.exports = {
   deleteProduct,
   findByPage,
   calculateShippementCost,
-  filterProductsBySubCategory,
-  filterProductsByString,
+  //filterProductsBySubCategory,
+  //filterProductsByString,
   findProductSize,
+  filterProducts
 }

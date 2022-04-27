@@ -48,6 +48,46 @@ const existsSubcategory = async (req: Request, res: Response, next: NextFunction
 
 }
 
+const existsFilter = async (req: Request, res: Response, next: NextFunction) => {
+    try{
+        if (req.params.filter === "sub_category"){
+            try {
+
+                const subcategorys = await Product.find().distinct("sub_category")
+
+                if(!subcategorys.includes(req.params.search)){
+                    return res.status(401).json({
+                        msg: 'La subcategoría no existe'
+                    })
+                }
+
+            } catch (error) {
+                return res.status(401).json({
+                    msg: 'Subcategoría no válida'
+                })
+            }
+        } else if (req.params.filter === "search"){
+            if (req.params.search === null || req.params.search === "undefined"){
+                return res.status(401).json({
+                    msg: 'Busqueda no válida'
+                })
+            }
+        } else {
+            return res.status(401).json({
+                msg: 'Filtro no existente'
+            })
+        }
+
+    }catch (e){
+        return res.status(401).json({
+            msg: 'Error al hacer la búsqueda'
+        })
+    }
+
+    next()
+
+}
+
 const existsProductNameSize = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
@@ -128,5 +168,6 @@ module.exports = {
     validSize,
     validPage,
     existsSubcategory,
-    existsProductNameSize
+    existsProductNameSize,
+    existsFilter
 }
