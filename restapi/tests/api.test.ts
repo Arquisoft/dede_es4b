@@ -24,7 +24,7 @@ beforeAll(async () => {
     app.use(bp.json());
     //app.use("/api", api)
 
-    mongo.connect('mongodb+srv://dede_es4b:dede_es4b_pass.DFSS@cluster0.v4ply.mongodb.net/shop?retryWrites=true&w=majority')
+    await mongo.connect('mongodb+srv://dede_es4b:dede_es4b_pass.DFSS@cluster0.v4ply.mongodb.net/shop?retryWrites=true&w=majority')
         .then(() => {
             console.log('DB Connected')
         }).catch((err:any) => {
@@ -104,51 +104,6 @@ describe('products', () => {
         expect(response.body.coste).toEqual("56.53");
     })
 
-
-});
-
-describe('login', () => {
-
-    it('An existent user login', async () => {
-
-        let loginData:Object = {
-            userName : "ana@email.com",
-            password : "123456"
-        };
-
-        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
-
-        expect(response.statusCode).toBe(200);
-
-        expect(response.body.userName).toEqual("ana@email.com");
-        expect(response.body.token).toBeDefined();
-
-
-    });
-
-    it('An inexistent user login', async () => {
-
-        let loginData:Object = {
-            userName : "a",
-            password : "123456"
-        };
-
-        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
-
-        expect(response.statusCode).toBe(401);
-    });
-
-    it('An existent user login with an incorrect password', async () => {
-
-        let loginData:Object = {
-            userName : "ana@email.com",
-            password : "1"
-        };
-
-        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
-
-        expect(response.statusCode).toBe(401);
-    });
 
 });
 
