@@ -39,3 +39,8 @@ export const getProductosPagina = async (pageNum : number) => {
   const respuesta = await fetch('http://localhost:5000/product/list/' + pageNum);
   return respuesta.json();
 }
+
+export const getProductoByID= async (id : string) => {
+  const respuesta = await fetch('http://localhost:5000/product/find/' + id);
+  return respuesta.json();
+}
