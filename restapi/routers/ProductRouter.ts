@@ -72,22 +72,6 @@ routerProduct.get(
     filterProducts,
 );
 
-/*
-routerProduct.get(
-    "/list/filterSubCategory/:sub_category",
-    [
-        existsSubcategory,
-        validateFields
-    ],
-    filterProductsBySubCategory,
-);
-
-routerProduct.get(
-    "/list/filterSearch/:search",
-    filterProductsByString,
-);
-*/
-
 routerProduct.delete(
   "/delete/:id",
   [
