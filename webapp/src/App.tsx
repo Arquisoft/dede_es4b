@@ -7,11 +7,16 @@ import Catalogo from './pages/Catalogo';
 import Carrito from './components/Carrito/Carrito';
 import DetalleProducto from './pages/DetalleProducto';
 import CheckOut from './pages/CheckOut';
-import { SessionProvider} from '@inrupt/solid-ui-react';
+import { SessionProvider } from '@inrupt/solid-ui-react';
 import LogOut from './components/LogOut/LogOut';
 import Pedidos from './pages/Pedidos';
+import SignUp from './pages/SignUp';
+import PrivateRoute from './routers/PrivateRoute';
+import { Switch } from '@headlessui/react';
 
 export const webUrl = "https://localhost:3000";
+
+
 
 
 export const isLogeado = (): boolean => {
@@ -20,7 +25,7 @@ export const isLogeado = (): boolean => {
 
 function getToken(): string | null {
   const userSessionStr = sessionStorage.getItem('userSession');
-  if (userSessionStr != null){
+  if (userSessionStr != null) {
     const userSession = JSON.parse(userSessionStr!);
     return userSession.token;
   }
@@ -34,7 +39,17 @@ export const getPodSession = () => {
   return null;
 }
 
+const ProtectedRoute = ({ user, children }: any) => {
+  if (!user) {
+    // return <Navigate to="/landing" replace />;
+  }
+
+  return children;
+};
+
 function App(): JSX.Element {
+
+
 
   return (
     <SessionProvider>
@@ -42,15 +57,23 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/carrito" element={<Carrito />} />
-          <Route path="/productos/:id" element={<DetalleProducto/>} />
+          <Route path="/productos/:id" element={<DetalleProducto />} />
           <Route path="/productos" element={<Catalogo />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/checkout" element={<CheckOut />} />
-          <Route path="/logout" element={<LogOut/>} />
-          <Route path="/pedidos" element={<Pedidos/>} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/logout" element={<LogOut />} />
+
+          {/* Ventanas que necesitan estar logeado */}
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="/pedidos" element={<Pedidos />} />
+            <Route path="/checkout" element={<CheckOut />} />
+          </Route>
+          
+          <Route path="*" element={<h1>Error 404: Página no existe</h1>}/>
         </Routes>
       </BrowserRouter>
     </SessionProvider>
+
   );
 }
 

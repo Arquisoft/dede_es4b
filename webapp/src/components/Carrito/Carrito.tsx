@@ -1,150 +1,103 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ProductoCarrito } from "../../shared/shareddtypes";
+import { añadirAlCarrito, eliminarAlCarrito, getCarrito } from "../../util/carrito";
 import NavBar from "../AppBar/NavBar";
-import '../dist/css/styles.css';
-
-interface Producto {
-
-    id: string;
-    name: string;
-    price: string;
-    image: string;
-}
-
-
-export interface ProductoCarrito {
-  producto: Producto;
-  cantidad: number;
-  precioTotal: number;
-}
-
-
+import '../../css/styles.css';
 
 // @ts-ignore
 const Carrito = () => {
   const navigate = useNavigate();
-  var precio=0;
-  
+  var precio = 0;
 
-  let carrito :any= [];
-  let carritoString = sessionStorage.getItem('carrito');
-  if (carritoString != null)
-    carrito = JSON.parse(carritoString!);
-  
+  let carrito: any = getCarrito();
+
   for (let i = 0; i < carrito.length; i++) {
     precio += carrito[i].precioTotal;
   }
-  // Guarda el producto en la sesión.
-  const añadirAlCarrito = (producto: any, carrito: any) => {
-    let borrar=carrito.indexOf(producto);
-    
-    let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad+1, precioTotal: parseFloat(producto.producto.price)*(producto.cantidad+1)};
-    carrito.splice(borrar,1,productoCarrito);
-    //carrito.push(productoCarrito);
+
+
+  const eliminar = (producto: any, carrito: any) => {
+    let borrar = carrito.indexOf(producto);
+    carrito.splice(borrar, 1);
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
     window.location.reload();
   }
 
-   // Guarda el producto en la sesión.
-  const eliminarAlCarrito = (producto: any, carrito: any) => {
-    let borrar=carrito.indexOf(producto);
-    if(producto.cantidad===1){
-      carrito.splice(borrar,1);
-    }else{
-      let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad-1, precioTotal: parseFloat(producto.producto.price)*(producto.cantidad-1) };
-      carrito.splice(borrar,1,productoCarrito);
-      //carrito.push(productoCarrito);
-      
-    }
-    sessionStorage.setItem('carrito', JSON.stringify(carrito))
-    window.location.reload();
-  }
-
-    // Guarda el producto en la sesión.
-    const eliminar = (producto: any, carrito: any) => {
-      let borrar=carrito.indexOf(producto);
-      carrito.splice(borrar,1);
-      sessionStorage.setItem('carrito', JSON.stringify(carrito))
-      window.location.reload();
-    }
-  
-  const volverCatalogo=()=>{
-    window.location.href="\\productos";
-  }
-  console.log(carrito);
-    return (
+  return (
     <>
 
       <div>
         <header>
-          <NavBar/>
-          <div>
-            <h1>Carrito de la compra</h1>
-          </div>
+          <NavBar />
+          <br/>
         </header>
-        <main className="xl:mx-64">
-
-        <table>
-          <caption>Tu pedido</caption>
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Precio</th>
-              <th>Unidades</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            {carrito.map((producto: ProductoCarrito) => (
-              
+        <main className="container mx-auto">
+          <div>
+            <h1 className="text-cyan-700 font-mono text-3xl text-center tracking-tight">Carrito de la compra</h1>
+            <br></br>          
+          </div>
+          <table className="border-collapse">
+            <caption className="text-cyan-600 font-mono text-lg">Tu pedido</caption>
+            <thead>
               <tr>
-                <td>{producto.producto.name}</td>
-                <td>{producto.precioTotal} €</td>
-                <td><button type="button" className='unidades' onClick={() => eliminarAlCarrito(producto, carrito)}>-</button>
-                      {producto.cantidad} 
-                    <button type="button" className='unidades' onClick={() => añadirAlCarrito(producto, carrito)}>+</button>
-                </td>
-                <td><button type="button" className='botonEliminar' onClick={() => eliminar(producto, carrito)}>
-                Remove
-                </button>
-                </td>
+                <th className="text-left p-2 border-solid border-blue-100 border-b-4">Producto</th>
+                <br/>
+                <th className="text-left p-2 border-solid border-blue-100 border-b-4">Precio</th>
+                <br/>
+                <th className="text-left p-2 border-solid border-blue-100 border-b-4">Unidades</th>
+                <br/>
+                <th className="text-left p-2 border-solid border-blue-100 border-b-4"></th>
               </tr>
-              
-              
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+
+              {carrito.map((producto: ProductoCarrito) => (
+
+                <tr key={producto.producto._id} className="hover:bg-blue-100">
+                  <td className="text-left p-2 border-solid border-blue-100 border-b-4">{producto.producto.name}</td>
+                  <br/>
+                  <td className="text-left p-2 border-solid border-blue-100 border-b-4">{producto.precioTotal.toFixed(2)} €</td>
+                  <br/>
+                  <td className="text-left p-2 border-solid border-blue-100 border-b-4">
+                    <button type="button" className='bg-blue-200 rounded-full opacity-60' onClick={() => eliminarAlCarrito(producto)}>-</button>
+                    {producto.cantidad}
+                    <button type="button" className='bg-blue-200 rounded-full opacity-60' onClick={() => añadirAlCarrito(producto)}>+</button>
+                  </td>
+                  <br/>
+                  <td className="text-left p-2 border-solid border-blue-100 border-b-4"><button type="button" className='text-red-800' onClick={() => eliminar(producto, carrito)}>
+                    Remove
+                  </button>
+                  </td>
+                </tr>
+
+
+              ))}
+            </tbody>
+          </table>
 
           <div>
-            <br/>
-            <div className="subtotal">
+            <br />
+            <div className="flex justify-between text-base text-gray-900">
               <p>Subtotal: {precio.toFixed(2)} €</p>
-              
             </div>
+            <br/>
             <div>
-              <button type="button" className="botonComprar" onClick={()=>navigate("/checkout")} >
+              <button type="button" className="bg-cyan-400 text-white w-48 rounded-lg h-6" onClick={() => navigate("/checkout")} >
                 Comprar
               </button>
             </div>
             <div>
               <p>
-                o
-                <button type="button" className="botonSeguirComprando"
-                  onClick={()=>volverCatalogo()}> continua comprando
-                </button>
+                <Link to="/productos" className="bg-white text-cyan-600 font-medium">
+                    o continua comprando
+                </Link>
               </p>
             </div>
           </div>
-
-
-
-
-          </main>
-
+        </main>
       </div>
     </>
-
-
-    )
+  )
 }
 
 export default Carrito

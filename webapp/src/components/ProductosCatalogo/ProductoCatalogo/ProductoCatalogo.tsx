@@ -1,7 +1,5 @@
 import React from 'react';
-import { ProductoCarrito } from '../../../components/Carrito/Carrito';
-import { Producto } from '../../../shared/shareddtypes';
-import { PlusCircleIcon, ShoppingCartIcon } from '@heroicons/react/outline';
+import { Producto, ProductoCarrito } from '../../../shared/shareddtypes';
 import { Link } from 'react-router-dom';
 
 
