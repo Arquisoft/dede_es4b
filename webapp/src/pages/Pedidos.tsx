@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { getProductos } from '../api/api';
+import { getPedidosUsuario, getProductos } from '../api/api';
 import NavBar from '../components/AppBar/NavBar';
 import ListarPedidos from '../components/ListarPedidos/ListarPedidos'
 import Paginacion from '../components/Paginacion/Paginacion';
-import { Producto } from '../shared/shareddtypes';
+import { Pedido, Producto } from '../shared/shareddtypes';
 
 const Pedidos = () => {
 
-    const [pedidos, setPedidos] = useState<Producto[]>([]);
+    const [pedidos, setPedidos] = useState<Pedido[]>([]);
 
     useEffect(() => {
         if (pedidos.length == 0)
-            getProductos().then(pedidos => setPedidos(pedidos));
-    }, [pedidos]);
+            getPedidosUsuario().then(newPedidos => setPedidos(newPedidos));
+    }, []);
+
+    console.log(pedidos.at(0)?.order_date);
+    
 
     return (
         <div>

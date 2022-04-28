@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './dist/styles.css';
 import { Box, Button, Grid } from '@mui/material';
 import NavBar from '../components/AppBar/NavBar';
-import { ProductoCarrito } from '../components/Carrito/Carrito';
+import { ProductoCarrito } from '../shared/shareddtypes';
 
 const DetalleProducto = () => {
     const params = useParams();
