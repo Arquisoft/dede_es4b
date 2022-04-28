@@ -16,18 +16,18 @@ const CheckOut = () => {
     const webId = session?.info.webId;
     const addressPredicate = "http://www.w3.org/2006/vcard/ns#hasAddress";
     const [direccion, setDireccion] = useState<any>(null);
-    const { thing, error } = useThing(webId, webId);
+    const { thing } = useThing(webId, webId);
     var urlAddress = thing?.predicates[addressPredicate].namedNodes![0];
     const [costePedido, setCostePedido] = useState(0);
 
 
     const getAddress = async () => {
         const dataset = await getSolidDataset(urlAddress!);
-        const thing = getThing(dataset, urlAddress!)!;
+        const addressThing = getThing(dataset, urlAddress!)!;
         setDireccion({
-            street1: getStringNoLocale(thing!, VCARD.street_address.iri),
-            city: getStringNoLocale(thing!, VCARD.locality.iri),
-            zip: getStringNoLocale(thing!, VCARD.postal_code),
+            street1: getStringNoLocale(addressThing, VCARD.street_address.iri),
+            city: getStringNoLocale(addressThing, VCARD.locality.iri),
+            zip: getStringNoLocale(addressThing, VCARD.postal_code),
             country: "ESP",
         })
     };
@@ -57,7 +57,8 @@ const CheckOut = () => {
             calcularCostes();
         }
 
-    }, [thing])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [thing, direccion, costePedido])
 
     return (
         <>

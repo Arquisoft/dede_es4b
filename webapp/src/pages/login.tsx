@@ -14,7 +14,7 @@ const Login = () => {
     useEffect(() => {
         if (isLogeado())
             navigate("/productos")
-    }, [])
+    })
 
     const [tipo, setTipo] = useState('password')
     const [username, setUsername] = useState('');
@@ -47,7 +47,7 @@ const Login = () => {
 
     const handleSumbit = async (e: BaseSyntheticEvent) => {
         e.preventDefault();
-        comprobarDatos(e);
+        comprobarDatos();
 
         // llamada al backend
         await fetch('http://localhost:5000/login', {
@@ -73,7 +73,7 @@ const Login = () => {
         });
     };
 
-    const comprobarDatos = (e: BaseSyntheticEvent): void => {
+    const comprobarDatos = (): void => {
         if (username.length <= 0)
             setValidationUsername("Name too short");
         if (password.length <= 0)

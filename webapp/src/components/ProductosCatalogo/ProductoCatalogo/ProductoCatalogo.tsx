@@ -7,19 +7,17 @@ import { ProductoCarrito } from '../../../components/Carrito/Carrito';
 
 
 // Guarda el producto en la sesión.
-const añadirAlCarrito = (producto: any) => {
+const añadirAlCarrito = (newProducto: any) => {
     const carritoString = sessionStorage.getItem('carrito');
     let carrito = [];
     if (carritoString != null)
-        carrito = JSON.parse(carritoString!);
-    //let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };    
+        carrito = JSON.parse(carritoString);
    
     let borrar=-1;
     let c=0;
-    let p=0;
     carrito.forEach(function(value:any,index:any){
         
-        if(value.producto._id===producto._id){
+        if(value.producto._id===newProducto._id){
             borrar=index;
             c=value.cantidad;
 
@@ -28,11 +26,11 @@ const añadirAlCarrito = (producto: any) => {
     
     
     if(borrar>=0){
-        let productoCarrito: ProductoCarrito = { producto: producto, cantidad: c+1, precioTotal: parseFloat(producto.price)*c };
+        let productoCarrito: ProductoCarrito = { producto: newProducto, cantidad: c+1, precioTotal: parseFloat(newProducto.price)*c };
          
         carrito.splice(borrar,1,productoCarrito);
     }else{
-        let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };
+        let productoCarrito: ProductoCarrito = { producto: newProducto, cantidad: 1, precioTotal: parseFloat(newProducto.price) };
         carrito.push(productoCarrito);
     }
     

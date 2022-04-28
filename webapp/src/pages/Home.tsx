@@ -1,5 +1,3 @@
-import Box from '@mui/material/Box';
-import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import './dist/styles.css'
 

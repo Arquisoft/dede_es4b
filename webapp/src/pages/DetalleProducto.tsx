@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { producto } from './Catalogo';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './dist/styles.css';
 import { Box, Button, Grid } from '@mui/material';
@@ -17,10 +15,10 @@ const DetalleProducto = () => {
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('');
 
-    const getProduct = async (params : any) => {
-        let id = params.id;
+    const getProduct = async (args : any) => {
+        let id = args.id;
         console.log(id);
-        const respuesta = await fetch('http://localhost:5000/product/find/' + id)
+        await fetch('http://localhost:5000/product/find/' + id)
         .then(response =>{
             if (response?.ok){
                 response.json().then(
@@ -37,22 +35,19 @@ const DetalleProducto = () => {
                 );
             }
         })
-        
     }
 
-    const añadirAlCarrito = (producto: any) => {
+    const añadirAlCarrito = (newProducto: any) => {
         const carritoString = sessionStorage.getItem('carrito');
         let carrito = [];
         if (carritoString != null)
-            carrito = JSON.parse(carritoString!);
-        //let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };    
+            carrito = JSON.parse(carritoString);
        
         let borrar=-1;
         let c=0;
-        let p=0;
         carrito.forEach(function(value:any,index:any){
             
-            if(value.producto._id===producto._id){
+            if(value.producto._id===newProducto._id){
                 borrar=index;
                 c=value.cantidad;
     
@@ -61,11 +56,11 @@ const DetalleProducto = () => {
         
         
         if(borrar>=0){
-            let productoCarrito: ProductoCarrito = { producto: producto, cantidad: c+1, precioTotal: parseFloat(producto.price)*c };
+            let productoCarrito: ProductoCarrito = { producto: newProducto, cantidad: c+1, precioTotal: parseFloat(newProducto.price)*c };
              
             carrito.splice(borrar,1,productoCarrito);
         }else{
-            let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };
+            let productoCarrito: ProductoCarrito = { producto: newProducto, cantidad: 1, precioTotal: parseFloat(newProducto.price) };
             carrito.push(productoCarrito);
         }
         
@@ -74,7 +69,7 @@ const DetalleProducto = () => {
 
     useEffect(() => {
         getProduct(params);
-    }, [])
+    }, [params])
 
     return (
         <div className="detalles">
@@ -84,7 +79,7 @@ const DetalleProducto = () => {
             <div className="contenidoDetalles">
                 <Grid container>
                     <Grid className="columnaIzquierda" item xs={12} sm={6} md={4} lg={3}> 
-                        <img src={image} />
+                        <img src={image} alt="Imagen producto" />
                     </Grid>
                     <Grid className="columnaDerecha" item xs={12} sm={6} md={4} lg={3}>
                         <h1 className="tituloProducto">{nombre}</h1>
