@@ -33,3 +33,9 @@ export const getPedidosUsuario = async (): Promise<Pedido[]> => {
   console.log(response);
   throw Error("Error al obtener los pedidos")
 }
+
+
+export const getProductosPagina = async (pageNum : number) => {
+  const respuesta = await fetch('http://localhost:5000/product/list/' + pageNum);
+  return respuesta.json();
+}
