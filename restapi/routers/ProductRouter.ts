@@ -36,8 +36,12 @@ routerProduct.get(
 );
 
 routerProduct.get(
-  "/list/:page",
-  findByPage
+    "/list/:page",
+    [
+        validPage,
+        validateFields
+    ],
+    findByPage,
 );
 
 routerProduct.get(
@@ -56,15 +60,6 @@ routerProduct.get(
         validateFields
     ],
     findProductSize,
-);
-
-routerProduct.get(
-    "/list/:page",
-    [
-        validPage,
-        validateFields
-    ],
-    findByPage,
 );
 
 routerProduct.get(
