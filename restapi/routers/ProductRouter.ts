@@ -36,8 +36,12 @@ routerProduct.get(
 );
 
 routerProduct.get(
-  "/list/:page",
-  findByPage
+    "/list/:page",
+    [
+        validPage,
+        validateFields
+    ],
+    findByPage,
 );
 
 routerProduct.get(
@@ -59,15 +63,6 @@ routerProduct.get(
 );
 
 routerProduct.get(
-    "/list/:page",
-    [
-        validPage,
-        validateFields
-    ],
-    findByPage,
-);
-
-routerProduct.get(
     "/list/:filter/:search/:page",
     [
         existsFilter,
@@ -76,22 +71,6 @@ routerProduct.get(
     ],
     filterProducts,
 );
-
-/*
-routerProduct.get(
-    "/list/filterSubCategory/:sub_category",
-    [
-        existsSubcategory,
-        validateFields
-    ],
-    filterProductsBySubCategory,
-);
-
-routerProduct.get(
-    "/list/filterSearch/:search",
-    filterProductsByString,
-);
-*/
 
 routerProduct.delete(
   "/delete/:id",

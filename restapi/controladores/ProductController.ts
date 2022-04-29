@@ -78,47 +78,10 @@ const filterProducts = async (req: Request, res: Response) => {
 
     return res.status(200).send(filterProductsByPage(resultProducts,req.params.page));
 
-  } else {
-    return res.status(401).json({
-      msg: 'Filtro no existente'
-    })
   }
 
 
 }
-
-/*
-const filterProductsBySubCategory = async (req: Request, res: Response) => {
-
-  //llamada al repositorio
-  const products = await Product.find({sub_category: req.params.sub_category})
-
-  const filteredProducts = filterProductsByName(products)
-
-  return res.status(200).json(filteredProducts);
-
-}
-
-const filterProductsByString = async (req: Request, res: Response) => {
-
-  //llamada al repositorio
-  const products = await Product.find()
-
-  const filteredProducts = filterProductsByName(products)
-
-  let resultProducts: Array<any> = [];
-  filteredProducts.forEach(function (item: any){
-    if(item.name.toLowerCase().startsWith(req.params.search.toLowerCase())){
-      resultProducts.push(item);
-    }
-  })
-
-  return res.status(200).json(resultProducts);
-
-}
-
-
- */
 
 const findByPage = async (req: Request, res: Response) => {
 

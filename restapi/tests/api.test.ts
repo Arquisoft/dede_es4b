@@ -134,6 +134,48 @@ describe('products', () => {
         expect(response.body.coste).toEqual("56.53");
     })
 
+    it('Can find a product by its name and size', async () => {
+
+        const response:Response = await request(app).get('/product/find/Nike Sportswear Hybrid/S').set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body.sizes.length).toEqual(3);
+        expect(response.body.product).toBeDefined();
+
+    });
+
+    it('Can list all products filter by sub_category with pagination', async () => {
+
+        const response:Response = await request(app).get('/product/list/sub_category/Ropa/1').set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+        expect(response.body.maxPages).toEqual(2);
+        expect(response.body.products.length).toEqual(1);
+
+    });
+
+    it('Can list all products filter by a search with pagination', async () => {
+
+        const response:Response = await request(app).get('/product/list/search/C/0').set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+        expect(response.body.maxPages).toEqual(1);
+        expect(response.body.products.length).toEqual(4);
+
+    });
+
+    it('Can list all products filter by an empty search with pagination', async () => {
+
+        const response:Response = await request(app).get('/product/list/search/ /0').set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+        expect(response.body.maxPages).toEqual(3);
+        expect(response.body.products.length).toEqual(8);
+
+    });
 
 });
 
