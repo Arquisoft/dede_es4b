@@ -9,8 +9,8 @@ const SubcategoriaRopa = () => {
     const [numbPage, setNumbPage] = useState<number>(0);
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
 
-    const getProductos = async () => {
-        const respuesta = await fetch("http://localhost:5000/product/list/sub_category/Ropa/1");
+    const getProductos = async (numbPage : number) => {
+        const respuesta = await fetch("http://localhost:5000/product/list/sub_category/Ropa/" + numbPage);
         const respuestaJson = await respuesta.json();
         setMaxNumberPage(respuestaJson.maxPages);
         setProductos(respuestaJson.products);
@@ -18,11 +18,11 @@ const SubcategoriaRopa = () => {
 
     const handleChange = async (event:any, value:any) => {
         setNumbPage(value-1);
-        await getProductos();
+        await getProductos(numbPage);
     };
 
     useEffect(() => {
-        getProductos();
+        getProductos(numbPage);
     }, [numbPage, maxNumberPage])
 
     return (
