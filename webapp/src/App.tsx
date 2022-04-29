@@ -13,6 +13,9 @@ import Pedidos from './pages/Pedidos';
 import SignUp from './pages/SignUp';
 import PrivateRoute from './routers/PrivateRoute';
 import { Switch } from '@headlessui/react';
+import SubcategoriaRopa from './pages/SubcategoriaRopa';
+import SubcategoriaCalzado from './pages/SubcategoriaCalzado';
+import SubcategoriaAccesorios from './pages/SubcategoriaAccesorios';
 
 export const webUrl = "https://localhost:3000";
 
@@ -59,6 +62,9 @@ function App(): JSX.Element {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/productos/:id" element={<DetalleProducto />} />
           <Route path="/productos" element={<Catalogo />} />
+          <Route path="/productos/ropa" element={<SubcategoriaRopa />} />
+          <Route path="/productos/calzado" element={<SubcategoriaCalzado />} />
+          <Route path="/productos/accesorios" element={<SubcategoriaAccesorios />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/logout" element={<LogOut />} />

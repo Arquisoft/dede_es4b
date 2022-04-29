@@ -3,15 +3,20 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom';
 import { isLogeado } from '../../App';
+import { Producto } from '../../shared/shareddtypes';
 
 const NavBar = () => {
+
+    const filtrarPorCategoria = (lista: Producto[]) => {
+        lista.sort((a, b) => a.price - b.price);
+    }
 
     const navigation = [
         { name: 'Home', href: '/', current: true },
         { name: 'Catalogo', href: '/productos', current: false },
-        { name: 'Hombre', href: '#', current: false },
-        { name: 'Mujer', href: '#', current: false },
-        { name: 'Niños', href: '#', current: false },
+        { name: 'Ropa', href: '/productos/ropa', current: false },
+        { name: 'Calzado',href: '/productos/calzado', current: false },
+        { name: 'Accesorios', href: '/productos/accesorios', current: false },
     ]
 
     function classNames(...classes: string[]) {
