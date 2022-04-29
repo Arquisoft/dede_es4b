@@ -58,9 +58,8 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/carrito" element={<Carrito />} />
-          <Route path="/productos/:sub_category" element={<Subcategoria />} />
+          <Route path="/productos/categorias/:sub_category" element={<Subcategoria />} />
           <Route path="/productos/:id" element={<DetalleProducto />} />
-          
           <Route path="/productos" element={<Catalogo />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

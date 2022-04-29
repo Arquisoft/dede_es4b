@@ -14,9 +14,9 @@ const NavBar = () => {
     const navigation = [
         { name: 'Home', href: '/', current: true },
         { name: 'Catalogo', href: '/productos', current: false },
-        { name: 'Ropa', href: '/productos/ropa', current: false },
-        { name: 'Calzado',href: '/productos/calzado', current: false },
-        { name: 'Accesorios', href: '/productos/accesorios', current: false },
+        { name: 'Ropa', href: '/productos/categorias/ropa', current: false },
+        { name: 'Calzado',href: '/productos/categorias/calzado', current: false },
+        { name: 'Accesorios', href: '/productos/categorias/accesorios', current: false },
     ]
 
     function classNames(...classes: string[]) {
