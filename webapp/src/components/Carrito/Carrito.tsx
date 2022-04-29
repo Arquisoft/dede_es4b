@@ -41,11 +41,11 @@ const Carrito = () => {
             <thead>
               <tr>
                 <th className="text-left p-2 border-solid border-blue-100 border-b-4">Producto</th>
-                <br/>
+
                 <th className="text-left p-2 border-solid border-blue-100 border-b-4">Precio</th>
-                <br/>
+
                 <th className="text-left p-2 border-solid border-blue-100 border-b-4">Unidades</th>
-                <br/>
+
                 <th className="text-left p-2 border-solid border-blue-100 border-b-4"></th>
               </tr>
             </thead>
@@ -55,15 +55,15 @@ const Carrito = () => {
 
                 <tr key={producto.producto._id} className="hover:bg-blue-100">
                   <td className="text-left p-2 border-solid border-blue-100 border-b-4">{producto.producto.name}</td>
-                  <br/>
+
                   <td className="text-left p-2 border-solid border-blue-100 border-b-4">{producto.precioTotal.toFixed(2)} €</td>
-                  <br/>
+
                   <td className="text-left p-2 border-solid border-blue-100 border-b-4">
                     <button type="button" className='bg-blue-200 rounded-full opacity-60' onClick={() => eliminarAlCarrito(producto)}>-</button>
                     {producto.cantidad}
                     <button type="button" className='bg-blue-200 rounded-full opacity-60' onClick={() => añadirAlCarrito(producto)}>+</button>
                   </td>
-                  <br/>
+
                   <td className="text-left p-2 border-solid border-blue-100 border-b-4"><button type="button" className='text-red-800' onClick={() => eliminar(producto, carrito)}>
                     Remove
                   </button>
