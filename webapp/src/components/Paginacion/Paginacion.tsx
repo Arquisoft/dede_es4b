@@ -1,80 +1,53 @@
-import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline'
-import React from 'react'
+import { ChevronRightIcon, ChevronLeftIcon, ChevronDoubleRightIcon, ChevronDoubleLeftIcon } from '@heroicons/react/outline'
+import { Button } from '@mui/material';
+import React, { useEffect, useState } from 'react'
 
-function Paginacion() {
+function Paginacion({ onChange, maxPages }: { onChange: (page: number) => void, maxPages: number }) {
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    onChange(page - 1);
+  }, [page])
+
   return (
+
     <div className="bg-white px-4 py-3 my-10 flex items-center justify-between border-t border-gray-200 sm:px-6">
-      <div className="flex-1 flex justify-between sm:hidden">
-        <a
-          href="#"
-          className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-        >
-          Previous
-        </a>
-        <a
-          href="#"
-          className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-        >
-          Next
-        </a>
-      </div>
+
       <div className="hidden sm:flex-1 sm:flex sm:items-center justify-end">
         <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-          <a
-            href="#"
+          <Button
+            onClick={() => { setPage(1)}}
             className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
           >
-            <span className="sr-only">Previous</span>
+            <span className="sr-only">Inicio</span>
+            <ChevronDoubleLeftIcon className="h-5 w-5" aria-hidden="true" />
+          </Button>
+          <Button
+            onClick={() => { if (page >= 2) setPage(page - 1)}}
+            className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+          >
+            <span className="sr-only">Anterior</span>
             <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-          </a>
-          {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
-          <a
-            href="#"
-            aria-current="page"
-            className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+          </Button>
+          <div
+            className="bg-white border-gray-300 text-gray-500 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
           >
-            1
-          </a>
-          <a
-            href="#"
+            {page}
+          </div>
+          <Button
+            onClick={() => { if (page < maxPages) setPage(page + 1)}}
             className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
           >
-            2
-          </a>
-          <a
-            href="#"
-            className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium"
-          >
-            3
-          </a>
-          <span className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
-            ...
-          </span>
-          <a
-            href="#"
-            className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium"
-          >
-            8
-          </a>
-          <a
-            href="#"
-            className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-          >
-            9
-          </a>
-          <a
-            href="#"
-            className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-          >
-            10
-          </a>
-          <a
-            href="#"
+            <span className="sr-only">Siguiente</span>
+            <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+          </Button>
+          <Button
+            onClick={() => { setPage(maxPages)}}
             className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
           >
-            <span className="sr-only">Next</span>
-            <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-          </a>
+            <span className="sr-only">Final</span>
+            <ChevronDoubleRightIcon className="h-5 w-5" aria-hidden="true" />
+          </Button>
         </nav>
       </div>
     </div>
