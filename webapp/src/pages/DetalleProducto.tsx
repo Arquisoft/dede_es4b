@@ -12,87 +12,48 @@ const DetalleProducto = () => {
 
     const getProduct = async () => {
         getProductoByID(params.id!)
-            .then(data => {
-                setProduct(data.product)
-            }
-
-        })
-        
+        .then(data => setProduct(data.product));
     }
 
-    const añadirAlCarrito = (producto: any) => {
-        const carritoString = sessionStorage.getItem('carrito');
-        let carrito = [];
-        if (carritoString != null)
-            carrito = JSON.parse(carritoString!);
-        //let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };    
-       
-        let borrar=-1;
-        let c=0;
-        let p=0;
-        carrito.forEach(function(value:any,index:any){
-            
-            if(value.producto._id===producto._id){
-                borrar=index;
-                c=value.cantidad;
-    
-            }
-        });
-        
-        
-        if(borrar>=0){
-            let productoCarrito: ProductoCarrito = { producto: producto, cantidad: c+1, precioTotal: parseFloat(producto.price)*(c+1) };
-             
-            carrito.splice(borrar,1,productoCarrito);
-        }else{
-            let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };
-            carrito.push(productoCarrito);
-        }
-        
-        sessionStorage.setItem('carrito', JSON.stringify(carrito))
+useEffect(() => {
+    getProduct();
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [product])
 
-        );
-
-    }
-
-    useEffect(() => {
-        getProduct();
-    }, [product])
-
-    return (
-        <div className="detalles">
-            <header>
-                <NavBar />
-            </header>
-            <div className="contenidoDetalles">
-                <Grid container>
-                    <Grid className="columnaIzquierda" item xs={12} sm={6} md={4} lg={3}>
-                        <img src={product?.image} />
-                    </Grid>
-                    <Grid className="columnaDerecha" item xs={12} sm={6} md={4} lg={3}>
-                        <h1 className="tituloProducto">{product?.name}</h1>
-                        <p className="descripcionCorta">
-                            {product?.short_description}
-                        </p>
-                        <p className="precio">
-                            Precio: {product?.price} €
-                        </p>
-                        <p className="talla">
-                            Talla: {product?.size}
-                        </p>
-                        <Box style={{ justifyContent: 'center' }} className="botonAñadir">
-                            <Button onClick={() => añadirAlCarrito(product!)} color="inherit" sx={{ border: 1 }}>
-                                Añadir a carrito
-                            </Button>
-                        </Box>
-                        <p className="descripcionLarga">
-                            {product?.long_description}
-                        </p>
-                    </Grid>
+return (
+    <div className="detalles">
+        <header>
+            <NavBar />
+        </header>
+        <div className="contenidoDetalles">
+            <Grid container>
+                <Grid className="columnaIzquierda" item xs={12} sm={6} md={4} lg={3}>
+                    <img src={product?.image} alt="Imagen producto" />
                 </Grid>
-            </div>
+                <Grid className="columnaDerecha" item xs={12} sm={6} md={4} lg={3}>
+                    <h1 className="tituloProducto">{product?.name}</h1>
+                    <p className="descripcionCorta">
+                        {product?.short_description}
+                    </p>
+                    <p className="precio">
+                        Precio: {product?.price} €
+                    </p>
+                    <p className="talla">
+                        Talla: {product?.size}
+                    </p>
+                    <Box style={{ justifyContent: 'center' }} className="botonAñadir">
+                        <Button onClick={() => añadirAlCarrito(product!)} color="inherit" sx={{ border: 1 }}>
+                            Añadir a carrito
+                        </Button>
+                    </Box>
+                    <p className="descripcionLarga">
+                        {product?.long_description}
+                    </p>
+                </Grid>
+            </Grid>
         </div>
-    )
+    </div>
+)
 }
 
 export default DetalleProducto;

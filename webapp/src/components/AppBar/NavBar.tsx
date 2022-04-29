@@ -3,13 +3,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom';
 import { isLogeado } from '../../App';
-import { Producto } from '../../shared/shareddtypes';
 
 const NavBar = () => {
-
-    const filtrarPorCategoria = (lista: Producto[]) => {
-        lista.sort((a, b) => a.price - b.price);
-    }
 
     const navigation = [
         { name: 'Home', href: '/', current: true },
@@ -42,9 +37,9 @@ const NavBar = () => {
                         <div className="hidden sm:block sm:ml-6">
                             <div className="flex space-x-4">
                                 {navigation.map((item) => (
-                                    <a
+                                    <Link
                                         key={item.name}
-                                        href={item.href}
+                                        to={item.href}
                                         className={classNames(
                                             item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                             'px-3 py-2 rounded-md text-sm font-medium'
@@ -52,7 +47,7 @@ const NavBar = () => {
                                         aria-current={item.current ? 'page' : undefined}
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -101,12 +96,12 @@ const NavBar = () => {
                                             </Menu.Item>
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <a
-                                                        href="/logout"
+                                                    <Link
+                                                        to="/logout"
                                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
                                                         Cerrar sesión
-                                                    </a>
+                                                    </Link>
                                                 )}
                                             </Menu.Item>
                                         </Menu.Items>
@@ -133,8 +128,8 @@ const NavBar = () => {
                     {navigation.map((item) => (
                         <Disclosure.Button
                             key={item.name}
-                            as="a"
-                            href={item.href}
+                            as={Link}
+                            to={item.href}
                             className={classNames(
                                 item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                 'block px-3 py-2 rounded-md text-base font-medium'

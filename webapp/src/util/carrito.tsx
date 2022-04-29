@@ -29,18 +29,18 @@ export const getProductosIndividualesCarrito = (): Producto[] => {
 export const añadirAlCarrito = (producto: Producto) => {
     let carrito = getCarrito();
     let entrada : ProductoCarrito | undefined = carrito.find(elem => elem.producto._id === producto._id);
+    let newEntrada : ProductoCarrito;
+
     if (entrada) {
         let entradaIndice = carrito.indexOf(entrada);
-        let newEntrada : ProductoCarrito;
-        if (entrada.cantidad === 0)
-            newEntrada = { producto: entrada.producto, cantidad: 1, precioTotal: entrada.producto.price };
-        else
-            newEntrada = {producto: entrada.producto, cantidad: entrada.cantidad + 1, precioTotal: entrada.precioTotal + producto.price};
+        newEntrada = {producto: entrada.producto, cantidad: entrada.cantidad + 1, precioTotal: entrada.precioTotal + producto.price};
         carrito.splice(entradaIndice, 1, newEntrada)
 
-        sessionStorage.setItem('carrito', JSON.stringify(carrito))
+    }else {
+        newEntrada = { producto, cantidad: 1, precioTotal: producto.price };
+        carrito.push(newEntrada);
     }
-
+    sessionStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
 
@@ -62,7 +62,6 @@ export const eliminarAlCarrito = (producto: Producto) => {
     }
 
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
-    window.location.reload();
 }
 
 export const añadirAlCarritoNuevoProducto = (producto: any) => {

@@ -67,9 +67,9 @@ const Carrito = () => {
                   <td className="text-left p-2 border-solid border-purple-200 border-b-4">{producto.precioTotal.toFixed(2)} €</td>
 
                   <td data-testid="cantidad-producto" className=" p-2 border-solid border-purple-200 border-b-4 text-center">
-                    <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => eliminarAlCarrito(producto)}>- </button>
+                    <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => llamarYActualizar(eliminarAlCarrito, producto.producto)}>- </button>
                      {producto.cantidad} 
-                    <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => añadirAlCarrito(producto)}> +</button>
+                    <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => llamarYActualizar(añadirAlCarrito, producto.producto)}> +</button>
 
                   </td>
 

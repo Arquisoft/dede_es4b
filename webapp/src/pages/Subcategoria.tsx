@@ -27,7 +27,7 @@ const SubcategoriaRopa = () => {
 
     useEffect(() => {
         getProductos(numbPage);
-    }, [numbPage, maxNumberPage])
+    }, [numbPage, maxNumberPage, params])
 
     return (
         <div className="ropa">
