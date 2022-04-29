@@ -1,56 +1,38 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
-import { isLogeado } from '../App';
-import {Pagination,Typography} from "@mui/material";
-//import useStyles from '../components/ProductosCatalogo/styles';
-
-export interface Producto {
-    _id: number;
-    name: string;
-    description: string;
-    price: string;
-    image: string;
-}
+import {Pagination} from "@mui/material";
+import { getProductosPagina } from '../api/api';
+import { Producto } from '../shared/shareddtypes';
 
 const Catalogo = () => {
     const [productos, setProductos] = useState<Producto[]>([]);
-    const [productosPagina, setProductosPagina] = useState<Producto[]>([]);
+    const [numbPage, setNumbPage] = useState<number>(0);
+    const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
+
     
 
     const handleChange = async (event:any, value:any) => {
-        const respuesta = await fetch('http://localhost:5000/product/list/'+(value-1));
-        setProductosPagina(await respuesta.json());
+        setNumbPage(value-1);
+        await getProductos();
     };
 
-    const getProductosPagina = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list/0');
-        setProductosPagina(await respuesta.json());
-    }
-
     const getProductos = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list');
-
-        setProductos(await respuesta.json());
+        const respuesta = await getProductosPagina(numbPage);
+        setMaxNumberPage(respuesta.maxPages);
+        setProductos(respuesta.products);
     }
 
     useEffect(() => {
-        getProductosPagina();
         getProductos();
-    }, [])
-
-    if (isLogeado())
-        console.log("conectado");
+    }, [numbPage, maxNumberPage])
     
-    console.log(productos);
-    //const classes = useStyles();
-    let longitud=productos.length/6;
     return (
         <>
             <NavBar/>
-            <ProductosCatalogo productos={productosPagina}/>
+            <ProductosCatalogo productos={productos}/>
             
-            <Pagination onChange={handleChange} color="secondary"  count={Math.round(longitud)} shape="rounded" />
+            <Pagination onChange={handleChange} color="secondary"  count={maxNumberPage} shape="rounded" />
 
         </>
     );

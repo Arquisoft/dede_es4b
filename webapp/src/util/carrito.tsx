@@ -26,27 +26,41 @@ export const getProductosIndividualesCarrito = (): Producto[] => {
 
 
 // Guarda el producto en la sesión.
-export const añadirAlCarrito = (producto: any) => {
+export const añadirAlCarrito = (producto: Producto) => {
     let carrito = getCarrito();
+    let entrada : ProductoCarrito | undefined = carrito.find(elem => elem.producto._id === producto._id);
+    if (entrada) {
+        let entradaIndice = carrito.indexOf(entrada);
+        let newEntrada : ProductoCarrito;
+        if (entrada.cantidad === 0)
+            newEntrada = { producto: entrada.producto, cantidad: 1, precioTotal: entrada.producto.price };
+        else
+            newEntrada = {producto: entrada.producto, cantidad: entrada.cantidad + 1, precioTotal: entrada.precioTotal + producto.price};
+        carrito.splice(entradaIndice, 1, newEntrada)
 
-    let borrar = carrito.indexOf(producto);
-    let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad + 1, precioTotal: parseFloat(producto.producto.price) * (producto.cantidad + 1) };
-    carrito.splice(borrar, 1, productoCarrito);
-    sessionStorage.setItem('carrito', JSON.stringify(carrito))
-    window.location.reload();
+        sessionStorage.setItem('carrito', JSON.stringify(carrito))
+    }
+
 }
 
 
 // Eliminamos el producto en la sesión.
-export const eliminarAlCarrito = (producto: any) => {
-    let borrar = getCarrito().indexOf(producto);
+export const eliminarAlCarrito = (producto: Producto) => {
     let carrito = getCarrito();
-    if (producto.cantidad === 1) {
-        carrito.splice(borrar, 1);
-    } else {
-        let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad - 1, precioTotal: parseFloat(producto.producto.price) * (producto.cantidad - 1) };
-        carrito.splice(borrar, 1, productoCarrito);
+    let entrada : ProductoCarrito | undefined = carrito.find(elem => elem.producto._id === producto._id);
+    if (entrada) {
+        let entradaIndice = carrito.indexOf(entrada);
+
+        if (entrada.cantidad === 1)
+            carrito = carrito.filter(el => el !== entrada);
+        else {
+            let productoCarrito: ProductoCarrito = { producto: entrada.producto, cantidad: entrada.cantidad - 1, precioTotal: entrada.precioTotal - producto.price };
+            carrito.splice(entradaIndice, 1, productoCarrito);
+        }
+        
+        sessionStorage.setItem('carrito', JSON.stringify(carrito));
     }
+
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
     window.location.reload();
 }
@@ -80,4 +94,5 @@ export const añadirAlCarritoNuevoProducto = (producto: any) => {
     }
 
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
+
 }

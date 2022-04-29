@@ -3,28 +3,36 @@ import { ProductoCarrito } from "../../shared/shareddtypes";
 import { añadirAlCarrito, eliminarAlCarrito, getCarrito } from "../../util/carrito";
 import NavBar from "../AppBar/NavBar";
 import '../../css/styles.css';
+import { useState } from "react";
 
 // @ts-ignore
 const Carrito = () => {
+
+  const [actualizar, setActualizar] = useState(false);
   const navigate = useNavigate();
   var precio = 0;
 
-  let carrito: any = getCarrito();
+  let carrito: ProductoCarrito[] = getCarrito();
 
-  for (let i = 0; i < carrito.length; i++) {
-    precio += carrito[i].precioTotal;
+  // Función que llama al callback y cambia el estado para actualizar el componente.
+  const llamarYActualizar = (callback: Function, params : any) => {
+    callback(params);
+    setActualizar(!actualizar);
+  }
+
+  for (const element of carrito) {
+    precio += element.precioTotal;
   }
 
 
-  const eliminar = (producto: any, carrito: any) => {
-    let borrar = carrito.indexOf(producto);
-    carrito.splice(borrar, 1);
-    sessionStorage.setItem('carrito', JSON.stringify(carrito))
-    window.location.reload();
+  const eliminar = (producto: ProductoCarrito, carritoParam: ProductoCarrito[]) => {
+    let borrar = carritoParam.indexOf(producto);
+    carritoParam.splice(borrar, 1);
+    sessionStorage.setItem('carrito', JSON.stringify(carritoParam))
+    setActualizar(!actualizar);
   }
 
   return (
-    <>
 
       <div>
         <header>
@@ -62,6 +70,7 @@ const Carrito = () => {
                     <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => eliminarAlCarrito(producto)}>- </button>
                      {producto.cantidad} 
                     <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => añadirAlCarrito(producto)}> +</button>
+
                   </td>
 
                   <td className="text-left p-2 border-solid border-purple-200 border-b-4"><button type="button" className='text-red-800' onClick={() => eliminar(producto, carrito)}>
@@ -96,7 +105,6 @@ const Carrito = () => {
           </div>
         </main>
       </div>
-    </>
   )
 }
 
