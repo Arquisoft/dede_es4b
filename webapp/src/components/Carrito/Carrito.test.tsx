@@ -20,11 +20,38 @@ const productos: Producto[]=[
             type: "balon",
             color: "blanco y negro",
             size: 0
-
+    },
+    {
+        _id: "2",
+        name: "Raqueta",
+        price: 35,
+        short_description: "Raqueta de tenis",
+        long_description: "Es uns raqueta para jugar al tenis, azul",
+        brand: "no marca",
+        category: "tenis",
+        sub_category: "accesorio",
+        image: "no imagen",
+        type: "raqueta",
+        color: "azul",
+        size: 0
+    },
+    {
+        _id: "3",
+        name: "Bañador",
+        price: 20,
+        short_description: "Bañador",
+        long_description: "Es un bañador para jugar al futbolnatacion, blanco y negro",
+        brand: "Adidas",
+        category: "Natacion",
+        sub_category: "Ropa",
+        image: "no imagen",
+        type: "Bañador",
+        color: "blanco y negro",
+        size: 0
     }
 ]
 
-test("carrito con un producto", async () => {
+test("carrito con un producto con varias unidades aumentadas en carrito", async () => {
     //Desde el producto
     añadirAlCarritoNuevoProducto(productos[0]);
     
@@ -37,6 +64,7 @@ test("carrito con un producto", async () => {
         }
     ];
 
+    // eslint-disable-next-line testing-library/render-result-naming-convention
     const components=render(<Carrito />, { wrapper: MemoryRouter });
     expect(screen.getByText(carrito[0].producto.name)).toBeInTheDocument();
     //La cantidad del producto
@@ -64,50 +92,55 @@ test("carrito con un producto", async () => {
     expect(screen.getByTestId("cantidad-producto").textContent).toEqual("- 2 +");
 
 });
-/*
+
 test("carrito con varios productos iguales", async () => {
-    const productos: Producto[]=[
-        {
-                _id: "1",
-                name: "Balon",
-                price: 5,
-                short_description: "Balon de futbol",
-                long_description: "Es un balon para jugar al futbol, blanco y negro",
-                brand: "no marca",
-                category: "futbol",
-                sub_category: "accesorio",
-                image: "no imagen",
-                type: "balon",
-                color: "blanco y negro",
-                size: 0
+   
 
-        }
-    ]
-
-    
-    añadirAlCarritoNuevoProducto(productos[0]);
-    //añadirAlCarritoNuevoProducto(productos[0]);
-
+    //Ya añadidos dos balones, añadimos dos productos distintos mas
+    añadirAlCarritoNuevoProducto(productos[1]);
+    añadirAlCarritoNuevoProducto(productos[2]);
     const carrito: ProductoCarrito[]=[
         {
             producto:productos[0],
+            cantidad:2,
+            precioTotal:10
+        },
+        {
+            producto:productos[1],
+            cantidad:2,
+            precioTotal:5
+        },
+        {
+            producto:productos[2],
             cantidad:2,
             precioTotal:5
         }
     ];
 
-    const { getByText, container, getAllByRole, getByTestId } = render(<Carrito />, { wrapper: MemoryRouter });
-    expect(getByText(carrito[0].producto.name)).toBeInTheDocument();
-    
-    //let element=getAllByRole("button")[1];
-    //fireEvent.click(element);
-    añadirAlCarrito(carrito[0]);
-    expect(getByText("10.00 €")).toBeInTheDocument();
-    expect(getByTestId("cantidad-producto").textContent).toEqual("- 2 +");
-    //La cantidad del producto
-    //expect(container).toHaveTextContent("1");
-    
-    //Aumentamos las cantidades con el metodo que usamos al pulsar +
-    //añadirAlCarrito(carrito[0]);
-   
-});*/
+    // eslint-disable-next-line testing-library/render-result-naming-convention
+    const components=render(<Carrito />, { wrapper: MemoryRouter });
+    expect(screen.getByText(carrito[0].producto.name)).toBeInTheDocument();
+    expect(screen.getByText("10.00 €")).toBeInTheDocument();
+    expect(screen.getByText(carrito[1].producto.name)).toBeInTheDocument();
+    expect(screen.getByText("35.00 €")).toBeInTheDocument();
+    expect(screen.getByText(carrito[2].producto.name)).toBeInTheDocument();
+    expect(screen.getByText("20.00 €")).toBeInTheDocument();
+
+    //Reproducimos el click sobre el boton remove del primer producto
+    expect(getCarrito().length).toEqual(3);
+    fireEvent.click(screen.getAllByRole("button")[2]);
+    components.rerender(<Carrito />);
+    expect(getCarrito().length).toEqual(2);
+    expect(screen.getByText(carrito[1].producto.name)).toBeInTheDocument();
+    expect(screen.getByText("35.00 €")).toBeInTheDocument();
+    expect(screen.getByText(carrito[2].producto.name)).toBeInTheDocument();
+    expect(screen.getByText("20.00 €")).toBeInTheDocument();
+
+    //Pulsamos boton - sobre un producto con una unidad
+    expect(getCarrito().length).toEqual(2);
+    fireEvent.click(screen.getAllByRole("button")[0]);
+    components.rerender(<Carrito />);
+    expect(getCarrito().length).toEqual(1);
+    expect(screen.getByText(carrito[1].producto.name)).toBeInTheDocument();
+    expect(screen.getByText("35.00 €")).toBeInTheDocument();
+});
