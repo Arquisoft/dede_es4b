@@ -3,14 +3,18 @@ import NavBar from '../components/AppBar/NavBar';
 import { Producto } from '../shared/shareddtypes';
 import ProductosCatalogo from '../components/ProductosCatalogo/ProductosCatalogo';
 import Pagination from '@mui/material/Pagination';
+import { useParams } from 'react-router-dom';
 
-const SubcategoriaCalzado = () => {
+const SubcategoriaRopa = () => {
+    const params = useParams();
+    console.log(params.sub_category)
     const [productos, setProductos] = useState<Producto[]>([]);
     const [numbPage, setNumbPage] = useState<number>(0);
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
 
     const getProductos = async (numbPage : number) => {
-        const respuesta = await fetch("http://localhost:5000/product/list/sub_category/Calzado/"  + numbPage);
+        const subcategoria = params.sub_category?.charAt(0).toUpperCase()! + params.sub_category?.slice(1)!;
+        const respuesta = await fetch("http://localhost:5000/product/list/sub_category/" + subcategoria + "/" + numbPage);
         const respuestaJson = await respuesta.json();
         setMaxNumberPage(respuestaJson.maxPages);
         setProductos(respuestaJson.products);
@@ -34,4 +38,4 @@ const SubcategoriaCalzado = () => {
     )
 }
 
-export default SubcategoriaCalzado;
+export default SubcategoriaRopa;
