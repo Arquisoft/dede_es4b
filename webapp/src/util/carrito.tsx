@@ -65,14 +65,13 @@ export const añadirAlCarritoNuevoProducto = (producto: any) => {
 
         if(value.producto._id===producto._id){
             borrar=index;
-            c=value.cantidad;
-
+            c=value.cantidad;  
         }
     });
 
 
     if(borrar>=0){
-        let productoCarrito: ProductoCarrito = { producto: producto, cantidad: c+1, precioTotal: parseFloat(producto.price)*c };
+        let productoCarrito: ProductoCarrito = { producto: producto, cantidad: c+1, precioTotal: parseFloat(producto.price)*(c+1) };
 
         carrito.splice(borrar,1,productoCarrito);
     }else{
