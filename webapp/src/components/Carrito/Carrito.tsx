@@ -45,7 +45,7 @@ const Carrito = () => {
             <br></br>          
           </div>
           <table className="border-collapse">
-            <caption className="text-purple-400 font-mono text-lg">Tu pedido</caption>
+            <caption className="text-purple-400 font-bold text-3xl">Tu pedido</caption>
             <thead>
               <tr>
                 <th className="text-left p-2 border-solid border-purple-200 border-b-4">Producto</th>

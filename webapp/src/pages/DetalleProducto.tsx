@@ -21,38 +21,46 @@ useEffect(() => {
 }, [product])
 
 return (
-    <div className="detalles">
+    <div >
         <header>
             <NavBar />
         </header>
-        <div className="contenidoDetalles">
-            <Grid container>
-                <Grid className="columnaIzquierda" item xs={12} sm={6} md={4} lg={3}>
-                    <img src={product?.image} alt="Imagen producto" />
-                </Grid>
-                <Grid className="columnaDerecha" item xs={12} sm={6} md={4} lg={3}>
-                    <h1 className="tituloProducto">{product?.name}</h1>
-                    <p className="descripcionCorta">
-                        {product?.short_description}
-                    </p>
-                    <p className="precio">
-                        Precio: {product?.price} €
-                    </p>
-                    <p className="talla">
-                        Talla: {product?.size}
-                    </p>
-                    <Box style={{ justifyContent: 'center' }} className="botonAñadir">
-                        <Button onClick={() => añadirAlCarrito(product!)} color="inherit" sx={{ border: 1 }}>
-                            Añadir a carrito
-                        </Button>
-                    </Box>
-                    <p className="descripcionLarga">
-                        {product?.long_description}
-                    </p>
-                </Grid>
-            </Grid>
+        <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+            <div >
+                <img src={product?.image} alt="Imagen producto" />
+            </div>
+            <div>
+                <h1 className="text-purple-400 font-bold text-3xl">{product?.name}</h1>
+                <br/>
+                <p className="text-base text-gray-900">
+                    {product?.short_description}
+                </p>
+                <br/>
+                <p className="text-base text-gray-900">
+                    Talla: {product?.size}
+                </p>
+                <p className="text-base text-gray-900">
+                    Color: {product?.color}
+                </p>
+                <p className="text-base text-gray-900">
+                    Precio: {product?.price} €
+                </p>
+                <br/>
+
+                <p className="text-base text-gray-900">
+                    {product?.long_description}
+                </p>
+                <br/>
+                <div className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                    <button onClick={() => añadirAlCarrito(product!)}>
+                        Añadir a carrito
+                    </button>
+                </div>
+
+            </div>
+            </div>
         </div>
-    </div>
+
 )
 }
 
