@@ -60,7 +60,8 @@ const addOrder = async (req: Request, res: Response) => {
     user:orderData.user,
     products: orderData.products,
     order_date: orderData.order_date,
-    status: orderData.status
+    status: orderData.status,
+    shipping_address: orderData.shipping_address
   });
 
   //lo guardamos
