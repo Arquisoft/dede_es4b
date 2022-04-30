@@ -45,21 +45,23 @@ const DetalleProducto = () => {
             <header>
                 <NavBar />
             </header>
-            cargando ?
+            {
+                cargando ?
                     <Cargando cargando={cargando} cargandoTexto={cargandoTexto} /> :
-            <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
-                <div >
-                    <img src={product?.image} alt="Imagen producto" />
-                </div>
-                <div>
-                    <h1 className="text-purple-400 font-bold text-3xl">{product?.name}</h1>
-                    <br/>
-                    <p className="text-base text-gray-900">
-                        {product?.short_description}
-                    </p>
-                    <br/>
-                    <div className="text-base text-gray-900 flex flex-wrap justify-center gap-4 mb-4">
-                        Tallas: {tallas.map((item) => (
+
+                    <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+                        <div >
+                            <img src={product?.image} alt="Imagen producto" />
+                        </div>
+                        <div>
+                            <h1 className="text-purple-400 font-bold text-3xl">{product?.name}</h1>
+                            <br />
+                            <p className="text-base text-gray-900">
+                                {product?.short_description}
+                            </p>
+                            <br />
+                            <div className="text-base text-gray-900 flex flex-wrap justify-center gap-4 mb-4">
+                                Tallas: {tallas.map((item) => (
                                     <Button 
                                     id={item}
                                     variant="contained"
@@ -68,31 +70,29 @@ const DetalleProducto = () => {
                                         {item}
                                     </Button>
                                 ))}
-                    </div>
-                    <p className="text-base text-gray-900">
-                        Talla seleccionada : {selectedSize}
-                    </p>
-                    <p className="text-base text-gray-900">
-                        Color: {product?.color}
-                    </p>
-                    <p className="text-base text-gray-900">
-                        Precio: {product?.price} €
-                    </p>
-                    <br/>
+                            </div>
+                            <p className="text-base text-gray-900">
+                                Color: {product?.color}
+                            </p>
+                            <p className="text-base text-gray-900">
+                                Precio: {product?.price} €
+                            </p>
+                            <br />
 
-                    <p className="text-base text-gray-900">
-                        {product?.long_description}
-                    </p>
-                    <br/>
-                    <div className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                        <button onClick={() => añadirAlCarrito(product!)}>
-                            Añadir a carrito
-                        </button>
-                    </div>
+                            <p className="text-base text-gray-900">
+                                {product?.long_description}
+                            </p>
+                            <br />
+                            <div className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                                <button onClick={() => añadirAlCarrito(product!)}>
+                                    Añadir a carrito
+                                </button>
+                            </div>
 
-                </div>
-                </div>
-            </div>
+                        </div>
+                    </div>
+            }
+        </div>
 
     )
 }
