@@ -1,21 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Button, Grid } from '@mui/material';
 import NavBar from '../components/AppBar/NavBar';
 import { getProductoByID } from '../api/api';
-import { añadirAlCarrito, getCarrito } from '../util/carrito';
+import { añadirAlCarrito } from '../util/carrito';
 import { Producto } from '../shared/shareddtypes';
-import { RadioGroup } from '@headlessui/react';
+import Cargando from '../components/Cargando/Cargando';
+import { Button } from '@mui/material';
 
 const DetalleProducto = () => {
     const params = useParams();
     const [product, setProduct] = useState<Producto>();
     const [tallas, setTallas] = useState([]);
     const [selectedSize, setSelectedSize] = useState(' ');
+    const [cargando, setCargando] = useState(false);
+    const [cargandoTexto] = useState("Cargando detalles");
 
     const getProduct = async () => {
-        getProductoByID(params.id!)
-        .then(data => setProduct(data.product));
+        setCargando(true);
+        await getProductoByID(params.id!)
+            .then(data => {
+                setProduct(data.product);
+            }).finally(() => setCargando(false));
+
     }
 
     const getTallas = async () => {
@@ -39,6 +45,8 @@ const DetalleProducto = () => {
             <header>
                 <NavBar />
             </header>
+            cargando ?
+                    <Cargando cargando={cargando} cargandoTexto={cargandoTexto} /> :
             <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
                 <div >
                     <img src={product?.image} alt="Imagen producto" />

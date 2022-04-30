@@ -20,7 +20,7 @@ const Pedidos = () => {
     return (
         <div>
             <NavBar />
-            <h1 className="my-6 text-3xl font-extrabold tracking-tight text-gray-900">Historial de pedidos</h1>
+            <h1 className="my-6 text-3xl font-extrabold tracking-tight text-gray-900 text-center">Historial de pedidos</h1>
             <ListarPedidos pedidos={pedidos} />
             {/* <Paginacion onChange={() => ""} maxPages={3} /> */}
         </div>

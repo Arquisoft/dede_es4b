@@ -25,6 +25,29 @@ const exitsUser = async (req: Request, res: Response, next: NextFunction) => {
 
 }
 
+const dontExitsUserName = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+
+        const user = await User.find({userName: req.body.userName})
+
+        if(user.length > 0){
+            return res.status(401).json({
+                msg: 'El usuario ya existe'
+            })
+        }
+
+    } catch (error) {
+        return res.status(401).json({
+            msg: 'Error al registrarte'
+        })
+    }
+
+
+    next()
+
+}
+
 const hasAutorization = async (req: Request, res: Response, next: NextFunction) => {
 
     const authori = req.header('authorization');
@@ -73,5 +96,6 @@ const hasAutorization = async (req: Request, res: Response, next: NextFunction) 
 
 module.exports = {
     exitsUser,
-    hasAutorization
+    hasAutorization,
+    dontExitsUserName
 }

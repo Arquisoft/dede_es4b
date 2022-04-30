@@ -95,3 +95,8 @@ export const añadirAlCarritoNuevoProducto = (producto: any) => {
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
 
 }
+
+// Eliminamos el producto en la sesión.
+export const vaciarCarrito = () => {
+    sessionStorage.setItem('carrito', JSON.stringify([]));
+}

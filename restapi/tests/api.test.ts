@@ -231,7 +231,7 @@ describe('user', () => {
         let userData:Object = {
             name:"prueba",
             surname:"prueba",
-            userName:"prueba",
+            userName:"prueba2021",
             password: "prueba"
         };
 
@@ -296,7 +296,8 @@ describe('order', () => {
                 }
             ],
             order_date: "2022-04-24T16:12:16.495Z",
-            status: "ENTREGADO"
+            status: "ENTREGADO",
+            shipping_address: "prueba"
         }
 
         const response:Response = await request(app).post('/order/add').send(orderData).set('Accept', 'application/json');

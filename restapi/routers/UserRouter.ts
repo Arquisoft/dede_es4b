@@ -5,6 +5,7 @@ const {validateFields} = require("../validadores/validador");
 
 const {
     exitsUser,
+    dontExitsUserName,
     hasAutorization
 } = require("../validadores/UserValidator");
 
@@ -47,6 +48,7 @@ routerUser.post(
     check('name').isLength({ min: 1 }).trim().escape(),
     check('surname').isLength({ min: 1 }).trim().escape(),
     check('userName').isLength({ min: 1 }).trim().escape(),
+    dontExitsUserName,
     validateFields
   ],
   register
