@@ -5,10 +5,13 @@ import { getProductoByID } from '../api/api';
 import { añadirAlCarrito } from '../util/carrito';
 import { Producto } from '../shared/shareddtypes';
 import Cargando from '../components/Cargando/Cargando';
+import { Button } from '@mui/material';
 
 const DetalleProducto = () => {
     const params = useParams();
     const [product, setProduct] = useState<Producto>();
+    const [tallas, setTallas] = useState([]);
+    const [selectedSize, setSelectedSize] = useState(' ');
     const [cargando, setCargando] = useState(false);
     const [cargandoTexto] = useState("Cargando detalles");
 
@@ -21,10 +24,20 @@ const DetalleProducto = () => {
 
     }
 
+    const getTallas = async () => {
+        getProductoByID(params.id!)
+        .then(data => setTallas(data.sizes));
+    }
+
+    const handleClick = (event : any) => {
+        console.log(event.target.id);
+        setSelectedSize(event.target.id);
+    }
+
     useEffect(() => {
         getProduct();
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        getTallas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -47,9 +60,17 @@ const DetalleProducto = () => {
                                 {product?.short_description}
                             </p>
                             <br />
-                            <p className="text-base text-gray-900">
-                                Talla: {product?.size}
-                            </p>
+                            <div className="text-base text-gray-900 flex flex-wrap justify-center gap-4 mb-4">
+                                Tallas: {tallas.map((item) => (
+                                    <Button 
+                                    id={item}
+                                    variant="contained"
+                                    onClick={handleClick}
+                                    color="secondary">
+                                        {item}
+                                    </Button>
+                                ))}
+                            </div>
                             <p className="text-base text-gray-900">
                                 Color: {product?.color}
                             </p>
@@ -72,7 +93,6 @@ const DetalleProducto = () => {
                     </div>
             }
         </div>
-
     )
 }
 
