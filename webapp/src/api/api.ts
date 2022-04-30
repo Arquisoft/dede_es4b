@@ -61,7 +61,7 @@ export const realizarPedido = async (productos: Producto[], direccionStr: string
       }
     }).then(response => {
       console.log(response);
-      
+
       if (!response.ok)
         throw Error("Error al realizar el pedido")
       else
@@ -69,4 +69,9 @@ export const realizarPedido = async (productos: Producto[], direccionStr: string
     }).catch(e => {
       throw Error(e);
     });
+}
+
+export const getPedidoPorId = async (pedidoID: string) : Promise<Pedido> => {
+  const res = await fetch('http://localhost:5000/order/find/' + pedidoID);
+  return res.json();
 }

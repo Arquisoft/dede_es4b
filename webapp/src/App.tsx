@@ -15,6 +15,7 @@ import PrivateRoute from './routers/PrivateRoute';
 import { Switch } from '@headlessui/react';
 import Subcategoria from './pages/Subcategoria';
 import PublicRoute from './routers/PublicRoute';
+import VerPedido from './pages/VerPedido';
 
 export const webUrl = "https://localhost:3000";
 
@@ -66,6 +67,7 @@ function App(): JSX.Element {
           {/* Ventanas que necesitan estar logeado */}
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/pedidos" element={<Pedidos />} />
+            <Route path="/pedidos/:id" element={<VerPedido />} />
             <Route path="/checkout" element={<CheckOut />} />
             <Route path="/logout" element={<LogOut />} />
           </Route>

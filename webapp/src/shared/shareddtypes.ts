@@ -25,7 +25,8 @@ export type Pedido = {
   user: string,
   products: Producto[],
   order_date: Date,
-  status: string, 
+  status: string,
+  address: string
 }
 
 export type DireccionType = {
