@@ -27,3 +27,11 @@ export type Pedido = {
   order_date: Date,
   status: string, 
 }
+
+export type DireccionType = {
+  street1: string;
+  city: string;
+  region: string;
+  zip: string;
+  country: string;
+}
