@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { isLogeado } from '../App'
 import { AtSymbolIcon, EyeIcon, EyeOffIcon } from '@heroicons/react/outline'
 
@@ -7,9 +7,14 @@ function setUserSession(userSession: any) {
     sessionStorage.setItem('userSession', JSON.stringify(userSession));
 }
 
+interface CustomizedState {
+    from: Location
+  }
+
 const Login = () => {
     const navigate = useNavigate();
-
+    const state = useLocation().state as CustomizedState;
+    const previousLocation = state?.from;
     useEffect(() => {
         if (isLogeado())
             navigate("/productos")
@@ -62,7 +67,8 @@ const Login = () => {
                     response.json().then(
                         data => {
                             setUserSession({ userName: data.userName, token: data.token })
-                            navigate("/productos");
+
+                            navigate(previousLocation);
                         }
                     );
                 }
