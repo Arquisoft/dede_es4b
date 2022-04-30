@@ -5,6 +5,7 @@ interface Order {
     products:Array<Product>;
     order_date:Date;
     status:String;
+    shipping_address:String;
 }
 
 const orderSchema = new mongoose.Schema({
@@ -12,6 +13,7 @@ const orderSchema = new mongoose.Schema({
     products: {type:Array, required: true},
     order_date:{type:Date, required:true},
     status: {type:String, required: true},
+    shipping_address: {type:String, required: true},
 });
 
 const OrderModel = mongoose.model('Order', orderSchema);
