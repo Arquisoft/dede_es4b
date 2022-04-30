@@ -6,7 +6,7 @@ import Paginacion from '../Paginacion/Paginacion';
 
 
 
-const ProductosCatalogo = ({ productos }: { productos: Producto[] }) => {
+const ProductosCatalogo = ({ productos }: any) => {
 
     const [actualizado, setActualizado] = useState(false);
 
@@ -25,14 +25,12 @@ const ProductosCatalogo = ({ productos }: { productos: Producto[] }) => {
             </div>
 
             <div id='productos' className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                {productos.map((producto) => (
+                {productos.map((producto:any) => (
                     <ProductoCatalogo key={producto._id} producto={producto} />
                 ))}
             </div>
 
-            <div>
-                <Paginacion />
-            </div>
+
         </div>
     );
 }

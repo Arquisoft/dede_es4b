@@ -6,7 +6,11 @@ const {validateFields} = require("../validadores/validador");
 const {
     exitsProduct,
     validPrice,
-    validSize
+    validSize,
+    existsSubcategory,
+    existsFilter,
+    existsProductNameSize,
+    validPage
 } = require("../validadores/ProductValidator");
 
 const {
@@ -16,6 +20,10 @@ const {
   updateProduct,
   deleteProduct,
   calculateShippementCost,
+  filterProducts,
+//  filterProductsBySubCategory,
+//  filterProductsByString,
+  findProductSize,
   findByPage
 } = require("./../controladores/ProductController")
 
@@ -28,19 +36,47 @@ routerProduct.get(
 );
 
 routerProduct.get(
+    "/list/:page",
+    [
+        validPage,
+        validateFields
+    ],
+    findByPage,
+);
+
+routerProduct.get(
   "/find/:id",
   [
-    exitsProduct
+      exitsProduct,
+      validateFields
   ],
   findProduct,
 
 );
 
+routerProduct.get(
+    "/find/:name/:size",[
+        existsProductNameSize,
+        validateFields
+    ],
+    findProductSize,
+);
+
+routerProduct.get(
+    "/list/:filter/:search/:page",
+    [
+        existsFilter,
+        validPage,
+        validateFields
+    ],
+    filterProducts,
+);
+
 routerProduct.delete(
   "/delete/:id",
   [
-    validPrice,
-    exitsProduct
+      exitsProduct,
+      validateFields
   ],
   deleteProduct
 );

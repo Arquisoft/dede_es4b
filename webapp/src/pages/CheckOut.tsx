@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DeliveryInfo from '../components/InfoEntrega/InfoEntrega';
-import { getPodSession } from '../App';
+import { getPodSession, isLogeado } from '../App';
 import ConectarPod from '../components/ConectarPod/ConectarPod';
 import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import {
@@ -14,6 +14,7 @@ import NavBar from '../components/AppBar/NavBar';
 import Modal from '../components/Modal/Modal';
 import ModalError from '../components/Modal/ModalError';
 import { Link } from 'react-router-dom';
+import { getProductosIndividualesCarrito } from '../util/carrito';
 
 const getCosteProductos = () => {
     let carritoStr = sessionStorage.getItem("carrito");
@@ -21,7 +22,7 @@ const getCosteProductos = () => {
         const carrito: any[] = JSON.parse(carritoStr);
 
         let precio = 0;
-        carrito.map(producto => precio += producto.precioTotal);
+        carrito.forEach(producto => precio += producto.precioTotal);
         return precio;
     }
     return 0;
@@ -40,6 +41,23 @@ const CheckOut = () => {
     var urlAddress = thing?.predicates[addressPredicate]?.namedNodes![0];
 
     const [costePedido, setCostePedido] = useState(getCosteProductos());
+
+    const realizarPedido = () => {
+
+        const products = getProductosIndividualesCarrito();
+
+        const userSessionStr = sessionStorage.getItem('userSession');
+            const userSession = JSON.parse(userSessionStr!);
+        fetch('http://localhost:5000/order/add',
+            {
+                method: 'POST',
+                body: JSON.stringify({ products, user: userSession.userName, order_date: Date.now(), status: "En ruta"}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => setShowConfirmar(true))
+            .catch(e => console.log(e))
+    }
 
 
     const getAddress = async () => {
@@ -94,11 +112,11 @@ const CheckOut = () => {
     return (
         <>
             <NavBar />
-            {session != null ? (
+            {session != null && isLogeado() ? (
                 <div className="m-auto w-fit">
                     <DeliveryInfo direccion={direccion} webId={webId} costePedido={costePedido} />
                     <div className="relative my-4">
-                        <button onClick={() => setShowConfirmar(true)}
+                        <button onClick={realizarPedido}
                             type="button"
                             className="absolute right-2 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
@@ -109,7 +127,25 @@ const CheckOut = () => {
 
             ) :
                 <Modal openModal={openModal} closeModal={closeModal} isOpen={isOpen}>
-                    <ConectarPod />
+                    {/* <div className='flex justify-between'> */}
+                    <div className='flex justify-between content-center'>
+
+                    <div>
+
+                    {
+                        !session && <ConectarPod />
+                    }
+                    </div>
+                    <div>
+
+                    {
+                        !isLogeado() && (
+                            <Link to='/login' className="content-center text-base font-medium bg-gray-700 text-white hover:text-purple-500"><p>Inicia sesión</p></Link>
+                        )
+                    }
+                    </div>
+                    </div>
+
                 </Modal>
             }
             {
@@ -131,6 +167,6 @@ const CheckOut = () => {
             }
         </>
     );
-};
+}
 
 export default CheckOut;
