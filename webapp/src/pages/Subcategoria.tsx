@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import NavBar from '../components/AppBar/NavBar';
 import { Producto } from '../shared/shareddtypes';
 import ProductosCatalogo from '../components/ProductosCatalogo/ProductosCatalogo';
-import Pagination from '@mui/material/Pagination';
 import { useParams } from 'react-router-dom';
+import Paginacion from '../components/Paginacion/Paginacion';
 
 const SubcategoriaRopa = () => {
     const params = useParams();
@@ -20,7 +20,7 @@ const SubcategoriaRopa = () => {
         setProductos(respuestaJson.products);
     }
 
-    const handleChange = async (event:any, value:any) => {
+    const handleChange = async (value:any) => {
         setNumbPage(value-1);
         await getProductos(numbPage);
     };
@@ -33,7 +33,7 @@ const SubcategoriaRopa = () => {
         <div className="ropa">
             <NavBar />
             <ProductosCatalogo productos={productos}/>
-            <Pagination onChange={handleChange} color="secondary"  count={maxNumberPage} shape="rounded" />
+            <Paginacion onChange={handleChange}  maxPages={maxNumberPage} />
         </div>
     )
 }

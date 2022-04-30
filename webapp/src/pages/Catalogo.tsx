@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
-import {Pagination} from "@mui/material";
 import { getProductosPagina } from '../api/api';
 import { Producto } from '../shared/shareddtypes';
+import Paginacion from '../components/Paginacion/Paginacion';
 
 const Catalogo = () => {
     const [productos, setProductos] = useState<Producto[]>([]);
@@ -12,8 +12,8 @@ const Catalogo = () => {
 
     
 
-    const handleChange = async (event:any, value:any) => {
-        setNumbPage(value-1);
+    const handleChange = async ( value:any) => {
+        setNumbPage(value);
         await getProductos();
     };
 
@@ -32,7 +32,7 @@ const Catalogo = () => {
             <NavBar/>
             <ProductosCatalogo productos={productos}/>
             
-            <Pagination onChange={handleChange} color="secondary"  count={maxNumberPage} shape="rounded" />
+            <Paginacion onChange={handleChange} maxPages={maxNumberPage}/>
 
         </>
     );
