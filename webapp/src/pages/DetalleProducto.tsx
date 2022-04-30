@@ -38,7 +38,7 @@ const DetalleProducto = () => {
         getProduct();
         getTallas();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [product])
+    }, [])
 
     return (
         <div >
@@ -93,7 +93,6 @@ const DetalleProducto = () => {
                     </div>
             }
         </div>
-
     )
 }
 
