@@ -20,8 +20,8 @@ const SubcategoriaRopa = () => {
         setProductos(respuestaJson.products);
     }
 
-    const handleChange = async (value:any) => {
-        setNumbPage(value-1);
+    const handleChange = async (value:number) => {
+        setNumbPage(value);
         await getProductos(numbPage);
     };
 
