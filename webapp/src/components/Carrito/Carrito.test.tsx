@@ -19,7 +19,7 @@ const productos: Producto[]=[
             image: "no imagen",
             type: "balon",
             color: "blanco y negro",
-            size: 0
+            size: "0"
     },
     {
         _id: "2",
@@ -33,7 +33,7 @@ const productos: Producto[]=[
         image: "no imagen",
         type: "raqueta",
         color: "azul",
-        size: 0
+        size: "0"
     },
     {
         _id: "3",
@@ -47,13 +47,13 @@ const productos: Producto[]=[
         image: "no imagen",
         type: "Bañador",
         color: "blanco y negro",
-        size: 0
+        size: "M"
     }
 ]
 
 test("carrito con un producto con varias unidades aumentadas en carrito", async () => {
     //Desde el producto
-    añadirAlCarritoNuevoProducto(productos[0]);
+    añadirAlCarritoNuevoProducto(productos[0],"0");
     
 
     const carrito: ProductoCarrito[]=[
@@ -97,8 +97,8 @@ test("carrito con varios productos iguales", async () => {
    
 
     //Ya añadidos dos balones, añadimos dos productos distintos mas
-    añadirAlCarritoNuevoProducto(productos[1]);
-    añadirAlCarritoNuevoProducto(productos[2]);
+    añadirAlCarritoNuevoProducto(productos[1],"0");
+    añadirAlCarritoNuevoProducto(productos[2],"M");
     const carrito: ProductoCarrito[]=[
         {
             producto:productos[0],
@@ -107,13 +107,13 @@ test("carrito con varios productos iguales", async () => {
         },
         {
             producto:productos[1],
-            cantidad:2,
-            precioTotal:5
+            cantidad:1,
+            precioTotal:35
         },
         {
             producto:productos[2],
-            cantidad:2,
-            precioTotal:5
+            cantidad:1,
+            precioTotal:25
         }
     ];
 
@@ -141,6 +141,6 @@ test("carrito con varios productos iguales", async () => {
     fireEvent.click(screen.getAllByRole("button")[0]);
     components.rerender(<Carrito />);
     expect(getCarrito().length).toEqual(1);
-    expect(screen.getByText(carrito[1].producto.name)).toBeInTheDocument();
-    expect(screen.getByText("35.00 €")).toBeInTheDocument();
+    expect(screen.getByText(carrito[2].producto.name)).toBeInTheDocument();
+    expect(screen.getByText("20.00 €")).toBeInTheDocument();
 });

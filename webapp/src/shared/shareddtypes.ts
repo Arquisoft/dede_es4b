@@ -11,7 +11,7 @@ export type Producto = {
 
   type: string;
   color: string;
-  size: number;
+  size: string;
 }
 
 export type ProductoCarrito = {
@@ -25,5 +25,14 @@ export type Pedido = {
   user: string,
   products: Producto[],
   order_date: Date,
-  status: string, 
+  status: string,
+  address: string
+}
+
+export type DireccionType = {
+  street1: string;
+  city: string;
+  region: string;
+  zip: string;
+  country: string;
 }

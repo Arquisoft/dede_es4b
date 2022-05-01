@@ -45,7 +45,7 @@ const Carrito = () => {
             <br></br>          
           </div>
           <table className="border-collapse">
-            <caption className="text-purple-400 font-mono text-lg">Tu pedido</caption>
+            <caption className="text-purple-400 font-bold text-3xl">Tu pedido</caption>
             <thead>
               <tr>
                 <th className="text-left p-2 border-solid border-purple-200 border-b-4">Producto</th>
@@ -53,6 +53,8 @@ const Carrito = () => {
                 <th className="text-left p-2 border-solid border-purple-200 border-b-4">Precio</th>
 
                 <th className="text-left p-2 border-solid border-purple-200 border-b-4">Unidades</th>
+
+                <th className="text-left p-2 border-solid border-purple-200 border-b-4">Tallas</th>
 
                 <th className="text-left p-2 border-solid border-purple-200 border-b-4"></th>
               </tr>
@@ -72,6 +74,8 @@ const Carrito = () => {
                     <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => llamarYActualizar(añadirAlCarrito, producto.producto)}> +</button>
 
                   </td>
+
+                  <td className="text-center p-2 border-solid border-purple-200 border-b-4">{producto.producto.size}</td>
 
                   <td className="text-left p-2 border-solid border-purple-200 border-b-4"><button type="button" className='text-red-800' onClick={() => eliminar(producto, carrito)}>
                     Remove

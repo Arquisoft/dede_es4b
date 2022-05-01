@@ -48,18 +48,16 @@ const ProductoCatalogo = ({ producto }: { producto: Producto }) => {
                     className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                 />
             </div>
-            <div className="mt-4 flex justify-between min-h-max h-50">
-                <div>
-                    <h3 className="text-lg font-medium text-gray-700 te">
-                        <Link to={"/productos/" + producto._id}>
-                            <span aria-hidden="true" className="absolute inset-0" />
-                            {producto.name}
-                        </Link>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500 overflow-hidden">{producto.short_description}</p>
-                </div>
+            <div className="mt-2 flex flex-col overflow-hidden h-20">
+                <h3 className="text-lg font-medium text-gray-700">
+                    <Link to={"/productos/" + producto._id}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {producto.name}
+                    </Link>
+                </h3>
+                <p className="mt-1 text-sm text-gray-500  overflow-hidden">{producto.short_description}</p>
             </div>
-            <p className="flex text-base font-medium text-yellow-700">{producto.price}€</p>
+            <p className="text-base font-medium text-yellow-700">{producto.price}€</p>
 
         </div>
         

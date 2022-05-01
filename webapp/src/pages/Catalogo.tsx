@@ -1,26 +1,31 @@
 import {useEffect, useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
-import {Pagination} from "@mui/material";
 import { getProductosPagina } from '../api/api';
 import { Producto } from '../shared/shareddtypes';
+import Paginacion from '../components/Paginacion/Paginacion';
+import Cargando from '../components/Cargando/Cargando';
 
 const Catalogo = () => {
     const [productos, setProductos] = useState<Producto[]>([]);
     const [numbPage, setNumbPage] = useState<number>(0);
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
     const[value, setValue] = useState('');
+    const [cargando, setCargando] = useState(false);
+    const [cargandoTexto] = useState("Cargando productos");
     
 
-    const handleChange = async (event:any, value:any) => {
-        setNumbPage(value-1);
+    const handleChange = async ( value:any) => {
+        setNumbPage(value);
         await getProductos();
     };
 
     const getProductos = async () => {
+        setCargando(true);
         const respuesta = await getProductosPagina(numbPage);
         setMaxNumberPage(respuesta.maxPages);
         setProductos(respuesta.products);
+        setCargando(false);
     }
 
     const keyDownHandler = async (event: any) => {
@@ -29,16 +34,21 @@ const Catalogo = () => {
             console.log(value);
             const respuesta = await fetch("http://localhost:5000/product/list/search/" + event.target.value + "/" + 0);
             const respuestaJson = await respuesta.json();
-            console.log(respuestaJson);
             setMaxNumberPage(respuestaJson.maxPages);
             setProductos(respuestaJson.products);
-            console.log(productos);
         }
       };
 
+    const checkEmpty = async (event: any) => {
+        if (event.target.value == "") {
+           getProductos();
+        }
+    };
+
     useEffect(() => {
-        getProductos();
+        //getProductos();
     }, [numbPage, maxNumberPage])
+    
     
     return (
         <>
@@ -48,11 +58,15 @@ const Catalogo = () => {
                     className="w-96 h-12 ml-2 mt-2 items-center justify-center px-4 py-2 border border-black rounded-md shadow-sm text-base font-medium "
                     type="text" 
                     placeholder="Busca un producto..."
-                    onKeyDown={keyDownHandler} />
+                    onKeyDown={keyDownHandler} 
+                    onChange={checkEmpty}/>
             </div>
-            <ProductosCatalogo productos={productos}/>
             
-            <Pagination onChange={handleChange} color="secondary"  count={maxNumberPage} shape="rounded" />
+            {
+                cargando ? 
+                <Cargando cargando={cargando} cargandoTexto={cargandoTexto} /> : <ProductosCatalogo productos={productos} />
+            }
+            <Paginacion onChange={handleChange} maxPages={maxNumberPage}/>
 
         </>
     );
