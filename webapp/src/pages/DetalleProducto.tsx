@@ -1,111 +1,108 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Button, Grid } from '@mui/material';
 import NavBar from '../components/AppBar/NavBar';
-import { ProductoCarrito } from '../shared/shareddtypes';
+import { getProductoByID } from '../api/api';
+import { añadirAlCarritoNuevoProducto } from '../util/carrito';
+import { Producto } from '../shared/shareddtypes';
+import Cargando from '../components/Cargando/Cargando';
+import { Button } from '@mui/material';
 
 const DetalleProducto = () => {
     const params = useParams();
-    const [product, setProduct] = useState('');
-    const [nombre, setNombre] = useState('');
-    const [short, setShort] = useState('');
-    const [long, setLong] = useState('');
-    const [size, setSize] = useState('');
-    const [price, setPrice] = useState('');
-    const [image, setImage] = useState('');
+    const [product, setProduct] = useState<Producto>();
+    const [tallas, setTallas] = useState([]);
+    const [selectedSize, setSelectedSize] = useState(' ');
+    const [cargando, setCargando] = useState(false);
+    const [cargandoTexto] = useState("Cargando detalles");
 
-    const getProduct = async (params : any) => {
-        let id = params.id;
-        console.log(id);
-        const respuesta = await fetch('http://localhost:5000/product/find/' + id)
-        .then(response =>{
-            if (response?.ok){
-                response.json().then(
-                    data  => {
-                        setProduct(data)
-                        setNombre(data.name)
-                        setShort(data.short_description)
-                        setLong(data.long_description)
-                        setSize(data.size)
-                        setPrice(data.price)
-                        setImage(data.image)
-                        console.log(data)
-                    }
-                );
-            }
-        })
-        
+    const getProduct = async () => {
+        setCargando(true);
+        await getProductoByID(params.id!)
+            .then(data => {
+                setProduct(data.product);
+            }).finally(() => setCargando(false));
+
     }
 
-    const añadirAlCarrito = (producto: any) => {
-        const carritoString = sessionStorage.getItem('carrito');
-        let carrito = [];
-        if (carritoString != null)
-            carrito = JSON.parse(carritoString!);
-        //let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };    
-       
-        let borrar=-1;
-        let c=0;
-        let p=0;
-        carrito.forEach(function(value:any,index:any){
-            
-            if(value.producto._id===producto._id){
-                borrar=index;
-                c=value.cantidad;
-    
-            }
-        });
-        
-        
-        if(borrar>=0){
-            let productoCarrito: ProductoCarrito = { producto: producto, cantidad: c+1, precioTotal: parseFloat(producto.price)*c };
-             
-            carrito.splice(borrar,1,productoCarrito);
-        }else{
-            let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };
-            carrito.push(productoCarrito);
+    const getTallas = async () => {
+        getProductoByID(params.id!)
+        .then(data => setTallas(data.sizes));
+    }
+
+    const handleClick = (event : any) => {
+        console.log(event.target.id);
+        setSelectedSize(event.target.id);
+    }
+
+    const comprobarSiHayTalla= (selectSize:string)=>{
+        console.log(tallas);
+        if(tallas.length===0){
+            añadirAlCarritoNuevoProducto(product!,selectedSize);
         }
-        
-        sessionStorage.setItem('carrito', JSON.stringify(carrito))
-    }
+        else if(selectSize===' '){
 
+        }else{
+            añadirAlCarritoNuevoProducto(product!,selectedSize);
+        }
+    }
     useEffect(() => {
-        getProduct(params);
+        getProduct();
+        getTallas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <div className="detalles">
+        <div >
             <header>
-                <NavBar/>
+                <NavBar />
             </header>
-            <div className="contenidoDetalles">
-                <Grid container>
-                    <Grid className="columnaIzquierda" item xs={12} sm={6} md={4} lg={3}> 
-                        <img src={image} />
-                    </Grid>
-                    <Grid className="columnaDerecha" item xs={12} sm={6} md={4} lg={3}>
-                        <h1 className="tituloProducto">{nombre}</h1>
-                        <p className="descripcionCorta">
-                            {short}
-                        </p>
-                        <p className="precio">
-                            Precio: {price} €
-                        </p>
-                        <p className="talla">
-                            Talla: {size}
-                        </p>
-                        <Box style={{justifyContent: 'center'}} className="botonAñadir">
-                            <Button onClick={() => añadirAlCarrito(product)} color="inherit" sx={{border: 1}}>
-                                Añadir a carrito
-                            </Button>
-                        </Box>
-                        <p className="descripcionLarga">
-                            {long}
-                        </p>
-                    </Grid>
-                </Grid>
-            </div>
+            {
+                cargando ?
+                    <Cargando cargando={cargando} cargandoTexto={cargandoTexto} /> :
+
+                    <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+                        <div >
+                            <img src={product?.image} alt="Imagen producto" />
+                        </div>
+                        <div>
+                            <h1 className="text-purple-400 font-bold text-3xl">{product?.name}</h1>
+                            <br />
+                            <p className="text-base text-gray-900">
+                                {product?.short_description}
+                            </p>
+                            <br />
+                            <div className="text-base text-gray-900 flex flex-wrap justify-center gap-4 mb-4">
+                                Tallas: {tallas.map((item) => (
+                                    <Button 
+                                    id={item}
+                                    variant="contained"
+                                    onClick={handleClick}
+                                    color="secondary">
+                                        {item}
+                                    </Button>
+                                ))}
+                            </div>
+                            <p className="text-base text-gray-900">
+                                Color: {product?.color}
+                            </p>
+                            <p className="text-base text-gray-900">
+                                Precio: {product?.price} €
+                            </p>
+                            <br />
+
+                            <p className="text-base text-gray-900">
+                                {product?.long_description}
+                            </p>
+                            <br />
+                            <div className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                                <button onClick={() => comprobarSiHayTalla(selectedSize)}>
+                                    Añadir a carrito
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+            }
         </div>
     )
 }

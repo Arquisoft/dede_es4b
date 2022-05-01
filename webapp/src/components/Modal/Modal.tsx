@@ -1,8 +1,7 @@
-import React from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 
-const Modal = ({children, closeModal, isOpen} : {children: any, openModal: any, closeModal: any, isOpen:any}) => {
+const Modal = ({children, isOpen} : {children: any, isOpen:boolean}) => {
 
   return (
     <>
@@ -10,7 +9,7 @@ const Modal = ({children, closeModal, isOpen} : {children: any, openModal: any, 
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={closeModal}
+          onClose={() => null}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child

@@ -3,16 +3,23 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom';
 import { isLogeado } from '../../App';
+import Catalogo from '../../pages/Catalogo';
+import { getProductos } from '../../api/api';
 
 const NavBar = () => {
 
     const navigation = [
         { name: 'Home', href: '/', current: true },
         { name: 'Catalogo', href: '/productos', current: false },
-        { name: 'Hombre', href: '#', current: false },
-        { name: 'Mujer', href: '#', current: false },
-        { name: 'Niños', href: '#', current: false },
+        { name: 'Ropa', href: '/productos/categorias/ropa', current: false },
+        { name: 'Calzado', href: '/productos/categorias/calzado', current: false },
+        { name: 'Accesorios', href: '/productos/categorias/accesorios', current: false },
     ]
+
+    const comprobarCatalogo = (item: any) => {
+        if (item.name === "Catalogo")
+            Catalogo.call(getProductos());
+    }
 
     function classNames(...classes: string[]) {
         return classes.filter(Boolean).join(' ')
@@ -37,17 +44,18 @@ const NavBar = () => {
                         <div className="hidden sm:block sm:ml-6">
                             <div className="flex space-x-4">
                                 {navigation.map((item) => (
-                                    <a
+                                    <Link
                                         key={item.name}
-                                        href={item.href}
+                                        to={item.href}
                                         className={classNames(
                                             item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                             'px-3 py-2 rounded-md text-sm font-medium'
                                         )}
                                         aria-current={item.current ? 'page' : undefined}
+                                        onChange={() => comprobarCatalogo(item)}
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -96,12 +104,12 @@ const NavBar = () => {
                                             </Menu.Item>
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <a
-                                                        href="/logout"
+                                                    <Link
+                                                        to="/logout"
                                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
                                                         Cerrar sesión
-                                                    </a>
+                                                    </Link>
                                                 )}
                                             </Menu.Item>
                                         </Menu.Items>
@@ -128,8 +136,8 @@ const NavBar = () => {
                     {navigation.map((item) => (
                         <Disclosure.Button
                             key={item.name}
-                            as="a"
-                            href={item.href}
+                            as={Link}
+                            to={item.href}
                             className={classNames(
                                 item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                 'block px-3 py-2 rounded-md text-base font-medium'

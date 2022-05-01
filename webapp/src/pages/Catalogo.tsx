@@ -1,56 +1,63 @@
-import React, {useEffect, useState} from 'react';
+import {useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
-import { isLogeado } from '../App';
-import {Pagination,Typography} from "@mui/material";
-//import useStyles from '../components/ProductosCatalogo/styles';
-
-export interface Producto {
-    _id: number;
-    name: string;
-    description: string;
-    price: string;
-    image: string;
-}
+import { getProductosPagina } from '../api/api';
+import { Producto } from '../shared/shareddtypes';
+import Paginacion from '../components/Paginacion/Paginacion';
+import Cargando from '../components/Cargando/Cargando';
 
 const Catalogo = () => {
     const [productos, setProductos] = useState<Producto[]>([]);
-    const [productosPagina, setProductosPagina] = useState<Producto[]>([]);
+    const [numbPage, setNumbPage] = useState<number>(0);
+    const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
+    const [cargando, setCargando] = useState(false);
+    const [cargandoTexto] = useState("Cargando productos");
     
 
-    const handleChange = async (event:any, value:any) => {
-        const respuesta = await fetch('http://localhost:5000/product/list/'+(value-1));
-        setProductosPagina(await respuesta.json());
+    const handleChange = async ( value : number) => {
+        setNumbPage(value);
+        await getProductos();
     };
 
-    const getProductosPagina = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list/0');
-        setProductosPagina(await respuesta.json());
-    }
-
     const getProductos = async () => {
-        const respuesta = await fetch('http://localhost:5000/product/list');
-
-        setProductos(await respuesta.json());
+        setCargando(true);
+        const respuesta = await getProductosPagina(numbPage);
+        setMaxNumberPage(respuesta.maxPages);
+        setProductos(respuesta.products);
+        setCargando(false);
     }
 
-    useEffect(() => {
-        getProductosPagina();
-        getProductos();
-    }, [])
+    const keyDownHandler = async (event: any) => {
+        if (event.code === "Enter") {
+            const respuesta = await fetch("http://localhost:5000/product/list/search/" + event.target.value + "/" + 0);
+            const respuestaJson = await respuesta.json();
+            setMaxNumberPage(respuestaJson.maxPages);
+            setProductos(respuestaJson.products);
+        }
+      };
 
-    if (isLogeado())
-        console.log("conectado");
-    
-    console.log(productos);
-    //const classes = useStyles();
-    let longitud=productos.length/6;
+    const checkEmpty = async (event: any) => {
+        if (event.target.value === "")
+           getProductos();
+    };
+
     return (
         <>
             <NavBar/>
-            <ProductosCatalogo productos={productosPagina}/>
+            <div id="barra-busqueda">
+                <input 
+                    className="w-96 h-12 ml-2 mt-2 items-center justify-center px-4 py-2 border border-black rounded-md shadow-sm text-base font-medium "
+                    type="text" 
+                    placeholder="Busca un producto..."
+                    onKeyDown={keyDownHandler} 
+                    onChange={checkEmpty}/>
+            </div>
             
-            <Pagination onChange={handleChange} color="secondary"  count={Math.round(longitud)} shape="rounded" />
+            {
+                cargando ? 
+                <Cargando cargando={cargando} cargandoTexto={cargandoTexto} /> : <ProductosCatalogo productos={productos} />
+            }
+            <Paginacion onChange={handleChange} maxPages={maxNumberPage}/>
 
         </>
     );
