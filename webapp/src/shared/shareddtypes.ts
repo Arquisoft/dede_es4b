@@ -11,7 +11,7 @@ export type Producto = {
 
   type: string;
   color: string;
-  size: number;
+  size: string;
 }
 
 export type ProductoCarrito = {

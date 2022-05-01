@@ -28,6 +28,7 @@ export const getProductosIndividualesCarrito = (): Producto[] => {
 // Guarda el producto en la sesión.
 export const añadirAlCarrito = (producto: Producto) => {
     let carrito = getCarrito();
+
     let entrada : ProductoCarrito | undefined = carrito.find(elem => (elem.producto._id === producto._id && elem.producto.size===producto.size));
     let newEntrada : ProductoCarrito;
 
@@ -64,7 +65,7 @@ export const eliminarAlCarrito = (producto: Producto) => {
     sessionStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
-export const añadirAlCarritoNuevoProducto = (producto: any) => {
+export const añadirAlCarritoNuevoProducto = (producto: any, selectSize:string) => {
     const carritoString = sessionStorage.getItem('carrito');
     let carrito = [];
     if (carritoString != null)
@@ -74,9 +75,11 @@ export const añadirAlCarritoNuevoProducto = (producto: any) => {
     let borrar=-1;
     let c=0;
     let p=0;
+    producto.size=selectSize;
+
     carrito.forEach(function(value:any,index:any){
 
-        if(value.producto._id===producto._id){
+        if((value.producto._id===producto._id) && (value.producto.size === producto.size)){
             borrar=index;
             c=value.cantidad;  
         }
