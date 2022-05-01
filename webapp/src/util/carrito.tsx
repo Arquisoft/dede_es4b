@@ -28,7 +28,7 @@ export const getProductosIndividualesCarrito = (): Producto[] => {
 // Guarda el producto en la sesión.
 export const añadirAlCarrito = (producto: Producto) => {
     let carrito = getCarrito();
-    let entrada : ProductoCarrito | undefined = carrito.find(elem => elem.producto._id === producto._id);
+    let entrada : ProductoCarrito | undefined = carrito.find(elem => (elem.producto._id === producto._id && elem.producto.size===producto.size));
     let newEntrada : ProductoCarrito;
 
     if (entrada) {

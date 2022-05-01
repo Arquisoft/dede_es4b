@@ -141,6 +141,6 @@ test("carrito con varios productos iguales", async () => {
     fireEvent.click(screen.getAllByRole("button")[0]);
     components.rerender(<Carrito />);
     expect(getCarrito().length).toEqual(1);
-    expect(screen.getByText(carrito[1].producto.name)).toBeInTheDocument();
-    expect(screen.getByText("35.00 €")).toBeInTheDocument();
+    expect(screen.getByText(carrito[2].producto.name)).toBeInTheDocument();
+    expect(screen.getByText("20.00 €")).toBeInTheDocument();
 });
