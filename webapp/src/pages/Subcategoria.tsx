@@ -8,7 +8,6 @@ import Cargando from '../components/Cargando/Cargando';
 
 const SubcategoriaRopa = () => {
     const params = useParams();
-    console.log(params.sub_category)
     const [productos, setProductos] = useState<Producto[]>([]);
     const [numbPage, setNumbPage] = useState<number>(0);
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
@@ -17,20 +16,33 @@ const SubcategoriaRopa = () => {
 
     const getProductos = async (numbPage: number) => {
         setCargando(true);
-
         const subcategoria = params.sub_category?.charAt(0).toUpperCase()! + params.sub_category?.slice(1)!;
         const respuesta = await fetch("http://localhost:5000/product/list/sub_category/" + subcategoria + "/" + numbPage);
         const respuestaJson = await respuesta.json();
         setMaxNumberPage(respuestaJson.maxPages);
         setProductos(respuestaJson.products);
-
         setCargando(false);
-
     }
 
     const handleChange = async (value: number) => {
         setNumbPage(value);
         await getProductos(numbPage);
+    };
+
+    const keyDownHandler = async (event: any) => {
+        if (event.code === "Enter") {
+            //setValue(event.target.value);
+            const respuesta = await fetch("http://localhost:5000/product/list/search/" + event.target.value + "/" + 0);
+            const respuestaJson = await respuesta.json();
+            setMaxNumberPage(respuestaJson.maxPages);
+            setProductos(respuestaJson.products);
+        }
+    };
+
+    const checkEmpty = async (event: any) => {
+        if (event.target.value == "") {
+           getProductos(numbPage);
+        }
     };
 
     useEffect(() => {

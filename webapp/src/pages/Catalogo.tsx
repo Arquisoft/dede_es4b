@@ -10,6 +10,7 @@ const Catalogo = () => {
     const [productos, setProductos] = useState<Producto[]>([]);
     const [numbPage, setNumbPage] = useState<number>(0);
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
+    const[value, setValue] = useState('');
     const [cargando, setCargando] = useState(false);
     const [cargandoTexto] = useState("Cargando productos");
     
@@ -27,14 +28,40 @@ const Catalogo = () => {
         setCargando(false);
     }
 
+    const keyDownHandler = async (event: any) => {
+        if (event.code === "Enter") {
+            //setValue(event.target.value);
+            console.log(value);
+            const respuesta = await fetch("http://localhost:5000/product/list/search/" + event.target.value + "/" + 0);
+            const respuestaJson = await respuesta.json();
+            setMaxNumberPage(respuestaJson.maxPages);
+            setProductos(respuestaJson.products);
+        }
+      };
+
+    const checkEmpty = async (event: any) => {
+        if (event.target.value == "") {
+           getProductos();
+        }
+    };
+
     useEffect(() => {
-        getProductos();
+        //getProductos();
     }, [numbPage, maxNumberPage])
     
     
     return (
         <>
             <NavBar/>
+            <div id="barra-busqueda">
+                <input 
+                    className="w-96 h-12 ml-2 mt-2 items-center justify-center px-4 py-2 border border-black rounded-md shadow-sm text-base font-medium "
+                    type="text" 
+                    placeholder="Busca un producto..."
+                    onKeyDown={keyDownHandler} 
+                    onChange={checkEmpty}/>
+            </div>
+            
             {
                 cargando ? 
                 <Cargando cargando={cargando} cargandoTexto={cargandoTexto} /> : <ProductosCatalogo productos={productos} />

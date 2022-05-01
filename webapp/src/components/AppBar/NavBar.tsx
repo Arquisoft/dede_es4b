@@ -3,6 +3,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom';
 import { isLogeado } from '../../App';
+import Catalogo from '../../pages/Catalogo';
+import { getProductos } from '../../api/api';
 
 const NavBar = () => {
 
@@ -13,6 +15,12 @@ const NavBar = () => {
         { name: 'Calzado',href: '/productos/categorias/calzado', current: false },
         { name: 'Accesorios', href: '/productos/categorias/accesorios', current: false },
     ]
+
+    const comprobarCatalogo = (item : any) => {
+        if(item.name == "Catalogo"){
+            Catalogo.call(getProductos());
+        }
+    }
 
     function classNames(...classes: string[]) {
         return classes.filter(Boolean).join(' ')
@@ -45,6 +53,7 @@ const NavBar = () => {
                                             'px-3 py-2 rounded-md text-sm font-medium'
                                         )}
                                         aria-current={item.current ? 'page' : undefined}
+                                        onChange={() => comprobarCatalogo(item)}
                                     >
                                         {item.name}
                                     </Link>

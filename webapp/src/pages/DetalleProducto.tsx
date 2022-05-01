@@ -32,8 +32,6 @@ const DetalleProducto = () => {
     const handleClick = (event : any) => {
         console.log(event.target.id);
         setSelectedSize(event.target.id);
-
-
     }
 
     const comprobarSiHayTalla= (selectSize:string)=>{
