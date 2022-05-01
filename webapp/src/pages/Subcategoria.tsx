@@ -52,14 +52,6 @@ const SubcategoriaRopa = () => {
     return (
         <div className="ropa">
             <NavBar />
-            <div id="barra-busqueda">
-                <input 
-                    className="w-96 h-12 ml-2 mt-2 items-center justify-center px-4 py-2 border border-black rounded-md shadow-sm text-base font-medium "
-                    type="text" 
-                    placeholder="Busca un producto..."
-                    onKeyDown={keyDownHandler} 
-                    onChange={checkEmpty}/>
-            </div>
             {
                 cargando ? 
                 <Cargando cargando={cargando} cargandoTexto={cargandoTexto} /> : <ProductosCatalogo productos={productos} />
