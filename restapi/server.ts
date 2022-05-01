@@ -13,7 +13,6 @@ const app: Application = express();
 
 const port = 5000;
 
-app.use(cors());
 app.use(bp.json());
 
 dbConnection();
