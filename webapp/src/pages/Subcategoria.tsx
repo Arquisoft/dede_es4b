@@ -14,10 +14,10 @@ const SubcategoriaRopa = () => {
     const [cargando, setCargando] = useState(false);
     const [cargandoTexto] = useState("Cargando productos");
 
-    const getProductos = async (numbPage: number) => {
+    const getProductos = async (n: number) => {
         setCargando(true);
         const subcategoria = params.sub_category?.charAt(0).toUpperCase()! + params.sub_category?.slice(1)!;
-        const respuesta = await fetch("http://localhost:5000/product/list/sub_category/" + subcategoria + "/" + numbPage);
+        const respuesta = await fetch("http://localhost:5000/product/list/sub_category/" + subcategoria + "/" + n);
         const respuestaJson = await respuesta.json();
         setMaxNumberPage(respuestaJson.maxPages);
         setProductos(respuestaJson.products);
@@ -29,24 +29,9 @@ const SubcategoriaRopa = () => {
         await getProductos(numbPage);
     };
 
-    const keyDownHandler = async (event: any) => {
-        if (event.code === "Enter") {
-            //setValue(event.target.value);
-            const respuesta = await fetch("http://localhost:5000/product/list/search/" + event.target.value + "/" + 0);
-            const respuestaJson = await respuesta.json();
-            setMaxNumberPage(respuestaJson.maxPages);
-            setProductos(respuestaJson.products);
-        }
-    };
-
-    const checkEmpty = async (event: any) => {
-        if (event.target.value == "") {
-           getProductos(numbPage);
-        }
-    };
-
     useEffect(() => {
         getProductos(numbPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [numbPage, maxNumberPage, params])
 
     return (

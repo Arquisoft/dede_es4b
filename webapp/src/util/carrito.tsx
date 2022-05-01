@@ -69,12 +69,10 @@ export const añadirAlCarritoNuevoProducto = (producto: any, selectSize:string) 
     const carritoString = sessionStorage.getItem('carrito');
     let carrito = [];
     if (carritoString != null)
-        carrito = JSON.parse(carritoString!);
-    //let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };
+        carrito = JSON.parse(carritoString);
 
     let borrar=-1;
     let c=0;
-    let p=0;
     producto.size=selectSize;
 
     carrito.forEach(function(value:any,index:any){

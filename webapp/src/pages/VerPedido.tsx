@@ -1,5 +1,5 @@
 import { TruckIcon } from '@heroicons/react/outline';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getPedidoPorId } from '../api/api';
 import NavBar from '../components/AppBar/NavBar';
@@ -10,7 +10,7 @@ const VerPedido = () => {
   const id = useParams().id;
   const [pedido, setPedido] = useState<Pedido>();
   const [cargando, setCargando] = useState(false);
-  const [cargandoTexto, setCargandoTexto] = useState("Cargando pedido");
+  const [cargandoTexto] = useState("Cargando pedido");
   let precioTotal = 0;
 
 
@@ -24,6 +24,7 @@ const VerPedido = () => {
 
   useEffect(() => {
     getPedido();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   pedido?.products.forEach(p => precioTotal += p.price);

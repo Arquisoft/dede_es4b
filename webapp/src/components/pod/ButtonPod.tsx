@@ -3,7 +3,7 @@ import { LoginButton } from "@inrupt/solid-ui-react";
 import { webUrl } from "../../App";
 
 const ButtonPod = ({urlProvider} : {urlProvider : string}) => {
-    const [idp, setIdp] = useState(urlProvider);
+    const [idp] = useState(urlProvider);
     const [currentUrl, setCurrentUrl] = useState(webUrl);
 
     useEffect(() => {

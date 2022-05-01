@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
 import { getProductosPagina } from '../api/api';
@@ -10,12 +10,11 @@ const Catalogo = () => {
     const [productos, setProductos] = useState<Producto[]>([]);
     const [numbPage, setNumbPage] = useState<number>(0);
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
-    const[value, setValue] = useState('');
     const [cargando, setCargando] = useState(false);
     const [cargandoTexto] = useState("Cargando productos");
     
 
-    const handleChange = async ( value:any) => {
+    const handleChange = async ( value : number) => {
         setNumbPage(value);
         await getProductos();
     };
@@ -30,8 +29,6 @@ const Catalogo = () => {
 
     const keyDownHandler = async (event: any) => {
         if (event.code === "Enter") {
-            //setValue(event.target.value);
-            console.log(value);
             const respuesta = await fetch("http://localhost:5000/product/list/search/" + event.target.value + "/" + 0);
             const respuestaJson = await respuesta.json();
             setMaxNumberPage(respuestaJson.maxPages);
@@ -40,16 +37,10 @@ const Catalogo = () => {
       };
 
     const checkEmpty = async (event: any) => {
-        if (event.target.value == "") {
+        if (event.target.value === "")
            getProductos();
-        }
     };
 
-    useEffect(() => {
-        //getProductos();
-    }, [numbPage, maxNumberPage])
-    
-    
     return (
         <>
             <NavBar/>

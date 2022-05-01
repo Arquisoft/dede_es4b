@@ -12,14 +12,13 @@ const NavBar = () => {
         { name: 'Home', href: '/', current: true },
         { name: 'Catalogo', href: '/productos', current: false },
         { name: 'Ropa', href: '/productos/categorias/ropa', current: false },
-        { name: 'Calzado',href: '/productos/categorias/calzado', current: false },
+        { name: 'Calzado', href: '/productos/categorias/calzado', current: false },
         { name: 'Accesorios', href: '/productos/categorias/accesorios', current: false },
     ]
 
-    const comprobarCatalogo = (item : any) => {
-        if(item.name == "Catalogo"){
+    const comprobarCatalogo = (item: any) => {
+        if (item.name === "Catalogo")
             Catalogo.call(getProductos());
-        }
     }
 
     function classNames(...classes: string[]) {

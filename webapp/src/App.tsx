@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/login';
@@ -12,7 +11,6 @@ import LogOut from './components/LogOut/LogOut';
 import Pedidos from './pages/Pedidos';
 import SignUp from './pages/SignUp';
 import PrivateRoute from './routers/PrivateRoute';
-import { Switch } from '@headlessui/react';
 import Subcategoria from './pages/Subcategoria';
 import PublicRoute from './routers/PublicRoute';
 import VerPedido from './pages/VerPedido';
@@ -29,7 +27,7 @@ export const isLogeado = (): boolean => {
 function getToken(): string | null {
   const userSessionStr = sessionStorage.getItem('userSession');
   if (userSessionStr != null) {
-    const userSession = JSON.parse(userSessionStr!);
+    const userSession = JSON.parse(userSessionStr);
     return userSession.token;
   }
   return null;
@@ -41,14 +39,6 @@ export const getPodSession = () => {
     return JSON.parse(item);
   return null;
 }
-
-const ProtectedRoute = ({ user, children }: any) => {
-  if (!user) {
-    // return <Navigate to="/landing" replace />;
-  }
-
-  return children;
-};
 
 function App(): JSX.Element {
 
