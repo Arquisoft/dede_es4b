@@ -1,4 +1,3 @@
-import React from 'react';
 import ButtonPod from '../pod/ButtonPod';
 import { useSession } from '@inrupt/solid-ui-react';
 
@@ -10,12 +9,13 @@ const ConectarPod = () => {
     })
 
     return (
-        <>
-            <div className="px-4 py-5 sm:px-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">Conecta tu Solid Pod para continuar</h3>
-            </div>
+        <div className='flex flex-col'>
+            <h3 className="m-auto text-lg leading-6 font-medium text-gray-900 py-2">Conecta tu Pod de Solid para continuar</h3>
+            <div className='m-auto p-2'>
             <ButtonPod urlProvider='https://inrupt.net' />
-        </>
+
+            </div>
+        </div>
     );
 }
 

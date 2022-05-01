@@ -13,6 +13,9 @@ import Pedidos from './pages/Pedidos';
 import SignUp from './pages/SignUp';
 import PrivateRoute from './routers/PrivateRoute';
 import { Switch } from '@headlessui/react';
+import Subcategoria from './pages/Subcategoria';
+import PublicRoute from './routers/PublicRoute';
+import VerPedido from './pages/VerPedido';
 
 export const webUrl = "https://localhost:3000";
 
@@ -57,16 +60,22 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/productos/categorias/:sub_category" element={<Subcategoria />} />
           <Route path="/productos/:id" element={<DetalleProducto />} />
           <Route path="/productos" element={<Catalogo />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/logout" element={<LogOut />} />
 
           {/* Ventanas que necesitan estar logeado */}
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/pedidos" element={<Pedidos />} />
+            <Route path="/pedidos/:id" element={<VerPedido />} />
             <Route path="/checkout" element={<CheckOut />} />
+            <Route path="/logout" element={<LogOut />} />
+          </Route>
+
+          {/* Ventanas que hay que estar sin logear */}
+          <Route path="/" element={<PublicRoute />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
           </Route>
           
           <Route path="*" element={<h1>Error 404: Página no existe</h1>}/>
