@@ -16,13 +16,17 @@ const Catalogo = () => {
 
     const handleChange = async ( value : number) => {
         setNumbPage(value);
-        await getProductos();
+        setCargando(true);
+        const respuesta = await getProductosPagina(value);
+        setMaxNumberPage(respuesta.maxPages);
+        setProductos(respuesta.products);
+        setCargando(false);
     };
 
 
     const getProductos = async () => {
         setCargando(true);
-
+        console.log(numbPage);
         if(!bool){
             const respuesta = await getProductosPagina(numbPage);
             setMaxNumberPage(respuesta.maxPages);
@@ -30,10 +34,14 @@ const Catalogo = () => {
             setCargando(false);
             setBool(true);
         }else{
+
             const respuesta = await getProductosPagina(numbPage+1);
+
             setMaxNumberPage(respuesta.maxPages);
             setProductos(respuesta.products);
             setCargando(false);
+
+
         }
 
     }
