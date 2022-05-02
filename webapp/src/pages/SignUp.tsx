@@ -1,8 +1,7 @@
 import { XIcon } from '@heroicons/react/outline';
 import { BaseSyntheticEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-
+import { postRegistro } from '../api/api';
 
 const SignUp = () => {
 
@@ -11,6 +10,7 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [errorTexto, setErrorTexto] = useState("Error, el usuario ya existe");
 
     const navigate = useNavigate();
     const [errorDisplay, setErrorDisplay] = useState("hidden");
@@ -19,24 +19,20 @@ const SignUp = () => {
         e.preventDefault();
 
         if (comprobarDatos()) {
-            await fetch('http://localhost:5000/user/register', {
-                method: 'POST',
-                body: JSON.stringify({ name, surname, userName: email, password }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+            await postRegistro({ name, surname, userName: email, password })
                 .then(response => {
                     if (response.ok) {
                         navigate("/productos")
                     } else {
                         console.log("No se ha creado la cuenta. Error: " + e)
+                        setErrorTexto("Error, el usuario ya existe");
                         setErrorDisplay("flex");
                     }
                 })
-                .catch(e => console.log("No se ha creado la cuenta. Error: " + e));
+                .catch(error => console.log("No se ha creado la cuenta. Error: " + error));
         } else {
-            console.log("Las constraseñas no coinciden");
+            setErrorTexto("Las constraseñas no coinciden");
+            setErrorDisplay("flex")
         }
     };
 
@@ -50,7 +46,7 @@ const SignUp = () => {
                 <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg ">
                     <XIcon />
                 </div>
-                <div className="ml-3 text-sm font-normal">Error, el usuario ya existe</div>
+                <div className="ml-3 text-sm font-normal">{errorTexto}</div>
                 <button onClick={() => setErrorDisplay("hidden")} className="ml-auto -mx-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 " data-dismiss-target="#toast-danger" aria-label="Close">
                     <span className="sr-only">Cerrar</span>
                     <XIcon />

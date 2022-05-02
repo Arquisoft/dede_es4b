@@ -1,6 +1,7 @@
 import { BaseSyntheticEvent, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AtSymbolIcon, EyeIcon, EyeOffIcon, XIcon } from '@heroicons/react/outline'
+import { postLogin } from '../api/api';
 
 function setUserSession(userSession: any) {
     sessionStorage.setItem('userSession', JSON.stringify(userSession));
@@ -35,13 +36,7 @@ const Login = () => {
         e.preventDefault();
 
         // llamada al backend
-        await fetch('http://localhost:5000/login', {
-            method: 'POST',
-            body: JSON.stringify({ userName: email, password: password }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+        await postLogin(email, password)
             .catch(error => console.error('Error:', error))
             .then(response => {
                 if (response?.ok) {

@@ -34,7 +34,7 @@ const NavBar = () => {
                         <div className="flex-shrink-0 flex items-center">
                             <img
                                 className="block h-10 w-auto mr-2 "
-                                src="http://localhost:3000/images/logo.png"
+                                src={(process.env.REACT_APP_API_URI || 'http://localhost:3000') + "/images/logo.png"}
                                 alt="Workflow"
                             />
                             <h3 className="text-2xl tracking-tight font-extrabold text-purple-700">
@@ -77,7 +77,7 @@ const NavBar = () => {
                                             <span className="sr-only">Opciones de usuario</span>
                                             <img
                                                 className="h-8 w-8 rounded-full"
-                                                src="http://localhost:3000/images/user_icon.png"
+                                                src={(process.env.REACT_APP_API_URI || 'http://localhost:3000') + "/images/user_icon.png"}
                                                 alt="user_icon"
                                             />
                                         </Menu.Button>
