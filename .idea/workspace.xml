@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e720f9f-41e0-4727-9db6-c895eec885a5" name="Changes" comment="Bug 2 paginacion solucionado">
+    <list default="true" id="8e720f9f-41e0-4727-9db6-c895eec885a5" name="Changes" comment="Solucionado el bug en un test y actualizada documentacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/src/components/Carrito/Carrito.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/components/Carrito/Carrito.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/src/pages/Catalogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/pages/Catalogo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/src/util/carrito.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/util/carrito.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restapi/.env" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="front-end" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,11 +62,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/images" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\andre\Documents\CURSO 2021-2022\CUATRI 2\ASW\TRABAJO GRUPO\VERSION 7\webapp\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\andre\Documents\CURSO 2021-2022\CUATRI 2\ASW\TRABAJO GRUPO\VERSION 10\webapp\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Usuario\IdeaProjects\dede_es4bV2\docs\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\andre\Documents\CURSO 2021-2022\CUATRI 2\ASW\TRABAJO GRUPO\VERSION 10\docs\images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -169,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651489786368</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Solucionado el bug en un test y actualizada documentacion">
+      <created>1651527321617</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651527321618</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +201,7 @@
     <MESSAGE value="direccion de envio en pedido" />
     <MESSAGE value="j" />
     <MESSAGE value="Bug 2 paginacion solucionado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug 2 paginacion solucionado" />
+    <MESSAGE value="Solucionado el bug en un test y actualizada documentacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solucionado el bug en un test y actualizada documentacion" />
   </component>
 </project>
