@@ -12,7 +12,6 @@ const Catalogo = () => {
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
     const [cargando, setCargando] = useState(false);
     const [cargandoTexto] = useState("Cargando productos");
-    const [bool,setBool] = useState<boolean>(false);
 
     const handleChange = async ( value : number) => {
         setNumbPage(value);
@@ -26,38 +25,26 @@ const Catalogo = () => {
 
     const getProductos = async () => {
         setCargando(true);
-        console.log(numbPage);
-        if(!bool){
-            const respuesta = await getProductosPagina(numbPage);
-            setMaxNumberPage(respuesta.maxPages);
-            setProductos(respuesta.products);
-            setCargando(false);
-            setBool(true);
-        }else{
-
-            const respuesta = await getProductosPagina(numbPage+1);
-
-            setMaxNumberPage(respuesta.maxPages);
-            setProductos(respuesta.products);
-            setCargando(false);
-
-
-        }
+        const respuesta = await getProductosPagina(numbPage);
+        setMaxNumberPage(respuesta.maxPages);
+        setProductos(respuesta.products);
+        setCargando(false);
 
     }
 
     const keyDownHandler = async (event: any) => {
         if (event.code === "Enter") {
             const respuesta = await searchProductos(event.target.value);
-            const respuestaJson = await respuesta.json();
-            setMaxNumberPage(respuestaJson.maxPages);
-            setProductos(respuestaJson.products);
+            //const respuestaJson = await respuesta.json();
+            setMaxNumberPage(respuesta.maxPages);
+            setProductos(respuesta.products);
         }
       };
 
     const checkEmpty = async (event: any) => {
-        if (event.target.value === "")
-           getProductos();
+        if (event.target.value === "") {
+            getProductos();
+        }
     };
 
     return (
@@ -68,7 +55,7 @@ const Catalogo = () => {
                     className="w-96 h-12 ml-2 mt-2 items-center justify-center px-4 py-2 border border-black rounded-md shadow-sm text-base font-medium "
                     type="text" 
                     placeholder="Busca un producto..."
-                    onKeyDown={keyDownHandler} 
+                    onKeyDown={keyDownHandler}
                     onChange={checkEmpty}/>
             </div>
             

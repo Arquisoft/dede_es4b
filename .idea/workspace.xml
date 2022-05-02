@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e720f9f-41e0-4727-9db6-c895eec885a5" name="Changes" comment="j">
+    <list default="true" id="8e720f9f-41e0-4727-9db6-c895eec885a5" name="Changes" comment="Bug 2 paginacion solucionado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/src/components/Carrito/Carrito.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/components/Carrito/Carrito.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/src/pages/Catalogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/pages/Catalogo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/src/util/carrito.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/util/carrito.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +74,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bf529f54-697b-425d-b5dd-95c5815b0004" name="Changes" comment="" />
+      <changelist id="8e720f9f-41e0-4727-9db6-c895eec885a5" name="Changes" comment="Bug 2 paginacion solucionado" />
       <created>1649096883955</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -95,6 +97,7 @@
       <workItem from="1651339378858" duration="1840000" />
       <workItem from="1651393643984" duration="9758000" />
       <workItem from="1651478381432" duration="6055000" />
+      <workItem from="1651516342309" duration="1938000" />
     </task>
     <task id="LOCAL-00001" summary="mas test">
       <created>1649097916644</created>
@@ -159,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651482368985</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Bug 2 paginacion solucionado">
+      <created>1651489786368</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651489786368</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +192,7 @@
     <MESSAGE value="Datos ejemplo y modelo pedido" />
     <MESSAGE value="direccion de envio en pedido" />
     <MESSAGE value="j" />
-    <option name="LAST_COMMIT_MESSAGE" value="j" />
+    <MESSAGE value="Bug 2 paginacion solucionado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug 2 paginacion solucionado" />
   </component>
 </project>

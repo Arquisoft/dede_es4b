@@ -46,7 +46,7 @@ export const añadirAlCarrito = (producto: Producto) => {
 
 
 // Eliminamos el producto en la sesión.
-export const eliminarAlCarrito = (producto: Producto) => {
+export const  eliminarAlCarrito = (producto: Producto) => {
     let carrito = getCarrito();
     let entrada : ProductoCarrito | undefined = carrito.find(elem => elem.producto._id === producto._id);
     if (entrada) {
