@@ -26,7 +26,7 @@ beforeAll(async () => {
     app.use(bp.json());
     //app.use("/api", api)
 
-    mongo.connect('mongodb+srv://dede_es4b:dede_es4b_pass.DFSS@cluster0.v4ply.mongodb.net/shop?retryWrites=true&w=majority')
+    await mongo.connect('mongodb+srv://dede_es4b:dede_es4b_pass.DFSS@cluster0.v4ply.mongodb.net/shop?retryWrites=true&w=majority')
         .then(() => {
             console.log('DB Connected')
         }).catch((err:any) => {
