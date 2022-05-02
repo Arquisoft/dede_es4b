@@ -12,19 +12,32 @@ const Catalogo = () => {
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
     const [cargando, setCargando] = useState(false);
     const [cargandoTexto] = useState("Cargando productos");
-    
+    const [bool,setBool] = useState<boolean>(false);
 
     const handleChange = async ( value : number) => {
         setNumbPage(value);
         await getProductos();
     };
 
+
     const getProductos = async () => {
         setCargando(true);
-        const respuesta = await getProductosPagina(numbPage);
-        setMaxNumberPage(respuesta.maxPages);
-        setProductos(respuesta.products);
-        setCargando(false);
+
+        if(!bool){
+            console.log("ini: "+numbPage);
+            const respuesta = await getProductosPagina(numbPage);
+            setMaxNumberPage(respuesta.maxPages);
+            setProductos(respuesta.products);
+            setCargando(false);
+            setBool(true);
+        }else{
+            console.log(numbPage+1);
+            const respuesta = await getProductosPagina(numbPage+1);
+            setMaxNumberPage(respuesta.maxPages);
+            setProductos(respuesta.products);
+            setCargando(false);
+        }
+
     }
 
     const keyDownHandler = async (event: any) => {

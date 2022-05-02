@@ -29,6 +29,9 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 16
+    - run: touch .env
+    - run: echo "${{ secrets.ENV }}" > .env
+    - run: cp .env ./tests/.env
     - run: npm ci
     - run: npm test
     - uses: codecov/codecov-action@v2
