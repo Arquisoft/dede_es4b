@@ -5,6 +5,7 @@ const {validateFields} = require("../validadores/validador");
 
 const {
     exitsUser,
+    dontExitsUserName,
     hasAutorization
 } = require("../validadores/UserValidator");
 
@@ -26,12 +27,17 @@ routerUser.get(
 
 routerUser.get(
   "/find/:id",
+    [
+        exitsUser,
+        validateFields
+    ],
   findUser
 );
 
 routerUser.delete(
   "/delete/:id",[
-      exitsUser
+      exitsUser,
+      validateFields
   ],
   deleteUser
 );
@@ -42,6 +48,7 @@ routerUser.post(
     check('name').isLength({ min: 1 }).trim().escape(),
     check('surname').isLength({ min: 1 }).trim().escape(),
     check('userName').isLength({ min: 1 }).trim().escape(),
+    dontExitsUserName,
     validateFields
   ],
   register

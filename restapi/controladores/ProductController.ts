@@ -2,39 +2,124 @@ import { Request, Response } from 'express';
 const Product = require('../models/product')
 const CalculateShippingCost = require('../costes_envio_api/calcular_costes_envio')
 
+//axuiliar functions
+//filtra los productos de un array para que no se repitan varios con un mismo nombre
+const filterProductsByName = (products: any): any => {
+  const seen = new Set();
+  const result = products.filter((p: any) => {
+    const duplicate = seen.has(p.name);
+    seen.add(p.name);
+    return !duplicate;
+  });
+  return result
+}
+
+const nElementos = 8;
+
+//da la paginación de un array dado
+const filterProductsByPage = (products: any, page:any): any => {
+  let limite = nElementos;
+
+  let desde = Number(page) * nElementos;
+
+  const filteredProducts = filterProductsByName(products)
+
+  let pages = filteredProducts.length / limite
+
+  if(pages > ~~(filteredProducts.length / limite)){
+    pages = ~~(filteredProducts.length / limite) + 1;
+  }
+
+  const result = {
+    products: filteredProducts.slice(desde, desde + limite),
+    maxPages: pages
+  }
+
+  return result;
+}
+
 //funciones
 const findAllProducts = async (req: Request, res: Response) => {
 
   //llamada al repositorio
   const products = await Product.find()
+
+  const filteredProducts = filterProductsByName(products)
+
+  return res.status(200).json(filteredProducts);
   
-  return res.status(200).send(products);
-  
+}
+
+const filterProducts = async (req: Request, res: Response) => {
+
+  if (req.params.filter === "sub_category"){
+    //llamada al repositorio
+    const products = await Product.find({sub_category: req.params.search})
+
+    const filteredProducts = filterProductsByName(products)
+
+    return res.status(200).send(filterProductsByPage(filteredProducts,req.params.page));
+
+  } else if (req.params.filter === "search"){
+
+    const products = await Product.find()
+
+    const filteredProducts = filterProductsByName(products)
+    let resultProducts: Array<any> = [];
+    if(req.params.search.trim() === ""){
+      resultProducts = filteredProducts;
+    } else {
+      filteredProducts.forEach(function (item: any){
+        if(item.name.toLowerCase().trim().startsWith(req.params.search.toLowerCase().trim())){
+          resultProducts.push(item);
+        }
+      })
+    }
+
+    return res.status(200).send(filterProductsByPage(resultProducts,req.params.page));
+
+  }
+
+
 }
 
 const findByPage = async (req: Request, res: Response) => {
 
-  let limite = 5;
+  const products = await Product.find()
 
-  let desde = Number(req.params.page) * 5;
+  const filteredProducts = filterProductsByName(products)
 
-  const products = await Product.find(req.params.id)
-      .limit(Number(limite))
-      .skip(Number(desde))
-      .catch((error: Error) => {
-        console.log(error);
-        res.status(400).send({msg: "Error al paginar los productos"});
-      });
-
-  return res.status(200).send(products);
+  return res.status(200).send(filterProductsByPage(filteredProducts,req.params.page));
 
 }
 
 const findProduct = async (req: Request, res: Response) => {
 
   const product = await Product.findById(req.params.id)
-  
-  return res.status(200).send(product);
+
+  const sizes = await Product.find({name: product.name}).distinct("size")
+
+  const result = {
+    product: product,
+    sizes: sizes,
+  }
+  return res.status(200).send(result);
+
+}
+
+const findProductSize = async (req: Request, res: Response) => {
+
+  //llamada al repositorio
+  const product = await Product.find({name: req.params.name, size: req.params.size})
+
+  const sizes = await Product.find({name: req.params.name}).distinct("size")
+
+  const result = {
+    product: product,
+    sizes: sizes,
+  }
+
+  return res.status(200).send(result);
 
 }
 
@@ -106,6 +191,8 @@ const calculateShippementCost = async (req: Request, res: Response) => {
   }
 }
 
+
+
 module.exports = {
   addProduct,
   findAllProducts,
@@ -113,5 +200,9 @@ module.exports = {
   updateProduct,
   deleteProduct,
   findByPage,
-  calculateShippementCost
+  calculateShippementCost,
+  //filterProductsBySubCategory,
+  //filterProductsByString,
+  findProductSize,
+  filterProducts
 }
