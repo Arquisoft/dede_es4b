@@ -15,11 +15,6 @@ import Subcategoria from './pages/Subcategoria';
 import PublicRoute from './routers/PublicRoute';
 import VerPedido from './pages/VerPedido';
 
-export const webUrl = "https://localhost:3000";
-
-
-
-
 export const isLogeado = (): boolean => {
   return getToken() != null;
 }
