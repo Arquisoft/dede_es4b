@@ -185,7 +185,7 @@ describe('login', () => {
 
         let loginData:Object = {
             userName : "ana@email.com",
-            password : "123456"
+            password : process.env["PASS"] || "123456"
         };
 
         const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
@@ -202,7 +202,7 @@ describe('login', () => {
 
         let loginData:Object = {
             userName : "a",
-            password : "123456"
+            password : process.env["PASS"] || "123456"
         };
 
         const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
@@ -214,7 +214,7 @@ describe('login', () => {
 
         let loginData:Object = {
             userName : "ana@email.com",
-            password : "1"
+            password : process.env["PRUEBA "] || "1"
         };
 
         const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
