@@ -9,7 +9,7 @@ image:DomainModelV1.png["Modelo de dominio"]
 === Conceptos sobre la experiencia de usuario
 ****
 
-DeDe presenta una interfaz que comunique de forma concisa y clara, sin abrumar al cliente, los productos que nuestra web ofrezca. Para ello, nuestro equipo se ha enfocado en crear unas pantallas simples y modernas siguiendo la filosofía de <UI FRAMEWORK>.
+DeDe presenta una interfaz que comunique de forma concisa y clara, sin abrumar al cliente, los productos que nuestra web ofrezca. Para ello, nuestro equipo se ha enfocado en crear unas pantallas simples y modernas siguiendo la filosofía de Tailwind.
 ****
 
 === Conceptos de protección y seguridad

@@ -67,7 +67,7 @@ image::DiagramaSecuencia-VerPedidoV1.png[]
 | **Componente** | **Descripción**
 | _Usuario_ |_Usuario de la aplicación_
 | _WebApp_ |_Parte de aplicación que se ejecuta en el navegador del cliente_
-| _Server_ |_Servidor remoto de la aplicación_
+| _RestApi_ |_Servidor remoto de la aplicación_
 | _MongoDb_ |_Base de datos de la aplicación_
 |===
 ****

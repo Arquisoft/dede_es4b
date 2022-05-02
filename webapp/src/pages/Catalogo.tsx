@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import ProductosCatalogo from "../components/ProductosCatalogo/ProductosCatalogo";
 import NavBar from "../components/AppBar/NavBar";
-import { getProductosPagina } from '../api/api';
+import { getProductosPagina, searchProductos } from '../api/api';
 import { Producto } from '../shared/shareddtypes';
 import Paginacion from '../components/Paginacion/Paginacion';
 import Cargando from '../components/Cargando/Cargando';
@@ -12,24 +12,43 @@ const Catalogo = () => {
     const [maxNumberPage, setMaxNumberPage] = useState<number>(0);
     const [cargando, setCargando] = useState(false);
     const [cargandoTexto] = useState("Cargando productos");
-    
+    const [bool,setBool] = useState<boolean>(false);
 
     const handleChange = async ( value : number) => {
         setNumbPage(value);
-        await getProductos();
-    };
-
-    const getProductos = async () => {
         setCargando(true);
-        const respuesta = await getProductosPagina(numbPage);
+        const respuesta = await getProductosPagina(value);
         setMaxNumberPage(respuesta.maxPages);
         setProductos(respuesta.products);
         setCargando(false);
+    };
+
+
+    const getProductos = async () => {
+        setCargando(true);
+        console.log(numbPage);
+        if(!bool){
+            const respuesta = await getProductosPagina(numbPage);
+            setMaxNumberPage(respuesta.maxPages);
+            setProductos(respuesta.products);
+            setCargando(false);
+            setBool(true);
+        }else{
+
+            const respuesta = await getProductosPagina(numbPage+1);
+
+            setMaxNumberPage(respuesta.maxPages);
+            setProductos(respuesta.products);
+            setCargando(false);
+
+
+        }
+
     }
 
     const keyDownHandler = async (event: any) => {
         if (event.code === "Enter") {
-            const respuesta = await fetch("http://localhost:5000/product/list/search/" + event.target.value + "/" + 0);
+            const respuesta = await searchProductos(event.target.value);
             const respuestaJson = await respuesta.json();
             setMaxNumberPage(respuestaJson.maxPages);
             setProductos(respuestaJson.products);

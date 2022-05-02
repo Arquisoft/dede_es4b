@@ -67,6 +67,7 @@ jobs:
       MONGO_DB_URI: ${{ secrets.MONGO_DB_URI }}
       SECRET_SALT: ${{ secrets.SECRET_SALT }}
       SECRET: ${{ secrets.SECRET }}
+      PRUEBA: ${{ secrets.PRUEBA }}
     runs-on: ubuntu-latest
     needs: [unit-test-webapp, unit-test-restapi]
     # needs: [e2e-tests]

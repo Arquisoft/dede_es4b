@@ -15,6 +15,7 @@ Las tecnologías usadas en nuestra aplicación van a ser las siguientes:
 * Tailwind UI: es el frameworks de CSS que vamos a utilizar en la aplicación.
 * API Shippo: es una api que se usa para calcular los costes de envio. Se elije porque tiene su propia blioteca para node y permite consultar los costes de envio
     sin necesidad de validar direcciones o preocuparse de impuestos y tasas de aduanas. También dispone de un entorno de pruebas gratuito.
+* Gatling: programa para realizar los test de carga.
 ****
 === Objetivos de calidad
 ****
@@ -42,11 +43,10 @@ Para cumplir este objetivo, tendremos que crear nuestra aplicación centrándono
 ****
 * Uso de ramas: para desarrollar la documentación hemos creado un rama doc, sobre la que realizaremos los cambios individualmente y haremos un pullRequest sobre la rama dev. Finalmente, cuando la documentación este completa la pasaremos a la rama Master, que es la rama principal del proyecto.
 * Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.
-* Dicussion: uso de esta funcionalidad de gitHub para dejar constancia de deciones importantes (modelo de datos por ejemplo) y para realizar votaciones.
+* Discussions: usamos esta funcionalidad de gitHub para dejar constancia de deciones importantes (modelo de datos por ejemplo) y para realizar votaciones.
 * Tableros del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado. Hemos decidido tener varios tableros para el desarrollo del proyecto.
 ** Tablero general: que es donde hemos colocado los issues de la documentación, y donde colocaremos los issues que correspondan con tareas generales del proyecto.
 ** Tablero frontEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del frontEnd.
 ** Tablero backEnd: donde colocaremos todos los issues relacionados con la parte de desarrollo del backEnd
 ** Tablero base de datos: donde colocaremos todos los issues relacionados con la creación y gestión de la base de datos.
-** Discussions: apartado que usamos para debatir sobre decisiones de nuestro proyecto, donde cada participante puede aportar opiniones. 
 ****

@@ -179,6 +179,51 @@ describe('products', () => {
 
 });
 
+describe('login', () => {
+
+    it('An existent user login', async () => {
+
+        let loginData:Object = {
+            userName : "ana@email.com",
+            password : process.env["PASS"] || "123456"
+        };
+
+        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(200);
+
+        expect(response.body.userName).toEqual("ana@email.com");
+        expect(response.body.token).toBeDefined();
+
+
+    });
+
+    it('An inexistent user login', async () => {
+
+        let loginData:Object = {
+            userName : "a",
+            password : process.env["PASS"] || "123456"
+        };
+
+        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(401);
+    });
+
+    it('An existent user login with an incorrect password', async () => {
+
+        let loginData:Object = {
+            userName : "ana@email.com",
+            password : process.env["PRUEBA "] || "1"
+        };
+
+        const response:Response = await request(app).post('/login').send(loginData).set('Accept', 'application/json');
+
+        expect(response.statusCode).toBe(401);
+    });
+
+});
+
 describe('user', () => {
     let idAddedUser:any;
 
@@ -187,7 +232,7 @@ describe('user', () => {
             name:"prueba",
             surname:"prueba",
             userName:"prueba2021",
-            password: "prueba"
+            password: process.env["PRUEBA "] || "prueba"
         };
 
         const response:Response = await request(app).post('/user/register').send(userData).set('Accept', 'application/json');
