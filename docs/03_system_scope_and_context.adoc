@@ -33,7 +33,7 @@ Consiste en un almacén de datos descentralizado bajo la especificación Solid y
 === Contexto técnico
 ****
 
-El producto consiste en una página web comercial alojada en un servidor/nodo y que se comunica con el backend (DeDe-RestApi), que encuentra en otro nodo, mediante protocolo HTTP.
+El producto consiste en una página web comercial alojada en un servidor/nodo y que se comunica con el backend (DeDe-RestApi), que encuentra en otro nodo, mediante protocolo HTTPS.
 Además, para respetar la privacidad de nuestros consumidores, hacemos uso de las especificaciones Solid. Para obtener esta característica, nuestro frontend se comunica con el proveedor del Pod del usuario.
 
 Finalmente, existe una base de datos MongoDB para el almacenamiento de datos.
@@ -46,9 +46,9 @@ Finalmente, existe una base de datos MongoDB para el almacenamiento de datos.
 [DeDe-RestApi] as api
 [DeDe-MongoDB] as db
 
-app -right- api : internet/http
-pod -down- app : internet/http
-api -down- db: internet/http
+app -right- api : internet/https
+api -up- pod : internet/https
+api -down- db: internet/https
 
 ----
 ****

@@ -15,7 +15,7 @@ image::register.png[]
 === Añadir producto al carrito
 ****
 
-El carrito se mantiene en el frontend. El usuario elige un producto a añadir, la aplicación guarda en la sesión el producto y entonces, se realiza un acción de feedback.
+El usuario elige un producto a añadir, se añade en el carrito
 
 [caption="Añadir a carrito"]
 image::Añadir-a-carrito.png[]
