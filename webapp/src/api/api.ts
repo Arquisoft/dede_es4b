@@ -56,12 +56,12 @@ export const getProductoByID = async (id: string) => {
   return respuesta.json();
 }
 
-export const realizarPedido = async (productos: Producto[], direccionStr: string, nombreUsuario: string) => {
+export const realizarPedido = async (products: Producto[], direccionStr: string, nombreUsuario: string) => {
   await fetch(API_URL + '/order/add',
     {
       method: 'POST',
       body: JSON.stringify({
-        productos,
+        products,
         user: nombreUsuario,
         order_date: Date.now(),
         status: "En ruta",
