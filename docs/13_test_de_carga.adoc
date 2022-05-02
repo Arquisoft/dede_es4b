@@ -1,0 +1,31 @@
+[[section-test-de-carga]]
+
+== Test de carga
+En el test se empieza en la raiz para luego ir al catálogo, al detalle de un producto y finalmente al carrito.
+Al no ser necesario modificar nada del estado de la aplicación para probar la carga que se soporta preferimos limitarnos
+a navegar por la aplicación.
+
+=== Test de valores límite
+****
+Con 95 usuarios por segundo durante 10 segundos el tiempo de espera se dispara y empieza a rechazar peticiones.
+[caption="Test limite-fallan"]
+image::95-10-limite-carga.PNG[]
+
+Con 85 usuarios por segundo durante 10 segundos tenemos un tiempo de espera alto en buena parte de las peticiones
+pero en ningunas de las pruebas hechas de llegan a rechazar peticiones.
+[caption="Test limite"]
+image::85-10-limite-carga.PNG[]
+****
+
+=== Test de resistencia
+****
+La cantidad de usuarios que podemos soportar en un periodo de 500 segundos es notablemente menor. Con 27 usuarios por
+segundo ya se empiezan a rechazar peticiones y se tiene un tiempo de espera alto.
+[caption="Test resistencia-fallan"]
+image::27-500-resistencia-carga.PNG[]
+
+Con 26 usuarios por segundo durante 500 segundos la mayor parte de la peticiones tienen un tiempo de espera bueno y no
+se llega a rechazar ninguna petición.
+[caption="Test resistencia-fallan"]
+image::26-500-resistencia-carga.PNG[]
+****
