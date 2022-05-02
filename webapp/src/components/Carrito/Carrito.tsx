@@ -1,150 +1,115 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ProductoCarrito } from "../../shared/shareddtypes";
+import { añadirAlCarrito, eliminarAlCarrito, getCarrito } from "../../util/carrito";
 import NavBar from "../AppBar/NavBar";
-import '../dist/css/styles.css';
-
-interface Producto {
-
-    id: string;
-    name: string;
-    price: string;
-    image: string;
-}
-
-
-export interface ProductoCarrito {
-  producto: Producto;
-  cantidad: number;
-  precioTotal: number;
-}
-
-
+import '../../css/styles.css';
+import { useState } from "react";
 
 // @ts-ignore
 const Carrito = () => {
+
+  const [actualizar, setActualizar] = useState(false);
   const navigate = useNavigate();
-  var precio=0;
-  
+  var precio = 0;
 
-  let carrito :any= [];
-  let carritoString = sessionStorage.getItem('carrito');
-  if (carritoString != null)
-    carrito = JSON.parse(carritoString!);
-  
-  for (let i = 0; i < carrito.length; i++) {
-    precio += carrito[i].precioTotal;
-  }
-  // Guarda el producto en la sesión.
-  const añadirAlCarrito = (producto: any, carrito: any) => {
-    let borrar=carrito.indexOf(producto);
-    
-    let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad+1, precioTotal: parseFloat(producto.producto.price)*(producto.cantidad+1)};
-    carrito.splice(borrar,1,productoCarrito);
-    //carrito.push(productoCarrito);
-    sessionStorage.setItem('carrito', JSON.stringify(carrito))
-    window.location.reload();
+  let carrito: ProductoCarrito[] = getCarrito();
+
+  // Función que llama al callback y cambia el estado para actualizar el componente.
+  const llamarYActualizar = (callback: Function, params : any) => {
+    callback(params);
+    setActualizar(!actualizar);
   }
 
-   // Guarda el producto en la sesión.
-  const eliminarAlCarrito = (producto: any, carrito: any) => {
-    let borrar=carrito.indexOf(producto);
-    if(producto.cantidad===1){
-      carrito.splice(borrar,1);
-    }else{
-      let productoCarrito: ProductoCarrito = { producto: producto.producto, cantidad: producto.cantidad-1, precioTotal: parseFloat(producto.producto.price)*(producto.cantidad-1) };
-      carrito.splice(borrar,1,productoCarrito);
-      //carrito.push(productoCarrito);
-      
-    }
-    sessionStorage.setItem('carrito', JSON.stringify(carrito))
-    window.location.reload();
+  for (const element of carrito) {
+    precio += element.precioTotal;
   }
 
-    // Guarda el producto en la sesión.
-    const eliminar = (producto: any, carrito: any) => {
-      let borrar=carrito.indexOf(producto);
-      carrito.splice(borrar,1);
-      sessionStorage.setItem('carrito', JSON.stringify(carrito))
-      window.location.reload();
-    }
-  
-  const volverCatalogo=()=>{
-    window.location.href="\\productos";
+
+  const eliminar = (producto: ProductoCarrito, carritoParam: ProductoCarrito[]) => {
+    let borrar = carritoParam.indexOf(producto);
+    carritoParam.splice(borrar, 1);
+    sessionStorage.setItem('carrito', JSON.stringify(carritoParam))
+    setActualizar(!actualizar);
   }
-  console.log(carrito);
-    return (
-    <>
+
+  return (
 
       <div>
         <header>
-          <NavBar/>
-          <div>
-            <h1>Carrito de la compra</h1>
-          </div>
+          <NavBar />
+          <br/>
         </header>
-        <main>
-
-        <table>
-          <caption>Tu pedido</caption>
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Precio</th>
-              <th>Unidades</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            {carrito.map((producto: ProductoCarrito) => (
-              
+        <main className="container mx-auto">
+          <div>
+            <h1 className="text-purple-700 text-5xl font-extrabold tracking-tight">Carrito de la compra</h1>
+            <br></br>          
+          </div>
+          <table className="border-collapse">
+            <caption className="text-purple-400 font-bold text-3xl">Tu pedido</caption>
+            <thead>
               <tr>
-                <td>{producto.producto.name}</td>
-                <td>{producto.precioTotal} €</td>
-                <td><button type="button" className='unidades' onClick={() => eliminarAlCarrito(producto, carrito)}>-</button>
-                      {producto.cantidad} 
-                    <button type="button" className='unidades' onClick={() => añadirAlCarrito(producto, carrito)}>+</button>
-                </td>
-                <td><button type="button" className='botonEliminar' onClick={() => eliminar(producto, carrito)}>
-                Remove
-                </button>
-                </td>
+                <th className="text-left p-2 border-solid border-purple-200 border-b-4">Producto</th>
+
+                <th className="text-left p-2 border-solid border-purple-200 border-b-4">Precio</th>
+
+                <th className="text-left p-2 border-solid border-purple-200 border-b-4">Unidades</th>
+
+                <th className="text-left p-2 border-solid border-purple-200 border-b-4">Tallas</th>
+
+                <th className="text-left p-2 border-solid border-purple-200 border-b-4"></th>
               </tr>
-              
-              
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+
+              {carrito.map((producto: ProductoCarrito) => (
+
+                <tr key={producto.producto._id} className="hover:bg-purple-100">
+                  <td className="text-left p-2 border-solid border-purple-200 border-b-4">{producto.producto.name}</td>
+
+                  <td className="text-left p-2 border-solid border-purple-200 border-b-4">{producto.precioTotal.toFixed(2)} €</td>
+
+                  <td data-testid="cantidad-producto" className=" p-2 border-solid border-purple-200 border-b-4 text-center">
+                    <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => llamarYActualizar(eliminarAlCarrito, producto.producto)}>- </button>
+                     {producto.cantidad} 
+                    <button type="button" className='bg-purple-300 rounded-lg h-5 w-5  opacity-60' onClick={() => llamarYActualizar(añadirAlCarrito, producto.producto)}> +</button>
+
+                  </td>
+
+                  <td className="text-center p-2 border-solid border-purple-200 border-b-4">{producto.producto.size}</td>
+
+                  <td className="text-left p-2 border-solid border-purple-200 border-b-4"><button type="button" className='text-red-800' onClick={() => eliminar(producto, carrito)}>
+                    Remove
+                  </button>
+                  </td>
+                </tr>
+
+
+              ))}
+            </tbody>
+          </table>
 
           <div>
-            <br/>
-            <div className="subtotal">
+            <br />
+            <div className="flex justify-between text-base text-gray-900">
               <p>Subtotal: {precio.toFixed(2)} €</p>
-              
             </div>
+            <br/>
             <div>
-              <button type="button" className="botonComprar" onClick={()=>navigate("/checkout")} >
+              <button type="button" className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700" onClick={() => navigate("/checkout")} >
                 Comprar
               </button>
             </div>
             <div>
               <p>
-                o
-                <button type="button" className="botonSeguirComprando"
-                  onClick={()=>volverCatalogo()}> continua comprando
-                </button>
+                <Link to="/productos" className="bg-white text-purple-500 font-medium">
+                    o continua comprando
+                </Link>
               </p>
             </div>
           </div>
-
-
-
-
-          </main>
-
+        </main>
       </div>
-    </>
-
-
-    )
+  )
 }
 
 export default Carrito
