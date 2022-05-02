@@ -232,7 +232,7 @@ describe('user', () => {
             name:"prueba",
             surname:"prueba",
             userName:"prueba2021",
-            password: process.env.prueba
+            password: process.env["PRUEBA "] || "prueba"
         };
 
         const response:Response = await request(app).post('/user/register').send(userData).set('Accept', 'application/json');
