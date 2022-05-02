@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8e720f9f-41e0-4727-9db6-c895eec885a5" name="Changes" comment="Bug 2 paginacion solucionado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/src/components/Carrito/Carrito.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/components/Carrito/Carrito.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/src/pages/Catalogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/pages/Catalogo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/src/util/carrito.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/util/carrito.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/src/components/ProductosCatalogo/ProductosCatalogo.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/src/components/ProductosCatalogo/ProductosCatalogo.test.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="front-end" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,7 +63,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/images" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\andre\Documents\CURSO 2021-2022\CUATRI 2\ASW\TRABAJO GRUPO\VERSION 7\webapp\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\andre\Documents\CURSO 2021-2022\CUATRI 2\ASW\TRABAJO GRUPO\VERSION 10\restapi\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
