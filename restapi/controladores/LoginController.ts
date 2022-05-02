@@ -7,10 +7,9 @@ const User = require('../models/user')
 //funciones
 const login = async (req: Request, res: Response) => {
 
-  const { body } = req
-  const { userName } = body
+  const { userName } = req.body;
 
-  const user = await User.findOne({userName})
+  const user = await User.findOne({ userName: userName.toString()})
 
   if(!user){
 
