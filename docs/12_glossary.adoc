@@ -22,4 +22,5 @@ a las páginas webs y crear aplicaciones web.
 | BCrypt | Librería que encripta contraseñas mediante una función hash
 | Jsonwebtoken | Estándar abierto  basado en JSON para crear un token que sirva para enviar datos entre aplicaciones o
   servicios y garantizar que sean válidos y seguros, además para menaejar la autenticación
+| Gatling | Programa para la realización de test de carga
 |===

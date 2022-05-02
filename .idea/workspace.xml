@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf529f54-697b-425d-b5dd-95c5815b0004" name="Changes" comment="direccion de envio en pedido">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+    <list default="true" id="bf529f54-697b-425d-b5dd-95c5815b0004" name="Changes" comment="j">
+      <change afterPath="$PROJECT_DIR$/docs/13_test_de_carga.adoc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/27-500-resistencia-carga.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/85-10-limite-carga.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/95-10-limite-carga.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02_architecture_constraints.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02_architecture_constraints.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06_runtime_view.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06_runtime_view.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/09_design_decisions.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/docs/09_design_decisions.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/12_glossary.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/docs/12_glossary.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/Añadir-a-carrito.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/Añadir-a-carrito.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/Login.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/Login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/diagrama_despliegue.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/diagrama_despliegue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/register.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/register.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +58,7 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="27LQSAPEa4cr1yyUJcbQoqHVjjb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -56,8 +68,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\IdeaProjects\dede_es4bV2\docs\images" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -84,7 +102,7 @@
       <workItem from="1651320651558" duration="6725000" />
       <workItem from="1651339378858" duration="1840000" />
       <workItem from="1651393643984" duration="9758000" />
-      <workItem from="1651478381432" duration="1983000" />
+      <workItem from="1651478381432" duration="6055000" />
     </task>
     <task id="LOCAL-00001" summary="mas test">
       <created>1649097916644</created>
@@ -142,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651327390364</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="j">
+      <created>1651482368985</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651482368985</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +189,7 @@
     <MESSAGE value="Los test arreglados" />
     <MESSAGE value="Datos ejemplo y modelo pedido" />
     <MESSAGE value="direccion de envio en pedido" />
-    <option name="LAST_COMMIT_MESSAGE" value="direccion de envio en pedido" />
+    <MESSAGE value="j" />
+    <option name="LAST_COMMIT_MESSAGE" value="j" />
   </component>
 </project>
