@@ -30,6 +30,7 @@ app.use("/order", orderRouter)
 
 app.listen(port, ():void => {
     console.log('Restapi listening on '+ port);
+    
 }).on("error",(error:Error)=>{
     console.error('Error occured: ' + error.message);
 });
