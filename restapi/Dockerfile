@@ -5,8 +5,13 @@ WORKDIR /app
 #Install the dependencies
 RUN npm install
 
-ENV MONGO_DB_URI=$MONGO_DB_URI
-ENV SECRET_SALT=$SECRET_SALT
-ENV SECRET=$SECRET
+ARG DB_URI="http://localhost"
+ENV MONGO_DB_URI=$DB_URI
+
+ARG PASS_SALT=""
+ENV SECRET_SALT=$PASS_SALT
+
+ARG PASS=""
+ENV SECRET=$PASS
 
 CMD [ "npm", "start" ]
