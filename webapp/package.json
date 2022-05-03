@@ -34,7 +34,8 @@
     "start": "react-scripts start",
     "build": "postcss src/css/styles.css --output src/components/dist/css/styles.css && react-scripts build",
     "test": "react-scripts test --coverage",
-    "test:e2e": "start-server-and-test 'npm --prefix ../restapi start' http://localhost:5000/api/users/list prod 3000 'cd e2e && jest'",
+    "test:e2e": "start-server-and-test 'npm --prefix ../restapi start' http://localhost:5000/product/list prod 3000 test:e2e-f",
+    "test:e2e-f" : "cd e2e && jest",
     "eject": "react-scripts eject",
     "prod": "ts-node-dev ./server.ts"
   },

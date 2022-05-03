@@ -16,4 +16,9 @@
 | Deuda Técnica         | Solución     
 | Token de API hardcodeado | Moverlo a el .env
 | Archivos javaScript | Es necesario dejarlos para que no de error al establecer el estilo tailwind
+| Cobertura test frontEnd | No hemos conseguido que se muestre la cobertura completa de manera correcta
+| Error en circleci | Al hacer commits nos hace un chequeo de circleci que no sabemos porque y por eso nos salen como inválidos algunos commits.
+| Paginación con ordenación | Al ordenar los productos por precio, la paginación no nos funciona correctamente.
+| Despliegue sin https | No hemos conseguido usar https en el despliegue por lo que no podemos acceder a los pods y en backend da un error en sonardcloud por no usar https.
+|
 |===
