@@ -13,7 +13,11 @@ const app: Application = express();
 
 const port = 5000;
 
-app.use(cors());
+const options: cors.CorsOptions = {
+    origin: ['http://localhost:3000','http://dedethlon.francecentral.cloudapp.azure.com:3000/']
+};
+
+app.use(cors(options));
 app.use(bp.json());
 
 dbConnection();

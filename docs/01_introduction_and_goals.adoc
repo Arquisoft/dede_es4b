@@ -2,7 +2,7 @@
 == Introducción y objetivos
 
 ****
-DeDe es un sistema de venta online creado para una empresa de venta de productos relacionados con el deporte. La aplicación respeta la privacidad de los clientes siguiendo los principios SOLID.
+DeDethlon es un sistema de venta online creado para una empresa de venta de productos relacionados con el deporte. La aplicación respeta la privacidad de los clientes siguiendo los principios SOLID.
 
 Por tanto, el sistema no almacenará información de los clientes, obtendrá aquella para la que los usuarios den permiso.
 ****
@@ -36,5 +36,4 @@ Los requisitos funcionales que ofrecerá nuestra aplicación serán los siguient
 | _Profesores_ | _Esperan una aplicación que sea completamente funcional y que cumpla con los requisitos de la asignatura._
 | _Equipo de desarrollo_ | _Esperan aprender las tecnologías necesarias para desarrollar un proyecto._
 | _Clientes_ | _Se encargarán de probar que la aplicación realmente le ofrece los servicios que se expongan._
-| _Administrador_ | _Se encargará de supervisar el correcto funcionamiento de la web, así como de los pedidos y el stock de los productos._
 |===

@@ -132,6 +132,7 @@ const CheckOut = () => {
             }
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [thing, direccion])
 
     if (!session)

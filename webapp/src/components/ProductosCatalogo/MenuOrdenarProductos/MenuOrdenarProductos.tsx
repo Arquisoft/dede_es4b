@@ -1,4 +1,4 @@
-import { Fragment, useReducer, useState } from 'react';
+import { Fragment} from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon, SortAscendingIcon, SortDescendingIcon } from '@heroicons/react/outline';
 import { Producto } from '../../../shared/shareddtypes';

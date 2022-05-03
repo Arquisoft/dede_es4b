@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getPedidosUsuario } from '../api/api';
 import NavBar from '../components/AppBar/NavBar';
 import ListarPedidos from '../components/ListarPedidos/ListarPedidos'
-// import Paginacion from '../components/Paginacion/Paginacion';
-import { Pedido, Producto } from '../shared/shareddtypes';
+import { Pedido } from '../shared/shareddtypes';
 
 const Pedidos = () => {
 
@@ -12,6 +11,7 @@ const Pedidos = () => {
     useEffect(() => {
         if (pedidos.length === 0)
             getPedidosUsuario().then(newPedidos => setPedidos(newPedidos));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     console.log(pedidos.at(0)?.order_date);

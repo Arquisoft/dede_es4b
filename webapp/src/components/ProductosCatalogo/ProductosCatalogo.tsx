@@ -1,8 +1,6 @@
-import React, {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductoCatalogo from './ProductoCatalogo/ProductoCatalogo';
-import { Producto } from '../../shared/shareddtypes';
 import MenuOrdenarProductos from './MenuOrdenarProductos/MenuOrdenarProductos';
-import Paginacion from '../Paginacion/Paginacion';
 
 
 
@@ -25,7 +23,7 @@ const ProductosCatalogo = ({ productos }: any) => {
             </div>
 
             <div id='productos' className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                {productos.map((producto:any) => (
+                {productos.map((producto: any) => (
                     <ProductoCatalogo key={producto._id} producto={producto} />
                 ))}
             </div>

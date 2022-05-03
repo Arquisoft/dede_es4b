@@ -19,10 +19,9 @@ image::Quality_tree.png[]
 [options="header", cols="1,2,2,2"]
 |===
 | Ref | Atributo de calidad | Escenario de calidad | Prioridad
-| S | Seguridad | Es importante que la información proporcionada por los usuarios no pueda ser vista/extraída por terceras personas. | High, High
-| P | Privacidad | La aplicación tendrá solamente la información del usuario que este quiera proporcionarle. | High, High
-| U | Usabilidad | La aplicación debe ser intuitiva, de tal manera que independientemente de la habilidad del usuario, este pueda utilizarla fácilmente. | High, Medium
-| A | Accesibilidad | La aplicación debe poder ser usada por personas con dificultades o discapacidades. | Medium, Medium
-| E | Eficiencia | Se debe dar una respuesta a lo que pide el usuario sin problemas y con una cierta velocidad. | Medium, Medium
-| M | Mantenibilidad | El código debe estar hecho de manera que, si surge algún problema o queremos cambiar algo, sea fácil modificarlo. | Low, Medium
+| S | Seguridad | La información proporcionada por los usuarios no puede ser vista/extraída por terceras personas. | High, High
+| P | Privacidad | La aplicación tendrá solamente el POD del usuario y la dirección a la que se envía, que no se asocia al usuario. | High, High
+| U | Usabilidad | La aplicación es intuitiva, independientemente de la habilidad del usuario, ya que es como cualquier otra aplicación de compra. | High, Medium
+| E | Eficiencia | Da una respuesta a lo que pide en unos dos segundos, incluso cuando hay varios usuarios a la vez durante mucho tiempo. | Medium, Medium
+| M | Mantenibilidad | El código está ordenado y limpio por lo que, si surge un problema, es fácil encontrar donde falla y de solucionar. | Low, Medium
 |===

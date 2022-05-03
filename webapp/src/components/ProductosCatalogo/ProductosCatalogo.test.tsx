@@ -17,7 +17,7 @@ test("products are displayed", async () => {
     // wrapper necesarios: https://stackoverflow.com/questions/70805929/how-to-fix-error-usehref-may-be-used-only-in-the-context-of-a-router-compon
     const { getByText } = render(<ProductosCatalogo productos={productos} />, { wrapper: MemoryRouter })
 
-    productos.map(p => expect(getByText(p.name)).toBeInTheDocument());
+    productos.forEach(p => expect(getByText(p.name)).toBeInTheDocument());
 });
 
 test("when 'ordenar por precio ascendente' is clicked, products are sorted by ascending price", async () => {

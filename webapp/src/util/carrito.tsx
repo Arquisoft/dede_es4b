@@ -46,7 +46,7 @@ export const añadirAlCarrito = (producto: Producto) => {
 
 
 // Eliminamos el producto en la sesión.
-export const eliminarAlCarrito = (producto: Producto) => {
+export const  eliminarAlCarrito = (producto: Producto) => {
     let carrito = getCarrito();
     let entrada : ProductoCarrito | undefined = carrito.find(elem => elem.producto._id === producto._id);
     if (entrada) {
@@ -69,12 +69,10 @@ export const añadirAlCarritoNuevoProducto = (producto: any, selectSize:string) 
     const carritoString = sessionStorage.getItem('carrito');
     let carrito = [];
     if (carritoString != null)
-        carrito = JSON.parse(carritoString!);
-    //let productoCarrito: ProductoCarrito = { producto: producto, cantidad: 1, precioTotal: parseFloat(producto.price) };
+        carrito = JSON.parse(carritoString);
 
     let borrar=-1;
     let c=0;
-    let p=0;
     producto.size=selectSize;
 
     carrito.forEach(function(value:any,index:any){

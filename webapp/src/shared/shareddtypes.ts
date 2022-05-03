@@ -36,3 +36,10 @@ export type DireccionType = {
   zip: string;
   country: string;
 }
+
+export type RegistroType = {
+  name : string,
+  surname : string,
+  userName: string,
+  password : string
+}

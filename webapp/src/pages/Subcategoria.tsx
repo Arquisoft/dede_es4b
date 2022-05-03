@@ -5,6 +5,7 @@ import ProductosCatalogo from '../components/ProductosCatalogo/ProductosCatalogo
 import { useParams } from 'react-router-dom';
 import Paginacion from '../components/Paginacion/Paginacion';
 import Cargando from '../components/Cargando/Cargando';
+import { getProductosSubcategoria } from '../api/api';
 
 const SubcategoriaRopa = () => {
     const params = useParams();
@@ -14,13 +15,14 @@ const SubcategoriaRopa = () => {
     const [cargando, setCargando] = useState(false);
     const [cargandoTexto] = useState("Cargando productos");
 
-    const getProductos = async (numbPage: number) => {
+    const getProductos = async (n: number) => {
         setCargando(true);
         const subcategoria = params.sub_category?.charAt(0).toUpperCase()! + params.sub_category?.slice(1)!;
-        const respuesta = await fetch("http://localhost:5000/product/list/sub_category/" + subcategoria + "/" + numbPage);
-        const respuestaJson = await respuesta.json();
-        setMaxNumberPage(respuestaJson.maxPages);
-        setProductos(respuestaJson.products);
+        await getProductosSubcategoria(subcategoria, n)
+        .then(data =>  {
+            setMaxNumberPage(data.maxPages);
+            setProductos(data.products);
+        });
         setCargando(false);
     }
 
@@ -29,24 +31,9 @@ const SubcategoriaRopa = () => {
         await getProductos(numbPage);
     };
 
-    const keyDownHandler = async (event: any) => {
-        if (event.code === "Enter") {
-            //setValue(event.target.value);
-            const respuesta = await fetch("http://localhost:5000/product/list/search/" + event.target.value + "/" + 0);
-            const respuestaJson = await respuesta.json();
-            setMaxNumberPage(respuestaJson.maxPages);
-            setProductos(respuestaJson.products);
-        }
-    };
-
-    const checkEmpty = async (event: any) => {
-        if (event.target.value == "") {
-           getProductos(numbPage);
-        }
-    };
-
     useEffect(() => {
         getProductos(numbPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [numbPage, maxNumberPage, params])
 
     return (

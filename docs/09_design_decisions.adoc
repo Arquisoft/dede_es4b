@@ -13,4 +13,5 @@
 | Tailwind CSS | Un diseño que nos gusta, buena documentación y ejemplos | Algo dificil de implementar y nunca la hemos usado
 | BCrypt | Librería para hacer hash de contraseñas segura y con bastantes ejemplos | Nadie la había usado antes y puede acabar utilizando muchos recursos
 | Jsonwebtoken | Nos permite guardar datos en los tokens y hay bastante documentación | El tamaño de los tokens puede ser muy grande
+| Gatling | Es el recomendado por los profesores y hay tutoriales y ejemplos | Somos nuevos con la herramienta
 |===

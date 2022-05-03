@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { LoginButton } from "@inrupt/solid-ui-react";
-import { webUrl } from "../../App";
 
 const ButtonPod = ({urlProvider} : {urlProvider : string}) => {
-    const [idp, setIdp] = useState(urlProvider);
-    const [currentUrl, setCurrentUrl] = useState(webUrl);
+    const [idp] = useState(urlProvider);
+    const [currentUrl, setCurrentUrl] = useState(process.env.REACT_APP_API_URI || "https://localhost:3000");
 
     useEffect(() => {
         setCurrentUrl(window.location.href);
