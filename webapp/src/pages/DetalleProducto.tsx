@@ -75,6 +75,7 @@ const DetalleProducto = () => {
                                 Tallas: {tallas.map((item) => (
                                     <Button 
                                     id={item}
+                                    name="TallaBtn"
                                     variant="contained"
                                     onClick={handleClick}
                                     color="secondary">
