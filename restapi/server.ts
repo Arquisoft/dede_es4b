@@ -14,7 +14,7 @@ const app: Application = express();
 const port = 5000;
 
 const options: cors.CorsOptions = {
-    origin: ['http://localhost:3000','http://dedethlon.francecentral.cloudapp.azure.com:3000/']
+    origin: ['http://localhost:3000','http://dedethlon.francecentral.cloudapp.azure.com:3000']
 };
 
 app.use(cors(options));
