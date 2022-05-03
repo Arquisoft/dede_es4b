@@ -535,7 +535,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>DeDe es un sistema de venta online creado para una empresa de venta de productos relacionados con el deporte. La aplicación respeta la privacidad de los clientes siguiendo los principios SOLID.</p>
+<p>DeDethlon es un sistema de venta online creado para una empresa de venta de productos relacionados con el deporte. La aplicación respeta la privacidad de los clientes siguiendo los principios SOLID.</p>
 </div>
 <div class="paragraph">
 <p>Por tanto, el sistema no almacenará información de los clientes, obtendrá aquella para la que los usuarios den permiso.</p>
@@ -628,10 +628,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Clientes</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Se encargarán de probar que la aplicación realmente le ofrece los servicios que se expongan.</em></p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Administrador</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Se encargará de supervisar el correcto funcionamiento de la web, así como de los pedidos y el stock de los productos.</em></p></td>
-</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -689,8 +685,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Responsibility</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Nombre</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Responsabilidad</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -718,8 +714,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Responsibility</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Nombre</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Responsabilidad</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -752,7 +748,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <div class="imageblock">
 <div class="content">
-<img src="./images/Business%20Context.png" alt="Business Context" width="417" height="257">
+<img src="./images/Business%20Context.png" alt="Business Context" width="397" height="253">
 </div>
 </div>
 <div class="paragraph">
@@ -783,7 +779,7 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Technical%20Context.png" alt="Technical Context" width="414" height="317">
+<img src="./images/Technical%20Context.png" alt="Technical Context" width="408" height="311">
 </div>
 </div>
 </div>
@@ -828,6 +824,9 @@ Además, para respetar la privacidad de nuestros consumidores, hacemos uso de la
 <li>
 <p>API Shippo: es una api que se usa para calcular los costes de envio. Se elije porque tiene su propia blioteca para node y permite consultar los costes de envio
 sin necesidad de validar direcciones o preocuparse de impuestos y tasas de aduanas. También dispone de un entorno de pruebas gratuito.</p>
+</li>
+<li>
+<p>Gatling: programa para realizar los test de carga.</p>
 </li>
 </ul>
 </div>
@@ -876,7 +875,7 @@ sin necesidad de validar direcciones o preocuparse de impuestos y tasas de aduan
 <p>Issues: para organizar las distintas tareas que tenemos que realizar para continuar con nuestra aplicación.</p>
 </li>
 <li>
-<p>Dicussion: uso de esta funcionalidad de gitHub para dejar constancia de deciones importantes (modelo de datos por ejemplo) y para realizar votaciones.</p>
+<p>Discussions: usamos esta funcionalidad de gitHub para dejar constancia de deciones importantes (modelo de datos por ejemplo) y para realizar votaciones.</p>
 </li>
 <li>
 <p>Tableros del proyecto: es una manera de que todo el equipo pueda ver como van las tareas pendientes. Es decir, se puede ver que tareas aún no se han empezado, cuáles están en proceso y cuáles ya se han finalizado. Hemos decidido tener varios tableros para el desarrollo del proyecto.</p>
@@ -893,9 +892,6 @@ sin necesidad de validar direcciones o preocuparse de impuestos y tasas de aduan
 </li>
 <li>
 <p>Tablero base de datos: donde colocaremos todos los issues relacionados con la creación y gestión de la base de datos.</p>
-</li>
-<li>
-<p>Discussions: apartado que usamos para debatir sobre decisiones de nuestro proyecto, donde cada participante puede aportar opiniones.</p>
 </li>
 </ul>
 </div>
@@ -1141,7 +1137,7 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Parte de aplicación que se ejecuta en el navegador del cliente</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Server</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>RestApi</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Servidor remoto de la aplicación</em></p></td>
 </tr>
 <tr>
@@ -1206,7 +1202,7 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>DeDe presenta una interfaz que comunique de forma concisa y clara, sin abrumar al cliente, los productos que nuestra web ofrezca. Para ello, nuestro equipo se ha enfocado en crear unas pantallas simples y modernas siguiendo la filosofía de &lt;UI FRAMEWORK&gt;.</p>
+<p>DeDe presenta una interfaz que comunique de forma concisa y clara, sin abrumar al cliente, los productos que nuestra web ofrezca. Para ello, nuestro equipo se ha enfocado en crear unas pantallas simples y modernas siguiendo la filosofía de Tailwind.</p>
 </div>
 </div>
 </div>
@@ -1272,6 +1268,11 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <td class="tableblock halign-left valign-top"><p class="tableblock">Nos permite guardar datos en los tokens y hay bastante documentación</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">El tamaño de los tokens puede ser muy grande</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gatling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es el recomendado por los profesores y hay tutoriales y ejemplos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Somos nuevos con la herramienta</p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -1333,37 +1334,31 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Seguridad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Es importante que la información proporcionada por los usuarios no pueda ser vista/extraída por terceras personas.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La información proporcionada por los usuarios no puede ser vista/extraída por terceras personas.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Privacidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación tendrá solamente la información del usuario que este quiera proporcionarle.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación tendrá solamente el POD del usuario y la dirección a la que se envía, que no se asocia al usuario.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">U</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe ser intuitiva, de tal manera que independientemente de la habilidad del usuario, este pueda utilizarla fácilmente.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación es intuitiva, independientemente de la habilidad del usuario, ya que es como cualquier otra aplicación de compra.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">High, Medium</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accesibilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe poder ser usada por personas con dificultades o discapacidades.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">E</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Eficiencia</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Se debe dar una respuesta a lo que pide el usuario sin problemas y con una cierta velocidad.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Da una respuesta a lo que pide en unos dos segundos, incluso cuando hay varios usuarios a la vez durante mucho tiempo.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El código debe estar hecho de manera que, si surge algún problema o queremos cambiar algo, sea fácil modificarlo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El código está ordenado y limpio por lo que, si surge un problema, es fácil encontrar donde falla y de solucionar.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Low, Medium</p></td>
 </tr>
 </tbody>
@@ -1423,8 +1418,24 @@ Si, por el contrario, no existe ningún producto, se mostrará al cliente un men
 <td class="tableblock halign-left valign-top"><p class="tableblock">Moverlo a el .env</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CRUD de pedidos y pedidos no implementados por lo que no se guardan en la BD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Implementarla para la siguiente versión</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Archivos javaScript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es necesario dejarlos para que no de error al establecer el estilo tailwind</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cobertura test frontEnd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No hemos conseguido que se muestre la cobertura completa de manera correcta</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Error en circleci</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Al hacer commits nos hace un chequeo de circleci que no sabemos porque y por eso nos salen como inválidos algunos commits.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Paginación con ordenación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Al ordenar los productos por precio, la paginación no nos funciona correctamente.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Despliegue sin https</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No hemos conseguido usar https en el despliegue por lo que no podemos acceder a los pods y en backend da un error en sonardcloud por no usar https.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1503,6 +1514,10 @@ a las páginas webs y crear aplicaciones web.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Estándar abierto  basado en JSON para crear un token que sirva para enviar datos entre aplicaciones o
   servicios y garantizar que sean válidos y seguros, además para menaejar la autenticación</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gatling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Programa para la realización de test de carga</p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -1534,7 +1549,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-25 18:03:20 +0100
+Last updated 2022-05-03 11:23:57 +0200
 </div>
 </div>
 </body>
