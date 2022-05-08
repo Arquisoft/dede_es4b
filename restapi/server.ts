@@ -1,4 +1,4 @@
-import express, { Application, RequestHandler } from "express";
+import express, { Application } from "express";
 import cors from 'cors';
 import bp from 'body-parser';
 
@@ -14,7 +14,7 @@ const app: Application = express();
 const port = 5000;
 
 const options: cors.CorsOptions = {
-    origin: ['http://localhost:3000','http://dedethlon.francecentral.cloudapp.azure.com:3000']
+    origin: [/\/\/localhost(:\d+)?$/, /\/\/dedethlon\.francecentral\.cloudapp\.azure\.com(:\d+)?$/]
 };
 
 app.use(cors(options));
