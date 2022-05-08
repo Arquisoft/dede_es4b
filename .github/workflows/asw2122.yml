@@ -63,7 +63,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@3.04
       env:
-        API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
+        API_URI: https://${{ secrets.DEPLOY_HOST }}:5000
         SECRET_PRIVATEKEY: ${{ secrets.SECRET_PRIVATEKEY }}
         SECRET_CERTIFICATE: ${{ secrets.SECRET_CERTIFICATE }}
       with:
@@ -86,13 +86,15 @@ jobs:
         DB_URI: ${{ secrets.MONGO_DB_URI }}
         PASS_SALT: ${{ secrets.SECRET_SALT }}
         PASS: ${{ secrets.SECRET }}
+        SECRET_PRIVATEKEY: ${{ secrets.SECRET_PRIVATEKEY }}
+        SECRET_CERTIFICATE: ${{ secrets.SECRET_CERTIFICATE }}
       with:
           name: arquisoft/dede_es4b/restapi
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
           workdir: restapi
-          buildargs: DB_URI, PASS_SALT, PASS
+          buildargs: DB_URI, PASS_SALT, PASS, SECRET_PRIVATEKEY, SECRET_CERTIFICATE
   deploy:
     name: Deploy over SSH
     runs-on: ubuntu-latest

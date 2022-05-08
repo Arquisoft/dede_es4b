@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import cors from 'cors';
 import bp from 'body-parser';
+import https from "https";
 
 import productRouter from "./routers/ProductRouter";
 import userRouter from "./routers/UserRouter";
@@ -28,9 +29,13 @@ app.use("/user", userRouter)
 app.use("/login", loginRouter)
 app.use("/order", orderRouter)
 
-app.listen(port, ():void => {
-    console.log('Restapi listening on '+ port);
-    
+
+let credentials = {key: process.env.HTTPS_PRIVATEKEY, cert: process.env.HTTPS_CERTIFICATE};
+
+let httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(port, function() {
+    console.log("Restapi HTTPS escuchando en puerto " + port)
 }).on("error",(error:Error)=>{
-    console.error('Error occured: ' + error.message);
+    console.error('Se produjo un error: ' + error.message);
 });

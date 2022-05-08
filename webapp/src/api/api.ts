@@ -1,6 +1,6 @@
 import { DireccionType, Pedido, Producto, RegistroType } from '../shared/shareddtypes';
 
-const API_URL = process.env.REACT_APP_API_URI || 'http://localhost:5000'
+const API_URL = process.env.REACT_APP_API_URI || 'https://localhost:5000'
 
 export const getProductos = async (): Promise<Producto[]> => {
   const respuesta = await fetch(API_URL + '/product/list');
